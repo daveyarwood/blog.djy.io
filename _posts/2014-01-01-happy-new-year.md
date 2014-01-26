@@ -4,7 +4,7 @@ title: "Happy New Year!"
 category: yggdrasil
 tags: [yggdrasil, clojure, python, ruby]
 ---
-{% include JB/setup %}
+
 
 I have the day off work, so I figured I'd set up this blog on github. Maybe I don't really *need* a blog just yet, but I figure at least I'll have one at the ready whenever I end up having something noteworthy to blog about.
 
