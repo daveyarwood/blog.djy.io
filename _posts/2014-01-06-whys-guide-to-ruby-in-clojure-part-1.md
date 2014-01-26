@@ -22,9 +22,9 @@ There are only a handful of other languages that have entertaining/fun introduct
 Chapter 3
 =========
 
-*A general note: I have left out the necessary "(require 'clojure.whatever)" when utilizing libraries such as clojure.string and clojure.java.io, for the sake of avoiding repetition. In order to run such examples, you will need to first "require" the necessary libraries.
+*A general note: I have left out the necessary "(require 'clojure.whatever)" when utilizing libraries such as clojure.string and clojure.java.io, for the sake of avoiding repetition. In order to run such examples, you will need to first "require" the necessary libraries.*
 
-Another note: In many examples where the Ruby version "prints" or "puts's" the end result, I have the Clojure version simply return it, rather than using e.g. (prn x), (println x), etc. This is for the sake of simplicity. You could take any of these Clojure examples and easily print them (print ...), wrap them in a function (defn ...), or whatever else your heart may desire.*
+*Another note: In many examples where the Ruby version "prints" or "puts's" the end result, I have the Clojure version simply return it, rather than using e.g. (prn x), (println x), etc. This is for the sake of simplicity. You could take any of these Clojure examples and easily print them (print ...), wrap them in a function (defn ...), or whatever else your heart may desire.*
 
 {% highlight clj %}
 
