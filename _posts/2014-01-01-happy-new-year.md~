@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Happy New Year\!"
+title: "Happy New Year!"
 description: ""
 category: yggdrasil
 tags: [yggdrasil clojure python ruby]
