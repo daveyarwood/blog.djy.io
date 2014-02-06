@@ -1,0 +1,74 @@
+html, body {
+  height: 100%;
+  margin: 0px;
+  padding: 0px;
+  overflow: auto;
+  background-image: url("../cream_pixels.png");
+  
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+  }
+
+a:link, a:visited { 
+  color: #100BA3; 
+  text-decoration: none; 
+  font-weight: bold;
+  }
+  
+a:hover, a:active {
+  color: #12C0C9;
+  text-decoration: none;
+  font-weight: bold;
+  }
+  
+.links {
+  font-family: "Lucida Console", Monaco, monospace;
+  font-weight: bold;
+  font-size: 13px;
+} 
+  
+.page-header {
+  }
+
+.cats_and_tags {
+  font-style: italic;
+  }
+  
+.date {
+  }
+  
+.content {
+  font-size:14px;
+  line-height:20px;
+  }
+  
+.pagination {
+  text-align: center;
+  }
+
+#left-bar {
+  float: left;
+  text-align: center;
+  margin: 0px;
+  padding: 0px;
+  width: 21%;
+  }
+
+#contact-links {
+  }
+    
+#content {
+  float: left;
+  width: 54%;
+  }
+  
+footer {
+  text-align: center;
+  }
+  
+#right-bar {
+  float: left;
+  text-align: center;
+  margin: 0px;
+  padding: 0px;
+  width: 25%;
+  }

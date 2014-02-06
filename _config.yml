@@ -8,8 +8,8 @@ pygments: true
 # Themes are encouraged to use these universal variables 
 # so be sure to set them if your theme uses them.
 #
-title : empty orchestra
-tagline: the programs of dave yarwood
+title : Dave Yarwood
+# tagline: 
 author :
   name : Dave Yarwood
   email : dave.yarwood@gmail.com

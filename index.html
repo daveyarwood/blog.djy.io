@@ -1,0 +1,17 @@
+---
+layout: default
+title: "Home"
+description: "A programming-related blog by Dave Yarwood"
+---
+{% include JB/setup %}
+
+<br>
+<br>
+
+{% for post in site.posts limit: 10 %}
+  <big>{{ post.date | date: "%-m/%-d/%y" }}: 
+  <a href="{{ BASE_URL }}{{ post.url }}">{{ post.title }}</a></big><br>
+  {{ post.content | strip_html | truncate: 85 }}
+  <a href="{{ BASE_URL }}{{ post.url }}">(more)</a><br>
+  <br>
+{% endfor %}

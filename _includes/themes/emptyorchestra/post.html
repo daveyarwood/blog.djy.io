@@ -1,0 +1,47 @@
+<div class="page-header">
+  <h1>{{ page.title }} {% if page.tagline %}<small>{{page.tagline}}</small>{% endif %}</h1>
+</div>
+
+<div class="date">
+  <h2>{{ page.date | date: "%B %-d, %Y" }}</h2>
+</div>
+
+<div id="cats_and_tags">
+  {% unless page.categories == empty %}
+    categories: |
+    {% for category in page.categories %}
+      <a href="{{ BASE_PATH }}{{ site.JB.categories_path }}#{{ category }}-ref">
+      {{ category | join: "/" }}</a> |
+    {% endfor %}
+    <br>
+  {% endunless %}
+
+  {% unless page.tags == empty %}
+    tags: |
+    {% for tag in page.tags %}
+      <a href="{{ BASE_PATH }}{{ site.JB.tags_path }}#{{ tag }}-ref">
+      {{ tag | join: "/" }}</a> |
+    {% endfor %}
+  {% endunless %}  
+</div>
+
+<div class="content">
+  {{ content }}
+</div>
+
+<hr>
+<h2 class="pagination">
+  {% if page.previous %}
+    <a href="{{ BASE_PATH }}{{ page.previous.url }}" title="{{ page.previous.title }}">&lt;&lt;</a>&nbsp;&nbsp; 
+  {% else %}
+    &lt;&lt;&nbsp;&nbsp; 
+  {% endif %}
+    <a href="{{ BASE_PATH }}{{ site.JB.archive_path }}">archive</a>&nbsp;&nbsp;
+  {% if page.next %}
+    <a href="{{ BASE_PATH }}{{ page.next.url }}" title="{{ page.next.title }}">&gt;&gt;</a>
+  {% else %}
+    &gt;&gt;
+  {% endif %}
+</h2>
+<hr>
+{% include JB/comments %}
