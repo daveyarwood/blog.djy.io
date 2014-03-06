@@ -8,7 +8,7 @@ tags: [clojure, ruby]
 
 *Parts 1 and 2 of this series can be found [here][part1] and [here][part2].*
 [part1]: {% post_url 2014-01-06-whys-guide-to-ruby-in-clojure-part-1 %}
-[part2]: {% post-url 2014-02-20-whys-guide-to-ruby-in-clojure-part-2 %}
+[part2]: {% post_url 2014-02-20-whys-guide-to-ruby-in-clojure-part-2 %}
 
 Okay, is it me, or is Chapter 5 absurdly long compared to the other chapters in this book!? Holy moley. I'm going to have to split this one up into a couple of blog entries. This entry will cover roughly half of Chapter 5.
 
