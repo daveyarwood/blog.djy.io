@@ -7,7 +7,7 @@ tags: [clojure, ruby]
 {% include JB/setup %}
 
 *Parts 1, 2 and 3 of this series can be found [here][part1], [here][part2] and [here][part3].*
-[part1]: {% post_url 2014-01-06-whys-guide-to-ruby-in-clojure-part-1 %}
+[part1]: {% post-url 2014-01-06-whys-guide-to-ruby-in-clojure-part-1 %}
 [part2]: {% post-url 2014-02-20-whys-guide-to-ruby-in-clojure-part-2 %}
 [part3]: {% post-url 2014-03-05-whys-guide-to-ruby-in-clojure-part-3 %}
 
