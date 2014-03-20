@@ -8,6 +8,10 @@ html, body {
   font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
   }
 
+img { 
+  border-style: none;
+  } 
+
 a:link, a:visited { 
   color: #100BA3; 
   text-decoration: none; 
