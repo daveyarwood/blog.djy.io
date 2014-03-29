@@ -14,9 +14,10 @@
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
+    <link href="{{ ASSET_PATH }}/css/normalize.css" rel="stylesheet" type="text/css">
     <link href="{{ ASSET_PATH }}/css/emptyorchestra.css" rel="stylesheet" type="text/css">
 
-    <!-- Le styles 
+    <!-- Le styles
     <link href="{{ ASSET_PATH }}/bootstrap/css/bootstrap.2.2.2.min.css" rel="stylesheet">
     <link href="{{ ASSET_PATH }}/css/style.css?body=1" rel="stylesheet" type="text/css" media="all">
     -->
@@ -56,8 +57,8 @@
         <br>
         <img src="{{ ASSET_PATH }}/bluevirus.gif">
       </div>
-    </div>  
-  <!--      
+    </div>
+  <!--
     <div class="navbar">
       <div class="navbar-inner">
         <div class="container-narrow">
@@ -69,9 +70,9 @@
         </div>
       </div>
     </div>
-   -->  
-        
-    <div id="content"> 
+   -->
+
+    <div id="content">
       {{ content }}
       <footer>
         <p>&copy; {{ site.time | date: '%Y' }} {{ site.author.name }}
@@ -94,18 +95,18 @@
         <a href="{{ BASE_PATH }}{{ site.JB.categories_path }}#{{ category[0] }}-ref">
     		{{ category[0] | join: "/" }}</a><br>
       {% endfor %}
-      
+
       <h1>tags:</h1>
       {% for tag in site.tags %}
         <a href="{{ BASE_PATH }}{{ site.JB.tags_path }}#{{ tag[0] }}-ref">
         {{ tag[0] }} ({{ tag[1].size }})</a><br>
       {% endfor %}
-      
-      <h1><a href="{{ BASE_PATH }}rss.xml">rss</a> / 
+
+      <h1><a href="{{ BASE_PATH }}rss.xml">rss</a> /
           <a href="{{ BASE_PATH }}atom.xml">atom</a></h1>
-            
+
     </div>
-    
+
     <div style="clear: both; height: 1px;"></div>
 
     {% include JB/analytics %}
