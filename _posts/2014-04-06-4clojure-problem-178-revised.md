@@ -17,7 +17,7 @@ The main things I improved:
 * My first solution repeated this piece of code an awful lot: `(some (fn [[r num]] (>= num n)) (frequencies ranks))`. This was a classic opportunity to apply the DRY principle, so I added a `rank-freqs` symbol to my `let` binding. To make it easier to use, I defined it as `(sort (vals (frequencies ranks)))`, so that the value of `rank-freqs` is _always_ `[2 3]` for a full house, for instance.
 
 [feedback]: http://www.reddit.com/r/Clojure/comments/225uq8/my_solution_to_4clojure_problem_178/
-[last]: {% post_url 2014-01-06-whys-guide-to-ruby-in-clojure-part-1 %}
+[last]: {% post_url 2014-04-03-4clojure-problem-178 %}
 
 Without further ado, here is my revised solution for [Clojure Problem #178](http://www.4clojure.com/problem/178):
 
