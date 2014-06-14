@@ -7,6 +7,7 @@ tags: [clojure, ruby]
 {% include JB/setup %}
 
 *Part 1 of this series can be found [here][part1].*
+
 [part1]: {% post_url 2014-01-06-whys-guide-to-ruby-in-clojure-part-1 %}
 
 In this chapter, we start to see more of \_why's use of Ruby code to do metaphysical things like catch stars and use them to construct star-monkeys. Of course, there is no earthly way to test this code, but I'm including these examples in order to demonstrate Clojure's syntax as it compares to Ruby's. 
