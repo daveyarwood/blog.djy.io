@@ -12,11 +12,35 @@ I've always been mildly interested in [the FizzBuzz problem][wikipedia], which i
 
 The obvious/canonical solution to this problem is a simple if-then-else statement, like this:
 
-{% gist 5fbb82743bfb9b534628 %}
+{% highlight python %}
+
+for x in range(1,101):
+    if x % 15 == 0:
+        print "FizzBuzz"
+    elif x % 3 == 0:
+        print "Fizz"
+    elif x % 5 == 0:
+        print "Buzz"
+    else:
+        print x
+
+{% endhighlight %}
 
 In a functional programming language like Clojure, one might prefer to map a function over the range 1-100 that returns "FizzBuzz," "Fizz," "Buzz" or the number itself, like this:
 
-{% gist e9b9b758d8f00d35b180 %}
+{% highlight clojure %}
+
+(defn fizz-buzz [n]
+  (cond
+    (zero? (rem n 15)) "FizzBuzz"
+    (zero? (rem n 3))  "Fizz"
+    (zero? (rem n 5))  "Buzz"
+    :else               n))
+ 
+(doseq [x (map fizz-buzz (range 1 101))]
+  (println x))
+
+{% endhighlight %}
 
 This approach is simple enough, but I don't like the part that checks whether `x % 15 == 0`. I prefer the kind of FizzBuzz solution that adds "Fizz" first if the number is divisible by 3, then adds "Buzz" if the number is divisible by 5, and so the numbers that are divisible by both 3 and 5 will automatically be "FizzBuzz" without having to add another step. I was thinking about functional programming approaches to this problem, and it occurred to me that one could take a list of the numbers (indices), as tuples with empty strings, and map over the list three times:
 
@@ -24,14 +48,34 @@ This approach is simple enough, but I don't like the part that checks whether `x
 2. Add "Buzz" to the string if its index is divisible by 5.
 3. Return either the string or the index (if the string is still empty).
 
-{% gist 6640d5c4c19194d8e214 %}
+{% highlight clojure %}
+
+(def fizz-buzz
+  (->> (map vector (range 1 101) (repeat 100 ""))
+        (map (fn [[i s]] [i (if (zero? (rem i 3)) (str s "Fizz") s)]))
+        (map (fn [[i s]] [i (if (zero? (rem i 5)) (str s "Buzz") s)]))
+        (map (fn [[i s]] (if (= "" s) i s)))))
+ 
+(doseq [x fizz-buzz] (println x))
+
+{% endhighlight %}
 
 That's nice, but I still don't like the idea of having to map over the entire sequence three times. We should be able to write a small function that "fizz-buzzes" a number in one pass: this function would basically follow the same three steps, but in a simplified form:
 
 1. Define a string consisting of "Fizz" if the number is divisible by 3 plus "Buzz" if the number is divisible by 5.
 2. Is the string empty? Then return the number. Otherwise return the string.
 
-{% gist bd31e3ac8608c1f01fa9 %}
+{% highlight clojure %}
+
+(defn fizz-buzz [n]
+  (let [s (str (when (zero? (rem n 3)) "Fizz")
+               (when (zero? (rem n 5)) "Buzz"))]
+    (if (empty? s) n s)))
+ 
+(doseq [x (map fizz-buzz (range 1 101))]
+  (println x))
+
+{% endhighlight %}
 
 This solution takes advantage of the convenient semantics of `nil` in Clojure. Each `when` statement returns either "Fizz"/"Buzz" or `nil`. A lot of Clojure functions are smart enough to know what to do with `nil`, and `str` is one of them; so, if we pass in 20, for instance, the evaluation of `(str nil "Buzz")` returns "Buzz" rather than throwing an error.
 
