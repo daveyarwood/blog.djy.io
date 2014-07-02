@@ -21,4 +21,40 @@ The main things I improved:
 
 Without further ado, here is my revised solution for [Clojure Problem #178](http://www.4clojure.com/problem/178):
 
-{% gist 10010143 %}
+{% highlight clojure %}
+
+(fn best-hand [card-strings]
+  (let [card-parser (fn [[s r]]
+                      (let [suit ({\S :spade, \H :heart, 
+                                   \D :diamond, \C :club} s)
+                            rank (if (> (Character/digit r 10) -1)
+                                   (- (Character/digit r 10) 2)
+                                   ({\T 8, \J 9, 
+                                     \Q 10, \K 11, \A 12} r))]
+                        {:suit suit, :rank rank}))
+        cards (map card-parser card-strings)
+        suits (map :suit cards)
+        ranks (map :rank cards)
+        rank-freqs (sort (vals (frequencies ranks)))
+ 
+        flush? 
+        (apply = suits) 
+ 
+        straight? 
+        (let [aces-high (sort ranks)
+              aces-low (sort (replace {12 -1} ranks))]
+          (or
+            (= aces-high (take 5 (iterate inc (first aces-high))))
+            (= aces-low  (take 5 (iterate inc (first aces-low))))))]
+    (cond 
+      (and flush? straight?) :straight-flush
+      (= rank-freqs [1 4])   :four-of-a-kind
+      (= rank-freqs [2 3])   :full-house
+      flush?                 :flush
+      straight?              :straight
+      (some #{3} rank-freqs) :three-of-a-kind
+      (= rank-freqs [1 2 2]) :two-pair
+      (some #{2} rank-freqs) :pair
+      :else                  :high-card)))
+
+{% endhighlight %}

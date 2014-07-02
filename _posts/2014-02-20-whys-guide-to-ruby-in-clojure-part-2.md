@@ -21,4 +21,137 @@ Anyway, without further ado, here's...
 Chapter 4
 =========
 
-{% gist 9127194 %}
+{% highlight clojure %}
+
+; ex. 1:
+(def blue-crystal 1)
+(def leaf-tender 5)
+ 
+; ex. 2:
+(catch-a-star pipe)
+ 
+; ex. 3:
+(def captive-star (catch-a-star pipe))
+ 
+; ex. 4:
+(def star-monkey (attach ratchet captive-monkey captive-star))
+ 
+; ex. 5:
+(def star-monkey 
+  (hot-glue deco-hand-frog
+            (attach ratchet captive-monkey (catch-a-star pipe))))
+ 
+; ex. 6:
+(def plastic-cup nil)
+ 
+; ex. 7:
+(if plastic-cup "Plastic cup is on the up 'n' up!")
+ 
+; ex. 8:
+(if-not plastic-cup "Plastic cup is on the down low.")
+ 
+; ex. 9:
+(if plastic-cup "Yeah, plastic cup is up again!")
+(if-not plastic-cup "Hardly. It's down.")
+ 
+; ex. 10:
+(if (and plastic-cup (not glass-cup)) 
+  "We're using plastic 'cause we don't have glass.")
+ 
+; ex. 11:
+(def approaching-guy true)
+ 
+; ex. 12:
+(if (= approaching-guy true) "That necklace is classic.")
+ 
+; ex. 13:
+(if (= approaching-guy false) "Get in here, you conniving devil.")
+ 
+; ex. 14:
+(= approaching-guy true)
+ 
+; ex. 15:
+(if (= nil true) "This will never see realization.")
+ 
+; ex. 16:
+(def at-hotel true)
+(def email (if at-hotel "why@hotelambrose.com" "why@drnhowardcham.com"))
+ 
+; ex. 17:
+(def email (let [address "why"] (str address "@hotelambrose" ".com")))
+ 
+; ex. 18:
+(cond 
+  (nil? at-hotel) "No clue if he's in the hotel."
+  at-hotel        "Definitely in."
+  (not at-hotel)  "He's out."
+  :else           "The system is on the freee-itz.")
+ 
+; ex. 19:
+(print "Type and be diabolical: ")
+(def idea-backwards (clojure.string/reverse (read-line)))
+ 
+; ex. 20: 
+(def idea-backwards (clojure.string/reverse (.toUpperCase (read-line))))
+ 
+; ex. 21:
+(def code-words
+  {"starmonkeys" "Phil and Pete, those prickly chancellors of the New Reich",
+   "catapult" "chucky go-go", "firebomb" "Heat-Assisted Living",
+   "Nigeria" "Ny and Jerry's Dry Cleaning (with Donuts)",
+   "Put the kabosh on" "Put the cable box on"})
+ 
+; ex. 22:
+(require '[clojure.string :as str])
+(use 'clojure.java.io)
+ 
+(print "Enter your new idea: ")
+(def idea (read-line))
+(def safe-idea
+  (reduce (fn [txt [real code]] (str/replace txt real code)) idea code-words)
+ 
+(print "File encoded.  Please enter a name for this idea: ")
+(def idea-name (str/trim (read-line)))
+(with-open [w (writer (str "idea-" idea-name ".txt"))]
+  (.write w safe-idea))
+ 
+; ex. 23:
+(print "55,000 Starmonkey Salute!")
+ 
+; ex. 24:
+(require '[clojure.string :as str)
+(import 'java.io.File)
+ 
+(doseq [file (->> 
+               (.listFiles ".")
+               (filter #(re-matches #"idea-.+\.txt" (.getName %))))]
+  (let [safe-idea (slurp (.getName file))]
+    (println
+      (reduce 
+        (fn [txt [real code]] (str/replace txt code real)) 
+        safe-idea
+        code-words))))
+ 
+; ex. 25/26:
+(def kitty-toys
+  [{:shape "sock", :fabric "cashmere"} {:shape "mouse", :fabric "calico"}
+   {:shape "eggroll", :fabric "chenille"}])
+ 
+(sort-by :fabric kitty-toys)
+ 
+; ex. 27:
+(doseq [toy (sort-by :shape kitty-toys)]
+  (println "Blixy has a" (:shape toy) "made of" (:fabric toy)))
+ 
+; non-printy version that collects the sentences into a seq:
+(map #(str "Blixy has a " (:shape %) "made of " (:fabric %)) 
+     (sort-by :shape kitty-toys))
+ 
+; ex. 28:
+(def non-eggroll (count (filter #(not= (:shape %) "eggroll") kitty-toys)))
+ 
+; ex. 29:
+(doseq [toy (take-while #(not= (:fabric %) "chenille") kitty-toys)]
+  (prn toy))
+
+{% endhighlight %}

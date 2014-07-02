@@ -15,6 +15,73 @@ I should note that this solution is presented here as a single function only bec
 [p178]: http://www.4clojure.com/problem/178
 [p128]: http://www.4clojure.com/problem/128
 
-{% gist 9967243 %}
+{% highlight clojure %}
+
+(fn best-hand [card-strings]
+  (let [card-parser (fn [[s r]]
+                      (let [suit ({\S :spade, \H :heart, 
+                                   \D :diamond, \C :club} s)
+                            rank (if (> (Character/digit r 10) -1)
+                                   (- (Character/digit r 10) 2)
+                                   ({\T 8, \J 9, 
+                                     \Q 10, \K 11, \A 12} r))]
+                        {:suit suit, :rank rank}))
+        cards (map card-parser card-strings)
+        suits (map :suit cards)
+        ranks (map :rank cards)
+ 
+        flush? 
+        (if (= 1 (count (set suits))) :flush nil)
+ 
+        straight? 
+        (let [aces-high (sort ranks)
+              aces-low (sort (replace {12 -1} ranks))]
+               (if (or
+                     (= aces-high (take 5 (iterate inc (first aces-high))))
+                     (= aces-low  (take 5 (iterate inc (first aces-low)))))
+                 :straight
+                 nil))
+ 
+        straight-flush?
+        (if (and flush? straight?) :straight-flush nil)
+ 
+        pair? 
+        (if (some (fn [[r num]] (>= num 2)) (frequencies ranks)) 
+          :pair 
+          nil)
+ 
+        three-of-a-kind?
+        (if (some (fn [[r num]] (>= num 3)) (frequencies ranks)) 
+          :three-of-a-kind
+          nil)
+ 
+        four-of-a-kind?
+        (if (some (fn [[r num]] (= num 4)) (frequencies ranks))
+          :four-of-a-kind
+          nil)
+ 
+        two-pair?
+        (if (or 
+              (some (fn [[r num]] (>= num 4)) (frequencies ranks))
+              (= 2 (count (filter (fn [[r num]] (>= num 2)) 
+                                  (frequencies ranks)))))
+          :two-pair
+          nil)
+ 
+        full-house?
+        (if (and
+              (some (fn [[r num]] (= num 3)) (frequencies ranks))
+              (some (fn [[r num]] (= num 2)) (frequencies ranks)))
+          :full-house
+          nil)
+ 
+        possible-hands 
+        (remove nil? [straight-flush? four-of-a-kind? full-house? flush?
+                      straight? three-of-a-kind? two-pair? pair?])]
+    (if-not (empty? possible-hands)
+      (first possible-hands)
+      :high-card)))
+
+{% endhighlight %}
 
 I'd be curious to see your own solutions to this problem, either in Clojure or any other language!
