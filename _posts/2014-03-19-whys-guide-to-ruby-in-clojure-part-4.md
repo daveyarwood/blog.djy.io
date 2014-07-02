@@ -83,7 +83,7 @@ Chapter 5 (Sections 4-7)
     (throw (IllegalArgumentException. 
             "the three picks must be different numbers"))
  
-    (not-every? #(some #{%} (range 1 26)) picks)
+    (not-every? #(some #\{%} (range 1 26)) picks)
     (throw (IllegalArgumentException. 
             "the three picks must be numbers between 1 and 25")))
   (LotteryTicket. picks (java.util.Date.)))
