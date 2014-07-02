@@ -20,6 +20,7 @@ Chapter 5 (Sections 4-7)
 ========================
 
 {% highlight clojure %}
+{% raw %}
 
 ; exs. 32-34:
 ; not applicable to Clojure (Ruby class inheritance)
@@ -83,7 +84,7 @@ Chapter 5 (Sections 4-7)
     (throw (IllegalArgumentException. 
             "the three picks must be different numbers"))
  
-    (not-every? #(some #{\%} (range 1 26)) picks)
+    (not-every? #(some #{%} (range 1 26)) picks)
     (throw (IllegalArgumentException. 
             "the three picks must be numbers between 1 and 25")))
   (LotteryTicket. picks (java.util.Date.)))
@@ -264,4 +265,5 @@ Chapter 5 (Sections 4-7)
 ; and either grants it (if it starts with "wish: ") or discards it, updating the 
 ; ref or atom's state with each iteration of the loop
 
+{% endraw %}
 {% endhighlight %}
