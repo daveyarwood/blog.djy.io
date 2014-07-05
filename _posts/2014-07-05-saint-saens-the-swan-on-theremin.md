@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Saint-Saëns \"The Swan\" on Theremin"
+title: "Saint-Saëns' \"The Swan\" on Theremin"
 category: music
 tags: [theremin]
 ---
@@ -19,4 +19,4 @@ The Independent Weekly did some great coverage the week of the event, featuring 
 [indyweek-1]: http://www.indyweek.com/indyweek/the-theremins-story-is-stranger-than-fiction/Content?oid=4192744
 [indyweek-2]: http://www.indyweek.com/artery/archives/2014/07/02/video-dave-yarwood-performs-on-the-theremin-at-sean-michaels-durham-reading
 
-<iframe src="//player.vimeo.com/video/99562691" width="500" height="281" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen="true"></iframe> <p><a href="http://vimeo.com/99562691">Theremin performance at Letters Bookshop</a> from <a href="http://vimeo.com/indyweek">INDY Week</a> on <a href="https://vimeo.com">Vimeo</a>.</p>
+<center><iframe src="//player.vimeo.com/video/99562691" width="500" height="281" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen="true"></iframe> <p><a href="http://vimeo.com/99562691">Theremin performance at Letters Bookshop</a> from <a href="http://vimeo.com/indyweek">INDY Week</a> on <a href="https://vimeo.com">Vimeo</a>.</p></center>
