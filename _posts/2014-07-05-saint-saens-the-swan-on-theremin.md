@@ -6,7 +6,7 @@ tags: [theremin]
 ---
 {% include JB/setup %}
 
-<iframe src="//player.vimeo.com/video/99562691" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe> <p><a href="http://vimeo.com/99562691">Theremin performance at Letters Bookshop</a> from <a href="http://vimeo.com/indyweek">INDY Week</a> on <a href="https://vimeo.com">Vimeo</a>.</p>
+<iframe src="//player.vimeo.com/video/99562691" width="500" height="281" align="center" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe> <p align="center"><a href="http://vimeo.com/99562691">Theremin performance at Letters Bookshop</a> from <a href="http://vimeo.com/indyweek">INDY Week</a> on <a href="https://vimeo.com">Vimeo</a>.</p>
 
 I figured I could use this blog to show off some music stuff that I've been doing, too. Why not, right? I've already got links to two recent bands I've been a part of, [Antibubbles](http://antibubbles.bandcamp.com) and [No Love](http://noloveraleigh.bandcamp.com), over there in the sidebar. 
 
