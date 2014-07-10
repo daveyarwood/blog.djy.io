@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "\_why's (Poignant) Guide to Ruby in Clojure: Part 5"  
+title: "_why's (Poignant) Guide to Ruby in Clojure: Part 5"  
 category: 
 tags: [clojure, ruby]
 ---
