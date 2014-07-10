@@ -273,7 +273,7 @@ Chapter 6 (Sections 1-3)
         (printf "[Get ready. %s has emerged.]\n" 
                 (creature-name @(first @dwary)))))))
 
-ex. 22:
+; ex. 22:
 (defcreature Rabbit
   life 10
   strength 2
@@ -317,19 +317,19 @@ ex. 22:
       (swap! rabbit update-in [:bombs] - 1)
       (fight rabbit enemy 86))))
 
-ex. 22-1/2:
+; ex. 22-1/2:
 (def r (atom (Rabbit)))
 (:life @r)
 (:strength @r)
 
-ex. 23:
+; ex. 23:
 (defcreature ScubaArgentine
   life 46
   strength 35
   charisma 91
   weapon 2)
 
-ex. 23-1/2 (several irb snippets):
+; ex. 23-1/2 (several irb snippets):
 (def r (atom (Rabbit)))
 (def s (atom (ScubaArgentine)))
 
@@ -353,7 +353,7 @@ ex. 23-1/2 (several irb snippets):
 ; "array * times" (repeats array "times" times)
 (flatten (repeat 3 ["D" "W"]))
 
-ex. 24:
+; ex. 24:
 (defcreature IndustrialRaverMonkey
   life 46
   strength 35
@@ -390,7 +390,7 @@ ex. 24:
   charisma 1020
   weapon 939)
  
-ex. 25:
+; ex. 25:
 (def dwary
   (atom (mapv atom [(IndustrialRaverMonkey)
                     (DwarvenAngel)
@@ -399,10 +399,10 @@ ex. 25:
                     (IntrepidDecomposedCyclist)
                     (Dragon)])))
 
-ex. 26 ("Start here"):
+; ex. 26 ("Start here"):
 (attack r % dwary)
 
-ex. 27:
+; ex. 27:
 (loop []
   (print ">> ")
   (flush)
