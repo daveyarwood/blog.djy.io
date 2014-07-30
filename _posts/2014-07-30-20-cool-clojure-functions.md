@@ -410,6 +410,7 @@ Of note, `read-string` will compile an object, but will not evaluate it. If you 
 (load-string "(println \"Adding 2 and 2 together...\") (+ 2 2)")
 ;=> Adding 2 and 2 together...
 ;=> 4
+{% endhighlight %}
 
 [into]: http://clojuredocs.org/clojure_core/clojure.core/into
 [mapv]: https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/mapv
