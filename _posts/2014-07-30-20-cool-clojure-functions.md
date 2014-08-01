@@ -214,7 +214,7 @@ A common use for `partial` is to create a modified version of a function with "d
   (partial greet "你好"))
 
 (greet-chinese "Barbara")
-;=> "你好, Barbara!"
+;=> "你好, Barbara!"
 {% endhighlight %}
 
 ## 9) [comp][comp]
