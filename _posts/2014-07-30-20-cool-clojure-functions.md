@@ -213,7 +213,6 @@ A common use for `partial` is to create a modified version of a function with "d
 (def greet-chinese
   (partial greet "你好"))
 
-
 (greet-chinese "Barbara")
 ;=> "你好, Barbara!"
 {% endhighlight %}
