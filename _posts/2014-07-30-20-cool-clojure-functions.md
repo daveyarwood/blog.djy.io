@@ -201,6 +201,23 @@ This function is especially powerful when dealing with multimethods, as it provi
 ;=> 15
 {% endhighlight %}
 
+A common use for `partial` is to create a modified version of a function with "default" arguments:
+
+{% highlight clojure %}
+(defn greet [greeting person]
+  (format "%s, %s!" greeting person))
+
+(greet "Yo" "Chuck")
+;=> "Yo, Chuck!"
+
+(def greet-chinese
+  (partial greet "你好"))
+
+
+(greet-chinese "Barbara")
+;=> "你好, Barbara!"
+{% endhighlight %}
+
 ## 9) [comp][comp]
 
 `comp` provides a nice, succinct way of expressing the composition of two or more functions. To steal an example from ClojureDocs:
