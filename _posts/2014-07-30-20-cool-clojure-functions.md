@@ -63,7 +63,7 @@ Stealing an example from ClojureDocs:
 
 ## 4) [mapcat][mapcat]
 
-While I'm on the subject of `map` variants, `mapcat` is a handy one that takes the result of mapping a function (presumably one that returns a collection) over a collection, and then applies `concat` to the results. So it's really just a shortcut for `apply concat (map ...`
+While I'm on the subject of `map` variants, `mapcat` is a handy one that takes the result of mapping a function (presumably one that returns a collection) over a collection, and then applies `concat` to the results. So it's really just a shortcut for `(apply concat (map ...`
 
 {% highlight clojure %}
 (defn single-double-triple [x]
