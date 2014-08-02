@@ -53,7 +53,6 @@ a:hover, a:active {
   margin: 0px;
   padding: 0px;
   width: 180px;
-  height: 100%;
   }
 
 #contact-links {
@@ -62,6 +61,7 @@ a:hover, a:active {
 #content {
   position: absolute;
   left: 190px;
+  margin-right: 10px;
   }
 
 footer {
