@@ -56,6 +56,7 @@ a:hover, a:active {
   }
 
 #content {
+  float: left;
   position: absolute;
   left: 190px;
   margin-right: 30px;
