@@ -60,8 +60,8 @@ a:hover, a:active {
   }
 
 #content {
-/*  float: left; */
-/*  width: 70%; */
+  position: absolute;
+  left: 190px;
   }
 
 footer {
