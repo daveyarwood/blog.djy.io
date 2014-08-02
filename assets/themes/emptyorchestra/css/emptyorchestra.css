@@ -8,8 +8,6 @@ html, body {
   font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
   }
 
-
-
 a:link, a:visited {
   color: #100BA3;
   text-decoration: none;
@@ -48,7 +46,6 @@ a:hover, a:active {
   }
 
 #left-bar {
-  float: left;
   text-align: center;
   margin: 0px;
   padding: 0px;
