@@ -46,8 +46,7 @@ a:hover, a:active {
   }
 
 #left-bar {
-  float: left;
-  overflow: visible;
+  position: absolute;
   text-align: center;
   margin: 0px;
   padding: 0px;
