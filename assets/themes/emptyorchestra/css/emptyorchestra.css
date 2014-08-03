@@ -35,6 +35,7 @@ a:hover, a:active {
 }
 
 .date {
+  font-family: "Lucida Console", Monaco, monospace;
 }
 
 .content {
