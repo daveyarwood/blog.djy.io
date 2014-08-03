@@ -70,7 +70,7 @@
             
       <h1>latest:</h1>
       {% for post in site.posts offset: 0 limit: 3 %}
-        <a href="{{ root_url }}{{ post.url }}">{{ post.date | date: '%Y-%m-%d' }}:<br>{{ post.title }}</a><br>
+        <a href="{{ root_url }}{{ post.url }}">{{ post.date | date: '%Y-%m-%d' }}:<br>{{ post.title }}</a><br><br>
       {% endfor %}
 
       <h1>categories:</h1>
