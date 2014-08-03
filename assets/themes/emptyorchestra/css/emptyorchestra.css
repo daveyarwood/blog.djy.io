@@ -4,8 +4,15 @@ html, body {
   padding: 0px;
   overflow: auto;
   background-image: url("../bright_squares.png");
+  font-family: 'Droid Sans', Helvetica, Arial, sans-serif;
 
-  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+/*  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; */
+  }
+  
+h1 {
+  font-family: 'Droid Serif', Georgia, Times, serif;
+  font-size: 49px;
+  line-height: 65px;
   }
 
 a:link, a:visited {
@@ -24,7 +31,7 @@ a:hover, a:active {
   font-family: "Lucida Console", Monaco, monospace;
   font-weight: bold;
   font-size: 13px;
-}
+  }
 
 .page-header {
   }
@@ -38,7 +45,7 @@ a:hover, a:active {
 
 .content {
   font-size:14px;
-  line-height:20px;
+  line-height:25px;
   }
 
 .pagination {
