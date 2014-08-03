@@ -24,7 +24,7 @@ a:hover, a:active {
   font-size: 13px;
 }
 
-.page-header {
+h1.page-header {
   font-family: 'Droid Serif', Georgia, Times, serif;
   font-size: 49px;
   line-height: 65px;
