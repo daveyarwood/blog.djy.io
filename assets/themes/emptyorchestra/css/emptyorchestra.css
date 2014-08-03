@@ -20,6 +20,10 @@ a:hover, a:active {
   text-decoration: none;
   font-weight: bold;
 }
+
+code {
+  background-color: #D1E9E9;
+}
   
 .links {
   font-family: "Lucida Console", Monaco, monospace;
@@ -72,13 +76,3 @@ a:hover, a:active {
 footer {
   text-align: center;
 }
-
-/*
-#right-bar {
-  float: left;
-  text-align: center;
-  margin: 0px;
-  padding: 0px;
-  width: 20%;
-  }
-*/
