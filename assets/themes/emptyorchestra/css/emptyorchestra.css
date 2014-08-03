@@ -4,9 +4,6 @@ html, body {
   padding: 0px;
   overflow: auto;
   background-image: url("../bright_squares.png");
-  font-family: 'Droid Sans', Helvetica, Arial, sans-serif;
-
-/*  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; */
   }
   
 h1 {
@@ -44,6 +41,7 @@ a:hover, a:active {
   }
 
 .content {
+  font-family: 'Droid Sans', Helvetica, Arial, sans-serif;
   font-size:14px;
   line-height:25px;
   }

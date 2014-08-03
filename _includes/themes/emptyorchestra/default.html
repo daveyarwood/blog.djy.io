@@ -66,27 +66,27 @@
         </a>
       </div>
             
-        <h1>latest:</h1>
-        {% for post in site.posts offset: 0 limit: 3 %}
-          <a href="{{ root_url }}{{ post.url }}">{{ post.date | date: '%Y-%m-%d' }}:<br>{{ post.title }}</a><br><br>
-        {% endfor %}
+      <h1>latest:</h1>
+      {% for post in site.posts offset: 0 limit: 3 %}
+        <a href="{{ root_url }}{{ post.url }}">{{ post.date | date: '%Y-%m-%d' }}:<br>{{ post.title }}</a><br><br>
+      {% endfor %}
 
-        <h1><a href="{{ BASE_PATH }}{{ site.JB.archive_path }}">archive</a></h1>
+      <h1><a href="{{ BASE_PATH }}{{ site.JB.archive_path }}">archive</a></h1>
 
-        <h1>categories:</h1>
-        {% for category in site.categories %}
-          <a href="{{ BASE_PATH }}{{ site.JB.categories_path }}#{{ category[0] }}-ref">
-          {{ category[0] | join: "/" }}</a><br>
-        {% endfor %}
-  
-        <h1>tags:</h1>
-        {% for tag in site.tags %}
-          <a href="{{ BASE_PATH }}{{ site.JB.tags_path }}#{{ tag[0] }}-ref">
-          {{ tag[0] }} ({{ tag[1].size }})</a><br>
-        {% endfor %}
-  
-        <h1><a href="http://daveyarwood.github.io/rss.xml">rss</a> /
-            <a href="http://daveyarwood.github.io/atom.xml">atom</a></h1>
+      <h1>categories:</h1>
+      {% for category in site.categories %}
+        <a href="{{ BASE_PATH }}{{ site.JB.categories_path }}#{{ category[0] }}-ref">
+        {{ category[0] | join: "/" }}</a><br>
+      {% endfor %}
+
+      <h1>tags:</h1>
+      {% for tag in site.tags %}
+        <a href="{{ BASE_PATH }}{{ site.JB.tags_path }}#{{ tag[0] }}-ref">
+        {{ tag[0] }} ({{ tag[1].size }})</a><br>
+      {% endfor %}
+
+      <h1><a href="http://daveyarwood.github.io/rss.xml">rss</a> /
+          <a href="http://daveyarwood.github.io/atom.xml">atom</a></h1>
     </div>
   <!--
     <div class="navbar">
