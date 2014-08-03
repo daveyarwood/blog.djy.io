@@ -65,13 +65,13 @@
           <img src="{{ ASSET_PATH }}/bluevirus.gif">
         </a>
       </div>
+
+      <h1><a href="{{ BASE_PATH }}{{ site.JB.archive_path }}">archive</a></h1>
             
       <h1>latest:</h1>
       {% for post in site.posts offset: 0 limit: 3 %}
-        <a href="{{ root_url }}{{ post.url }}">{{ post.date | date: '%Y-%m-%d' }}:<br>{{ post.title }}</a><br><br>
+        <a href="{{ root_url }}{{ post.url }}">{{ post.date | date: '%Y-%m-%d' }}:<br>{{ post.title }}</a><br>
       {% endfor %}
-
-      <h1><a href="{{ BASE_PATH }}{{ site.JB.archive_path }}">archive</a></h1>
 
       <h1>categories:</h1>
       {% for category in site.categories %}
