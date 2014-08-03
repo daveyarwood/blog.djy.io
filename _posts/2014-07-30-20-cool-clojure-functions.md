@@ -158,7 +158,7 @@ In Clojure, you can mimic this functionality using `fnil`:
 ;=> {"Mariah Carey" 1, "Brandy" 1, "TLC" 4}
 {% endhighlight %}
 
-Because `({} "TLC")` returns `nil` and not 0, we use `fnil` to turn `inc` into a function that works just like `inc` unless its argument is `nil`, in which case it acts like it`s working with `0`. This is especially nice (and arguably better than default hash values in Ruby) because we could define additional functions that also use `fnil` to work with different default values, while still working with the same hash-map; this gives us the possibility of different default semantics for different functions, and without requiring that the hash-map be "set up" in any way to have default values.
+Because `({} "TLC")` returns `nil` and not 0, we use `fnil` to turn `inc` into a function that works just like `inc` unless its argument is `nil`, in which case it acts like it's working with `0`. This is especially nice (and arguably better than default hash values in Ruby) because we could define additional functions that also use `fnil` to work with different default values, while still working with the same hash-map; this gives us the possibility of different default semantics for different functions, and without requiring that the hash-map be "set up" in any way to have default values.
 
 ## 7) [juxt][juxt]
 
