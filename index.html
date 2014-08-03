@@ -9,7 +9,7 @@ description: "A programming-related blog by Dave Yarwood"
 <br>
 
 {% for post in site.posts limit: 10 %}
-  <big>{{ post.date | date: "%-m/%-d/%y" }}: 
+  <big><b>{{ post.date | date: "%-m/%-d/%y" }}:</b> 
   <a href="{{ BASE_URL }}{{ post.url }}">{{ post.title }}</a></big><br>
   {{ post.content | strip_html | truncate: 85 }}
   <a href="{{ BASE_URL }}{{ post.url }}">(more)</a><br>
