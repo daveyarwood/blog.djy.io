@@ -32,6 +32,7 @@ a:hover, a:active {
   font-family: 'Droid Serif', Georgia, Times, serif;
   font-size: 25px;
   line-height: 50px;
+  text-align: center;
 }
 
 .cats_and_tags {
@@ -40,6 +41,7 @@ a:hover, a:active {
 
 .date {
   font-family: "Lucida Console", Monaco, monospace;
+  text-align: center;
 }
 
 .content {
