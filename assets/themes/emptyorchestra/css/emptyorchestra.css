@@ -6,12 +6,6 @@ html, body {
   background-image: url("../bright_squares.png");
 }
   
-h1 {
-  font-family: 'Droid Serif', Georgia, Times, serif;
-  font-size: 49px;
-  line-height: 65px;
-}
-
 a:link, a:visited {
   color: #100BA3;
   text-decoration: none;
@@ -29,12 +23,11 @@ a:hover, a:active {
   font-weight: bold;
   font-size: 13px;
 }
-  
-h1.links {
-  font-family: "Lucida Console", Monaco, monospace;
-}
 
 .page-header {
+  font-family: 'Droid Serif', Georgia, Times, serif;
+  font-size: 49px;
+  line-height: 65px;
 }
 
 .cats_and_tags {
