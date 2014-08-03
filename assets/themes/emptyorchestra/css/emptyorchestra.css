@@ -23,6 +23,8 @@ a:hover, a:active {
 
 code {
   background-color: #D1E9E9;
+  white-space: pre-wrap;
+  padding: 1px 5px;
 }
   
 .links {
