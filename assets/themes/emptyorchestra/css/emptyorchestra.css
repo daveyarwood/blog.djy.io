@@ -4,51 +4,55 @@ html, body {
   padding: 0px;
   overflow: auto;
   background-image: url("../bright_squares.png");
-  }
+}
   
-h1.content {
+h1 {
   font-family: 'Droid Serif', Georgia, Times, serif;
   font-size: 49px;
   line-height: 65px;
-  }
+}
 
 a:link, a:visited {
   color: #100BA3;
   text-decoration: none;
   font-weight: bold;
-  }
+}
 
 a:hover, a:active {
   color: #12C0C9;
   text-decoration: none;
   font-weight: bold;
-  }
-
+}
+  
 .links {
   font-family: "Lucida Console", Monaco, monospace;
   font-weight: bold;
   font-size: 13px;
-  }
+}
+  
+h1.links {
+  font-family: "Lucida Console", Monaco, monospace;
+}
 
 .page-header {
-  }
+}
 
 .cats_and_tags {
   font-style: italic;
-  }
+}
 
 .date {
-  }
+}
 
 .content {
   font-family: 'Droid Sans', Helvetica, Arial, sans-serif;
   font-size:14px;
   line-height:25px;
-  }
+}
 
 .pagination {
   text-align: center;
-  }
+}
 
 #left-bar {
   position: absolute;
@@ -57,20 +61,20 @@ a:hover, a:active {
   margin: 0px;
   padding: 0px;
   width: 180px;
-  }
+}
 
 #contact-links {
-  }
+}
 
 #content {
   position: absolute;
   left: 190px;
   margin-right: 30px;
-  }
+}
 
 footer {
   text-align: center;
-  }
+}
 
 /*
 #right-bar {
