@@ -18,7 +18,7 @@ I was going through my computer and found this old Antibubbles live set -- thoug
 The full, 8-song set is here if anyone wants it:  
 [sendspace](https://www.sendspace.com/file/8fe0dl)
 
-<u>**Set list:**</u>  
+**Set list:**  
 Tonight Tonight Tonight  
 Battle on the Mars  
 Our Capsule  
