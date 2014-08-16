@@ -2,12 +2,6 @@
 published: true
 ---
 
----
-layout: post
-title: "Antibubbles - Live @ the Layabout (8/5/11)"
-category: music
-tags: [antibubbles]
----
 {% include JB/setup %}
 
 <center>
