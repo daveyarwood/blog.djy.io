@@ -10,7 +10,7 @@ tags:
 {% include JB/setup %}
 
 <center>
-<iframe width="100%" height="166" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/163417290&amp;color=ff5500&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false"></iframe>
+<iframe width="75%" height="166" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/163417290&amp;color=ff5500&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false"></iframe>
 </center>
 
 I was going through my computer and found this old Antibubbles live set -- thought I'd share it. It's from a fun house show we played at the Layabout in Durham on August 5, 2011.
@@ -27,7 +27,7 @@ You Gave Your Love to Me Softly (Weezer)
 Flux  
 This Feeling  
 
-The full, 8-song set is here if anyone wants it:  
+The full, 8-song set is here:  
 [sendspace](https://www.sendspace.com/file/8fe0dl)
 
 More Antibubbles recordings here:  
