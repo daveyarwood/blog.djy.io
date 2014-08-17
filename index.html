@@ -15,7 +15,6 @@ description: "A programming-related blog by Dave Yarwood"
       <h2>{{ monthyear }} does not equal {{ newmonthyear }}</h2>
     </div>
   {% endif %}
-  {% capture newmonthyear %} {{ monthyear }} {% endcapture %}
   <div id="post-title">
     <a href="{{ BASE_URL }}{{ post.url }}">{{ post.title }}</a>
   </div>
@@ -24,6 +23,7 @@ description: "A programming-related blog by Dave Yarwood"
     <a href="{{ BASE_URL }}{{ post.url }}">(more)</a>
   </div>
   <br>
+  {% capture newmonthyear %} {{ monthyear }} {% endcapture %}
 {% endfor %}
 
 
