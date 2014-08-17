@@ -8,7 +8,8 @@ description: "A programming-related blog by Dave Yarwood"
 {% for post in site.posts limit: 10 %}
   {% capture monthyear %}{{ post.date | date: "%B %Y" }}{% endcapture %}
   {% if monthyear != newmonthyear %}
-    <div id="month-header">
+  <br>
+  <div id="month-header">
       <h2>{{ monthyear }}</h2>
     </div>
     {% capture newmonthyear %}{{ monthyear }}{% endcapture %}
@@ -20,12 +21,12 @@ description: "A programming-related blog by Dave Yarwood"
     <i>{{ post.content | strip_html | truncate: 300 }}</i>
     <a href="{{ BASE_URL }}{{ post.url }}">(more)</a>
   </div>
-  <br>
 {% endfor %}
 
+<hr>
 <h2 class="pagination">
   <a href="{{ BASE_PATH }}{{ site.JB.archive_path }}">archive</a>&nbsp;&nbsp;
 </h2>
-
+<hr>
 
 
