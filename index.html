@@ -8,7 +8,6 @@ description: "A programming-related blog by Dave Yarwood"
 <br>
 <br>
 
-<div id="post-list">
 {% for post in site.posts limit: 10 %}
   {% capture monthyear %} {{ post.date | date: "%B %Y" }} {% endcapture %}
   {% if monthyear != newmonthyear %}
@@ -26,5 +25,4 @@ description: "A programming-related blog by Dave Yarwood"
   </div>
   <br>
 {% endfor %}
-</div>
 

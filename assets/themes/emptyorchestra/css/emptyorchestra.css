@@ -50,9 +50,6 @@ code {
   text-align: center;
 }
 
-.content {
-}
-
 .pagination {
   text-align: center;
 }
@@ -70,12 +67,6 @@ code {
 }
 
 #content {
-  position: absolute;
-  left: 190px;
-  margin-right: 30px;
-}
-
-#post-list {
   position: absolute;
   left: 190px;
   margin-right: 30px;
