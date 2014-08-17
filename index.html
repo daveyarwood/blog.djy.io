@@ -20,8 +20,10 @@ description: "A programming-related blog by Dave Yarwood"
   <div id="post-title">
     <a href="{{ BASE_URL }}{{ post.url }}">{{ post.title }}</a>
   </div>
-  <i>{{ post.content | strip_html | truncate: 300 }}</i>
-  <a href="{{ BASE_URL }}{{ post.url }}">(more)</a><br>
+  <div id="teaser">
+    <i>{{ post.content | strip_html | truncate: 300 }}</i>
+    <a href="{{ BASE_URL }}{{ post.url }}">(more)</a>
+  </div>
   <br>
 {% endfor %}
 </div>
