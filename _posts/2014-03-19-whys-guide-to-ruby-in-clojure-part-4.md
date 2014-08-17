@@ -33,6 +33,7 @@ Chapter 5 (Sections 4-7)
   (when-not (instance? address ex.Address)
     (throw (IllegalArgumentException. "No Address object found.")))
   (print (formatted address)))
+{% endhighlight %}
   
 The kind of monkey-patching involved in the next example isn't really available in Clojure... The way to do it would be to create a new protocol/record that takes an ordinary array as an argument and implements this modified `join` function on the array instead of e.g. `clojure.string/join`.
  
