@@ -1,9 +1,13 @@
 ---
 layout: post
-title: "_why's (Poignant) Guide to Ruby in Clojure: Part 5"  
-category: 
-tags: [clojure, ruby]
+title: "_why's (Poignant) Guide to Ruby in Clojure: Part 5"
+category: null
+tags: 
+  - clojure
+  - ruby
+published: true
 ---
+
 {% include JB/setup %}
 
 *Parts 1 through 4 of this series can be found [here][part1], [here][part2], [here][part3] and [here][part4].*
@@ -19,7 +23,7 @@ At long last, here is part 5 of my series translating the code examples from w(p
 
 Here's where things really get interesting. \_why decides to throw some metaprogramming at us, showcasing an area where Ruby truly shines. Dwemthy's Array is without a doubt the coolest part of the entire guide. The fact that you can mold and shape the syntax of Ruby to make your own custom DSLs is flat-out inspiring. As it turns out, this is another area in which Clojure (actually, Lisp in general) excels, with its macro system. If I wanted to write an idiomatic implementation of Dwemthy's Array in Clojure, I would probably actually avoid using metaprogramming and instead use a more functional style and ordinary maps instead of records. But that wouldn't address the burning question I had going into this translation project, which is essentially, "Can Clojure do everything Ruby can?" So, I took this as an opportunity to compare metaprogramming and classes in Ruby to metaprogramming and records in Clojure. 
 
-Also of note, the beginning of this chapter reminded me of how ugly Clojure's (really Java's) lower-level methods for dealing with website are, when compared to Ruby's `File` class and `open-uri` library. This is something I noticed back in [part 2][part2] when dealing specifically with file I/O. Clojure's `spit` and `slurp` methods are nice, but in order to read a file (or website content) in line by line, we still have to resort to Java inter-op and deal with explicit reader and writer objects. You'd think there'd be some higher-level construct available in Clojure's core libraries by now...
+Also of note, the beginning of this chapter reminded me of how ugly Clojure's (really Java's) lower-level methods for dealing with webpage retrieval are, when compared to Ruby's `File` class and `open-uri` library. This is something I noticed back in [part 2][part2] when dealing specifically with file I/O. Clojure's `spit` and `slurp` methods are nice, but in order to read a file (or website content) in line by line, we still have to resort to Java inter-op and deal with explicit reader and writer objects. You'd think there'd be some higher-level construct available in Clojure's core libraries by now...
 
 It also occurred to me in this chapter that in Clojure, the equivalent of a Ruby block is essentially writing the `~@body` part of a macro. Strictly speaking, you could consider an ordinary function to be the equivalent of a Ruby block (and you'd be right), but in terms of writing a function that *takes* a block, I think the closest syntactic match would be to write a macro that takes arguments like `[foo bar & body]`, where `body` is the "block" of code to be executed in some context. I find it interesting the difference in simplicity between Clojure's (first-class) functions, and the existence of three different things in Ruby (lambdas, blocks and procs, oh my!) that essentially all cover the same territory.
 
@@ -70,17 +74,11 @@ Chapter 6 (Sections 1-3)
 
 (double-open [x "idea1.txt", y "idea2.txt"]
   (str (first (line-seq x)) " | " (first (line-seq y))))
+{% endhighlight %}
 
-; the Ruby example uses the "readline" function, which returns one line and 
-; essentially "keeps track" of where you are in the file/URL/whatever object so
-; that a subsequent call to "readline" will return the next line. Clojure has a
-; similar function called "read-line" that works on stream objects, however it's
-; not idiomatic to the functional programming style that Clojure promotes. The
-; "line-seq" function returns a lazy sequence of all lines in a reader object, so
-; it's more idiomatic to perform sequence operations on a "line-seq." Because the
-; sequence is lazy, it's no less performant than using "read-line" because you
-; still aren't consuming the entire sequence at once unless you need to do so.
+The Ruby version of the above example uses the `readline` function, which returns one line and essentially "keeps track" of where you are in the file/URL/whatever object so that a subsequent call to `readline` will return the next line. Clojure has a similar function called `read-line` that works on stream objects, however it's not idiomatic to the functional programming style that Clojure promotes. The `line-seq` function returns a lazy sequence of all lines in a reader object, so it's more idiomatic to perform sequence operations on a `line-seq`. Because the sequence is lazy, it's no less performant than using `read-line` because you still aren't consuming the entire sequence at once unless you need to do so.
 
+{% highlight clojure %}
 ; ex. 10:
 (ns ex.preeventualist
   (:require [clojure.java.io :as io]
@@ -88,12 +86,10 @@ Chapter 6 (Sections 1-3)
   (:import (java.net URLEncoder)))
 
 (defn open [page query]
-  (let [qs
-        (str/join "&" 
-                  (map (fn [[k v]] (java.net.URLEncoder/encode (str k "=" v)))
-                       query))
-        address
-        (str "http://preeventualist.org/lost/" page "?" qs)]
+  (let [qs (str/join "&" 
+                     (map (fn [[k v]] (java.net.URLEncoder/encode (str k "=" v)))
+                          query))
+        address (str "http://preeventualist.org/lost/" page "?" qs)]
     (str/split (slurp address) #"--\n")))
 
 (defn search [word] (open "search" {"q" word}))
@@ -107,31 +103,28 @@ Chapter 6 (Sections 1-3)
 (defn addlost [your-name item-found last-seen description]
   (open "addlost" {"name" your-name, "item" item-found,
                    "seen" last-seen, "desc" description}))
+{% endhighlight %}
 
+Okay, and we've finally reached the infamous Dwemthy's Array! 
+
+This is a great example of the strength of metaprogramming in Ruby. \_why concocts a Creature class that contains some sorcery that allows you to, when inheriting the class from another, more specific class such as a Dragon class, utilize a more concise and fun format for representing RPG-style attributes.
+
+Clojure also supports metaprogramming, but goes about it in a different way than Ruby does. In Clojure, you can utilize macros to essentially create any kind of syntax you can imagine.
+
+The first example is just the desired syntax, so we could do something like:
+
+{% highlight clojure %}
 ; exs. 11-13:
-; okay, and we've finally reached the infamous Dwemthy's Array!
-
-; This is a great example of the strength of metaprogramming in Ruby. 
-; _why concocts a Creature class that contains some sorcery that allows
-; you to, when inheriting the class from another, more specific class 
-; such as a Dragon class, utilize a more concise and fun format for 
-; representing RPG-style attributes.
-
-; Clojure also supports metaprogramming, but goes about it in a different
-; way than Ruby does. In Clojure, you can utilize macros to essentially 
-; create any kind of syntax you can imagine.
-
-; this example is just the desired syntax, so we could do something like:
-
 (defcreature Dragon
   life 1340
   strength 451
   charisma 1020
   weapon 939)
+{% endhighlight %}
 
-; of course, in _why's words, "This is not metaprogramming yet. Only the pill.
-; The /product/ of metaprogramming." See the next example for the implementation...
+Of course, in \_why's words, "This is not metaprogramming yet. Only the pill. The *product* of metaprogramming." This next example is the implementation:
 
+{% highlight clojure %}
 ; ex. 14:
 (defmacro defcreature [name & attributes]
   (let [fields (mapv first (partition 2 attributes))
@@ -145,41 +138,32 @@ Chapter 6 (Sections 1-3)
 ; ex. 15:
 ; (Ruby-specific example about attr_reader)
 
-; ex. 16:
-; come to think of it, our Clojure version of _why's Creature class
-; is actually better in that it's more flexible! _why's class is set
-; up such that every class that inherits from Creature has 4 traits:
-; life, strength, charisma and weapon. Our defcreature macro lets you
-; choose what attributes each creature has. If we wanted to, we could
-; redefine our macro to only allow those 4 specific attributes, and
-; that would even simplify our code a bit. This is a good example of
-; the flexibility, power and (relative) simplicity of Clojure's macros.
+; ex. 16
+; (Ruby example showing the explicit naming of traits for the Creature class...)
+{% endhighlight %}
 
+Come to think of it, our Clojure version of \_why's Creature class is actually better in that it's more flexible! \_why's class is set up such that every class that inherits from Creature has 4 traits: life, strength, charisma and weapon. Our `defcreature` macro lets you choose what attributes each creature has. If we wanted to, we could redefine our macro to only allow those 4 specific attributes, and that would even simplify our code a bit. This is a good example of the flexibility, power and (relative) simplicity of Clojure's macros.
+
+In the next example, \_why shows us what Ruby does "behind the scenes" with his Creature class. So, here is what our `defcreature` macro does behind the scenes when we call `(defcreature Dragon ...)`:
+
+{% highlight clojure %}
 ; ex. 17:
-; in this example, _why shows us what Ruby does "behind the scenes"
-; with his Creature class. So, here is what our defcreature macro does
-; behind the scenes when we call (defcreature Dragon ... etc.):
-
 (do 
   (defrecord DragonRecord [life strength charisma weapon])
   (defn Dragon [] (new DragonRecord 1340 451 1020 939)))
+{% endhighlight %}
 
-; this template isn't exactly like that of _why's Creature class. 
-; The main difference is that _why's Creature template defines all
-; creature "subclasses" to have the same 4 traits -- life, strength,
-; charisma and weapon. In contrast, our defcreature macro lets each
-; creature have its own custom traits, making for more custom creature
-; creation. This is certainly possible in Ruby, as well, but would 
-; perhaps make for a more complicated example in this introduction to
-; metaprogramming in Ruby.
+This template isn't exactly like that of \_why's Creature class. The main difference is that \_why's Creature template defines all creature "subclasses" to have the same 4 traits -- life, strength, charisma and weapon. In contrast, our `defcreature` macro lets each creature have its own custom traits, making for more flexible creature creation. This is certainly possible in Ruby, as well, but would perhaps make for a more complicated example than would be digestible in \_why's introduction to metaprogramming in Ruby.
 
+{% highlight clojure %}
 ; ex. 18:
 ; same as exs. 11-13
+{% endhighlight %}
 
+Clojure has an `eval` method too, but it operates on a data structure instead of a string:
+
+{% highlight clojure %}
 ; ex. 19:
-; Clojure has an "eval" method too, but it operates on a data structure
-; instead of a string:
-
 (def drgn (Dragon))
 ; is identical to...
 (def drgn (eval '(Dragon)))
@@ -194,47 +178,20 @@ Chapter 6 (Sections 1-3)
 
 ; ex. 20-1/2:
 ; irb example demonstrating instance_eval and class_eval in Ruby.
-; Clojure has no equivalent to these methods, as there are no
-; instances or classes in Clojure. In Ruby, instance_eval and
-; class_eval are useful for adding functionality to instances and
-; classes "on the fly," e.g. within an irb session, or perhaps 
-; even conditionally within a program -- allowing you to do things
-; like modify a character class in a certain way *if* a player 
-; reaches a certain point or does a certain thing. As _why puts it,
-; this "can be useful and ... can be dangerous as well."
+{% endhighlight %}
 
+Clojure has no equivalent to `instance_eval` and `class_eval`, as there are no instances or classes in Clojure. In Ruby, `instance_eval` and `class_eval` are useful for adding functionality to instances and classes "on the fly," e.g. within an irb session, or perhaps even conditionally within a program -- allowing you to do things like modify a character class in a certain way *if* a player reaches a certain point or does a certain thing. As \_why puts it, this ability of code to modify code dynamically at runtime "can be useful and ... can be dangerous as well."
+
+At this point in translating Dwemthy's Array, we need to implement the `hit` and `fight` methods. We could do this in a functional style, as part of a "Battle" protocol that would be a part of the `defrecord` generated by our `defcreature` macro. However, records don't work too well with mutable state in Clojure, since a record is supposed to be an immutable representation of the state of an "object" at any given time.
+
+While it would certainly be possible to re-do Dwemthy's Array from scratch in a functional style, this would change the dynamic of the original game in Ruby. Dwemthy's Array is interesting in that \_why designed it to be played in an "open" fashion from irb -- you might even call it a "metagame." The player is the programmer. You create an instance of a creature like the Rabbit, define a "Dwemthy's Array" of enemy creatures, and then have your creature make the first move on the Array, which starts a chain reaction of battling each creature of the Array in succession.
+
+So, for a faithful translation of this game in the spirit of the original, we would want it to be playable in a REPL environment. While it is possible to implement the necessary methods in a functional style, the object-oriented nature of this kind of game lends itself towards using mutable state via Clojure's reference types.
+
+Whereas the original Dwemthy's Array relies on monkey-patching (via `method_missing`) to allow the Rabbit to attack the Array directly, to make things cleaner we are implementing this as an ordinary function called `attack`, which takes a challenger (e.g. the Rabbit), an attack function (e.g. the bomb `*`), and a Dwemthy's Array as arguments. It's a little more to type, but it makes for safer and tidier code. (You can chalk this one up as a victory for Ruby if you value aesthetics over safety!) ;)
+
+{% highlight clojure %}
 ; ex. 21:
-; At this point, we could try to implement the "hit" and "fight" methods,
-; in a functional style, as part of a "Battle" protocol that would be a
-; part of the defrecord generated by our defcreature macro. However,
-; records don't work too well with mutable state in Clojure, since a
-; record is supposed to be an immutable representation of the state of
-; an "object" at any given time.
-
-; While it would certainly be possible to re-do Dwemthy's Array from
-; scratch in a functional style, this would change the dynamic of the
-; original game in Ruby. Dwemthy's Array is interesting in that _why
-; designed it to be played in an "open" fashion from irb -- you could
-; even call it a "metagame." The player is the programmer. You create
-; an instance of a creature like the Rabbit, define a "Dwemthy's Array"
-; of enemy creatures, and then have your creature make the first move
-; on the Array, which starts a chain reaction of battling each creature
-; of the Array in succession.
-
-; So, to make a translation of this game in Clojure, we would want it 
-; to be playable in a REPL environment. While it is possible to implement
-; the necessary methods in a functional style, the object-oriented 
-; nature of this kind of game makes it more convenient to implement 
-; using mutable state via Clojure's reference types.
-
-; Whereas the original Dwemthy's Array relies on monkey-patching (via
-; method_missing to allow the Rabbit to attack the Array directly,
-; to make things cleaner we are implementing this as an ordinary 
-; function called "attack," which takes a challenger (e.g. the Rabbit),
-; an attack function, and a Dwemthy's Array as arguments. It's a little
-; more to type, but it makes for safer and tidier code. (You can chalk
-; this one up as a victory for Ruby if you value aesthetics over safety!)
-
 (defn creature-name [creature]
   (-> (str (type creature))
       (clojure.string/split #"\.")
