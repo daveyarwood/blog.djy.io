@@ -5,9 +5,6 @@ description: "A programming-related blog by Dave Yarwood"
 ---
 {% include JB/setup %}
 
-<br>
-<br>
-
 {% for post in site.posts limit: 10 %}
   {% capture monthyear %}{{ post.date | date: "%B %Y" }}{% endcapture %}
   {% if monthyear != newmonthyear %}
