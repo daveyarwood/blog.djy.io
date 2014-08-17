@@ -19,7 +19,7 @@ description: "A programming-related blog by Dave Yarwood"
   </div>
   <div id="teaser">
     <i>{{ post.content | strip_html | truncate: 300 }}</i>
-    <a href="{{ BASE_URL }}{{ post.url }}">(more)</a><br>
+    <a href="{{ BASE_URL }}{{ post.url }}">(more)</a><br><br>
   </div>
 {% endfor %}
 
