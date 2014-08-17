@@ -8,14 +8,21 @@ description: "A programming-related blog by Dave Yarwood"
 <br>
 <br>
 
-<center>
-
+<div id="post-list">
 {% for post in site.posts limit: 10 %}
-  <big><b>{{ post.date | date: "%-m/%-d/%y" }}:</b> 
-  <a href="{{ BASE_URL }}{{ post.url }}">{{ post.title }}</a></big><br>
-  {{ post.content | strip_html | truncate: 85 }}
+  {% capture monthyear %} {{ post.date | date: "%B %Y" }} {% endcapture %}
+  {% if monthyear != newmonthyear %}
+    <div id="month-header">
+      <h2>{{ monthyear }}</h2>
+    </div>
+    {% capture newmonthyear %} {{ monthyear }} {% endcapture %}
+  {% endif %}
+  <div id="post-title">
+    <a href="{{ BASE_URL }}{{ post.url }}">{{ post.title }}</a>
+  </div>
+  <i>{{ post.content | strip_html | truncate: 300 }}</i>
   <a href="{{ BASE_URL }}{{ post.url }}">(more)</a><br>
   <br>
 {% endfor %}
+</div>
 
-</center>
