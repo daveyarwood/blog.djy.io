@@ -1,9 +1,13 @@
 ---
 layout: post
 title: "_why's (Poignant) Guide to Ruby in Clojure: Part 1"
-category: 
-tags: [clojure, ruby]
+category: null
+tags: 
+  - clojure
+  - ruby
+published: true
 ---
+
 {% include JB/setup %}
 
 When I first started learning Ruby, [Why's (Poignant) Guide to Ruby][wpgtr] was a godsend. From an objective point of view, it's really not the most detailed or thorough language tutorial, but then again, I don't think that was really \_why's goal. I read somewhere that in writing the book, he was experimenting with a format that's a hybrid of a novel and a programming language tutorial. I think the result is fantastic, both as a tribute to the "magic"/"fun" aspect of Ruby, and as at least a supplemental reference in one's quest to learn Ruby. The interesting thing about W(P)GTR is that it's mostly absurdist novel, and probably only about 40% Ruby manual, but as a result, the reader really gets sucked into the novel parts, and treasures the programming bits when they come about. The story (in addition to other bizarre tangents that \_why launches into at times) provides a nice padding around the meaty Ruby examples, making them easier to digest and less tedious to explore (not that they're particularly tedious to begin with -- on the contrary, they're quite enjoyable and, for the most part, easy for even a beginner to understand).
@@ -27,7 +31,6 @@ Chapter 3
 *Another note: In many examples where the Ruby version "prints" or "puts's" the end result, I have the Clojure version simply return it, rather than using e.g. (prn x), (println x), etc. This is for the sake of simplicity. You could take any of these Clojure examples and easily print them (print ...), wrap them in a function (defn ...), or whatever else your heart may desire.*
 
 {% highlight clojure %}
-
 ; ex. 1:
 (repeat 5 "Odelay!")  
  
@@ -58,10 +61,11 @@ Chapter 3
  
 ; ex. 9:
 (def EmpireStateBuilding "350 5th Avenue, NYC, NY")
-; although most values are essentially immutable in Clojure,
-; so there is usually no need to capitalize the names of symbols 
-; to reflect that they are "constants"
- 
+{% endhighlight %}
+
+Although most values are essentially immutable in Clojure, so there is usually no need to capitalize the names of symbols to reflect that they are "constants."
+
+{% highlight clojure %}
 ; ex. 10:
 (open front-door)
  
@@ -82,15 +86,18 @@ Chapter 3
  
 ; ex. 15:
 (print "See, no dot.")
+{% endhighlight %}
+
+In order to translate something like `Door::new( :oak )`, you could create a Door record, or you could simply represent doors as map structures with a :material attribute like so:
  
-; ex. 16:  Door::new( :oak )
-; you could create a Door record, or you could simply represent doors as
-; map structures with a :material attribute like so:
- 
+{% highlight clojure %}
+; ex. 16
 (def oaken-door {:material :oak})
+{% endhighlight %}
  
-; and maybe define a (redundant) function to "create" a new door, like this:
- 
+...and maybe define a (redundant) function to "create" a new door, like this:
+
+{% highlight clojure %}
 (defn door [material]
   {:material material})
  
@@ -101,22 +108,20 @@ Chapter 3
  
 ; ex. 18:
 (loop []
-  (print "Much better.")
-  (print "Ah.  More space!")
-  (print "My back was killin' me in those crab pincers.")
+  (println "Much better.")
+  (println "Ah.  More space!")
+  (println "My back was killin' me in those crab pincers.")
   (recur))
- 
-; ex. 19:  ; { |x,y| x + y }
-; no general equivalent of Ruby blocks/block arguments in Clojure,
-; although this idea fits into the concept of locals/bindings.
-; #(+ %1 %2) is kind of a translation of this Ruby code
- 
+{% endhighlight %}
+
+Ex. 19, `{ |x,y| x + y }`, is a block, something that is a little difficult to translate to idiomatic Clojure code. While there is no exact equivalent of Ruby blocks/block arguments in Clojure, this idea fits into the concept of locals/bindings. Perhaps `#(+ %1 %2)` may suffice as a rough translation.
+
+{% highlight clojure %}
 ; ex. 20:
 {:name "Peter", :profession "lion tamer", :great-love "flannel"}
  
 ; ex. 21:
 (slurp "http://www.ruby-lang.org/en/LICENSE.txt")
-
 {% endhighlight %}
 
 Thoughts? Criticisms? Corrections?
