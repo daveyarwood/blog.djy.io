@@ -10,12 +10,12 @@ description: "A programming-related blog by Dave Yarwood"
 
 {% for post in site.posts limit: 10 %}
   {% capture monthyear %} {{ post.date | date: "%B %Y" }} {% endcapture %}
-  {% if monthyear == newmonthyear %}
+  {% if monthyear != newmonthyear %}
     <div id="month-header">
       <h2>{{ monthyear }} does not equal {{ newmonthyear }}</h2>
     </div>
-    {% capture newmonthyear %} {{ monthyear }} {% endcapture %}
   {% endif %}
+  {% capture newmonthyear %} {{ monthyear }} {% endcapture %}
   <div id="post-title">
     <a href="{{ BASE_URL }}{{ post.url }}">{{ post.title }}</a>
   </div>
