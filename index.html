@@ -9,11 +9,12 @@ description: "A programming-related blog by Dave Yarwood"
 <br>
 
 {% for post in site.posts limit: 10 %}
-  {% capture monthyear %} {{ post.date | date: "%B %Y" }} {% endcapture %}
+  {% capture monthyear %}{{ post.date | date: "%B %Y" }}{% endcapture %}
   {% if monthyear != newmonthyear %}
     <div id="month-header">
       <h2>{{ monthyear }} does not equal {{ newmonthyear }}</h2>
     </div>
+    {% capture newmonthyear %}{{ monthyear }}{% endcapture %}
   {% endif %}
   <div id="post-title">
     <a href="{{ BASE_URL }}{{ post.url }}">{{ post.title }}</a>
@@ -23,7 +24,6 @@ description: "A programming-related blog by Dave Yarwood"
     <a href="{{ BASE_URL }}{{ post.url }}">(more)</a>
   </div>
   <br>
-  {% capture newmonthyear %} {{ monthyear }} {% endcapture %}
 {% endfor %}
 
 
