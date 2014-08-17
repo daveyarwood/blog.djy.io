@@ -1,9 +1,13 @@
 ---
 layout: post
 title: "_why's (Poignant) Guide to Ruby in Clojure: Part 2"
-category: 
-tags: [clojure, ruby]
+category: null
+tags: 
+  - clojure
+  - ruby
+published: true
 ---
+
 {% include JB/setup %}
 
 *Part 1 of this series can be found [here][part1].*
@@ -22,7 +26,6 @@ Chapter 4
 =========
 
 {% highlight clojure %}
-
 ; ex. 1:
 (def blue-crystal 1)
 (def leaf-tender 5)
@@ -153,5 +156,4 @@ Chapter 4
 ; ex. 29:
 (doseq [toy (take-while #(not= (:fabric %) "chenille") kitty-toys)]
   (prn toy))
-
 {% endhighlight %}
