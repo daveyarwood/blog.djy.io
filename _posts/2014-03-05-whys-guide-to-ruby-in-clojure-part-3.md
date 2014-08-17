@@ -1,9 +1,13 @@
 ---
 layout: post
 title: "_why's (Poignant) Guide to Ruby in Clojure: Part 3"
-category: 
-tags: [clojure, ruby]
+category: null
+tags: 
+  - clojure
+  - ruby
+published: true
 ---
+
 {% include JB/setup %}
 
 *Parts 1 and 2 of this series can be found [here][part1] and [here][part2].*
@@ -22,7 +26,6 @@ Chapter 5 (Sections 1-3)
 ========================
 
 {% highlight clojure %}
-
 ; ex. 1:
 (defn dr-chams-timeline [year]
   (cond
@@ -255,7 +258,6 @@ Chapter 5 (Sections 1-3)
  
 ; ex. 31:
 (def cats-and-tips (map #(+ % (* % 0.20)) [0.12 0.63 0.09]))
-
 {% endhighlight %}
 
 Hope you enjoyed this as much as I enjoyed translating it! Comment below if I missed anything or if you think you might have a better translation for any of these examples. The rest of Chapter 5 is coming soon -- get ready for the Animal Lottery!
