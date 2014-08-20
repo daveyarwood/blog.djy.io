@@ -1,9 +1,13 @@
 ---
 layout: post
-title: "_why's (Poignant) Guide to Ruby in Clojure: Part 6"  
-category:
-tags: [clojure, ruby]
+title: "_why's (Poignant) Guide to Ruby in Clojure: Part 6"
+category: null
+tags: 
+  - clojure
+  - ruby
+published: true
 ---
+
 {% include JB/setup %}
 
 *Parts 1 through 5 of this series can be found [here][part1], [here][part2], [here][part3], [here][part4] and [here][part5].*
@@ -21,32 +25,28 @@ Chapter 6 (Sections 1-3)
 
 It's probably possible to assemble something like `method_missing` in Clojure, but it would be considered dangerous and not very practical. `method_missing` in Ruby is something you define for a particular class, giving that class some instructions for how to handle calls to methods it doesn't have. The closest analog Clojure has to classes would be records and protocols, but protocols require you to explicitly declare any methods they provide.
 
-From a practical standpoint, you probably won't ever run into a situation, programming in Clojure, where you would need the type of functionality that `method_missing` provides. For the sake of translating this example, you could do something like this:
+From a practical standpoint, you probably won't ever run into a situation, programming in Clojure, where you would need the type of functionality that `method_missing` provides. But for the sake of translating this example, a multimethod with a default implementation would be kind of similar in spirit, in that you can define custom behavior for when a particular method hasn't been implemented:
 
 {% highlight clojure %}
 ; ex. 28:
-(defn deirdre [& args]
+(defmulti call (fn [method & args] method))
+ 
+(defmethod call :default [method & args]
+  (printf "You're calling '%s' and you say:\n" (name method))
+  (doseq [arg args] (println " " arg))
+  (println "But no one is there yet."))
+ 
+(defmethod call :deirdre [_ & args]
   (println "Deirdre is right here and you say:")
   (doseq [arg args] (println " " arg))
   (println "And she loves every second of it.")
   (println "(I think she thinks you're poetic.)"))
-
-(def my-methods [:deirdre])
-
-(defn call [method & args]
-  "takes method as a keyword"
-  (if (some #{method} my-methods)
-    (apply (resolve (symbol (name method))) args)
-    (do
-      (println (str "You're calling '" (name method) "' and you say:"))
-      (doseq [arg args] (println " " arg))
-      (println "But no one is there yet."))))
-
+ 
 (call :deirdre "Deirdre!")
 (call :simon "Hello?" "Hello? Simon?")
 {% endhighlight %}
 
-This really doesn't capture the spirit of `method_missing`, but it's the closest I could get without getting seriously hacky!
+The key difference between something like the above and Ruby's `method_missing` is that the code above constrains the "default method" behavior to when the multimethod `call` is, well, called. By contrast, `method_missing` is a more generalized operation that changes the behavior of an entire class... this can quickly lead to unpredictable and unsafe code.
 
 For any interested parties, here's some [food for thought][so-mm] about `method_missing` and Clojure.
 
