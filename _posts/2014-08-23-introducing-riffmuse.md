@@ -16,6 +16,7 @@ Here's how Riffmuse works in a nutshell: it takes the command line argument(s), 
 
 Here's an example:
 
+~~~
     > riffmuse c-sharp minor
     
     Riffmuse v1.0.0
@@ -35,7 +36,8 @@ Here's an example:
              1               2               3               4
          A|----------4---------------------------------------7-------7--12-
          E|--5-------------------9---9-------2-------------------4---------
-         
+~~~
+
 That's not the best-sounding riff, but if you run Riffmuse a handful of times, you're bound to end up with a musical idea that inspires you in some way, and you can then tweak it and play around with it to your liking. 
 
 The idea for this program was inspired by some of the music that I wrote in college for Composition classes. I became interested in [algorithmic composition](http://en.wikipedia.org/wiki/Algorithmic_composition), the idea of leaving some portion of the composition process up to chance by using some sort of algorithm to generate musical material. I wrote a few interesting pieces of music whose pitch content was derived from a list of [randomly generated numbers](http://www.random.org). You can use Riffmuse as a tool for writing algorithmic music, but you can also use it more generally as a source of inspiration, a muse that can help you think outside of the box and come up with some interesting musical ideas.
