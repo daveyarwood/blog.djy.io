@@ -16,8 +16,9 @@ Here's how Riffmuse works in a nutshell: it takes the command line argument(s), 
 
 Here's an example:
 
-{% highlight plaintext %}
- riffmuse c-sharp minor
+{% highlight plain-text %}
+{% raw %}
+> riffmuse c-sharp minor
     
 Riffmuse v1.0.0
 ---------------
@@ -36,6 +37,7 @@ Guitar:
          1               2               3               4
      A|----------4---------------------------------------7-------7--12-
      E|--5-------------------9---9-------2-------------------4---------
+{% endraw %}
 {% endhighlight %}
 
 That's not the best-sounding riff, but if you run Riffmuse a handful of times, you're bound to end up with a musical idea that inspires you in some way, and you can then tweak it and play around with it to your liking. 
