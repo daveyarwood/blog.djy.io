@@ -16,7 +16,7 @@ Here's how Riffmuse works in a nutshell: it takes the command line argument(s), 
 
 Here's an example:
 
-{% highlight plain-text %}
+{% highlight plaintext %}
 {% raw %}
 > riffmuse c-sharp minor
     
