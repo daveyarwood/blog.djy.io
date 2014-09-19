@@ -3,7 +3,7 @@ published: true
 layout: post
 title: RIP iPod Classic :(
 category: music
-tags: apple, linux
+tags: [apple, linux]
 ---
 
 {% include JB/setup %}
