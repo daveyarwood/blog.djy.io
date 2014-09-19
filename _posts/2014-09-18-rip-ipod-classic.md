@@ -1,7 +1,7 @@
 ---
 published: true
 layout: post
-title: RIP iPod Classic :(
+title: RIP, iPod Classic :(
 category: music
 tags: [apple, linux]
 ---
