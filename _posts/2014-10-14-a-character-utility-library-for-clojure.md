@@ -72,7 +72,7 @@ exception if you give it any number greater than 65535:
 (char 20154) ; BMP character
 ;=> \人
 
-(char 167122)
+(char 167122) ; supplementary character
 ;=> IllegalArgumentException Value out of range for char: 167122  clojure.lang.RT.charCast (RT.java:962)
 {% endhighlight %}
 
