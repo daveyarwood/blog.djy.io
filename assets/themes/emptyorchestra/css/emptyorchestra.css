@@ -9,7 +9,7 @@ html, body {
   line-height:25px;
 }
 
-img.portrait {
+img#portrait {
   width: 150;
   height: 150;
   border-radius: 10px;
