@@ -41,41 +41,56 @@
   </head>
 
   <body>
-    <div class="links" id="left-bar">
-      <br>
-      <a href="{{ HOME_PATH }}">
-        <img id="portrait" src="{{ ASSET_PATH }}/dave.jpg"><br>
-        dave yarwood<br>
-      </a>
-      composer;<br>
-      musician;<br>
-      programmer<br>
-      <br>
-      <div id="contact-links">
-        <a href="http://github.com/daveyarwood" target="_blank"><img src="{{ ASSET_PATH }}/github.png" alt="github"></a>
-        <a href="http://soundcloud.com/daveyarwood" target="_blank"><img src="{{ ASSET_PATH }}/soundcloud.png" alt="soundcloud"></a>
-        <a href="http://www.last.fm/user/sdmoibut" target="_blank"><img src="{{ ASSET_PATH }}/lastfm.png" alt="last.fm"></a>
-        <a href="mailto:dave.yarwood@gmail.com"><img src="{{ ASSET_PATH }}/email.png" height="32" width="32" alt="e-mail"></a><br>
-        <br>
-        yggdrasil [tba]<br>
-        <a href="https://github.com/daveyarwood/riffmuse" target="_blank">riffmuse</a><br>
-        <br>
-        <a href="http://noloveraleigh.bandcamp.com" target="_blank">no love</a><br>
-        <a href="http://antibubbles.bandcamp.com" target="_blank">antibubbles</a><br>
-        <br>
-        <a href="http://www.omfgdogs.com" target="_blank">
-          <img src="{{ ASSET_PATH }}/bluevirus.gif">
-        </a>
-      </div>
-      
-      <br>
-      
-      --- 
+    <div class="header-container">
+      <header>
 
-      <h1><a href="{{ BASE_PATH }}{{ site.JB.archive_path }}">archive</a></h1>
-      
-      ---
-            
+        <div id="portrait-and-project-links">
+          <a href="{{ HOME_PATH }}">
+            <img id="portrait" src="{{ ASSET_PATH }}/dave.jpg">
+          </a>
+          <div id="project-links">
+            <p><a href="{{ HOME_PATH }}">dave yarwood</a> :: composer, musician, programmer</p>
+            <p>
+              projects :: 
+              <a href="https://github.com/daveyarwood/yggdrasil" target="_blank">yggdrasil</a>,
+              <a href="https://github.com/daveyarwood/riffmuse" target="_blank">riffmuse</a>
+            </p>
+            <p>
+              music :: 
+              <a href="http://www.popupchorus.org" target="_blank">pop-up chorus</a>,
+              <a href="http://noloveraleigh.bandcamp.com" target="_blank">no love</a>,
+              <a href="http://antibubbles.bandcamp.com" target="_blank">antibubbles</a>
+            </p>
+          </div>
+        </div>
+        
+        <div id="contact-links">
+          <a href="http://github.com/daveyarwood" target="_blank"><img src="{{ ASSET_PATH }}/github.png" alt="github"></a>
+          <a href="http://soundcloud.com/daveyarwood" target="_blank"><img src="{{ ASSET_PATH }}/soundcloud.png" alt="soundcloud"></a>
+          <a href="http://www.last.fm/user/sdmoibut" target="_blank"><img src="{{ ASSET_PATH }}/lastfm.png" alt="last.fm"></a>
+          <a href="mailto:dave.yarwood@gmail.com"><img src="{{ ASSET_PATH }}/email.png" height="32" width="32" alt="e-mail"></a><br>
+        </div>        
+      </header>
+    </div>
+  <!--
+    <div class="navbar">
+      <div class="navbar-inner">
+        <div class="container-narrow">
+          <ul class="nav">
+            {% assign pages_list = site.pages %}
+            {% assign group = 'navigation' %}
+            {% include JB/pages_list %}
+          </ul>
+        </div>
+      </div>
+    </div>
+   -->
+
+    <div id="content">
+      {{ content }}
+    </div>
+    
+    <div id="nav-links">
       <h1>latest:</h1>
       {% for post in site.posts offset: 0 limit: 3 %}
         <a href="{{ root_url }}{{ post.url }}">{{ post.date | date: '%Y-%m-%d' }}:<br>{{ post.title }}</a><br><br>
@@ -96,38 +111,17 @@
       {% endfor %}
       
       <br>
+
       ---
 
       <h1><a href="http://daveyarwood.github.io/rss.xml">rss</a> /
           <a href="http://daveyarwood.github.io/atom.xml">atom</a></h1>
-    </div>
-  <!--
-    <div class="navbar">
-      <div class="navbar-inner">
-        <div class="container-narrow">
-          <ul class="nav">
-            {% assign pages_list = site.pages %}
-            {% assign group = 'navigation' %}
-            {% include JB/pages_list %}
-          </ul>
-        </div>
-      </div>
-    </div>
-   -->
 
-    <div id="content">
-      {{ content }}
       <footer>
         &copy; {{ site.time | date: '%Y' }} {{ site.author.name }}
           with help from <a href="http://jekyllbootstrap.com" target="_blank" title="The Definitive Jekyll Blogging Framework">Jekyll Bootstrap</a>
       </footer>
     </div>
-
-<!--
-    <div class="links" id="right-bar">
-
-    </div>
--->
 
     <div style="clear: both; height: 1px;"></div>
 
