@@ -42,9 +42,10 @@ img#portrait {
   position: absolute;
   margin: 0px;
   padding: 5px;
-  left: 10px;
+  left: 110px;
   background-color: #DCDDF5;
   box-shadow: 10px 10px 5px #888888;
+  overflow: auto;
 }
 
 p.links {
@@ -57,8 +58,6 @@ p.links {
 }
 
 #contact-links {
-  position: relative;
-  left: 10px;
 }
 
 /*************************************************************************/
