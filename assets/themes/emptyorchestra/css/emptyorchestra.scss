@@ -22,8 +22,7 @@ html, body {
 header {
   width: 500px;
   padding: 10px;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0 auto;
 }
 
 #portrait-and-project-links {
@@ -39,12 +38,12 @@ img#portrait {
 }
 
 #project-links {
-  margin: 0em 0.5em;
+  margin: 10px;
 }
 
 p.links {
   margin-top: 0em;
-  margin-bottom: 1em;
+  margin-bottom: 0.5em;
   font-family: "Lucida Console", Monaco, monospace;
   font-weight: bold;
   font-size: 13px;
