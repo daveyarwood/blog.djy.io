@@ -49,13 +49,13 @@
             <img id="portrait" src="{{ ASSET_PATH }}/dave.jpg">
           </a>
           <div id="project-links">
-            <p><a href="{{ HOME_PATH }}">dave yarwood</a> :: composer, musician, programmer</p>
-            <p>
+            <p class="links"><a href="{{ HOME_PATH }}">dave yarwood</a> :: composer, musician, programmer</p>
+            <p class="links">
               projects :: 
               <a href="https://github.com/daveyarwood/yggdrasil" target="_blank">yggdrasil</a>,
               <a href="https://github.com/daveyarwood/riffmuse" target="_blank">riffmuse</a>
             </p>
-            <p>
+            <p class="links">
               music :: 
               <a href="http://www.popupchorus.org" target="_blank">pop-up chorus</a>,
               <a href="http://noloveraleigh.bandcamp.com" target="_blank">no love</a>,
@@ -86,41 +86,43 @@
     </div>
    -->
 
-    <div id="content">
-      {{ content }}
-    </div>
-    
-    <div id="nav-links">
-      <h1>latest:</h1>
-      {% for post in site.posts offset: 0 limit: 3 %}
-        <a href="{{ root_url }}{{ post.url }}">{{ post.date | date: '%Y-%m-%d' }}:<br>{{ post.title }}</a><br><br>
-      {% endfor %}
+    <div id="content-container">
+      <div id="content">
+        {{ content }}
+      </div>
       
-      ---
-
-      <h1>categories:</h1>
-      {% for category in site.categories %}
-        <a href="{{ BASE_PATH }}{{ site.JB.categories_path }}#{{ category[0] }}-ref">
-        {{ category[0] | join: "/" }}</a><br>
-      {% endfor %}
-
-      <h1>tags:</h1>
-      {% for tag in site.tags %}
-        <a href="{{ BASE_PATH }}{{ site.JB.tags_path }}#{{ tag[0] }}-ref">
-        {{ tag[0] }} ({{ tag[1].size }})</a><br>
-      {% endfor %}
-      
-      <br>
-
-      ---
-
-      <h1><a href="http://daveyarwood.github.io/rss.xml">rss</a> /
-          <a href="http://daveyarwood.github.io/atom.xml">atom</a></h1>
-
-      <footer>
-        &copy; {{ site.time | date: '%Y' }} {{ site.author.name }}
-          with help from <a href="http://jekyllbootstrap.com" target="_blank" title="The Definitive Jekyll Blogging Framework">Jekyll Bootstrap</a>
-      </footer>
+      <div id="nav-links">
+        <h1>latest:</h1>
+        {% for post in site.posts offset: 0 limit: 3 %}
+          <a href="{{ root_url }}{{ post.url }}">{{ post.date | date: '%Y-%m-%d' }}:<br>{{ post.title }}</a><br><br>
+        {% endfor %}
+        
+        ---
+  
+        <h1>categories:</h1>
+        {% for category in site.categories %}
+          <a href="{{ BASE_PATH }}{{ site.JB.categories_path }}#{{ category[0] }}-ref">
+          {{ category[0] | join: "/" }}</a><br>
+        {% endfor %}
+  
+        <h1>tags:</h1>
+        {% for tag in site.tags %}
+          <a href="{{ BASE_PATH }}{{ site.JB.tags_path }}#{{ tag[0] }}-ref">
+          {{ tag[0] }} ({{ tag[1].size }})</a><br>
+        {% endfor %}
+        
+        <br>
+  
+        ---
+  
+        <h1><a href="http://daveyarwood.github.io/rss.xml">rss</a> /
+            <a href="http://daveyarwood.github.io/atom.xml">atom</a></h1>
+  
+        <footer>
+          &copy; {{ site.time | date: '%Y' }} {{ site.author.name }}
+            with help from <a href="http://jekyllbootstrap.com" target="_blank" title="The Definitive Jekyll Blogging Framework">Jekyll Bootstrap</a>
+        </footer>
+      </div>
     </div>
 
     <div style="clear: both; height: 1px;"></div>
