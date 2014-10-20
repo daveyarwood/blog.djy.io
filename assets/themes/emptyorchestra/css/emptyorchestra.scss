@@ -86,7 +86,9 @@ img.contact-icon {
 /*************************************************************************/
 
 #content-container {
-  position: absolute;
+  position: relative;
+  padding: 0px;
+  margin: 0px;
   width: 100%;
   top: 0px;
   left: 0px;
