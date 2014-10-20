@@ -100,10 +100,11 @@ img.contact-icon {
   margin: 0 auto;
 }
 
-code {
-  background-color: #D1E9E9;
-  white-space: pre-wrap;
-  padding: 1px 5px;
+.page-header {
+  font-family: 'Droid Serif', Georgia, Times, serif;
+  font-size: 25px;
+  line-height: 50px;
+  text-align: center;
 }
 
 #month-header {
@@ -118,6 +119,12 @@ code {
   text-align: center;
 }
 
+code {
+  background-color: #D1E9E9;
+  white-space: pre-wrap;
+  padding: 1px 5px;
+}
+
 #teaser {
   width: 75%;
   margin: 0 auto;
@@ -127,13 +134,10 @@ code {
 
 #footer-container {
   position: relative;
-  top: 0px;
-  left: 0px; 
   background-color: #212029;
   width: 100%;
   height: 200px;
 }
-
 
 #nav-links {
   position: relative;
@@ -144,18 +148,10 @@ code {
   width: 450px;
 }
 
-
 footer {
   display: block;
   width: 80%;
   margin: 0 auto;
-}
-
-.page-header {
-  font-family: 'Droid Serif', Georgia, Times, serif;
-  font-size: 25px;
-  line-height: 50px;
-  text-align: center;
 }
 
 .cats_and_tags {
