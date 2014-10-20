@@ -148,10 +148,18 @@ code {
 #nav-links {
   position: relative;
   overflow: visible;
-  text-align: center;
-  margin: 0px;
-  padding: 0px;
+  margin: 0 auto;
+  padding: 10px;
   width: 450px;
+  
+  p {
+    margin-top: 0em;
+    margin-bottom: 0.5em;
+    font-family: "Lucida Console", Monaco, monospace;
+    font-weight: bold;
+    font-size: 13px;
+    line-height: 12px;
+  }
 }
 
 footer {
