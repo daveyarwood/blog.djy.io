@@ -20,8 +20,9 @@ html, body {
 }
   
 header {
-  margin: 10px 10px;
-  text-align: center;
+  margin-top: 10px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 #portrait-and-project-links {
@@ -37,7 +38,7 @@ img#portrait {
 }
 
 #project-links {
-  margin: 1em 1em;
+  margin: 0em 0.5em;
 }
 
 p.links {
