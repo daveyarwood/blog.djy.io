@@ -94,10 +94,33 @@ img.contact-icon {
   line-height: 25px;
 }
 
+#content {
+  display: block;
+  width: 80%;
+  margin: 0 auto;
+}
+
 code {
   background-color: #D1E9E9;
   white-space: pre-wrap;
   padding: 1px 5px;
+}
+
+#month-header {
+  font-family: "Lucida Console", Monaco, monospace;
+  text-align: center;
+}
+
+#post-title {
+  font-family: 'Droid Serif', Georgia, Times, serif;
+  font-size: 25px;
+  line-height: 50px;
+  text-align: center;
+}
+
+#teaser {
+  width: 75%;
+  margin: 0 auto;
 }
 
 /*************************************************************************/
@@ -121,31 +144,11 @@ code {
   width: 450px;
 }
 
-#content {
+
+footer {
   display: block;
   width: 80%;
   margin: 0 auto;
-}
-
-#month-header {
-  font-family: "Lucida Console", Monaco, monospace;
-  text-align: center;
-}
-
-#post-title {
-  font-family: 'Droid Serif', Georgia, Times, serif;
-  font-size: 25px;
-  line-height: 50px;
-  text-align: center;
-}
-
-#teaser {
-  width: 50%;
-  margin: 0 auto;
-}
-
-footer {
-  text-align: center;
 }
 
 .page-header {
