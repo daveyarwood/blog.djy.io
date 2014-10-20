@@ -90,7 +90,9 @@
       <div id="content">
         {{ content }}
       </div>
-      
+    </div>
+    
+    <div id="footer-container">
       <div id="nav-links">
         <h1>latest:</h1>
         {% for post in site.posts offset: 0 limit: 3 %}
@@ -117,16 +119,16 @@
   
         <h1><a href="http://daveyarwood.github.io/rss.xml">rss</a> /
             <a href="http://daveyarwood.github.io/atom.xml">atom</a></h1>
-  
-        <footer>
-          &copy; {{ site.time | date: '%Y' }} {{ site.author.name }}
-            with help from <a href="http://jekyllbootstrap.com" target="_blank" title="The Definitive Jekyll Blogging Framework">Jekyll Bootstrap</a>
-        </footer>
+
       </div>
+
+      <footer>
+        &copy; {{ site.time | date: '%Y' }} {{ site.author.name }}
+          with help from <a href="http://jekyllbootstrap.com" target="_blank" title="The Definitive Jekyll Blogging Framework">Jekyll Bootstrap</a>
+      </footer>
     </div>
 
     <div style="clear: both; height: 1px;"></div>
-
     {% include JB/analytics %}
   </body>
 </html>
