@@ -98,11 +98,11 @@
     <div id="footer-container">
       <h1 class="pagination">
         {% if page.previous %}
-          <a href="{{ BASE_PATH }}{{ page.previous.url }}" title="{{ page.previous.title }}">&lt;&lt;</a>&nbsp 
+          <a href="{{ BASE_PATH }}{{ page.previous.url }}" title="{{ page.previous.title }}">&lt;&lt;</a>&nbsp;
         {% else %}
           &lt;&lt;&nbsp;&nbsp; 
         {% endif %}
-          <a href="{{ BASE_PATH }}{{ site.JB.archive_path }}">archive</a>&nbsp
+          <a href="{{ BASE_PATH }}{{ site.JB.archive_path }}">archive</a>&nbsp;
         {% if page.next %}
           <a href="{{ BASE_PATH }}{{ page.next.url }}" title="{{ page.next.title }}">&gt;&gt;</a>
         {% else %}
