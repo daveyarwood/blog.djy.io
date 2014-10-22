@@ -96,70 +96,63 @@
     </div>
     
     <div id="footer-container">
-      <footer>              
-        <h2 class="pagination">
-          {% if page.previous %}
-            <a href="{{ BASE_PATH }}{{ page.previous.url }}" title="{{ page.previous.title }}">&lt;&lt;</a>&nbsp;&nbsp; 
-          {% else %}
-            &lt;&lt;&nbsp;&nbsp; 
-          {% endif %}
-            <a href="{{ BASE_PATH }}{{ site.JB.archive_path }}">archive</a>&nbsp;&nbsp;
-          {% if page.next %}
-            <a href="{{ BASE_PATH }}{{ page.next.url }}" title="{{ page.next.title }}">&gt;&gt;</a>
-          {% else %}
-            &gt;&gt;
-          {% endif %}
-        </h2>      
-        <div id="nav-links">
-          <div id="latest">
-            <strong><u>latest</u>:<strong>
-            <ul style="list-style-type: none; padding: 0px">
-            {% for post in site.posts offset: 0 limit: 3 %}
-              <li>
-                <a href="{{ root_url }}{{ post.url }}">{{ post.title }}</a>
-              </li>
-            {% endfor %}
-            </ul>
-          </div>
-          
-          <div id="cats-and-tags">
-            <div id="cats">
-            <strong><u>categories</u>:<strong>
-            <ul style="list-style-type: none; padding: 0px">
-              {% for category in site.categories %}
-                <li>
-                  <a href="{{ BASE_PATH }}{{ site.JB.categories_path }}#{{ category[0] }}-ref">
-                  {{ category[0] | join: "/" }}</a>
-                </li>
-              {% endfor %}
-              </ul>
-            </div>
-
-            <div id="tags">
-            <strong><u>tags</u>:<strong>
-            <ul style="list-style-type: none; padding: 0px">
-              {% for tag in site.tags %}
-                <li>
-                  <a href="{{ BASE_PATH }}{{ site.JB.tags_path }}#{{ tag[0] }}-ref">
-                  {{ tag[0] }} ({{ tag[1].size }})</a>
-                </li>
-              {% endfor %}
-              </ul>
-            </div>
-          </div>
-            
-          <h1 id="feeds">
-            <a href="http://daveyarwood.github.io/rss.xml">rss</a><br>
-            <a href="http://daveyarwood.github.io/atom.xml">atom</a>
-          </h1>
-  
+      <h2 class="pagination">
+        {% if page.previous %}
+          <a href="{{ BASE_PATH }}{{ page.previous.url }}" title="{{ page.previous.title }}">&lt;&lt;</a>&nbsp;&nbsp; 
+        {% else %}
+          &lt;&lt;&nbsp;&nbsp; 
+        {% endif %}
+          <a href="{{ BASE_PATH }}{{ site.JB.archive_path }}">archive</a>&nbsp;&nbsp;
+        {% if page.next %}
+          <a href="{{ BASE_PATH }}{{ page.next.url }}" title="{{ page.next.title }}">&gt;&gt;</a>
+        {% else %}
+          &gt;&gt;
+        {% endif %}
+      </h2>      
+      <div id="latest">
+        <strong><u>latest</u>:<strong>
+        <ul style="list-style-type: none; padding: 0px">
+        {% for post in site.posts offset: 0 limit: 3 %}
+          <li>
+            <a href="{{ root_url }}{{ post.url }}">{{ post.title }}</a>
+          </li>
+        {% endfor %}
+        </ul>
+      </div>
+      
+      <div id="cats-and-tags-and-feeds">
+        <div id="cats">
+        <strong><u>categories</u>:<strong>
+        <ul style="list-style-type: none; padding: 0px">
+          {% for category in site.categories %}
+            <li>
+              <a href="{{ BASE_PATH }}{{ site.JB.categories_path }}#{{ category[0] }}-ref">
+              {{ category[0] | join: "/" }}</a>
+            </li>
+          {% endfor %}
+          </ul>
         </div>
-        <div id="copyright">
-          &copy; {{ site.time | date: '%Y' }} {{ site.author.name }}
-            with help from <a href="http://jekyllbootstrap.com" target="_blank" title="The Definitive Jekyll Blogging Framework">Jekyll Bootstrap</a>
-        </div>
-      </footer>
 
+        <div id="tags">
+        <strong><u>tags</u>:<strong>
+        <ul style="list-style-type: none; padding: 0px">
+          {% for tag in site.tags %}
+            <li>
+              <a href="{{ BASE_PATH }}{{ site.JB.tags_path }}#{{ tag[0] }}-ref">
+              {{ tag[0] }} ({{ tag[1].size }})</a>
+            </li>
+          {% endfor %}
+          </ul>
+        </div>
+        <h1 id="feeds">
+          <a href="http://daveyarwood.github.io/rss.xml">rss</a><br>
+          <a href="http://daveyarwood.github.io/atom.xml">atom</a>
+        </h1>
+      </div>
+      <div id="copyright">
+        &copy; {{ site.time | date: '%Y' }} {{ site.author.name }}
+          with help from <a href="http://jekyllbootstrap.com" target="_blank" title="The Definitive Jekyll Blogging Framework">Jekyll Bootstrap</a>
+      </div>
     </div>
 
     {% include JB/analytics %}
