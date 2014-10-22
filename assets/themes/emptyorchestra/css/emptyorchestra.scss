@@ -172,6 +172,7 @@ code {
 footer {
   width: 600px;
   margin: 0 auto;
+  padding-bottom: 50px;
 }
 
 .pagination {
@@ -189,5 +190,4 @@ footer {
 
 #copyright {
   @extend .light-box;
-  padding-bottom: 50px;
 }
