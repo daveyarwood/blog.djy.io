@@ -209,13 +209,25 @@ code {
 }
 
 #tags {
+  position: absolute;
+  top: 0;
+  left: 200;
   @extend .light-box;
   margin-right: 10px;
 }
 
-#feeds {
+#rss-feed {
+  position: absolute;
+  top: 0;
+  left: 300;
   @extend .light-box;
-  line-height: 20px;
+}
+
+#atom-feed {
+  position: absolute;
+  top: 100;
+  left: 300;
+  @extend .light-box;
 }
 
 #copyright {
