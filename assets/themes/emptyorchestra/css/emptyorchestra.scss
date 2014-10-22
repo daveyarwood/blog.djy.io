@@ -30,6 +30,13 @@ a:hover, a:active {
   font-weight: bold;
 }
 
+.container {
+  position: relative;
+  width: 100%;
+  float: left;
+  clear: both;
+}  
+
 .light-box {
   display: inline-block;
   padding: 5px;
@@ -40,12 +47,9 @@ a:hover, a:active {
 /*************************************************************************/
 
 #header-container {
-  position: relative;
+  @extend .container;
   background-color: $deep-blue;
-  width: 100%;
   height: 150px;
-  float: left;
-  clear: both;
 }
   
 header {
@@ -100,23 +104,19 @@ img.contact-icon {
 /*************************************************************************/
 
 #content-container {
-  position: relative;
-  width: 100%;
+  @extend .container;
   background-image: url("../bright_squares.png");
-  font-family: $modern-fonts-1;
-  font-size: 14px;
-  line-height: 25px;
-  float: left;
-  clear: both;
 }
 
 #content {
   position: relative;
-  padding: 0px;
-  margin: 0px;
   display: block;
   width: 80%;
   margin: 0 auto;
+  
+  font-family: $modern-fonts-1;
+  font-size: 14px;
+  line-height: 25px;
 }
 
 .page-header {
@@ -161,18 +161,17 @@ code {
 /*************************************************************************/
 
 #footer-container {
-  position: relative;
+  @extend .container;
   background-color: $deep-blue;
-  width: 100%;
-  float: left;
-  clear: both;
-  font-family: $retro-fonts;
 }
 
 footer {
+  position: relative;
   width: 600px;
   margin: 0 auto;
   padding-bottom: 50px;
+  
+  font-family: $retro-fonts;
 }
 
 .pagination {
