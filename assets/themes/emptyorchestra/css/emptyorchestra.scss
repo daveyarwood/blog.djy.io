@@ -163,7 +163,7 @@ code {
 #footer-container {
   @extend .container;
   background-color: $deep-blue;
-  padding-top: 40px;
+  padding-top: 20px;
   padding-bottom: 40px;
 
   font-family: $retro-fonts;
@@ -175,7 +175,7 @@ code {
 .pagination {
   @extend .light-box;
   display: block;
-  width: 190px;
+  text-align: center;
   margin: 0 auto;
   margin-bottom: 20px;
 }
