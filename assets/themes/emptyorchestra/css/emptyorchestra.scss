@@ -189,7 +189,6 @@ footer {
 }
 
 #copyright {
-  display: block;
-  text-align: center;
+  @extend .light-box;
   padding-bottom: 10px;
 }
