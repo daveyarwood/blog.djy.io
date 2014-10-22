@@ -8,27 +8,33 @@ html, body {
   overflow: auto;
 }
 
-a:link, a:visited {
-  color: #100BA3;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-a:hover, a:active {
-  color: #34BEEF;
-  text-decoration: none;
-  font-weight: bold;
-}
+$royal-blue: #100BA3;
+$deep-blue: #212029;
+$teal: #34BEEF;
+$beige: #DCDDF5;
+$gray: #888888;
 
 $retro-fonts: "Lucida Console", Monaco, monospace;
 $modern-fonts-1: "Droid Sans", Helvetica, Arial, sans-serif;
 $modern-fonts-2: "Droid Serif", Georgia, Times, serif;
 
+a:link, a:visited {
+  color: $royal-blue;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+a:hover, a:active {
+  color: $teal;
+  text-decoration: none;
+  font-weight: bold;
+}
+
 .light-box {
   display: inline-block;
   padding: 5px;
-  background-color: #DCDDF5;
-  box-shadow: 10px 10px 5px #888888;
+  background-color: $beige;
+  box-shadow: 10px 10px 5px $gray;
 }  
   
 /*************************************************************************/
@@ -37,7 +43,7 @@ $modern-fonts-2: "Droid Serif", Georgia, Times, serif;
   position: relative;
   top: 0px;
   left: 0px;
-  background-color: #212029;
+  background-color: $deep-blue;
   width: 100%;
   height: 150px;
   float: left;
@@ -143,9 +149,10 @@ img.contact-icon {
 }
 
 code {
-  background-color: #D1E9E9;
+  background-color: $deep-blue;
   white-space: pre-wrap;
   padding: 1px 5px;
+  width: 100%;
 }
 
 #teaser {
@@ -153,12 +160,11 @@ code {
   margin: 0 auto;
 }
 
-
 /*************************************************************************/
 
 #footer-container {
   position: relative;
-  background-color: #212029;
+  background-color: $deep-blue;
   width: 100%;
   clear: both;
   font-family: $retro-fonts;
