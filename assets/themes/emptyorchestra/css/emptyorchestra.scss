@@ -175,13 +175,9 @@ code {
 .pagination {
   @extend .light-box;
   display: block;
-  width: 200px;
+  width: 225px;
   margin: 0 auto;
   margin-bottom: 20px;
-}
-
-#nav-links {
-  position: relative;
 }
 
 #latest {
@@ -190,9 +186,14 @@ code {
   width: 350px;
   margin: 0 auto;
   margin-bottom: 20px;
+  text-align: center;
 }
 
 #cats-and-tags-and-feeds {
+  display: block;
+  width: 500px;
+  margin: 0 auto;
+  margin-bottom: 20px;
 }
 
 #cats {
