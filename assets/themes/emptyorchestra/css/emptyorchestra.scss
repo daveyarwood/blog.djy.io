@@ -199,6 +199,9 @@ code {
 }
 
 #cats {
+  position: absolute;
+  top: 0;
+  left: 0;
   @extend .light-box;
   margin-right: 10px;
   margin-bottom: 10px;
