@@ -209,9 +209,10 @@ code {
 }
 
 #tags {
+  display: block;
   position: absolute;
   top: 0;
-  left: 20;
+  left: 200;
   @extend .light-box;
   margin-right: 10px;
 }
