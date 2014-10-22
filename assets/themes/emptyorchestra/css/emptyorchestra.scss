@@ -198,12 +198,14 @@ code {
   margin: 0 auto;
   margin-bottom: 20px;
   text-align: center;
+  vertical-align: top;
 }
 
 #cats {
   @extend .light-box;
   margin-right: 10px;
   margin-bottom: 10px;
+  vertical-align: top;
 }
 
 #tags {
@@ -217,10 +219,12 @@ code {
 
 #rss-feed {
   @extend .light-box;
+  display: block;
 }
 
 #atom-feed {
   @extend .light-box;
+  display: block;
   clear: left;
 }
 
