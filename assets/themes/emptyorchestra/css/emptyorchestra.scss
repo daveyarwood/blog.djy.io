@@ -197,7 +197,6 @@ code {
   height: 100%;
   margin: 0 auto;
   margin-bottom: 20px;
-  background-color: #ffffff;
   text-align: center;
 }
 
@@ -217,11 +216,12 @@ code {
 
 #rss-feed {
   @extend .light-box;
+  display: block;
 }
 
 #atom-feed {
   @extend .light-box;
-  clear: left;
+  display: block;
 }
 
 #copyright {
