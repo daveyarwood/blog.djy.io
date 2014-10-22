@@ -175,7 +175,7 @@ code {
 .pagination {
   @extend .light-box;
   display: block;
-  text-align: center;
+  width: 200px;
   margin: 0 auto;
   margin-bottom: 20px;
 }
@@ -186,8 +186,10 @@ code {
 
 #latest {
   @extend .light-box;
-  margin-right: 10px;
-  clear: left;
+  display: block;
+  width: 350px;
+  margin: 0 auto;
+  margin-bottom: 20px;
 }
 
 #cats-and-tags-and-feeds {
