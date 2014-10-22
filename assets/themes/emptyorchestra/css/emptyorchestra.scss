@@ -163,20 +163,20 @@ code {
 #footer-container {
   @extend .container;
   background-color: $deep-blue;
+  padding-bottom: 50px;
 }
 
 footer {
   position: relative;
   width: 600px;
-  margin: 0 auto;
-  padding-bottom: 50px;
-  
+  margin: 0 auto;  
   font-family: $retro-fonts;
 }
 
 .pagination {
   @extend .light-box;
-  text-align: center;
+  width: 100px;
+  margin: 0 auto;
 }
 
 #nav-links {
@@ -208,5 +208,6 @@ footer {
 
 #copyright {
   @extend .light-box;
-  text-align: center;
+  width: 100px;
+  margin: 0 auto;
 }
