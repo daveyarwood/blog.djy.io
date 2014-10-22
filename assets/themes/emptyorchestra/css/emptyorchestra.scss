@@ -175,8 +175,9 @@ footer {
 
 .pagination {
   @extend .light-box;
-  width: 200px;
+  width: 190px;
   margin: 0 auto;
+  text-align: center;
 }
 
 #nav-links {
@@ -209,6 +210,7 @@ footer {
 
 #copyright {
   @extend .light-box;
-  width: 300px;
+  width: 400px;
   margin: 0 auto;
+  text-align: center;
 }
