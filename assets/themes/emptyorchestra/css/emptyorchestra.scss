@@ -221,11 +221,13 @@ code {
 #rss-feed {
   @extend .light-box;
   display: block;
+  padding: 10px;
 }
 
 #atom-feed {
   @extend .light-box;
   display: block;
+  padding: 10px;
 }
 
 #copyright {
