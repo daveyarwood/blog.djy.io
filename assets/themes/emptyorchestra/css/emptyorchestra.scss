@@ -168,9 +168,13 @@ code {
 
 footer {
   position: relative;
-  width: 600px;
+  width: 650px;
   margin: 0 auto;  
   font-family: $retro-fonts;
+  font-weight: bold;
+  font-size: 13px;
+  line-height: 12px;
+
   background-color: #ffffff;
 }
 
