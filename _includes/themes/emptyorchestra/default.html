@@ -49,7 +49,9 @@
             <img id="portrait" src="{{ ASSET_PATH }}/dave.jpg">
           </a>
           <div id="project-links">
-            <p class="links"><a href="{{ HOME_PATH }}">dave yarwood</a> :: composer, musician, programmer</p>
+            <p class="links">
+              <a href="{{ HOME_PATH }}">dave yarwood</a> :: composer, musician, programmer
+            </p>
             <p class="links">
               projects :: 
               <a href="https://github.com/daveyarwood/yggdrasil" target="_blank">yggdrasil</a>,
@@ -72,6 +74,7 @@
         </div>        
       </header>
     </div>
+    
   <!--
     <div class="navbar">
       <div class="navbar-inner">
@@ -109,31 +112,35 @@
         </h2>
       
         <div id="nav-links">
-          <h1>latest:</h1>
-          {% for post in site.posts offset: 0 limit: 3 %}
-            <a href="{{ root_url }}{{ post.url }}">{{ post.date | date: '%Y-%m-%d' }}:<br>{{ post.title }}</a><br><br>
-          {% endfor %}
+          <div id="latest">
+            <h1>latest:</h1>
+            {% for post in site.posts offset: 0 limit: 3 %}
+              <a href="{{ root_url }}{{ post.url }}">{{ post.date | date: '%Y-%m-%d' }}:<br>{{ post.title }}</a><br><br>
+            {% endfor %}
+          </div>
           
-          ---
-    
-          <h1>categories:</h1>
-          {% for category in site.categories %}
-            <a href="{{ BASE_PATH }}{{ site.JB.categories_path }}#{{ category[0] }}-ref">
-            {{ category[0] | join: "/" }}</a><br>
-          {% endfor %}
-    
-          <h1>tags:</h1>
-          {% for tag in site.tags %}
-            <a href="{{ BASE_PATH }}{{ site.JB.tags_path }}#{{ tag[0] }}-ref">
-            {{ tag[0] }} ({{ tag[1].size }})</a><br>
-          {% endfor %}
-          
-          <br>
-    
-          ---
-    
-          <h1><a href="http://daveyarwood.github.io/rss.xml">rss</a> /
-              <a href="http://daveyarwood.github.io/atom.xml">atom</a></h1>
+          <div id="cats-and-tags">
+            <div id="cats">
+              <h1>categories:</h1>
+              {% for category in site.categories %}
+                <a href="{{ BASE_PATH }}{{ site.JB.categories_path }}#{{ category[0] }}-ref">
+                {{ category[0] | join: "/" }}</a><br>
+              {% endfor %}
+            </div>
+
+            <div id="tags">
+              <h1>tags:</h1>
+              {% for tag in site.tags %}
+                <a href="{{ BASE_PATH }}{{ site.JB.tags_path }}#{{ tag[0] }}-ref">
+                {{ tag[0] }} ({{ tag[1].size }})</a><br>
+              {% endfor %}
+            </div>
+          </div>
+            
+          <h1 id="feeds">
+            <a href="http://daveyarwood.github.io/rss.xml">rss</a><br>
+            <a href="http://daveyarwood.github.io/atom.xml">atom</a>
+          </h1>
   
         </div>
   

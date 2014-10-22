@@ -181,10 +181,31 @@ footer {
 
 #nav-links {
   position: relative;
-  overflow: visible;
-  margin: 0 auto;
-  padding: 10px;
-  width: 450px;
+}
+
+#latest {
+  @extend .light-box;
+  float: left;
+  margin-right: 10px;
+}
+
+#cats-and-tags {
+  float: left
+}
+
+#cats {
+  @extend .light-box;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+#tags {
+  @extend .light-box;
+  margin-right: 10px;
+}
+
+#feeds {
+  @extend .light-box;
 }
 
 #copyright {
