@@ -211,7 +211,7 @@ code {
 #tags {
   position: absolute;
   top: 0;
-  left: 200;
+  left: 20;
   @extend .light-box;
   margin-right: 10px;
 }
@@ -219,14 +219,14 @@ code {
 #rss-feed {
   position: absolute;
   top: 0;
-  left: 300;
+  left: 30;
   @extend .light-box;
 }
 
 #atom-feed {
   position: absolute;
-  top: 100;
-  left: 300;
+  top: 10;
+  left: 30;
   @extend .light-box;
 }
 
