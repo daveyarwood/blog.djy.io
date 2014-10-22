@@ -175,7 +175,7 @@ footer {
 
 .pagination {
   @extend .light-box;
-  width: 100px;
+  width: 200px;
   margin: 0 auto;
 }
 
@@ -186,6 +186,7 @@ footer {
 #latest {
   @extend .light-box;
   margin-right: 10px;
+  clear: left;
 }
 
 #cats-and-tags {
@@ -208,6 +209,6 @@ footer {
 
 #copyright {
   @extend .light-box;
-  width: 100px;
+  width: 300px;
   margin: 0 auto;
 }
