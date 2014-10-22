@@ -171,12 +171,14 @@ footer {
   width: 600px;
   margin: 0 auto;  
   font-family: $retro-fonts;
+  background-color: #ffffff;
 }
 
 .pagination {
   @extend .light-box;
   width: 190px;
   margin: 0 auto;
+  margin-bottom: 20px;
   text-align: center;
 }
 
