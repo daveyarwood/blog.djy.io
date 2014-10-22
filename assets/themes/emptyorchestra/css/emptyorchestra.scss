@@ -169,6 +169,12 @@ code {
   font-family: $retro-fonts;
 }
 
+footer {
+  width: 500px;
+  padding: 30px;
+  margin: 0 auto;
+}
+
 .pagination {
   @extend .light-box;
   text-align: center;
@@ -182,7 +188,7 @@ code {
   width: 450px;
 }
 
-footer {
+#copyright {
   display: block;
   text-align: center;
   padding-bottom: 10px;
