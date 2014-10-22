@@ -209,23 +209,17 @@ code {
 }
 
 #tags {
-  display: block;
-  position: absolute;
-  top: 0;
-  left: 200;
   @extend .light-box;
   margin-right: 10px;
 }
 
 #rss-feed {
-  position: absolute;
   top: 0;
   left: 30;
   @extend .light-box;
 }
 
 #atom-feed {
-  position: absolute;
   top: 10;
   left: 30;
   @extend .light-box;
