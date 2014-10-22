@@ -20,6 +20,10 @@ a:hover, a:active {
   font-weight: bold;
 }
 
+$retro-fonts: "Lucida Console", Monaco, monospace;
+$modern-fonts-1: "Droid Sans", Helvetica, Arial, sans-serif;
+$modern-fonts-2: "Droid Serif", Georgia, Times, serif;
+
 .light-box {
   display: inline-block;
   padding: 5px;
@@ -70,7 +74,7 @@ img#portrait {
 p.links {
   margin-top: 0em;
   margin-bottom: 0.5em;
-  font-family: "Lucida Console", Monaco, monospace;
+  font-family: $retro-fonts;
   font-weight: bold;
   font-size: 13px;
   line-height: 12px;
@@ -94,7 +98,7 @@ img.contact-icon {
   position: relative;
   width: 100%;
   background-image: url("../bright_squares.png");
-  font-family: 'Droid Sans', Helvetica, Arial, sans-serif;
+  font-family: $modern-fonts-1;
   font-size: 14px;
   line-height: 25px;
   float: left;
@@ -111,22 +115,31 @@ img.contact-icon {
 }
 
 .page-header {
-  font-family: 'Droid Serif', Georgia, Times, serif;
+  font-family: $modern-fonts-2;
   font-size: 25px;
   line-height: 50px;
   text-align: center;
 }
 
 #month-header {
-  font-family: "Lucida Console", Monaco, monospace;
+  font-family: $retro-fonts;
   text-align: center;
 }
 
 #post-title {
-  font-family: 'Droid Serif', Georgia, Times, serif;
+  font-family: $modern-fonts-2;
   font-size: 25px;
   line-height: 50px;
   text-align: center;
+}
+
+.date {
+  font-family: $retro-fonts;
+  text-align: center;
+}
+
+#cats_and_tags {
+  font-style: italic;
 }
 
 code {
@@ -140,6 +153,7 @@ code {
   margin: 0 auto;
 }
 
+
 /*************************************************************************/
 
 #footer-container {
@@ -147,6 +161,7 @@ code {
   background-color: #212029;
   width: 100%;
   clear: both;
+  font-family: $retro-fonts;
 }
 
 .pagination {
@@ -166,13 +181,4 @@ footer {
   display: block;
   text-align: center;
   padding-bottom: 10px;
-}
-
-#cats_and_tags {
-  font-style: italic;
-}
-
-.date {
-  font-family: "Lucida Console", Monaco, monospace;
-  text-align: center;
 }
