@@ -212,16 +212,15 @@ code {
 }
 
 #feeds {
+  display: inline-block;
 }
 
 #rss-feed {
   @extend .light-box;
-  display: block;
 }
 
 #atom-feed {
   @extend .light-box;
-  display: block;
 }
 
 #copyright {
