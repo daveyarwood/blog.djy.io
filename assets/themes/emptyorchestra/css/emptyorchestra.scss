@@ -194,6 +194,7 @@ code {
   width: 500px;
   margin: 0 auto;
   margin-bottom: 20px;
+  background-color: #ffffff;
 }
 
 #cats {
@@ -209,6 +210,7 @@ code {
 
 #feeds {
   @extend .light-box;
+  line-height: 20px;
 }
 
 #copyright {
