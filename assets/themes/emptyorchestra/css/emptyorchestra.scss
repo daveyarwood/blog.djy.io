@@ -170,11 +170,11 @@ code {
   font-weight: bold;
   font-size: 13px;
   line-height: 12px;
-
 }
 
 .pagination {
   @extend .light-box;
+  display: block;
   width: 190px;
   margin: 0 auto;
   margin-bottom: 20px;
@@ -210,7 +210,7 @@ code {
 
 #copyright {
   @extend .light-box;
+  display: block;
   width: 400px;
   margin: 0 auto;
-  text-align: center;
 }
