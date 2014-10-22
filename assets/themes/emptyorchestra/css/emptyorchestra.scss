@@ -201,30 +201,21 @@ code {
 }
 
 #cats {
-  position: relative;
-  top: 0;
-  left: 0;
   @extend .light-box;
   margin-right: 10px;
   margin-bottom: 10px;
 }
 
 #tags {
-  position: absolute;
-  left: 250;
   @extend .light-box;
   margin-right: 10px;
 }
 
 #rss-feed {
-  top: 0;
-  left: 30;
   @extend .light-box;
 }
 
 #atom-feed {
-  top: 10;
-  left: 30;
   @extend .light-box;
 }
 
