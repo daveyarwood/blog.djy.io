@@ -20,6 +20,11 @@ a:hover, a:active {
   font-weight: bold;
 }
 
+.light-box {
+  padding: 5px;
+  background-color: #DCDDF5;
+  box-shadow: 10px 10px 5px #888888;
+}  
   
 /*************************************************************************/
 
@@ -54,13 +59,11 @@ img#portrait {
 }
 
 #project-links {
+  @extend .light-box;
   position: absolute;
   margin: 0px;
-  padding: 5px;
   top: -10px;
   left: 110px;
-  background-color: #DCDDF5;
-  box-shadow: 10px 10px 5px #888888;
 }
 
 p.links {
@@ -145,6 +148,11 @@ code {
   clear: both;
 }
 
+.pagination {
+  @extend .light-box;
+  text-align: center;
+}
+
 #nav-links {
   position: relative;
   overflow: visible;
@@ -165,9 +173,5 @@ footer {
 
 .date {
   font-family: "Lucida Console", Monaco, monospace;
-  text-align: center;
-}
-
-.pagination {
   text-align: center;
 }
