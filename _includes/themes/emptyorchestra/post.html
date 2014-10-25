@@ -10,29 +10,33 @@
 </h2>
 
 {% unless page.categories == empty %}
-<h3>categories:</h3>
-<ul class="classification">
-{% for category in page.categories %}
-  <li>
-    <a href="{{ BASE_PATH }}{{ site.JB.categories_path }}#{{ category }}-ref">
-      {{ category | join: "/" }}
-    </a>
-  </li>
-{% endfor %}
-</ul>
+<div class="classification">
+  <h3>categories:</h3>
+  <ul>
+  {% for category in page.categories %}
+    <li>
+      <a href="{{ BASE_PATH }}{{ site.JB.categories_path }}#{{ category }}-ref">
+        {{ category | join: "/" }}
+      </a>
+    </li>
+  {% endfor %}
+  </ul>
+</div>
 {% endunless %}
 
 {% unless page.tags == empty %}
-<h3>tags:</h3>
-<ul class="classification">
-{% for tag in page.tags %}
-  <li>
-    <a href="{{ BASE_PATH }}{{ site.JB.tags_path }}#{{ tag }}-ref">
-      {{ tag | join: "/" }}
-    </a>
-  </li>
-{% endfor %}
-</ul>
+<div class="classification">
+  <h3>tags:</h3>
+  <ul>
+  {% for tag in page.tags %}
+    <li>
+      <a href="{{ BASE_PATH }}{{ site.JB.tags_path }}#{{ tag }}-ref">
+        {{ tag | join: "/" }}
+      </a>
+    </li>
+  {% endfor %}
+  </ul>
+</div>
 {% endunless %}
 
 <article>{{ content }}</article>
