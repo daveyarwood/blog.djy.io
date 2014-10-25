@@ -149,7 +149,8 @@ ul.classification {
       content: ", ";
     }
     &:last-child:after {
-      content: none;  // try "" if this doesn't work
+      content: none;
+      clear: right;
     }
   }
 }
