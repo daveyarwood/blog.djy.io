@@ -35,7 +35,7 @@ a:hover, a:active {
   width: 100%;
   float: left;
   clear: both;
-}  
+}
 
 .light-box {
   display: inline-block;
@@ -43,7 +43,7 @@ a:hover, a:active {
   background-color: $beige;
   box-shadow: 10px 10px 5px $gray;
 }
-  
+
 /*************************************************************************/
 
 #header-container {
@@ -60,7 +60,7 @@ header {
 }
 
 img#portrait {
-  position: absolute; 
+  position: absolute;
   top: 20px;
   width: 100px;
   height: 100px;
@@ -106,7 +106,7 @@ ul#contact-links {
 
 #content-container {
   @extend .container;
-  background-image: url("../bright_squares.png") repeat;
+  background-image: url("../bright_squares.png");
 }
 
 main {
@@ -114,7 +114,7 @@ main {
   display: block;  // remove this? seems unnecessary
   width: 90%;
   margin: 0 auto;
-  
+
   font-family: $modern-fonts-1;
   font-size: 16px;
   line-height: 26px;
@@ -190,8 +190,8 @@ code {
   line-height: 12px;
 }
 
-// to do: bring back the footer container and put everything inside of it. 
-//        find a way to make the layout look the way it does now, without 
+// to do: bring back the footer container and put everything inside of it.
+//        find a way to make the layout look the way it does now, without
 //        having an ugly-named container div like "cats-and-tags-and-feeds"
 
 
