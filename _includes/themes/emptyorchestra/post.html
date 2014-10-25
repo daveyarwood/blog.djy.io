@@ -15,7 +15,6 @@
 {% for category in page.categories %}
   <li>
     <a href="{{ BASE_PATH }}{{ site.JB.categories_path }}#{{ category }}-ref">
-      // shouldn't this just be {{ category }} ?
       {{ category | join: "/" }}
     </a>
   </li>
@@ -29,7 +28,6 @@
 {% for tag in page.tags %}
   <li>
     <a href="{{ BASE_PATH }}{{ site.JB.tags_path }}#{{ tag }}-ref">
-      // shouldn't this just be {{ tag }} ?
       {{ tag | join: "/" }}
     </a>
   </li>
