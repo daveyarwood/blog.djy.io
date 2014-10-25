@@ -154,7 +154,6 @@ main {
   }
 }
 
-
 code {
   white-space: pre-wrap;
   padding: 1px 5px;
@@ -178,6 +177,15 @@ code {
       width: 75%;
       margin: 0 auto;
     }
+
+    // archive:
+
+    ul.posts-by-month {
+      li {
+        list-style-type: none;
+      }
+    }
+
 
 /*************************************************************************/
 
