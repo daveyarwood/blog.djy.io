@@ -144,6 +144,7 @@ main {
     li {
       display: inline;
       list-style-type: none;
+      padding-right: 0;
       &:after {
         content: ", ";
       }
