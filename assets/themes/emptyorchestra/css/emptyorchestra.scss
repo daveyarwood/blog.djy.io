@@ -122,7 +122,7 @@ main {
 
 .page-header {
   font-family: $modern-fonts-2;
-  font-size: 25px;
+  font-size: 50px;
   line-height: 50px;
   text-align: center;
 }
@@ -139,6 +139,7 @@ h3 {
 
 ul.classification {
   font-style: italic;
+  padding: 0;
 
   li {
     display: inline;
