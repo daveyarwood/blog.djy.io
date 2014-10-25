@@ -1,32 +1,42 @@
-<div class="page-header">
-  <h1>{{ page.title }} {% if page.tagline %}<small>{{page.tagline}}</small>{% endif %}</h1>
-</div>
+<h1 class="page-header">
+  {{ page.title }}
+  {% if page.tagline %}
+    <small>{{page.tagline}}</small>
+  {% endif %}
+</h1>
 
-<div class="date">
-  <h2>{{ page.date | date: "%B %-d, %Y" }}</h2>
-</div>
+<h2 class="date">
+  {{ page.date | date: "%B %-d, %Y" }}
+</h2>
 
-<div id="cats_and_tags">
-  {% unless page.categories == empty %}
-    categories: |
-    {% for category in page.categories %}
-      <a href="{{ BASE_PATH }}{{ site.JB.categories_path }}#{{ category }}-ref">
-      {{ category | join: "/" }}</a> |
-    {% endfor %}
-    <br>
-  {% endunless %}
+{% unless page.categories == empty %}
+<h3>categories:</h3>
+<ul class="classification">
+{% for category in page.categories %}
+  <li>
+    <a href="{{ BASE_PATH }}{{ site.JB.categories_path }}#{{ category }}-ref">
+      // shouldn't this just be {{ category }} ?
+      {{ category | join: "/" }}
+    </a>
+  </li>
+{% endfor %}
+</ul>
+{% endunless %}
 
-  {% unless page.tags == empty %}
-    tags: |
-    {% for tag in page.tags %}
-      <a href="{{ BASE_PATH }}{{ site.JB.tags_path }}#{{ tag }}-ref">
-      {{ tag | join: "/" }}</a> |
-    {% endfor %}
-  {% endunless %}  
-</div>
+{% unless page.tags == empty %}
+<h3>tags:</h3>
+<ul class="classification">
+{% for tag in page.tags %}
+  <li>
+    <a href="{{ BASE_PATH }}{{ site.JB.tags_path }}#{{ tag }}-ref">
+      // shouldn't this just be {{ tag }} ?
+      {{ tag | join: "/" }}
+    </a>
+  </li>
+{% endfor %}
+</ul>
+{% endunless %}
 
-<div class="content">
-  {{ content }}
-</div>
+<article>{{ content }}</article>
 
 {% include JB/comments %}

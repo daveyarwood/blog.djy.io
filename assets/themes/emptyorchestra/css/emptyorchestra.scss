@@ -31,7 +31,7 @@ a:hover, a:active {
 }
 
 .container {
-  position: relative;
+  position: relative; // remove this? elements aren't positioned within the container
   width: 100%;
   float: left;
   clear: both;
@@ -42,7 +42,7 @@ a:hover, a:active {
   padding: 5px;
   background-color: $beige;
   box-shadow: 10px 10px 5px $gray;
-}  
+}
   
 /*************************************************************************/
 
@@ -51,67 +51,68 @@ a:hover, a:active {
   background-color: $deep-blue;
   height: 150px;
 }
-  
+
 header {
+  position: relative;
   width: 500px;
   padding: 30px;
   margin: 0 auto;
 }
 
-#portrait-and-project-links {
-  position: relative;
-}
-
 img#portrait {
-  float: left;
-  display: block;
-  top: 10px;
+  position: absolute; 
+  top: 20px;
   width: 100px;
   height: 100px;
   border: 0px;
   border-radius: 10px;
 }
 
-#project-links {
+div#project-links {
   @extend .light-box;
   position: absolute;
   margin: 0px;
-  top: -10px;
+  top: 0px;
   left: 110px;
+
+  p {
+    margin-top: 0em;
+    margin-bottom: 0.5em;
+    font-family: $retro-fonts;
+    font-weight: bold;
+    font-size: 13px;
+    line-height: 12px;
+  }
 }
 
-p.links {
-  margin-top: 0em;
-  margin-bottom: 0.5em;
-  font-family: $retro-fonts;
-  font-weight: bold;
-  font-size: 13px;
-  line-height: 12px;
+ul#contact-links {
+  position: absolute;
+  left: 120px;
+  top: 85px;
+
+  li {
+    list-style-type: none;
+    display: inline;
+    padding-right: 5px;
+    img {
+      border: 0px;
+      border-radius: 15px;
+    }
+  }
 }
 
-#contact-links {
-  position: relative;
-  left: 20px;
-  top: 75px;
-  overflow: auto;
-}
-
-img.contact-icon {
-  border: 0px;
-  border-radius: 15px;
-}
 
 /*************************************************************************/
 
 #content-container {
   @extend .container;
-  background-image: url("../bright_squares.png");
+  background-image: url("../bright_squares.png") repeat;
 }
 
-#content {
-  position: relative;
-  display: block;
-  width: 80%;
+main {
+  position: relative; // remove this? seems unnecessary
+  display: block;  // remove this? seems unnecessary
+  width: 90%;
   margin: 0 auto;
   
   font-family: $modern-fonts-1;
@@ -126,25 +127,29 @@ img.contact-icon {
   text-align: center;
 }
 
-#month-header {
-  font-family: $retro-fonts;
-  text-align: center;
-}
-
-#post-title {
-  font-family: $modern-fonts-2;
-  font-size: 25px;
-  line-height: 50px;
-  text-align: center;
-}
-
 .date {
   font-family: $retro-fonts;
   text-align: center;
 }
 
-#cats_and_tags {
+h3 {
+  display: inline;
   font-style: italic;
+}
+
+ul.classification {
+  font-style: italic;
+
+  li {
+    display: inline;
+    list-style-type: none;
+    &:after {
+      content: ", ";
+    }
+    &:last-child:after {
+      content: none;  // try "" if this doesn't work
+    }
+  }
 }
 
 code {
@@ -152,10 +157,24 @@ code {
   padding: 1px 5px;
 }
 
-#teaser {
-  width: 75%;
-  margin: 0 auto;
-}
+/************************* index/archive pages ***************************/
+
+    #month-header {
+      font-family: $retro-fonts;
+      text-align: center;
+    }
+
+    #post-title {
+      font-family: $modern-fonts-2;
+      font-size: 25px;
+      line-height: 50px;
+      text-align: center;
+    }
+
+    #teaser {
+      width: 75%;
+      margin: 0 auto;
+    }
 
 /*************************************************************************/
 
@@ -170,6 +189,11 @@ code {
   font-size: 13px;
   line-height: 12px;
 }
+
+// to do: bring back the footer container and put everything inside of it. 
+//        find a way to make the layout look the way it does now, without 
+//        having an ugly-named container div like "cats-and-tags-and-feeds"
+
 
 .pagination {
   @extend .light-box;

@@ -3,7 +3,9 @@
   <head>
     <meta charset="utf-8">
     <title>{{ page.title }} :: {{ site.title }}</title>
-    {% if page.description %}<meta name="description" content="{{ page.description }}">{% endif %}
+    {% if page.description %}
+      <meta name="description" content="{{ page.description }}">
+    {% endif %}
     <meta name="author" content="{{ site.author.name }}">
 
     <!-- Enable responsive viewport -->
@@ -26,14 +28,6 @@
     <link href="{{ ASSET_PATH }}/css/style.css?body=1" rel="stylesheet" type="text/css" media="all">
     -->
 
-    <!-- Le fav and touch icons -->
-  <!-- Update these with your own images
-    <link rel="shortcut icon" href="images/favicon.ico">
-    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
-  -->
-
     <!-- atom & rss feed -->
     <link href="{{ BASE_PATH }}{{ site.JB.atom_path }}" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
     <link href="{{ BASE_PATH }}{{ site.JB.rss_path }}" type="application/rss+xml" rel="alternate" title="Sitewide RSS Feed">
@@ -42,57 +36,59 @@
 
   <body>
     <div id="header-container">
+
       <header>
 
-        <div id="portrait-and-project-links">
-          <a href="{{ HOME_PATH }}">
-            <img id="portrait" src="{{ ASSET_PATH }}/dave.jpg">
-          </a>
-          <div id="project-links">
-            <p class="links">
-              <a href="{{ HOME_PATH }}">dave yarwood</a> :: composer, musician, programmer
-            </p>
-            <p class="links">
-              projects :: 
-              <a href="https://github.com/daveyarwood/yggdrasil" target="_blank">yggdrasil</a>,
-              <a href="https://github.com/daveyarwood/riffmuse" target="_blank">riffmuse</a>
-            </p>
-            <p class="links">
-              music :: 
-              <a href="http://www.popupchorus.org" target="_blank">popup chorus</a>,
-              <a href="http://noloveraleigh.bandcamp.com" target="_blank">no love</a>,
-              <a href="http://antibubbles.bandcamp.com" target="_blank">antibubbles</a>
-            </p>
-          </div>
+        <a href="{{ HOME_PATH }}">
+          <img id="portrait" src="{{ ASSET_PATH }}/dave.jpg">
+        </a>
+
+        <div id="project-links">
+          <p>
+            <a href="{{ HOME_PATH }}">dave yarwood</a> :: composer, musician, programmer
+          </p>
+          <p>
+            projects :: 
+            <a href="https://github.com/daveyarwood/yggdrasil" target="_blank">yggdrasil</a>,
+            <a href="https://github.com/daveyarwood/riffmuse" target="_blank">riffmuse</a>
+          </p>
+          <p>
+            music :: 
+            <a href="http://www.popupchorus.org" target="_blank">popup chorus</a>,
+            <a href="http://noloveraleigh.bandcamp.com" target="_blank">no love</a>,
+            <a href="http://antibubbles.bandcamp.com" target="_blank">antibubbles</a>
+          </p>
         </div>
         
-        <div id="contact-links">
-          <a href="http://github.com/daveyarwood" target="_blank"><img class="contact-icon" src="{{ ASSET_PATH }}/github.png" alt="github"></a>
-          <a href="http://soundcloud.com/daveyarwood" target="_blank"><img class="contact-icon" src="{{ ASSET_PATH }}/soundcloud.png" alt="soundcloud"></a>
-          <a href="http://www.last.fm/user/sdmoibut" target="_blank"><img class="contact-icon" src="{{ ASSET_PATH }}/lastfm.png" alt="last.fm"></a>
-          <a href="mailto:dave.yarwood@gmail.com"><img class="contact-icon" src="{{ ASSET_PATH }}/email.png" height="32" width="32" alt="e-mail"></a><br>
-        </div>        
+        <ul id="contact-links">
+          <li>
+            <a href="http://github.com/daveyarwood" target="_blank">
+              <img src="{{ ASSET_PATH }}/github.png" alt="github">
+            </a>
+          </li>
+          <li>
+            <a href="http://soundcloud.com/daveyarwood" target="_blank">
+              <img src="{{ ASSET_PATH }}/soundcloud.png" alt="soundcloud">
+            </a>
+          </li>
+          <li>
+            <a href="http://www.last.fm/user/sdmoibut" target="_blank">
+              <img src="{{ ASSET_PATH }}/lastfm.png" alt="last.fm">
+            </a>
+          </li>
+          <li>
+            <a href="mailto:dave.yarwood@gmail.com">
+              <img src="{{ ASSET_PATH }}/email.png" height="32" width="32" alt="e-mail">
+            </a>
+          </li>
+        </ul>
+
       </header>
+
     </div>
     
-  <!--
-    <div class="navbar">
-      <div class="navbar-inner">
-        <div class="container-narrow">
-          <ul class="nav">
-            {% assign pages_list = site.pages %}
-            {% assign group = 'navigation' %}
-            {% include JB/pages_list %}
-          </ul>
-        </div>
-      </div>
-    </div>
-   -->
-
     <div id="content-container">
-      <div id="content">
-        {{ content }}
-      </div>
+      <main>{{ content }}</main>
     </div>
     
     <div id="footer-container">
@@ -122,8 +118,8 @@
       
       <div id="cats-and-tags-and-feeds">
         <div id="cats">
-        <strong><u>categories</u>:<strong>
-        <ul style="list-style-type: none; padding: 0px">
+          <strong><u>categories</u>:<strong>
+          <ul style="list-style-type: none; padding: 0px">
           {% for category in site.categories %}
             <li>
               <a href="{{ BASE_PATH }}{{ site.JB.categories_path }}#{{ category[0] }}-ref">
@@ -134,8 +130,8 @@
         </div>
 
         <div id="tags">
-        <strong><u>tags</u>:<strong>
-        <ul style="list-style-type: none; padding: 0px">
+          <strong><u>tags</u>:<strong>
+          <ul style="list-style-type: none; padding: 0px">
           {% for tag in site.tags %}
             <li>
               <a href="{{ BASE_PATH }}{{ site.JB.tags_path }}#{{ tag[0] }}-ref">
