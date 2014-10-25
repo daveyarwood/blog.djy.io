@@ -155,7 +155,8 @@ main {
 }
 
 code {
-  white-space: pre-wrap;
+  overflow: auto;
+  white-space: pre;
   padding: 1px 5px;
 }
 
