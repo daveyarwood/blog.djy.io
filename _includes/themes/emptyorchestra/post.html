@@ -1,32 +1,44 @@
-<div class="page-header">
-  <h1>{{ page.title }} {% if page.tagline %}<small>{{page.tagline}}</small>{% endif %}</h1>
-</div>
+<h1 class="page-header">
+  {{ page.title }}
+  {% if page.tagline %}
+    <small>{{page.tagline}}</small>
+  {% endif %}
+</h1>
 
-<div class="date">
-  <h2>{{ page.date | date: "%B %-d, %Y" }}</h2>
-</div>
+<h2 class="date">
+  {{ page.date | date: "%B %-d, %Y" }}
+</h2>
 
-<div id="cats_and_tags">
-  {% unless page.categories == empty %}
-    categories: |
-    {% for category in page.categories %}
+{% unless page.categories == empty %}
+<div class="classification">
+  <h3>categories:</h3>
+  <ul>
+  {% for category in page.categories %}
+    <li>
       <a href="{{ BASE_PATH }}{{ site.JB.categories_path }}#{{ category }}-ref">
-      {{ category | join: "/" }}</a> |
-    {% endfor %}
-    <br>
-  {% endunless %}
+        {{ category }}
+      </a>
+    </li>
+  {% endfor %}
+  </ul>
+</div>
+{% endunless %}
 
-  {% unless page.tags == empty %}
-    tags: |
-    {% for tag in page.tags %}
+{% unless page.tags == empty %}
+<div class="classification">
+  <h3>tags:</h3>
+  <ul>
+  {% for tag in page.tags %}
+    <li>
       <a href="{{ BASE_PATH }}{{ site.JB.tags_path }}#{{ tag }}-ref">
-      {{ tag | join: "/" }}</a> |
-    {% endfor %}
-  {% endunless %}  
+        {{ tag }}
+      </a>
+    </li>
+  {% endfor %}
+  </ul>
 </div>
+{% endunless %}
 
-<div class="content">
-  {{ content }}
-</div>
+<article>{{ content }}</article>
 
 {% include JB/comments %}
