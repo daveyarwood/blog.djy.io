@@ -154,12 +154,15 @@ main {
   }
 }
 
+code {
+  background: $gray;
+}
+
 pre {
   overflow: auto;
   word-wrap: normal;
   white-space: pre;
   padding: 1px 5px;
-  background: $gray;
 }
 
 /************************* index/archive pages ***************************/
