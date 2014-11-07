@@ -20,7 +20,7 @@ published: true
 
 OK, to be honest I almost forgot that I was doing this! We're in the home stretch now. It's a little hard to follow the fascinating [Dwemthy's Array][part5], but the rest of Chapter 6 is pretty interesting in its own right. Here \_why shows us `method_missing` (something rightfully missing in Clojure), string interpolation, and an interesting little bit about `eval` in example #30.
 
-Chapter 6 (Sections 1-3)
+Chapter 6 (Sections 4-5)
 ========================
 
 It's probably possible to assemble something like `method_missing` in Clojure, but it would be considered dangerous and not very practical. `method_missing` in Ruby is something you define for a particular class, giving that class some instructions for how to handle calls to methods it doesn't have. The closest analog Clojure has to classes would be records and protocols, but protocols require you to explicitly declare any methods they provide.
