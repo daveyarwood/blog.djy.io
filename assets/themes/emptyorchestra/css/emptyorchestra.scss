@@ -19,16 +19,18 @@ $retro-fonts: "Share Tech Mono", Monaco, monospace;
 $modern-fonts-1: "Droid Sans", Helvetica, Arial, sans-serif;
 $modern-fonts-2: "Droid Serif", Georgia, Times, serif;
 
-a:link, a:visited {
-  color: $royal-blue;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-a:hover, a:active {
-  color: $teal;
-  text-decoration: none;
-  font-weight: bold;
+a {
+  transition: color 0.3s;
+  &:link, &:visited {
+    color: $royal-blue;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  &:hover, &:active {
+    color: $teal;
+    text-decoration: none;
+    font-weight: bold;
+  }
 }
 
 .container {
