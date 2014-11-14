@@ -84,3 +84,7 @@ Is this solution really "better"? I don't know -- it's all subjective. Technical
 Comment below if you have an interesting/novel approach to Fizz-Buzz!
 
 P.S. I haven't forgotten about the next installment of "\_why's (poignant) guide to ruby in Clojure" -- it's coming, I promise!
+
+**EDIT 11/14/14:** Carin Meier just posed a kata asking for Fizzbuzz solutions in Clojure [without using any conditionals][gigasquid] -- the results are really interesting, check them out! 
+
+[gigasquid]: http://gigasquidsoftware.com/blog/2014/11/13/clojure-fizzbuzz-without-conditionals/
