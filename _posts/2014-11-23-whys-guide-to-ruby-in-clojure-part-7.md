@@ -10,7 +10,7 @@ published: true
 
 {% include JB/setup %}
 
-*Parts 1 through 6 of this series can be found [here][part1], [here][part2], [here][part3], [here][part4] and [here][part5].*
+*Parts 1 through 6 of this series can be found [here][part1], [here][part2], [here][part3], [here][part4], [here][part5] and [here][part6].*
 
 [part1]: {% post_url 2014-01-06-whys-guide-to-ruby-in-clojure-part-1 %}
 [part2]: {% post_url 2014-02-20-whys-guide-to-ruby-in-clojure-part-2 %}
