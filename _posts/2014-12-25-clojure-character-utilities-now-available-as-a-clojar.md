@@ -15,4 +15,4 @@ A couple months ago I posted about a [character utility library I whipped up for
 
 This is my first ever clojar, which is a little exciting. The deploy process was refreshingly smooth thanks to the very awesome [Boot](http://www.boot-clj.com) build tool, created by two of my dashing coworkers at Adzerk. The [bootlaces](https://github.com/adzerk/bootlaces) library provides a few handy tasks for building and deploying snapshots or releases to Clojars -- after some quick & easy setup (check out the [`build.boot`](https://github.com/daveyarwood/djy/blob/master/build.boot)), I gained the ability to push a new version to Clojars whenever I want by simply updating the version number in `build.boot` and then running `boot build-jar push-release` or `boot build-jar push-snapshot`. Pretty awesome stuff.
 
-P.S. -- Merry Christmas! 
+(P.S. -- Merry Christmas!)
