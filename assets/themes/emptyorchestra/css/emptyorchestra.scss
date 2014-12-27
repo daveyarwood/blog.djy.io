@@ -118,7 +118,7 @@ main {
 
   font-family: $modern-fonts-1;
   font-size: 18px;
-  line-height: 27px;
+  line-height: 26px;
 }
 
 .page-header {
@@ -160,6 +160,7 @@ main {
 p code {
   background: $light-gray;
   padding: 4px;
+  line-height: 24px;
 }
 
 pre {
