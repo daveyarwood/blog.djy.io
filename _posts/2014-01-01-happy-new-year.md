@@ -1,14 +1,14 @@
 ---
 layout: post
 title: "Happy New Year!"
-category: yggdrasil
-tags: [yggdrasil, clojure, python, ruby]
+category: alda
+tags: [alda, clojure, python, ruby]
 ---
 {% include JB/setup %}
 
 I have the day off work, so I figured I'd set up this blog on github. Maybe I don't really *need* a blog just yet, but I figure at least I'll have one at the ready whenever I end up having something noteworthy to blog about.
 
-A little over a year ago, in October 2012, I started working on my first big programming project -- a music programming language. The language is called Yggdrasil, and it's still young, but developing nicely, I think. I've been working on it in my spare time between my full-time (non-programming) job and playing in bands, so development has been slow, but steady. I've been finding that the more I learn about programming, the quicker this project has been coming along.
+A little over a year ago, in October 2012, I started working on my first big programming project -- a music programming language. The language is called Yggdrasil\*, and it's still young, but developing nicely, I think. I've been working on it in my spare time between my full-time (non-programming) job and playing in bands, so development has been slow, but steady. I've been finding that the more I learn about programming, the quicker this project has been coming along.
 
 Yggdrasil's journey thus far has spanned 3 attempts in different programming languages. I started in Python (my first programming language, unless you count dicking around with Visual Basic when I was a kid, or the one introductory Java class I took in college), building a parser using the PLY (Python Lex-Yacc) library. I knew nothing about building a parser, and very little about good programming practices, so that initial attempt was a little messy. I somehow managed to build a parser that could successfully parse a simple .yg file and tell you the pitch, duration and octave of every note.
 
@@ -30,3 +30,5 @@ Things might keep progressing slowly, but hopefully 2014 will be the year that s
 [overtone]: http://overtone.github.io
 [mml]: http://www.nullsleep.com/treasure/mck_guide
 [lilypond]: http://www.lilypond.org
+
+\*(I've since renamed Yggdrasil to Alda.)
