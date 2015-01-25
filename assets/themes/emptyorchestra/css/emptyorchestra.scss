@@ -34,7 +34,6 @@ a {
 }
 
 .container {
-  position: relative; // remove this? elements aren't positioned within the container
   width: 100%;
   float: left;
   clear: both;
@@ -213,10 +212,11 @@ pre {
   line-height: 12px;
 }
 
-// to do: bring back the footer container and put everything inside of it.
-//        find a way to make the layout look the way it does now, without
-//        having an ugly-named container div like "cats-and-tags-and-feeds"
-
+footer {
+  position: relative;
+  width: 525px;
+  margin: 0 auto;
+}
 
 .pagination {
   @extend .light-box;
@@ -262,7 +262,7 @@ pre {
 #feeds {
   display: inline-block;
   vertical-align: top;
-  margin-top: -17px;
+  margin-top: -18px;
 }
 
 #rss-feed {

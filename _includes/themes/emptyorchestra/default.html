@@ -98,67 +98,69 @@
     </div>
     
     <div id="footer-container">
-      <h1 class="pagination">
-        {% if page.previous %}
-          <a href="{{ BASE_PATH }}{{ page.previous.url }}" title="{{ page.previous.title }}">&lt;&lt;</a>&nbsp;
-        {% else %}
-          &lt;&lt;&nbsp; 
-        {% endif %}
-          <a href="{{ BASE_PATH }}{{ site.JB.archive_path }}">archive</a>&nbsp;
-        {% if page.next %}
-          <a href="{{ BASE_PATH }}{{ page.next.url }}" title="{{ page.next.title }}">&gt;&gt;</a>
-        {% else %}
-          &gt;&gt;
-        {% endif %}
-      </h1>      
-      <div id="latest">
-        <strong><u>latest</u>:<strong>
-        <ul style="list-style-type: none; padding: 0px">
-        {% for post in site.posts offset: 0 limit: 7 %}
-          <li>
-            <a href="{{ root_url }}{{ post.url }}">{{ post.title }}</a>
-          </li>
-        {% endfor %}
-        </ul>
-      </div>
-      
-      <div id="cats-and-tags-and-feeds">
-        <div id="cats">
-          <strong><u>categories</u>:<strong>
+      <footer>
+        <h1 class="pagination">
+          {% if page.previous %}
+            <a href="{{ BASE_PATH }}{{ page.previous.url }}" title="{{ page.previous.title }}">&lt;&lt;</a>&nbsp;
+          {% else %}
+            &lt;&lt;&nbsp; 
+          {% endif %}
+            <a href="{{ BASE_PATH }}{{ site.JB.archive_path }}">archive</a>&nbsp;
+          {% if page.next %}
+            <a href="{{ BASE_PATH }}{{ page.next.url }}" title="{{ page.next.title }}">&gt;&gt;</a>
+          {% else %}
+            &gt;&gt;
+          {% endif %}
+        </h1>      
+        <div id="latest">
+          <strong><u>latest</u>:</strong>
           <ul style="list-style-type: none; padding: 0px">
-          {% for category in site.categories %}
+          {% for post in site.posts offset: 0 limit: 7 %}
             <li>
-              <a href="{{ BASE_PATH }}{{ site.JB.categories_path }}#{{ category[0] }}-ref">
-              {{ category[0] | join: "/" }}</a>
+              <a href="{{ root_url }}{{ post.url }}">{{ post.title }}</a>
             </li>
           {% endfor %}
           </ul>
         </div>
+        
+        <div id="cats-and-tags-and-feeds">
+          <div id="cats">
+            <strong><u>categories</u>:</strong>
+            <ul style="list-style-type: none; padding: 0px">
+            {% for category in site.categories %}
+              <li>
+                <a href="{{ BASE_PATH }}{{ site.JB.categories_path }}#{{ category[0] }}-ref">
+                {{ category[0] | join: "/" }}</a>
+              </li>
+            {% endfor %}
+            </ul>
+          </div>
 
-        <div id="tags">
-          <strong><u>tags</u>:<strong>
-          <ul style="list-style-type: none; padding: 0px">
-          {% for tag in site.tags %}
-            <li>
-              <a href="{{ BASE_PATH }}{{ site.JB.tags_path }}#{{ tag[0] }}-ref">
-              {{ tag[0] }} ({{ tag[1].size }})</a>
-            </li>
-          {% endfor %}
-          </ul>
+          <div id="tags">
+            <strong><u>tags</u>:</strong>
+            <ul style="list-style-type: none; padding: 0px">
+            {% for tag in site.tags %}
+              <li>
+                <a href="{{ BASE_PATH }}{{ site.JB.tags_path }}#{{ tag[0] }}-ref">
+                {{ tag[0] }} ({{ tag[1].size }})</a>
+              </li>
+            {% endfor %}
+            </ul>
+          </div>
+          <div id="feeds">
+            <h1 id="rss-feed">
+              <a href="http://daveyarwood.github.io/rss.xml">rss</a>
+            </h1>
+            <h1 id="atom-feed">
+              <a href="http://daveyarwood.github.io/atom.xml">atom</a>
+            </h1>
+          </div>
         </div>
-        <div id="feeds">
-          <h1 id="rss-feed">
-            <a href="http://daveyarwood.github.io/rss.xml">rss</a>
-          </h1>
-          <h1 id="atom-feed">
-            <a href="http://daveyarwood.github.io/atom.xml">atom</a>
-          </h1>
+        <div id="copyright">
+          &copy; {{ site.time | date: '%Y' }} {{ site.author.name }}
+            with help from <a href="http://jekyllbootstrap.com" target="_blank" title="The Definitive Jekyll Blogging Framework">Jekyll Bootstrap</a>
         </div>
-      </div>
-      <div id="copyright">
-        &copy; {{ site.time | date: '%Y' }} {{ site.author.name }}
-          with help from <a href="http://jekyllbootstrap.com" target="_blank" title="The Definitive Jekyll Blogging Framework">Jekyll Bootstrap</a>
-      </div>
+      </footer>
     </div>
 
     {% include JB/analytics %}
