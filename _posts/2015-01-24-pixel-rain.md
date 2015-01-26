@@ -17,7 +17,7 @@ tags:
 </center>
 <br>
 
-Here's a little blast from the past -- I just realized that I composed and programmed this "NES classical" piece for a composition class almost exactly 10 years ago. I had recently discovered [MML](http://battleofthebits.org/lyceum/View/PPMCK/), a music programming language that an increasingly vibrant community of chiptune musicians were using to make NES music. I was also studying music composition an UNC at the time. So, this piece represented a lot of things I was learning at the time about both classical music theory and programming NES music with MML. 
+Here's a little blast from the past -- I just realized that I composed and programmed this "NES classical" piece for a composition class almost exactly 10 years ago. I had recently discovered [MML](http://battleofthebits.org/lyceum/View/PPMCK/), a music programming language that an increasingly vibrant community of chiptune musicians were using to make NES music. I was also studying music composition at UNC at the time. So, this piece represented a lot of things I was learning at the time about both classical music theory and programming NES music with MML. 
 
 To give you a flavor of MML, here's a little excerpt of the MML code for *Pixel Rain*:
 
