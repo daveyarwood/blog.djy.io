@@ -27,7 +27,7 @@ aoeui's key bindings are nice and intuitive -- so much so that I even started wr
 I fell in love with Vim almost immediately. I decided to try it on a whim -- I had tried to become an Emacs user before without success, so I became curious about the other camp. I was pleasantly surprised by how easy it was to learn Vim's key bindings. 
 As a Dvorak typist, I was also surprised at how natural it felt to use Vim's default key bindings without modifications. The `hjkl` movement system is clearly designed for QWERTY, but the corresponding positions of these keys in the Dvorak layout actually end up working out pretty well:
 
-*picture here*
+<img src="{{ site.url }}/assets/2015-06-06-dvorak-vim.png" width="480" title="hjkl locations in the dvorak layout. (source: http://deskthority.net/keyboards-f2/anyone-using-the-workman-or-norman-layouts-t8921.html)">
 
 `h` and `l` are still essentially under your right pointer and pinkie (as a bonus, you don't have to shift your hand over!), and `j` and `k` are still right next to each other, they're just under your left middle and pointer fingers. 
 I think I actually prefer this to the QWERTY positions of these keys, as it clearly separates out horizontal from vertical movement. I sincerely doubt this is by design, but it's a nice plus for Dvorak users. 
@@ -35,7 +35,7 @@ I've also found that the rest of the key bindings feel just fine under my Dvorak
 
 Customizing my Vim setup has also been a pleasant experience. I started with the "awesome version" of [this guy's Vim configuration][ultimate-vim], which includes a bunch of useful plugins and custom key bindings, then added my own tweaks. 
 
-I could go on and on about how awesome Vim is, but this is already starting to get a little big for a vignette, so I'll have to move on. Sufficeth to say that I actually get a little excited now whenever I need to edit some text -- using Vim is just that pleasant. 
+I could go on and on about how awesome Vim is, but this is already starting to get a little big for a vignette, so I'll have to move on. Sufficeth to say that I actually get a little excited now whenever I need to edit some text -- using Vim is just that pleasant! 
 
 [emacs]: http://www.gnu.org/software/emacs/
 [vim]: http://www.vim.org/
@@ -45,3 +45,13 @@ I could go on and on about how awesome Vim is, but this is already starting to g
 [dvorak]: http://en.wikipedia.org/wiki/Dvorak_Simplified_Keyboard
 [lt-aoeui]: http://github.com/daveyarwood/aoeui
 [ultimate-vim]: https://github.com/amix/vimrc
+
+# Fish Shell
+
+*picture here*
+
+I was never really dissatisfied with bash. It's a great shell, and you can do all kinds of awesome things with it. But let's face it, folks -- [this is the 90's][fish]. The "modern shell" is a thing now. There are a plethora of alternative shells out there, and shells like fish and especially [zsh][zsh] seem to be getting very popular. Like a lot of things, I tried it out on a whim and fell in love with it. Why did I choose fish over zsh? I didn't, really. 
+fish drew me in first with its style -- the name, the playful headline "Finally, a command line shell for the 90s" (fish was released 
+
+[fish]: http://fishshell.com/
+[zsh]: http://www.zsh.org/
