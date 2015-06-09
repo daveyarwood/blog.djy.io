@@ -35,7 +35,7 @@ I've also found that the rest of the key bindings feel just fine under my Dvorak
 
 Customizing my Vim setup has also been a pleasant experience. I started with the "awesome version" of [this guy's Vim configuration][ultimate-vim], which includes a bunch of useful plugins and custom key bindings, then added my own tweaks. 
 
-I could go on and on about how awesome Vim is, but this is already starting to get a little big for a vignette, so I'll have to move on. Sufficeth to say that I actually get a little excited now whenever I need to edit some text -- using Vim is just that pleasant! 
+I could probably write several blog posts about the awesome things I can do with Vim, but this is already starting to get a little big for a vignette, so I'll have to move on. Sufficeth to say that I actually get a little excited now whenever I need to edit some text -- using Vim is just that pleasant! 
 
 [emacs]: http://www.gnu.org/software/emacs/
 [vim]: http://www.vim.org/
@@ -51,7 +51,20 @@ I could go on and on about how awesome Vim is, but this is already starting to g
 *picture here*
 
 I was never really dissatisfied with bash. It's a great shell, and you can do all kinds of awesome things with it. But let's face it, folks -- [this is the 90's][fish]. The "modern shell" is a thing now. There are a plethora of alternative shells out there, and shells like fish and especially [zsh][zsh] seem to be getting very popular. Like a lot of things, I tried it out on a whim and fell in love with it. Why did I choose fish over zsh? I didn't, really. 
-fish drew me in first with its style -- the name, the playful headline "Finally, a command line shell for the 90s" (fish was released 
+fish drew me in first with its style -- the name, the playful headline "Finally, a command line shell for the 90s" (fish was released in 2005), that ASCII art fish... it all really grabbed my attention. I had every intention of trying zsh next if I didn't like fish, but I ended up totally loving fish and I haven't looked back since. 
+
+By far the strongest feature of fish is its autosuggestions. Based on your command history and the current working directory, fish will suggest previous commands you have entered, much the same way that a web browser will suggest previous URLs you have visited. 
+You can see these suggestions in light gray as you type. To choose the current autosuggestion, you can press either the right arrow key, or Ctrl+F. You can even start typing a partial command (e.g. `ssh `) and then press the up arrow to browse through all of your previous commands starting with what you have typed.  
+I use this feature constantly. Not having to do `history | grep foo` every time I can't remember a particular command I entered is really refreshing. In fact, fish's autosuggestions have become so crucial to my shell experience that it's totally ruined bash for me!
+
+fish also has really smart (and customizable) autocompletions. Out of the box, you can type git commands like `git checkout` and press tab, and you'll see all of the local and remote branches for the current directory as possible completions. fish will even parse your installed man pages and give you relevant options as autocompletions (showing you docstrings), for when you can't remember if that option was supposed to be `-c` or `-C`. Super helpful.
+
+fish does things a little differently than bash, which can make for a rocky transition if you're an advanced bash user and you want to still be able to use all of the same shortcuts (for example, `!!` and `!$` do not work in fish). For the most part, though, I have been able to copy & paste bash commands and they will work just fine in fish. The most common thing I have to replace is `$(this subshell syntax)`, which in fish `(looks like this)`. 
+The nice thing is that if I ever really do need to run a bash command as-is, I can always type `bash` to get a bash process, and run it from there. (I've rarely had to do this, though.)
+
+*maybe talk about env variables, interactive function editing/saving, fish scripting experience*
+
+*no time to talk about all the awesome fish plugins -- link to oh-my-fish and call it a night*
 
 [fish]: http://fishshell.com/
 [zsh]: http://www.zsh.org/
