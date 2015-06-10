@@ -62,9 +62,24 @@ fish also has really smart (and customizable) autocompletions. Out of the box, y
 fish does things a little differently than bash, which can make for a rocky transition if you're an advanced bash user and you want to still be able to use all of the same shortcuts (for example, `!!` and `!$` do not work in fish). For the most part, though, I have been able to copy & paste bash commands and they will work just fine in fish. The most common thing I have to replace is `$(this subshell syntax)`, which in fish `(looks like this)`. 
 The nice thing is that if I ever really do need to run a bash command as-is, I can always type `bash` to get a bash process, and run it from there. (I've rarely had to do this, though.)
 
-*maybe talk about env variables, interactive function editing/saving, fish scripting experience*
+Another thing that fish does differently than bash is the way that it handles environment variables and functions. Interestingly, fish has [three different scopes for variables][fishvars]! The local scope (`set VAR value`) only sets the value of the variable within the most inner currently executing block. 
+The global scope (`set -g VAR value`) sets the value of the variable globally for the current fish session. 
+And finally, the universal scope (`set -U VAR value`) is for variables intended to be shared between all fish sessions on a computer. This initially felt a little strange, coming from bash, but I quickly grew to enjoy the flexibility that it gave me. 
+I've been putting some `set -gx SOMEVAR somevalue` lines in my `fish.config` (which is analagous to a `.bash_profile` -- its contents are executed every time you start a fish shell) for things that I always want set when I start a session, and for other things that I want to be set persistently, but which could change over time, I've found it convenient to run `set -Ux SOMEVAR somevalue` from the command line and the value just sticks persistently until I change it.
+Another cool thing is that fish has a built-in type for lists of things, which is analagous to the `foo:bar:baz` syntax you see sometimes in bash (`$PATH` is a good example of this). In fish, you can actually treat these things as proper lists, and not just a string of things between colons. You can do things like `count $PATH`, `echo $PATH[1]`, etc. Appending a path to your `PATH` is as simple as `set PATH $PATH /some/new/path`. 
 
-*no time to talk about all the awesome fish plugins -- link to oh-my-fish and call it a night*
+Functions are handled quite nicely in fish. The shell goes multi-line (and indents properly) when you start to define one:
+
+*picture here*
+
+fish makes it easy to work with functions interactively from the command line. You can type a function definition in directly, try it out, edit it if needed (`funced my-function` will open up the function definition in your `$EDITOR` of choice), and once you're happy with it, `funcsave my-function` will make it persistent by saving it in its own file in `~/.config/fish/functions`, a folder that fish conveniently sets up for you to hold your functions.
+You can view a list of all the functions defined in your current session by typing `functions`, and print the function definition of any function by typing `functions some-function`. Overall, the fact that I can do so much to customize my shell (persistently) without having to keep going back and editing my `config.fish` makes me happy.
+
+I haven't even touched on all of the awesome plugins that exist for fish. I based my fish configuration on [oh-my-fish][ohmyfish], a framework for managing your fish shell configuration that comes packed with a ton of great themes and plugins (it was inspired by [oh-my-zsh][ohmyzsh], a similar framework for zsh), so check that out if you want to get an idea of [some of the cool things it offers][ohmyfish-plugins]. 
 
 [fish]: http://fishshell.com/
 [zsh]: http://www.zsh.org/
+[fishvars]: http://fishshell.com/docs/current/index.html#variables
+[ohmyfish]: https://github.com/oh-my-fish/oh-my-fish
+[ohmyzsh]: https://github.com/robbyrussell/oh-my-zsh
+[ohmyfish-plugins]: https://github.com/oh-my-fish/oh-my-fish/tree/master/plugins
