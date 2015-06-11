@@ -48,13 +48,15 @@ I could probably write several blog posts about the awesome things I can do with
 
 # Fish Shell
 
-*picture here*
+<a href="{{ site.url }}/assets/2015-06-11-fish.png">
+  <img src="{{ site.url }}/assets/2015-06-11-fish.png" width="417" height="441" title="fish shell">
+</a>
 
 I was never really dissatisfied with bash. It's a great shell, and you can do all kinds of awesome things with it. But let's face it, folks -- [this is the 90's][fish]. The "modern shell" is a thing now. There are a plethora of alternative shells out there, and shells like fish and especially [zsh][zsh] seem to be getting very popular. Like a lot of things, I tried it out on a whim and fell in love with it. Why did I choose fish over zsh? I didn't, really. 
 fish drew me in first with its style -- the name, the playful headline "Finally, a command line shell for the 90s" (fish was released in 2005), that ASCII art fish... it all really grabbed my attention. I had every intention of trying zsh next if I didn't like fish, but I ended up totally loving fish and I haven't looked back since. 
 
 By far the strongest feature of fish is its autosuggestions. Based on your command history and the current working directory, fish will suggest previous commands you have entered, much the same way that a web browser will suggest previous URLs you have visited. 
-You can see these suggestions in light gray as you type. To choose the current autosuggestion, you can press either the right arrow key, or Ctrl+F. You can even start typing a partial command (e.g. `ssh `) and then press the up arrow to browse through all of your previous commands starting with what you have typed.  
+You can see these suggestions in light gray as you type. To choose the current autosuggestion, you can press either the right arrow key, or Ctrl+F. You can even start typing a partial command (e.g. `ssh `) and then press the up arrow to browse through all of your previous commands starting with what you have typed. 
 I use this feature constantly. Not having to do `history | grep foo` every time I can't remember a particular command I entered is really refreshing. In fact, fish's autosuggestions have become so crucial to my shell experience that it's totally ruined bash for me!
 
 fish also has really smart (and customizable) autocompletions. Out of the box, you can type git commands like `git checkout` and press tab, and you'll see all of the local and remote branches for the current directory as possible completions. fish will even parse your installed man pages and give you relevant options as autocompletions (showing you docstrings), for when you can't remember if that option was supposed to be `-c` or `-C`. Super helpful.
@@ -66,11 +68,14 @@ Another thing that fish does differently than bash is the way that it handles en
 The global scope (`set -g VAR value`) sets the value of the variable globally for the current fish session. 
 And finally, the universal scope (`set -U VAR value`) is for variables intended to be shared between all fish sessions on a computer. This initially felt a little strange, coming from bash, but I quickly grew to enjoy the flexibility that it gave me. 
 I've been putting some `set -gx SOMEVAR somevalue` lines in my `fish.config` (which is analagous to a `.bash_profile` -- its contents are executed every time you start a fish shell) for things that I always want set when I start a session, and for other things that I want to be set persistently, but which could change over time, I've found it convenient to run `set -Ux SOMEVAR somevalue` from the command line and the value just sticks persistently until I change it.
+
 Another cool thing is that fish has a built-in type for lists of things, which is analagous to the `foo:bar:baz` syntax you see sometimes in bash (`$PATH` is a good example of this). In fish, you can actually treat these things as proper lists, and not just a string of things between colons. You can do things like `count $PATH`, `echo $PATH[1]`, etc. Appending a path to your `PATH` is as simple as `set PATH $PATH /some/new/path`. 
 
 Functions are handled quite nicely in fish. The shell goes multi-line (and indents properly) when you start to define one:
 
-*picture here*
+<a href="{{ site.url }}/assets/2015-06-11-fish-function.png">
+  <img src="{{ site.url }}/assets/2015-06-11-fish-function.png" width="417" height="441" title="defining a function in fish shell">
+</a>
 
 fish makes it easy to work with functions interactively from the command line. You can type a function definition in directly, try it out, edit it if needed (`funced my-function` will open up the function definition in your `$EDITOR` of choice), and once you're happy with it, `funcsave my-function` will make it persistent by saving it in its own file in `~/.config/fish/functions`, a folder that fish conveniently sets up for you to hold your functions.
 You can view a list of all the functions defined in your current session by typing `functions`, and print the function definition of any function by typing `functions some-function`. Overall, the fact that I can do so much to customize my shell (persistently) without having to keep going back and editing my `config.fish` makes me happy.
