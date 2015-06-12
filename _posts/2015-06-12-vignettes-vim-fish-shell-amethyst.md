@@ -88,3 +88,27 @@ I haven't even touched on all of the awesome plugins that exist for fish. I base
 [ohmyfish]: https://github.com/oh-my-fish/oh-my-fish
 [ohmyzsh]: https://github.com/robbyrussell/oh-my-zsh
 [ohmyfish-plugins]: https://github.com/oh-my-fish/oh-my-fish/tree/master/plugins
+
+# Amethyst
+
+<a href="{{ site.url }}/assets/2015-06-12-amethyst.png">
+  <img src="{{ site.url }}/assets/2015-06-12-amethyst.png" width="360" height="225" title="amethyst">
+</a>
+
+I started using Amethyst around the same time I started using Vim. I had played with a tiling window manager before (specifically [this one][awesome] on a Thinkpad running Linux, and although I enjoyed it, there were a lot of missing pieces that ended up being dealbreakers. 
+Essentially, I didn't like having to invest much time in setting up all the components that I wanted in the status bar -- I remember having a hard time setting up gmail-notifier and weather widgets in the status bar (although I'm sure some of that could be chalked up to my inexperience at the time). 
+All in all, I liked the idea of tiling windows, but disliked the minimalist aesthetic. I ended up going back to [Xfce][xfce], a fairly simple and lightweight desktop manager with batteries included.
+
+Flash forward 5 years or so and I'm doing all of my work on a Macbook. Although I'm pretty happy with this setup, I have found myself customizing it a fair amount, in some ways making it more like the Linux desktop environments I've set up in the past. When I noticed that a few of my coworkers were using OS X software to simulate a tiling window manager, I was inspired to check out [Amethyst][amethyst]. It turned out to be great!
+
+If you're used to tiling window managers, there's really not a whole lot to write home about with Amethyst. It does most of the things you would expect, and it does them nicely. I can cycle through window layouts using `Ctrl-Shift-Space`. I can move the current window over to the main frame with `Ctrl-Shift-Enter`. I can nudge a window a little bigger or smaller using `Ctrl-Shift-H` (left) and `Ctrl-Shift-L`. 
+I can rotate windows within the layout, I can move them around to different screens, and there are [all kinds of other features][amethyst-shortcuts] that I'm not even using. I don't know, it's nice, you should try it!
+
+# *~ fin ~*
+
+That was fun; maybe I'll do it again sometime with 3 new things.
+
+[awesome]: http://awesome.naquadah.org/
+[xfce]: http://www.xfce.org/
+[amethyst]: https://github.com/ianyh/Amethyst
+[amethyst-shortcuts]: https://github.com/ianyh/Amethyst#keyboard-shortcuts
