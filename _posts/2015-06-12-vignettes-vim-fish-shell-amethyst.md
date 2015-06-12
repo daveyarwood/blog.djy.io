@@ -71,7 +71,7 @@ I've been putting some `set -gx SOMEVAR somevalue` lines in my `fish.config` (wh
 
 Another cool thing is that fish has a built-in type for lists of things, which is analagous to the `foo:bar:baz` syntax you see sometimes in bash (`$PATH` is a good example of this). In fish, you can actually treat these things as proper lists, and not just a string of things between colons. You can do things like `count $PATH`, `echo $PATH[1]`, etc. Appending a path to your `PATH` is as simple as `set PATH $PATH /some/new/path`. 
 
-Functions are handled quite nicely in fish. The shell goes multi-line (and indents properly) when you start to define one:
+Functions are handled quite nicely in fish. The prompt goes multi-line (and indents properly) when you start to define one:
 
 <a href="{{ site.url }}/assets/2015-06-11-fish-function.png">
   <img src="{{ site.url }}/assets/2015-06-11-fish-function.png" width="417" height="441" title="defining a function in fish shell">
