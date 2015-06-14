@@ -5,6 +5,7 @@ title: "Pixel Rain"
 category: music
 tags: 
   - chiptune
+  - composition
   - quitasol
   - mml
 ---
