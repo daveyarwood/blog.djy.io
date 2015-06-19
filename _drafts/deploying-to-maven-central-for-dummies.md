@@ -19,7 +19,7 @@ My next proposal was org.daveyarwood (it's simple), but I do not own that domain
     * My pom.xml was missing a `<developers>` section.
     * I was missing -sources.jar and -javadoc.jar (I don't remember if this actually gave me an error, but I did it anyway as I was reading the Maven requirements)
   * You should get an email if all the validation steps pass.
-8. **Click the 'Release' button. Comment on the JIRA comment thread noting that you have done so.**
+8. **Click the 'Release' button. Comment on the JIRA comment thread noting that you have done so (if this is the first time you're releasing to this repo; after that, it will be automatic).**
 
 # The Future
 
