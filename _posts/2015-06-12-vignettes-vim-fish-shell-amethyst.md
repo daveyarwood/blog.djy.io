@@ -15,7 +15,7 @@ So, this idea occurred to me of doing one blog post divided into several *vignet
 
 # Vim
 
-<a href="{{ site.url }}/assets/2015-06-06-vim.png">
+<a href="{{ site.url }}/assets/2015-06-06-vim.png" class="img-link">
   <img src="{{ site.url }}/assets/2015-06-06-vim.png" width="480" height="300"  title="Me editing this post in Vim - meta as fuck">
 </a>
 
@@ -48,7 +48,7 @@ I could probably write several blog posts about the awesome things I can do with
 
 # Fish Shell
 
-<a href="{{ site.url }}/assets/2015-06-11-fish.png">
+<a href="{{ site.url }}/assets/2015-06-11-fish.png" class="img-link">
   <img src="{{ site.url }}/assets/2015-06-11-fish.png" width="417" height="441" title="fish shell">
 </a>
 
@@ -73,7 +73,7 @@ Another cool thing is that fish has a built-in type for lists of things, which i
 
 Functions are handled quite nicely in fish. The prompt goes multi-line (and indents properly) when you start to define one:
 
-<a href="{{ site.url }}/assets/2015-06-11-fish-function.png">
+<a href="{{ site.url }}/assets/2015-06-11-fish-function.png" class="img-link">
   <img src="{{ site.url }}/assets/2015-06-11-fish-function.png" width="417" height="441" title="defining a function in fish shell">
 </a>
 
@@ -91,7 +91,7 @@ I haven't even touched on all of the awesome plugins that exist for fish. I base
 
 # Amethyst
 
-<a href="{{ site.url }}/assets/2015-06-12-amethyst.png">
+<a href="{{ site.url }}/assets/2015-06-12-amethyst.png" class="img-link">
   <img src="{{ site.url }}/assets/2015-06-12-amethyst.png" width="360" height="225" title="amethyst">
 </a>
 

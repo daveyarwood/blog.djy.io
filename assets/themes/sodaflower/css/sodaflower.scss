@@ -1,0 +1,266 @@
+---
+---
+
+html, body {
+  height: 100%;
+  margin: 0px;
+  padding: 0px;
+  overflow: auto;
+}
+
+// color theme
+$beige: #F0F1EE;
+$dark-gray: #333332;
+$blue: #1352A2;
+$yellow: #FFD464;
+$orange: #FB6964;
+ 
+// misc colors
+$deep-blue: #212029;
+$gray: #888888;
+$light-gray: #cccccc;
+
+$retro-fonts: "Roboto Mono", Monaco, monospace;
+
+a {
+  padding: 0 4px;
+  &:link, &:visited {
+    color: $orange;
+    text-decoration: none;
+  }
+  &:hover, &:active {
+    color: $beige;;
+    background-color: $orange;
+    text-decoration: none;
+  }
+}
+
+a.img-link { background-color: transparent; }
+
+.container {
+  width: 100%;
+  padding: 30px;
+  float: left;
+  clear: both;
+}
+
+/*************************************************************************/
+
+#content-container {
+  @extend .container;
+  background-color: $beige;
+}
+
+main {
+  font-family: $retro-fonts;
+  font-size: 15px;
+  line-height: 20px;
+}
+
+.page-header {
+  padding: 0 4px 0 4px;
+  color: $beige;
+  background-color: $blue;
+  font-family: $retro-fonts;
+  font-size: 25px;
+  line-height: 35px;
+  font-weight: normal;
+}
+
+.site-title {
+  @extend .page-header;
+  a {
+    background-color: transparent;
+    text-decoration: none;
+    &:link, &:visited {
+      color: $beige;
+    }
+    &:hover, &:active {
+      color: $beige;
+    }
+  }
+}
+
+.date {
+  font-family: $retro-fonts;
+}
+
+.classification {
+  display: block;
+  font-style: italic;
+  h3 {
+    display: inline;
+  }
+  ul {
+    display: inline;
+    font-style: italic;
+    padding: 0;
+
+    li {
+      display: inline;
+      list-style-type: none;
+      &:after {
+        content: "/ ";
+      }
+      &:last-child:after {
+        content: none;
+      }
+    }
+  }
+}
+
+p code {
+  background: $light-gray;
+  padding: 4px;
+}
+
+pre {
+  overflow: auto;
+  word-wrap: normal;
+  white-space: pre;
+  padding: 1px 5px;
+}
+
+/*************************************************************************/
+
+#header-container {
+  @extend .container;
+  background: $beige;
+}
+
+img#portrait {
+  width: 100px;
+  height: 100px;
+  border: 0px;
+  border-radius: 10px;
+}
+
+#project-links {
+  margin-top: 1em;
+  p {
+    margin-bottom: 0.5em;
+    font-family: $retro-fonts;
+    font-weight: bold;
+    font-size: 15px;
+    line-height: 10px;
+  }
+}
+
+/************************* index/archive pages ***************************/
+
+#month-header {
+  font-family: $retro-fonts;
+}
+
+#post-title {
+  font-family: $retro-fonts;
+  font-size: 25px;
+  line-height: 50px;
+}
+
+#teaser {
+  width: 75%;
+  margin: 0 auto;
+}
+
+// archive:
+
+ul.posts-by-month {
+  li {
+    list-style-type: none;
+  }
+}
+
+
+/*************************************************************************/
+
+.light-box {
+  display: inline-block;
+  padding: 5px;
+  background-color: $beige;
+  box-shadow: 10px 10px 5px $gray;
+}
+
+#footer-container {
+  @extend .container;
+  background-color: $deep-blue;
+  padding-top: 20px;
+  padding-bottom: 40px;
+
+  font-family: $retro-fonts;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+footer {
+  position: relative;
+  width: 525px;
+  margin: 0 auto;
+}
+
+.pagination {
+  @extend .light-box;
+  display: block;
+  width: 250px;
+  margin: 0 auto;
+  padding: 10px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+#latest {
+  @extend .light-box;
+  display: block;
+  width: 450px;
+  margin: 0 auto;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+#cats-and-tags-and-feeds {
+  position: relative;
+  display: block;
+  width: 500px;
+  height: 100%;
+  margin: 0 auto;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+#cats {
+  @extend .light-box;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  vertical-align: top;
+}
+
+#tags {
+  @extend .light-box;
+  margin-right: 10px;
+}
+
+#feeds {
+  display: inline-block;
+  vertical-align: top;
+  margin-top: -18px;
+}
+
+#rss-feed {
+  @extend .light-box;
+  display: block;
+  padding: 10px;
+}
+
+#atom-feed {
+  @extend .light-box;
+  display: block;
+  padding: 10px;
+}
+
+#copyright {
+  @extend .light-box;
+  display: block;
+  width: 475px;
+  margin: 0 auto;
+  text-align: center;
+}

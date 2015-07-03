@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>{{ page.title }} :: {{ site.title }}</title>
+    {% if page.description %}
+      <meta name="description" content="{{ page.description }}">
+    {% endif %}
+    <meta name="author" content="{{ site.author.name }}">
+
+    <!-- Enable responsive viewport -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <link href="{{ ASSET_PATH }}/css/normalize.css" rel="stylesheet" type="text/css">
+    <link href="{{ ASSET_PATH }}/css/sodaflower.css" rel="stylesheet" type="text/css">
+    <link href="{{ ASSET_PATH }}/css/pygments.css" rel="stylesheet" type="text/css">
+    <link href='http://fonts.googleapis.com/css?family=Roboto+Mono' rel='stylesheet' type='text/css'>
+    
+    <!-- Le styles
+    <link href="{{ ASSET_PATH }}/bootstrap/css/bootstrap.2.2.2.min.css" rel="stylesheet">
+    <link href="{{ ASSET_PATH }}/css/style.css?body=1" rel="stylesheet" type="text/css" media="all">
+    -->
+
+    <!-- atom & rss feed -->
+    <link href="{{ BASE_PATH }}{{ site.JB.atom_path }}" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
+    <link href="{{ BASE_PATH }}{{ site.JB.rss_path }}" type="application/rss+xml" rel="alternate" title="Sitewide RSS Feed">
+
+  </head>
+
+  <body>
+    
+    <div id="header-container">
+
+      <header>
+
+        <span class="site-title">
+          <a href="{{ HOME_PATH }}">
+            dave yarwood
+          </a>
+        </span> 
+        <div id="project-links">
+          <p>
+            code &nbsp;:: 
+            <a href="https://github.com/alda-lang/alda" target="_blank">alda</a>,
+            <a href="https://github.com/daveyarwood/midi.soundfont" target="_blank">midi.soundfont</a>,
+            <a href="https://github.com/daveyarwood/djy" target="_blank">djy.char</a>
+          </p>
+          <p>
+            music :: 
+            <a href="http://www.popupchorus.org" target="_blank">popup chorus</a>,
+            <a href="http://noloveraleigh.bandcamp.com" target="_blank">no love</a>,
+            <a href="http://antibubbles.bandcamp.com" target="_blank">antibubbles</a>
+          </p>
+          <p>
+            links :: 
+            <a href="http://github.com/daveyarwood" target="_blank">github</a>,
+            <a href="http://twitter.com/dave_yarwood" target="_blank">twitter</a>,
+            <a href="http://soundcloud.com/daveyarwood" target="_blank">soundcloud</a>,
+            <a href="http://www.last.fm/user/sdmoibut" target="_blank">last.fm</a>,
+            <a href="mailto:dave.yarwood@gmail.com">e-mail</a>
+          </p>
+        </div>
+
+      </header>
+
+    </div>
+
+    <div id="content-container">
+      <main>{{ content }}</main>
+    </div>
+    
+    <div id="footer-container">
+      <footer>
+        <h1 class="pagination">
+          {% if page.previous %}
+            <a href="{{ BASE_PATH }}{{ page.previous.url }}" title="{{ page.previous.title }}">&lt;&lt;</a>
+          {% else %}
+            &lt;&lt;
+          {% endif %}
+            <a href="{{ BASE_PATH }}{{ site.JB.archive_path }}">archive</a>
+          {% if page.next %}
+            <a href="{{ BASE_PATH }}{{ page.next.url }}" title="{{ page.next.title }}">&gt;&gt;</a>
+          {% else %}
+            &gt;&gt;
+          {% endif %}
+        </h1>      
+        <div id="latest">
+          <strong><u>latest</u>:</strong>
+          <ul style="list-style-type: none; padding: 0px">
+          {% for post in site.posts offset: 0 limit: 7 %}
+            <li>
+              <a href="{{ root_url }}{{ post.url }}">{{ post.title }}</a>
+            </li>
+          {% endfor %}
+          </ul>
+        </div>
+        
+        <div id="cats-and-tags-and-feeds">
+          <div id="cats">
+            <strong><u>categories</u>:</strong>
+            <ul style="list-style-type: none; padding: 0px">
+            {% for category in site.categories %}
+              <li>
+                <a href="{{ BASE_PATH }}{{ site.JB.categories_path }}#{{ category[0] }}-ref">
+                {{ category[0] | join: "/" }}</a>
+              </li>
+            {% endfor %}
+            </ul>
+          </div>
+
+          <div id="tags">
+            <strong><u>tags</u>:</strong>
+            <ul style="list-style-type: none; padding: 0px">
+            {% for tag in site.tags %}
+              <li>
+                <a href="{{ BASE_PATH }}{{ site.JB.tags_path }}#{{ tag[0] }}-ref">
+                {{ tag[0] }} ({{ tag[1].size }})</a>
+              </li>
+            {% endfor %}
+            </ul>
+          </div>
+          <div id="feeds">
+            <h1 id="rss-feed">
+              <a href="http://daveyarwood.github.io/rss.xml">rss</a>
+            </h1>
+            <h1 id="atom-feed">
+              <a href="http://daveyarwood.github.io/atom.xml">atom</a>
+            </h1>
+          </div>
+        </div>
+        <div id="copyright">
+          &copy; {{ site.time | date: '%Y' }} {{ site.author.name }}
+            with help from <a href="http://jekyllbootstrap.com" target="_blank" title="The Definitive Jekyll Blogging Framework">Jekyll Bootstrap</a>
+        </div>
+      </footer>
+    </div>
+
+
+    {% include JB/analytics %}
+  </body>
+</html>
