@@ -5,13 +5,14 @@
   {% endif %}
 </span>
 
-<h2 class="date">
+<div class="classification">
+  <h4>date:</h4>
   {{ page.date | date: "%B %-d, %Y" }}
-</h2>
+</div>
 
 {% unless page.categories == empty %}
 <div class="classification">
-  <h3>categories:</h3>
+  <h4>categories:</h4>
   <ul>
   {% for category in page.categories %}
     <li>
@@ -26,7 +27,7 @@
 
 {% unless page.tags == empty %}
 <div class="classification">
-  <h3>tags:</h3>
+  <h4>tags:</h4>
   <ul>
   {% for tag in page.tags %}
     <li>
@@ -41,4 +42,8 @@
 
 <article>{{ content }}</article>
 
+<br>
+<br>
+<span class="page-header">comments</span>
+<br>
 {% include JB/comments %}

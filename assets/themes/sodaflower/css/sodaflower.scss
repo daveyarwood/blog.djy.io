@@ -81,19 +81,13 @@ main {
   }
 }
 
-.date {
-  font-family: $retro-fonts;
-}
-
 .classification {
   display: block;
-  font-style: italic;
-  h3 {
+  h4 {
     display: inline;
   }
   ul {
     display: inline;
-    font-style: italic;
     padding: 0;
 
     li {
@@ -148,8 +142,9 @@ img#portrait {
 
 /************************* index/archive pages ***************************/
 
-#month-header {
-  font-family: $retro-fonts;
+.month-header {
+  @extend .page-header;
+  font-size: 20px;
 }
 
 #post-title {
@@ -163,12 +158,10 @@ img#portrait {
   margin: 0 auto;
 }
 
-// archive:
-
-ul.posts-by-month {
-  li {
-    list-style-type: none;
-  }
+ul.archive-posts {
+  padding: 0;
+  margin: 10px 0 0 0;
+  list-style-type: none;
 }
 
 
