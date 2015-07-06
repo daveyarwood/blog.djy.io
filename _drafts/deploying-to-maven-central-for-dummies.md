@@ -8,7 +8,7 @@ Maven Central doesn't have such limits, but what it does have is an insanely com
 
 1. **Create a JIRA account, fill out the form to submit a ticket.** This is just a one-time step to set up your repository groupId, to my understanding. I initially wanted midi.soundfont (to namespace soundfonts), however as we discussed on the JIRA ticket, your groupId must follow the convention of the reverse domain name, e.g. com.google. 
 My next proposal was org.daveyarwood (it's simple), but I do not own that domain name (and I don't really feel like purchasing a domain I won't use), so that was out. I ended up settling on org.bitbucket.daveyarwood, since this project is hosted on my Bitbucket account. (note: you have to wait for OSSRH team to set up your groupId before you can do steps 6-8)
-2. **Create the pom & jar (`boot pom jar`).** Manually adjust pom.xml -- (check this, but...) you should just have to add the `<developers>` section, assuming the other stuff was included in the task options for the `pom` task. 
+2. **Create the pom & jar (`boot pom jar`).** Manually adjust pom.xml -- you should just have to add the `<developers>` section, assuming the other stuff was included in the task options for the `pom` task. 
 3. **Set up a PGP key, if you don't already have one.** Upload your PGP key so OSSRH can authenticate your jar bundle.
 4. **Sign everything (jar, pom.xml, -sources.jar, -javadoc.jar).** Make fake -sources.jar and -javadoc.jar if needed.
 5. **Make a jar bundle.** (`jar cvf bundle.jar ...`) Include all 4 files, as well as their .asc versions.
