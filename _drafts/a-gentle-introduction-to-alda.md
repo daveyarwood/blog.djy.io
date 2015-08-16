@@ -1,3 +1,16 @@
+---
+layout: post
+title: "A Gentle Introduction to Alda"
+category: alda
+tags: 
+  - alda
+  - music-programming
+  - composition
+published: true
+---
+
+{% include JB/setup %}
+
 # UNC / MML
 
 (some sort of screenshot would be nice here)
@@ -21,37 +34,41 @@ MML ended up becoming a major influence on Alda. I really enjoyed the workflow o
 
 (screenshot of sibelius or something?)
 
-I was a classically trained musician long before I was a competent programmer. My music education led to a particular interest in composing music in a variety of styles. Growing up around computers, I discovered an ever-expanding class of GUI applications designed to help musicians compose music. I wrote guitar tablature with [Guitar Pro][guitarpro]
+I was a classically trained musician long before I was a competent programmer. My music education led to a particular interest in composing music in a variety of styles. Growing up around computers, I discovered an ever-expanding class of GUI applications designed to help musicians compose music. 
+I wrote guitar tablature with [Guitar Pro][guitarpro], and for traditional music notation I have tried, at various times in my life, [Cakewalk][cakewalk], [Noteworthy Composer][noteworthy], [Finale][finale], [Sibelius][sibelius], and [Musescore][musescore], among others. 
 
-[guitarpro]: 
+[guitarpro]: http://guitar-pro.com
+[cakewalk]: https://en.wikipedia.org/wiki/Cakewalk_(sequencer)
+[noteworthy]: https://noteworthycomposer.com
+[finale]: http://finalemusic.com
+[sibelius]: http://sibelius.com
+[musescore]: https://musescore.org
 
-- there are text-based music/audio programming languages, as well as visual ones (e.g. puredata)
-- there is also a separate class of music GUI applications, which are much more popular
-- in fact, I had been using applications like Guitar Pro, Finale and Sibelius for years
-- when I discovered music programming languages, I made a connection between what these GUI programs are doing and what you can do with MPLs
-- but MPLs resonated with me more -- these music programming languages tend to allow you to do more things in a less restrictive way than the GUI programs. 
-- perhaps more importantly, I have found that programming pieces of music in a text editor is a pleasantly distraction-free experience, when compared to putting together a piece of music in a complex GUI application like Sibelius. 
-- I used Sibelius extensively during my music education to transcribe pieces of music as I composed them
-  - it allowed me to have a digital record of my compositions, and was essential (practically a requirement) as a way to print out individual instrument parts to distribute to the musicians who performed my pieces
-  - Sibelius is great - there is a reason it is considered an industry leader in the field of music notation software
-  - as a programmer, however, I feel that there are some fundamental problems with GUI music notation software:
-    - it's distracting. 
-      - When pre-digital age composers used to write music, they would sit at a piano and write it out by hand. All of the notation techniques, the layout of their scores, everything came directly from their minds through their pens. 
-      - When you notate music using a GUI application, you have menus upon menus in front of you from which to select whatever elements of music notation you wish to use in your score. 
-      - This is distracting in two ways:
-        1. it's not always easy to find what you're looking for. By the time you find it, you may have lost your train of thought.
-        2. having all of these music elements in front of you is visually distracting. When I used Sibelius, I would sometimes end up distracting myself for long stretches of time as I perused all of the different music notation elements it was possible to place, or browsed through all the project templates available. 
-    - it's limiting.
-      - I think for a composer to have an ideal environment in which to compose, he needs to get back to the basics. He needs a blank canvas and a way to notate music. Because this is the 21st century, his scores need a way to be interpreted by a computer and turned into audio. It would also be nice if his scores could be easily converted to and from standard notation format that human musicians are trained to read.
-      - The GUI programs available today do an excellent job of handling these 21st century requirements. However, they do so by taking a shortcut -- they skip the "blank canvas" part. 
-      - Yes, when you create a new Sibelius score, you have what looks like some empty lines of staff paper, but this blank staff paper carries a much different connotation than a physical page of manuscript paper. You can't just grab a pencil and start writing whatever your heart desires. There are a number of hidden restraints than Sibelius forces upon you.
-      - I can't blame Sibelius for this. It is a shortcoming that every GUI music notation editor has to deal with. In order to be able to represent your musical score visually in a sane way, it has to impose some restrictions. 
-      - Audio programming languages must also impose restrictions out of necessity, but because they are not tied to visually representing your score and maintaining a user-friendly GUI interface, they can get away with imposing substantially less restrictions on the composer. (example: loops, tempo phasing between instruments) As a composer, I find this fascinating and inspiring.
-- primary influences: MML, LilyPond, etc.
+When I was studying music composition, I got a lot of mileage out of Sibelius, in particular. I used Sibelius extensively to transcribe pieces of music as I composed them. It allowed me to have a digital record of my compositions, and it was essential (practically a requirement) as a way to print out individual instrument parts to distribute to the musicians who performed my pieces.
+
+Music notation applications like Sibelius are clearly a very important tool for people who are serious about composing music. However, as a programmer and as a composer, I feel that there are a couple of fundamental problems with GUI music notation software:
+
+* **It's distracting.**  When pre-digital age composers used to write music, they would sit at a piano and write it out by hand on staff paper. All of the notation techniques, the layout of their scores, everything, came directly from their minds and through their pens. 
+When you notate music using a GUI application, you have menus upon menus in front of you from which to select whatever elements of music notation you wish to use in your score. This is distracting in two ways:
+
+    1. It's not always easy to find what you're looking for. By the time you find it, you may have lost your train of thought.
+
+    2. Having all of these music elements in front of you is visually distracting. When I used Sibelius, I would sometimes end up distracting myself for long stretches of time as I perused all of the different music notation elements it was possible to place, or browsed through all the project templates available. 
+
+    In contrast to working with these complex GUI applications, I have found that programming pieces of music in a text editor is a pleasantly distraction-free experience.
+
+* **It's limiting.** I think for a composer to have an ideal environment in which to compose, he needs to get back to the basics. He needs a blank canvas and a way to notate music. And because this is the 21st century, his scores need a way to be interpreted by a computer and turned into audio. It would also be nice if his scores could be easily converted to and from standard notation format that human musicians are trained to read. 
+
+    The GUI programs available today do an excellent job of handling these 21st century requirements, but they do so by taking a shortcut -- they skip the "blank canvas" part. Of course, when you create a new score in Sibelius (for example), you do have what looks like some empty lines of staff paper, but in fact, this blank staff paper carries a very different connotation than does a physical page of manuscript paper. You can't just grab a pencil and start writing whatever your heart desires. 
+    
+    There are a number of hidden restraints that the GUI application forces upon you. This is an inherent shortcoming of any GUI music notation editor; in order to be able to represent your musical score visually in a sane and comprehensible way, it has to impose some restrictions. 
+    Audio programming languages must also impose restrictions (in the same sense that any piece of software does), but because they are not tied to visually representing your score and maintaining a user-friendly GUI interface, audio programming environments are able to get away with imposing substantially less restrictions on the composer. As a composer, I find this fascinating and inspiring.
 
 # What is Alda?
 
 TODO
+
+- primary influences: MML, LilyPond, etc.
 
 # Setup
 
