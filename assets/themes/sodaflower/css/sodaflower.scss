@@ -3,7 +3,7 @@
 
 html, body {
   height: 100%;
-  margin: 0px;
+  margin: 0px !important;
   padding: 0px;
   overflow: auto;
 }
@@ -55,6 +55,15 @@ main {
   font-family: $retro-fonts;
   font-size: 15px;
   line-height: 20px;
+}
+
+article {
+  h1 {
+    margin: 40px 0;
+  }
+  p {
+    margin: 1.5em 0;
+  }
 }
 
 .page-header {
