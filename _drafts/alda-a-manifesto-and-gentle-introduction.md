@@ -117,7 +117,28 @@ Open a terminal in the directory where you cloned the Alda repo, and you will no
 
 # Basic Alda syntax
 
-- use the alda repl for this section
+We will use the Alda REPL at first, to experiment a little with Alda syntax. To start the REPL, type: 
+
+{% highlight text %}
+boot alda-repl
+{% endhighlight %}
+
+> Note: Alda uses a [soundfont](https://en.wikipedia.org/wiki/SoundFont) called FluidR3 to make MIDI sound a lot nicer. This is a one-time 125 MB download that will kick off when you run the above command. This may take a few minutes, depending on your network connection. 
+To pass the time while you wait, you may want to watch [some](https://www.youtube.com/watch?v=NhjSzjoU7OQ) [music](https://www.youtube.com/watch?v=7F5TZ7z7tJs) [videos](https://www.youtube.com/watch?v=gzoEK545j64) on YouTube or something.
+
+> If you'd prefer to skip this step and use the Java Virtual Machine's built-in MIDI synthesizer (which sounds terrible) instead, you can type `boot alda-repl --stock`.
+
+Once FluidR3 has downloaded and the REPL is ready, you should see something like this:
+
+<center>
+  <img src="{{site.url}}/assets/2015-08-20-alda-repl.png"
+       alt="the Alda REPL"
+       title="the Alda REPL" 
+       width="500"
+       height="225">
+</center>
+
+You can type snippets of Alda code into the REPL, press Enter, and hear the results instantly.
 
 As I mentioned, MML ended up being a primary influence on Alda. The great thing about MML, in particular, is the simplicity of its syntax. I would describe it as being similar to Markdown; essentially, what you see is what you get.
 
