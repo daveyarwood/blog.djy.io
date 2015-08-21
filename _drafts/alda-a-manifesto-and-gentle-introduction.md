@@ -11,6 +11,24 @@ published: true
 
 {% include JB/setup %}
 
+# What is Alda?
+
+<img src="{{site.url}}/assets/2015-08-18-alda.png"
+     alt="alda"
+     title="alda"
+     width="600"
+     height="300" />
+
+Alda's ambition is to be a powerful and flexible music programming language that can be used to create music in a variety of genres by typing some code into a text editor and running a program that compiles the code and turns it into sound. I've put a lot of thought into making the syntax as intuitive and beginner-friendly as possible. In fact, one of the goals of Alda is to be simple for someone with little-to-no programming experience to pick up and start using. Alda's tagline, *a music programming language for musicians*, conveys its goal of being useful to non-programmers.
+
+But while its syntax aims to be as simple as possible, Alda will also be extensive in scope, offering composers a canvas with creative possibilities as close to unlimited as it can muster. I've already rambled at length about the inspiring creative potential that audio programming languages can bring to the table. It is my hope that Alda will embody much of this potential. 
+
+At the time of writing, Alda can be used to create MIDI scores, using any instrument available in the [General MIDI sound set](http://www.midi.org/techspecs/gm1sound.php). In the near future, Alda's scope will be expanded to include sounds synthesized from basic waveforms, samples loaded from sound files, and perhaps other forms of synthesis.
+
+In this blog post, I will walk you through the steps of setting up Alda and writing some basic scores. 
+
+But first, a little history.
+
 # UNC and MML
 
 <img src="{{ site.url }}/assets/2015-08-18-imml.png"
@@ -81,20 +99,6 @@ When you notate music using a GUI application, you have menus upon menus in fron
 
     This is an inherent shortcoming of any GUI music notation editor; in order to be able to represent your musical score visually in a sane and comprehensible way, it has to impose some restrictions. Audio programming languages must also impose restrictions (in the same sense that any piece of software does), but because they are not tied to visually representing your score and maintaining a user-friendly GUI interface, audio programming environments are able to get away with imposing substantially less restrictions on the composer. As a composer, I find this fascinating and inspiring.
 
-# What is Alda?
-
-<img src="{{site.url}}/assets/2015-08-18-alda.png"
-     alt="alda"
-     title="alda"
-     width="600"
-     height="300" />
-
-Alda's ambition is to be a powerful and flexible music programming language that can be used to create music in a variety of genres by typing some code into a text editor and running a program that compiles the code and turns it into sound. I've put a lot of thought into making the syntax as intuitive and beginner-friendly as possible. In fact, one of the goals of Alda is to be simple for someone with little-to-no programming experience to pick up and start using. Alda's tagline, *a music programming language for musicians*, conveys its goal of being useful to non-programmers.
-
-But while its syntax aims to be as simple as possible, Alda will also be extensive in scope, offering composers a canvas with creative possibilities as close to unlimited as it can muster. I've already rambled at length about the inspiring creative potential that audio programming languages can bring to the table. It is my hope that Alda will embody much of this potential. 
-
-At the time of writing, Alda can be used to create MIDI scores, using any instrument available in the [General MIDI sound set](http://www.midi.org/techspecs/gm1sound.php). In the near future, Alda's scope will be expanded to include sounds synthesized from basic waveforms, samples loaded from sound files, and perhaps other forms of synthesis.
-
 # Setup
 
 To get started with Alda, you will need to do two things:
@@ -140,7 +144,7 @@ Once FluidR3 has downloaded and the REPL is ready, you should see something like
 
 You can type snippets of Alda code into the REPL, press Enter, and hear the results instantly.
 
-As I mentioned, MML ended up being a primary influence on Alda. The great thing about MML, in particular, is the simplicity of its syntax. I would describe it as being similar to Markdown; essentially, what you see is what you get.
+As I mentioned, MML ended up being a primary influence on Alda. The great thing about MML, in particular, is the simplicity of its syntax. I would describe it as being similar to [Markdown](http://daringfireball.net/projects/markdown); essentially, what you see is what you get.
 
 Let's start with a simple example. Let's translate this measure of sheet music into Alda:
 
