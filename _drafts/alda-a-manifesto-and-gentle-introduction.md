@@ -142,7 +142,40 @@ You can type snippets of Alda code into the REPL, press Enter, and hear the resu
 
 As I mentioned, MML ended up being a primary influence on Alda. The great thing about MML, in particular, is the simplicity of its syntax. I would describe it as being similar to Markdown; essentially, what you see is what you get.
 
-- show examples of notated music and their corresponding representation in Alda
+Let's start with a simple example. Let's translate this measure of sheet music into Alda:
+
+**(insert sheet music here: C D E F quarter notes)**
+
+Here we have four quarter notes: C, D, E and F. The Alda version of this is:
+
+{% highlight text %}
+c d e f
+{% endhighlight %}
+
+Try typing this into the REPL... nothing happens. Why? Well, we haven't told Alda what kind of instrument we want. Let's go with a piano:
+
+{% highlight text %}
+piano: c d e f
+{% endhighlight %}
+
+You should hear a piano playing those four notes. You will also notice that the prompt has now changed from `>` to `p>`. `p` is short for `piano`, and it signifies that the piano is the only currently active instrument. Until you change instruments, any notes that you enter into the REPL will continue to be played by the piano.
+
+Let's add some more notes.
+
+**(insert sheet music here: G A B > C quarter notes)**
+
+{% highlight text %}
+g a b > c
+{% endhighlight %}
+
+You should hear the piano continuing upwards in the C major scale. An interesting thing to note here is the `>`. This is Alda syntax for "go up to the next octave." An octave, in [scientific pitch notation](https://en.wikipedia.org/wiki/Scientific_pitch_notation), starts on a C and goes up to a B. Once you go above that B, the notes start over from C and you are in a new octave. 
+In Alda, each instrument starts in octave 4, and remains in that octave until you tell it to change octaves. You can do that in one of two ways: you can use `<` and `>` to go down or up by one octave; or, you can jump to a specific octave using `o` followed by a number. For example:
+
+**(sheet music: 10 C's in SPN -- maybe just re-use the sheet music from the SPN wikipedia page?)**
+
+{% highlight text %}
+o0 c > c > c > c > c > c > c > c > c > c
+{% endhighlight %}
 
 # Organizing a score
 
