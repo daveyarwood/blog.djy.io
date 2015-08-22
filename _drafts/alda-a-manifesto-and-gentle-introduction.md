@@ -97,9 +97,11 @@ When you notate music using a GUI application, you have menus upon menus in fron
 
     The GUI programs available today do an excellent job of handling these 21st century requirements, but they do so by taking a shortcut -- they skip the "blank canvas" part. Of course, when you create a new score in Sibelius (for example), you do have what looks like some empty lines of staff paper, but in fact, this blank staff paper carries a very different connotation than does a physical page of manuscript paper. You can't just grab a pencil and start writing whatever your heart desires. There are a number of hidden restraints that the GUI application forces upon you. 
 
-    This is an inherent shortcoming of any GUI music notation editor; in order to be able to represent your musical score visually in a sane and comprehensible way, it has to impose some restrictions. Audio programming languages must also impose restrictions (in the same sense that any piece of software does), but because they are not tied to visually representing your score and maintaining a user-friendly GUI interface, audio programming environments are able to get away with imposing substantially less restrictions on the composer. As a composer, I find this fascinating and inspiring.
+    This is an inherent shortcoming of any GUI music notation editor; in order to be able to represent your musical score visually in a sane and comprehensible way, it has to impose some restrictions. Audio programming languages must also impose restrictions (in the same sense that any piece of software does), but because they are not tied to visually representing your score and maintaining a user-friendly GUI interface, they are able to get away with imposing substantially less restrictions on the composer. As a composer, I find this fascinating and inspiring.
 
 # Setup
+
+> Note: As Alda is currently still under development, you will need to follow the process below to run it. Hopefully the process is pretty intuitive, and certainly feel free to [e-mail me](mailto:dave.yarwood@gmail.com?subject=alda) if you run into any issues. In the future, the process will be much simpler, e.g. downloading and running a standalone executable program.
 
 To get started with Alda, you will need to do two things:
 
@@ -146,6 +148,8 @@ You can type snippets of Alda code into the REPL, press Enter, and hear the resu
 
 As I mentioned, MML ended up being a primary influence on Alda. The great thing about MML, in particular, is the simplicity of its syntax. I would describe it as being similar to [Markdown](http://daringfireball.net/projects/markdown); essentially, what you see is what you get.
 
+## Notes
+
 Let's start with a simple example. Let's translate this measure of sheet music into Alda:
 
 **(insert sheet music here: C D E F quarter notes)**
@@ -164,6 +168,8 @@ piano: c d e f
 
 You should hear a piano playing those four notes. You will also notice that the prompt has now changed from `>` to `p>`. `p` is short for `piano`, and it signifies that the piano is the only currently active instrument. Until you change instruments, any notes that you enter into the REPL will continue to be played by the piano.
 
+## Octaves
+
 Let's add some more notes.
 
 **(insert sheet music here: G A B > C quarter notes)**
@@ -178,7 +184,61 @@ In Alda, each instrument starts in octave 4, and remains in that octave until yo
 **(sheet music: 10 C's in SPN -- maybe just re-use the sheet music from the SPN wikipedia page?)**
 
 {% highlight text %}
-o0 c > c > c > c > c > c > c > c > c > c
+o0 c > c > c > c > c > c > c > c > c > c o4
+{% endhighlight %}
+
+## Accidentals
+
+Sharps and flats can be added to a note by adding `+` or `-`. 
+
+**sheet music**
+
+{% highlight text %}
+c < b- a g f+ 
+{% endhighlight %}
+
+You can even have double flats/sharps:
+
+**sheet music**
+
+{% highlight text %}
+f+ e d+ c+ < b++
+{% endhighlight %}
+
+As a matter of fact, a note in Alda can have any combination of flats/sharps. It usually isn't useful to use more than 2 sharps or flats (tops), but there's nothing stopping you from doing things like this:
+
+**sheet music?**
+
+{% highlight text %}
+o4 c++++-+-+-+
+{% endhighlight %}
+
+## Note lengths
+
+By default, notes in Alda are quarter notes. You can set the length of a note by adding a number after it. The number represents the note type, e.g. 4 for a quarter note, 8 for an eighth, 16 for a sixteenth, etc. When you specify a note length, this becomes the "new default" for all subsequent notes.
+
+**sheet music**
+
+{% highlight text %}
+c4 c8 c c16 c c c c32 c c c c c c c | c1
+{% endhighlight %}
+
+You may have noticed the pipe `|` character before the last note in the example above. This represents a bar line separating two measures of music. Bar lines are optional in Alda; they are ignored by the compiler, and serve no purpose apart from making your score more readable.
+
+Rests work just like notes; they're kind of like notes that you can't hear. A rest is represented as the letter `r`.
+
+**sheet music**
+
+{% highlight text %}
+r2 c | r4 c r8 c r4
+{% endhighlight %}
+
+You can use [dotted notes](https://en.wikipedia.org/wiki/Dotted_note), too. Simply add one or more `.`s onto the end of a note length.
+
+**sheet music**
+
+{% highlight text %}
+trombone: o2 c4.. d16 e-8 r c r
 {% endhighlight %}
 
 # Organizing a score
