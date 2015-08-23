@@ -44,6 +44,9 @@ a.img-link { background-color: transparent; }
   clear: both;
 }
 
+// don't let images overflow their containers
+img { max-width: 100%; }
+
 /*************************************************************************/
 
 #content-container {
@@ -58,7 +61,7 @@ main {
 }
 
 article {
-  h1 {
+  h1, h2, h3 {
     margin: 40px 0;
   }
   p {
