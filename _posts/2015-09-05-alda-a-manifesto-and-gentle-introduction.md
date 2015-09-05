@@ -23,7 +23,8 @@ Alda's ambition is to be a powerful and flexible music programming language that
 
 But while its syntax aims to be as simple as possible, Alda will also be extensive in scope, offering composers a canvas with creative possibilities as close to unlimited as it can muster. I'm about to ramble a little about the inspiring creative potential that audio programming languages can bring to the table; it is my hope that Alda will embody much of this potential. 
 
-At the time of writing, Alda can be used to create MIDI scores, using any instrument available in the [General MIDI sound set](http://www.midi.org/techspecs/gm1sound.php). In the near future, Alda's scope will be expanded to include sounds synthesized from basic waveforms, samples loaded from sound files, and perhaps other forms of synthesis.
+At the time of writing, Alda can be used to create MIDI scores, using any instrument available in the [General MIDI sound set](http://www.midi.org/techspecs/gm1sound.php). In the near future, Alda's scope will be expanded to include sounds synthesized from basic waveforms, samples loaded from sound files, and perhaps other forms of synthesis. 
+I'm envisioning a world where programmers and non-programmers alike can create all sorts of music, from classical to chiptune to experimental soundscapes, using only a text editor and the Alda executable.
 
 In this blog post, I will walk you through the steps of setting up Alda and writing some basic scores. 
 
@@ -97,51 +98,45 @@ When you notate music using a GUI application, you have menus upon menus in fron
 
     The GUI programs available today do an excellent job of handling these 21st century requirements, but they do so by taking a shortcut -- they skip the "blank canvas" part. Of course, when you create a new score in Sibelius (for example), you do have what looks like some empty lines of staff paper, but in fact, this blank staff paper carries a very different connotation than does a physical page of manuscript paper. You can't just grab a pencil and start writing whatever your heart desires. There are a number of hidden restraints that the GUI application forces upon you. 
 
-    This is an inherent shortcoming of any GUI music notation editor; in order to be able to represent your musical score visually in a sane and comprehensible way, it has to impose some restrictions. Audio programming languages must also impose restrictions (in the same sense that any piece of software does), but because they are not tied to visually representing your score and maintaining a user-friendly GUI interface, they are able to get away with imposing substantially less restrictions on the composer. As a composer, I find this fascinating and inspiring.
+    This is an inherent shortcoming of any GUI music notation editor; in order to be able to represent your musical score visually in a sane and comprehensible way, it has to impose some restrictions. Audio programming languages must also impose restrictions (in the same sense that any piece of software does), but because they are not tied to visually representing your score and maintaining a user-friendly GUI interface, they are able to get away with imposing substantially less restrictions on the composer. As a composer myself, I find this fascinating and inspiring.
 
 # Setup
 
-> Note: As Alda is currently still under development, you will need to follow the process below to run it. Hopefully the process is pretty intuitive, but please feel free to [e-mail me](mailto:dave.yarwood@gmail.com?subject=alda) if you run into any issues. In the future, the process will be much simpler, e.g. downloading and running a standalone executable program.
+> Note: As Alda is currently still under development, you will need to follow the process below in order to run it. Hopefully the process is pretty intuitive, but please feel free to [e-mail me](mailto:dave.yarwood@gmail.com?subject=alda) if you run into any issues. In the future, the process will be much simpler, e.g. downloading and running a standalone executable program.
 
-To get started with Alda, you will need to do two things:
+To get started with Alda, you will need two things:
 
-<ol>
-  <li>
-  Clone the <a href="http://github.com/alda-lang/alda">GitHub repository</a> by running this command:<br>
-  <br>
-  {% highlight text %}
-  git clone git@github.com:alda-lang/alda.git
-  {% endhighlight %}
-  </li>
-  <br>
-  <li>
-  Install the Clojure build tool <a href="http://boot-clj.com">Boot</a>.
-  </li>
-</ol>
+- The Clojure build tool <a href="http://boot-clj.com">Boot</a>. If you are running Mac OS X and you have <a href="http://brew.sh">Homebrew</a> installed, you can install Boot by running `brew install boot-clj`.
 
-Open a terminal in the directory where you cloned the Alda repo, and you will now be able to use a handful of built-in tasks. You can parse and/or play Alda code from a file or a string of Alda code provided as a command-line argument. Or, you can build a score incrementally by using the Alda REPL (Read-Evaluate-Play Loop).
+- The [`alda` executable file](https://raw.githubusercontent.com/alda-lang/alda/master/bin/alda), which you can install by copying and pasting the following command into your terminal:
+
+{% highlight text %}
+curl https://raw.githubusercontent.com/alda-lang/alda/master/bin/alda -o /usr/local/bin/alda && chmod +x /usr/local/bin/alda
+{% endhighlight %}
+
+You should now be able to use a handful of built-in commands that start with `alda`. You can parse and/or play Alda code from a file or a string of Alda code provided as a command-line argument. Or, you can build a score incrementally by using the Alda REPL (Read-Evaluate-Play Loop).
 
 # Alda 101
 
 We will use the Alda REPL at first, to experiment a little with Alda syntax. To start the REPL, type: 
 
 {% highlight text %}
-boot alda-repl
+alda repl
 {% endhighlight %}
 
-> Note: Alda uses a [soundfont](https://en.wikipedia.org/wiki/SoundFont) called FluidR3 to make MIDI sound a lot nicer. This is a one-time 125 MB download that will kick off when you run the above command. This may take a few minutes or longer, depending on your network connection. 
+> Note: Alda uses a [soundfont](https://en.wikipedia.org/wiki/SoundFont) called FluidR3 to make MIDI sound a lot nicer. This is a one-time 125 MB download that will kick off the first time you run the above command. This may take a few minutes or longer, depending on your network connection. 
 To pass the time while you wait, you may want to watch [some](https://www.youtube.com/watch?v=NhjSzjoU7OQ) [music](https://www.youtube.com/watch?v=7F5TZ7z7tJs) [videos](https://www.youtube.com/watch?v=gzoEK545j64) on YouTube or something.
 
-> If you'd prefer to skip this step and use the Java Virtual Machine's built-in MIDI synthesizer (which sounds terrible) instead, you can type `boot alda-repl --stock`.
+> If you're feeling impatient and you'd like to skip this step and use the Java Virtual Machine's built-in MIDI synthesizer (which sounds terrible) instead, you can type `alda repl --stock`.
 
 Once FluidR3 has downloaded and the REPL is ready, you should see something like this:
 
 <center>
-  <img src="{{site.url}}/assets/2015-08-20-alda-repl.png"
+  <img src="{{site.url}}/assets/2015-09-05-alda-repl.png"
        alt="the Alda REPL"
        title="the Alda REPL" 
        width="500"
-       height="225">
+       height="200">
 </center>
 
 You can type snippets of Alda code into the REPL, press Enter, and hear the results instantly.
@@ -346,8 +341,7 @@ Another way to represent notes played at the same time in Alda is with voices. T
 </center>
 
 {% highlight text %}
-V1: o5 c4 < b a g | e1
-V2: o4 c1/e/g | < g+/b
+V1: o5 c4 < b a g | e1     V2: o4 c1/e/g | < g+/b
 {% endhighlight %}
 
 To exit the Alda REPL, type `bye` and press Enter.
@@ -356,7 +350,7 @@ To exit the Alda REPL, type `bye` and press Enter.
 
 So far, we have been feeding Alda some code, line by line, and hearing the result each time. This is a good way to test the waters and see how small pieces of code sound before you commit to them. When you're ready to set some music down in stone, it's time to write a score.
 
-In Alda, a score is just a text file. You can use any text editor you'd like to create this text file. By convention, the file's name should end in `.alda`. Create a blank text file in the directory where you cloned the Alda git repository, and name it `test.alda`.
+In Alda, a score is just a text file. You can use any text editor you'd like to create this text file. By convention, the file's name should end in `.alda`. Create a blank text file in whatever directory you're currently in in your terminal, and name it `test.alda`.
 
 Type the following into `test.alda`:
 
@@ -364,7 +358,7 @@ Type the following into `test.alda`:
 bassoon: o2 d8 e (quant 30) f+ g (quant 99) a2
 {% endhighlight %}
 
-Then, still in the Alda project folder, run `boot play --file test.alda`. You should hear a nimble bassoon melody.
+Then, run `alda play --file test.alda`. You should hear a nimble bassoon melody.
 
 ## Attributes
 
@@ -379,9 +373,9 @@ Try editing `test.alda` to look like this:
 bassoon: o2 d8 e (quant 30, vol 65) f+ g (quant 99) a2
 {% endhighlight %}
 
-Run `boot play --file test.alda` again to hear the difference in volume between the first two and last three notes.
+Run `alda play --file test.alda` again to hear the difference in volume between the first two and last three notes.
 
-> As an aside: you may have noticed the long wait time every time you run a `boot play` command. This is an unfortunate side effect of Alda being a Clojure project; [Clojure has a notoriously slow start-up time](http://blog.ndk.io/2014/02/11/jvm-slow-startup.html). You might prefer to use the Alda REPL to experiment -- once the REPL is started up, as you've probably noticed, you will hear the results of each line of code instantly.
+> As an aside: you may have noticed there is a little bit of a wait every time you run an `alda` command. This is an unfortunate side effect of Alda being a Clojure project; [Clojure has a notoriously slow start-up time](http://blog.ndk.io/2014/02/11/jvm-slow-startup.html). You might prefer to use the Alda REPL to experiment -- once the REPL is started up, you will hear the results of each line of code instantly.
 
 > It's also worth noting that in the near future, Alda will be available as an ahead-of-time-compiled, standalone executable, which should speed things up a bit.
 
@@ -419,7 +413,7 @@ trumpet:  (tempo 200) o4 c8 d e f g a b > c4.
 trombone: o3 e8 f g a b > c d e4.
 {% endhighlight %}
 
-Wait a minute... did you hear that? The trumpet took off at 200 bpm like we told it to, but the trombone remained steady at the default tempo, 120 bpm! This is actually not a bug, but a feature. In Alda, tempo (along with every other attribute) is set on a per-instrument basis, making it entirely possible for two instruments to playing at totally different tempos.
+Wait a minute... did you hear that? The trumpet took off at 200 bpm like we told it to, but the trombone remained steady at the default tempo, 120 bpm! This is actually not a bug, but a feature. In Alda, tempo (along with every other attribute) is set on a per-instrument basis, making it entirely possible for two instruments to be playing at two totally different tempos.
 
 Global attributes are written just like regular attributes, but with an exclamation point on the end. Try this on for size:
 
@@ -428,7 +422,7 @@ trumpet:  (tempo! 200) o4 c8 d e f g a b > c4.
 trombone: o3 e8 f g a b > c d e4.
 {% endhighlight %}
 
-`tempo!` sets the tempo for all instruments, at the specific time in the score where you place it.
+`tempo!` sets the tempo for all instruments, at the specific time in the score where you place it. Try playing around with this bit of Alda code, moving the `(tempo! 200)` to different places in the score. Try out some different tempos other than 200 bpm.
 
 ## Markers
 
@@ -445,11 +439,10 @@ The concept behind markers is *assigning a name to a moment in time*. A name can
 Using markers is a two-step process. *Place* a marker by sticking a `%` before the name, and then *jump to it* by sticking a `@` before the name. To demonstrate, let's go back to our trumpet and trombone example. Let's have a tuba come in right on the last note. We can do that by placing a marker in either the trumpet or trombone part, right before the last note, and then jump to that marker in the tuba part that we'll create:
 
 {% highlight text %}
-trumpet:  o4 c8 d e f g a b > %last-note c4.
-trombone: o3 e8 f g a b > c d e4.
-tuba: @last-note o2 c4.
+trumpet:  o4 c8 d e f g a b > %last-note c4.~2
+trombone: o3 e8 f g a b > c d e4.~2
+tuba: @last-note o2 c4.~2
 {% endhighlight %}
 
 So, that's Alda in a nutshell. Please don't hesitate to [e-mail me](mailto:dave.yarwood@gmail.com?subject=alda) if you have any questions about how to do something in Alda. Or, better yet, if you're a Clojure programmer and you like open-source software, [consider contributing](https://github.com/alda-lang/alda/issues)! Pull requests are warmly accepted.
-
 
