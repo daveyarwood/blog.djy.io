@@ -106,7 +106,11 @@ When you notate music using a GUI application, you have menus upon menus in fron
 
 To get started with Alda, you will need two things:
 
-- The Clojure build tool <a href="http://boot-clj.com">Boot</a>. If you are running Mac OS X and you have <a href="http://brew.sh">Homebrew</a> installed, you can install Boot by running `brew install boot-clj`.
+- The Clojure build tool [Boot](http://boot-clj.com). If you are running Mac OS X and you have [Homebrew](http://brew.sh) installed, you can install Boot by running `brew install boot-clj`. Otherwise, [see here](https://github.com/boot-clj/boot#install) for more details about installing Boot.
+
+Once you've completed the steps above, you'll be able to run `alda` from any working directory. Running the command `alda` by itself will display the help text.
+
+## alda.lisp
 
 - The [`alda` executable file](https://raw.githubusercontent.com/alda-lang/alda/master/bin/alda), which you can install by copying and pasting the following command into your terminal:
 
