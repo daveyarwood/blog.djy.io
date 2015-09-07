@@ -39,10 +39,10 @@ $ cp ~/.gervill/soundbank-emg.sf2 ~/.gervill/soundbank-emg.sf2.bak
 $ mv ~/Downloads/fluid-soundfont/FluidR3\ GM2-2.SF2 ~/.gervill/soundbank-emg.sf2
 {% endhighlight %}
 
-To take my JVM's new soundfont for a test drive, I wrote [a little Clojure script to demo instruments in the General MIDI soundbank](https://raw.githubusercontent.com/alda-lang/alda/master/.idea/midi-patch-demo). If you have [Boot](http://www.boot-clj.com) installed, you can download the script and try it out -- you give it a number from 1-128 and it prints out the name of the instrument and plays a three-octave ascending G-major arpeggio, so you can hear what the instrument sounds like across a few different octaves. (To get an idea of how much better FluidR3 is than the default soundfont, try doing the following before and after installing it!)
+To take my JVM's new soundfont for a test drive, I wrote [a little Clojure script to demo instruments in the General MIDI soundbank](https://raw.githubusercontent.com/alda-lang/alda/master/bin/midi-patch-demo). If you have [Boot](http://www.boot-clj.com) installed, you can download the script and try it out -- you give it a number from 1-128 and it prints out the name of the instrument and plays a three-octave ascending G-major arpeggio, so you can hear what the instrument sounds like across a few different octaves. (To get an idea of how much better FluidR3 is than the default soundfont, try doing the following before and after installing it!)
 
 {% highlight text %}
-$ wget https://raw.githubusercontent.com/alda-lang/alda/master/.idea/midi-patch-demo
+$ curl https://raw.githubusercontent.com/alda-lang/alda/master/bin/midi-patch-demo -o midi-patch-demo
 $ chmod +x midi-patch-demo
 $ ./midi-patch-demo 50
 Patch 50: Slow Strings
