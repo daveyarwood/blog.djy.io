@@ -365,12 +365,12 @@ Then, run `alda play --file test.alda`. You should hear a nimble bassoon melody.
 You may have noticed that I snuck in a new syntax here. I was going to get to that, I promise! `(quant XX)` (where `XX` is a number from 0-99) essentially changes the *length* of a note, without changing its *duration*. The number argument represents the percentage of the note's full length that is heard. Notice, when you play back the bassoon melody above, how the F# and G notes (quantized at 30%) are short and *staccato*, whereas the final A note
 (quantized at 99%) is long and *legato*.
 
-`quant` (short for `quantization`) is one example of an attribute that you can set within an Alda score. `volume` is another example; it lets you set the volume of the notes to come. Like most attributes, `volume` (which can be abbreviated as `vol`) is also expressed as a number between 0 and 100. You can set multiple attributes at once by separating them with commas.
+`quant` (short for `quantization`) is one example of an attribute that you can set within an Alda score. `volume` is another example; it lets you set the volume of the notes to come. Like most attributes, `volume` (which can be abbreviated as `vol`) is also expressed as a number between 0 and 100. 
 
 Try editing `test.alda` to look like this:
 
 {% highlight text %}
-bassoon: o2 d8 e (quant 30, vol 65) f+ g (quant 99) a2
+bassoon: o2 d8 e (quant 30) (vol 65) f+ g (quant 99) a2
 {% endhighlight %}
 
 Run `alda play --file test.alda` again to hear the difference in volume between the first two and last three notes.
@@ -446,3 +446,4 @@ tuba: @last-note o2 c4.~2
 
 So, that's Alda in a nutshell. Please don't hesitate to [e-mail me](mailto:dave.yarwood@gmail.com?subject=alda) if you have any questions about how to do something in Alda. Or, better yet, if you're a Clojure programmer and you like open-source software, [consider contributing](https://github.com/alda-lang/alda/issues)! Pull requests are warmly accepted.
 
+*EDIT 10/4/15: The `(quant 30, vol 65)` syntax has been updated in newer versions of Alda. I've updated this article to reflect the new syntax, which is `(quant 30) (vol 65)`.*
