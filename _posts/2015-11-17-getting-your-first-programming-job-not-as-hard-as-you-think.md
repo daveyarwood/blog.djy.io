@@ -10,4 +10,6 @@ Today marks my one-year anniversary of working at [Adzerk](http://adzerk.com), w
 
 Software development is a pretty unique industry in that respect, at least in the start-up world. It seems that most software start-ups are keenly aware of the fact that the best programmers are not necessarily the ones with start-up degrees or years of work experience developing software at some large corporation (although neither of these are bad things). It is important that you have a certain baseline of programming skills -- which can easily be learned by studying independently and working on hobby projects, like I did -- but the other main ingredient isn't education or experience, it's just having the right mindset.
 
-I wrote a piece on the Adzerk tech blog, if you're curious to read more: [Getting Your First Programming Job: Not as Hard as You Think](http://www.adzerk.com/blog/2015/11/getting-your-first-programming-job-not-as-hard-as-you-think/)
+I wrote a piece on the Adzerk tech blog, if you're curious to read more:
+
+[Getting Your First Programming Job: Not as Hard as You Think](http://www.adzerk.com/blog/2015/11/getting-your-first-programming-job-not-as-hard-as-you-think/)
