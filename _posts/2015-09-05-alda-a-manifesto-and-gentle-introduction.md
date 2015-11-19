@@ -114,6 +114,8 @@ To get started with Alda, you will need two things:
 curl https://raw.githubusercontent.com/alda-lang/alda/master/bin/alda -o /usr/local/bin/alda && chmod +x /usr/local/bin/alda
 {% endhighlight %}
 
+> Note for Windows users: this step is Mac/Linux specific, and will not work on Windows. In the near future, we will have an `alda.exe` that you can download and run, but until then, there is a workaround: see [here](https://github.com/alda-lang/alda/blob/master/doc/installation.md#windows) for more information.
+
 You should now be able to use a handful of built-in commands that start with `alda`. You can parse and/or play Alda code from a file or a string of Alda code provided as a command-line argument. Or, you can build a score incrementally by using the Alda REPL (Read-Evaluate-Play Loop).
 
 # Alda 101
