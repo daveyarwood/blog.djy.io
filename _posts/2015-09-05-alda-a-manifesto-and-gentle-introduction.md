@@ -102,19 +102,7 @@ When you notate music using a GUI application, you have menus upon menus in fron
 
 # Setup
 
-> Note: As Alda is currently still under development, you will need to follow the process below in order to run it. Hopefully the process is pretty intuitive, but please feel free to [e-mail me](mailto:dave.yarwood@gmail.com?subject=alda) if you run into any issues. In the future, the process will be much simpler, e.g. downloading and running a standalone executable program.
-
-To get started with Alda, you will need two things:
-
-- The Clojure build tool [Boot](http://boot-clj.com). If you are running Mac OS X and you have [Homebrew](http://brew.sh) installed, you can install Boot by running `brew install boot-clj`. Otherwise, [see here](https://github.com/boot-clj/boot#install) for more details about installing Boot.
-
-- The [`alda` executable file](https://raw.githubusercontent.com/alda-lang/alda/master/bin/alda), which you can install by copying and pasting the following command into your terminal:
-
-{% highlight text %}
-curl https://raw.githubusercontent.com/alda-lang/alda/master/bin/alda -o /usr/local/bin/alda && chmod +x /usr/local/bin/alda
-{% endhighlight %}
-
-> Note for Windows users: this step is Mac/Linux specific, and will not work on Windows. In the near future, we will have an `alda.exe` that you can download and run, but until then, there is a workaround: see [here](https://github.com/alda-lang/alda/blob/master/doc/installation.md#windows) for more information.
+[Follow the instructions here](https://github.com/alda-lang/alda#installation) to install the latest version of Alda.
 
 You should now be able to use a handful of built-in commands that start with `alda`. You can parse and/or play Alda code from a file or a string of Alda code provided as a command-line argument. Or, you can build a score incrementally by using the Alda REPL (Read-Evaluate-Play Loop).
 
@@ -126,12 +114,7 @@ We will use the Alda REPL at first, to experiment a little with Alda syntax. To 
 alda repl
 {% endhighlight %}
 
-> Note: Alda uses a [soundfont](https://en.wikipedia.org/wiki/SoundFont) called FluidR3 to make MIDI sound a lot nicer. This is a one-time 125 MB download that will kick off the first time you run the above command. This may take a few minutes or longer, depending on your network connection.
-To pass the time while you wait, you may want to watch [some](https://www.youtube.com/watch?v=NhjSzjoU7OQ) [music](https://www.youtube.com/watch?v=7F5TZ7z7tJs) [videos](https://www.youtube.com/watch?v=gzoEK545j64) on YouTube or something.
-
-> If you're feeling impatient and you'd like to skip this step and use the Java Virtual Machine's built-in MIDI synthesizer (which sounds terrible) instead, you can type `alda repl --stock`.
-
-Once FluidR3 has downloaded and the REPL is ready, you should see something like this:
+When the REPL is up and running, you should see something like this:
 
 <center>
   <img src="{{site.url}}/assets/2015-09-05-alda-repl.png"
@@ -449,3 +432,5 @@ tuba: @last-note o2 c4.~2
 So, that's Alda in a nutshell. Please don't hesitate to [e-mail me](mailto:dave.yarwood@gmail.com?subject=alda) if you have any questions about how to do something in Alda. Or, better yet, if you're a Clojure programmer and you like open-source software, [consider contributing](https://github.com/alda-lang/alda/issues)! Pull requests are warmly accepted.
 
 *EDIT 10/4/15: The `(quant 30, vol 65)` syntax has been updated in newer versions of Alda. I've updated this article to reflect the new syntax, which is `(quant 30) (vol 65)`.*
+
+*EDIT 1/2/16: Alda is now considerably easier to install, and no longer comes packaged with the FluidR3 MIDI soundfont (although there are instructions in the README for how to install it on Mac/Linux systems). I've updated this blog post to reflect the new, easier install process.*
