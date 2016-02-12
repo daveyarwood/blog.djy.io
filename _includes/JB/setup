@@ -13,10 +13,14 @@
       {% assign HOME_PATH = "/" %}
     {% endif %}
 
+    {% assign ASSET_PATH = BASE_PATH | append: "/assets/themes/" | append: page.theme.name %}
+
+    <!-- old shit that broke between jekyll 2 and 3
     {% if site.JB.ASSET_PATH %}
       {% assign ASSET_PATH = site.JB.ASSET_PATH %}
     {% else %}
       {% capture ASSET_PATH %}{{ BASE_PATH }}/assets/themes/{{ page.theme.name }}{% endcapture %}
     {% endif %}
+    -->
   {% endif %}
 {% endcapture %}{% assign jbcache = nil %}
