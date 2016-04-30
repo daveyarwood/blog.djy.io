@@ -1,6 +1,9 @@
+gems:
+  - jekyll-redirect-from
+
 # This is the default format.
 # For more see: http://jekyllrb.com/docs/permalinks/
-permalink: /:categories/:year/:month/:day/:title
+permalink: /:title
 
 exclude: [".rvmrc", ".rbenv-version", "README.md", "Rakefile", "changelog.md"]
 highlighter: rouge
@@ -15,7 +18,7 @@ author :
   name : Dave Yarwood
   email : dave.yarwood@gmail.com
   github : daveyarwood
-  twitter : username
+  twitter : dave_yarwood
   feedburner : feedname
 
 # The production_url is only used when full-domain names are needed
@@ -26,7 +29,7 @@ author :
 # Else if you are pushing to username.github.io, replace with your username.
 # Finally if you are pushing to a GitHub project page, include the project name at the end.
 #
-production_url : http://daveyarwood.github.io
+production_url : http://blog.djy.io
 
 # All Jekyll-Bootstrap specific configurations are namespaced into this hash
 #

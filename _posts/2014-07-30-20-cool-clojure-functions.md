@@ -3,6 +3,8 @@ layout: post
 title: "20 cool Clojure functions"
 category: 
 tags: [clojure]
+
+redirect_from: '/2014/07/30/20-cool-clojure-functions'
 ---
 {% include JB/setup %}
 
@@ -47,8 +49,8 @@ Stealing an example from ClojureDocs:
 {% highlight clojure %}
 ;; create a function that simulates a long running process using Thread/sleep
 (defn long-running-job [n]
-    (Thread/sleep 3000) ; wait for 3 seconds
-    (+ n 10))
+  (Thread/sleep 3000) ; wait for 3 seconds
+  (+ n 10))
 
 ;; notice that the total elapse time is almost 3 secs * 4
 (time (doall (map long-running-job (range 4))))

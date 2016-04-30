@@ -9,6 +9,8 @@ tags:
   - midi
   - alda
 published: true
+
+redirect_from: '/alda/2015/06/25/making-midi-sound-awesome-in-a-clojure-program'
 ---
 
 {% include JB/setup %}

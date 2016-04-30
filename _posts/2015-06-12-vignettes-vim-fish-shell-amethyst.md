@@ -6,6 +6,8 @@ tags:
   - fish
   - amethyst
 published: true
+
+redirect_from: '/2015/06/12/vignettes-vim-fish-shell-amethyst'
 ---
 
 {% include JB/setup %}

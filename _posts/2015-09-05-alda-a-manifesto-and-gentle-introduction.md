@@ -7,6 +7,8 @@ tags:
   - music-programming
   - composition
 published: true
+
+redirect_from: '/alda/2015/09/05/alda-a-manifesto-and-gentle-introduction'
 ---
 
 {% include JB/setup %}

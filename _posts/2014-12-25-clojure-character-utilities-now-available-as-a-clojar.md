@@ -3,6 +3,8 @@ layout: post
 title: "Clojure character utilities, now available as a clojar!"
 category: 
 tags: [clojure]
+
+redirect_from: '/2014/12/25/clojure-character-utilities-now-available-as-a-clojar'
 ---
 {% include JB/setup %}
 

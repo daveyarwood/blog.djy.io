@@ -6,6 +6,8 @@ tags:
   - lisp
   - ruby
 published: true
+
+redirect_from: '/2015/03/07/i-put-some-s-expressions-in-your-ruby'
 ---
 
 {% include JB/setup %}

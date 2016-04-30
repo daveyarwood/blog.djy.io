@@ -6,6 +6,8 @@ tags:
   - clojure
   - ruby
 published: true
+
+redirect_from: '/2014/07/09/whys-guide-to-ruby-in-clojure-part-5'
 ---
 
 {% include JB/setup %}

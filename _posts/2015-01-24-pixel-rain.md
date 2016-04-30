@@ -8,6 +8,8 @@ tags:
   - composition
   - quitasol
   - mml
+
+redirect_from: '/music/2015/01/24/pixel-rain'
 ---
 
 {% include JB/setup %}

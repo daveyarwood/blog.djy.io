@@ -8,6 +8,8 @@ tags:
   - anamanaguchi
   - punk
 published: true
+
+redirect_from: '/music/2015/10/12/something-cool-that-happened-every-month-of-my-life-2010'
 ---
 
 {% include JB/setup %}

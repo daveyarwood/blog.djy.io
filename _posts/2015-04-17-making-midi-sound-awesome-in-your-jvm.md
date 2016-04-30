@@ -3,6 +3,8 @@ layout: post
 title: "Making MIDI Sound Awesome in Your JVM"
 category: alda
 tags: [alda, java, jvm, midi]
+
+redirect_from: '/alda/2015/04/17/making-midi-sound-awesome-in-your-jvm'
 ---
 {% include JB/setup %}
 

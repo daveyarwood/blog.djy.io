@@ -3,6 +3,8 @@ published: true
 layout: post
 title: A character utility library for Clojure
 tags: [clojure]
+
+redirect_from: '/2014/10/14/a-character-utility-library-for-clojure'
 ---
 
 {% include JB/setup %}

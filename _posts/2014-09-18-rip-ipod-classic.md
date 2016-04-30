@@ -4,6 +4,8 @@ layout: post
 title: RIP, iPod Classic :(
 category: music
 tags: [apple, linux]
+
+redirect_from: '/music/2014/09/18/rip-ipod-classic'
 ---
 
 {% include JB/setup %}

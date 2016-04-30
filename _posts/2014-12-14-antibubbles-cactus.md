@@ -5,6 +5,8 @@ title: "Antibubbles - 'Cactus'"
 category: music
 tags: 
   - antibubbles
+
+redirect_from: '/music/2014/12/14/antibubbles-cactus'
 ---
 
 {% include JB/setup %}

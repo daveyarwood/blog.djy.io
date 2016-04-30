@@ -5,6 +5,8 @@ title: "Antibubbles - Live @ the Layabout (8/5/11)"
 category: music
 tags: 
   - antibubbles
+
+redirect_from: '/music/2014/08/16/antibubbles-live-at-the-layabout-8-5-11'
 ---
 
 {% include JB/setup %}

@@ -6,6 +6,8 @@ category: music
 tags: 
   - composition
   - clojure
+
+redirect_from: '/music/2014/08/23/introducing-riffmuse'
 ---
 
 {% include JB/setup %}
