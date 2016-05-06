@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>{{ page.title }} :: {{ site.title }}</title>
+    <title>{{ site.title }} · {{ page.title }}</title>
     {% if page.description %}
       <meta name="description" content="{{ page.description }}">
     {% endif %}
@@ -20,7 +20,7 @@
     <link href="{{ ASSET_PATH }}/css/sodaflower.css" rel="stylesheet" type="text/css">
     <link href="{{ ASSET_PATH }}/css/pygments.css" rel="stylesheet" type="text/css">
     <link href='http://fonts.googleapis.com/css?family=Roboto+Mono' rel='stylesheet' type='text/css'>
-    
+
     <!-- Le styles
     <link href="{{ ASSET_PATH }}/bootstrap/css/bootstrap.2.2.2.min.css" rel="stylesheet">
     <link href="{{ ASSET_PATH }}/css/style.css?body=1" rel="stylesheet" type="text/css" media="all">
@@ -33,17 +33,17 @@
   </head>
 
   <body>
-    
+
     <div id="header-container">
 
       <header>
 
         <span class="site-title">
           <a href="{{ HOME_PATH }}">dave yarwood</a>
-        </span> 
+        </span>
         <div id="project-links">
           <p>
-            code &nbsp;:: 
+            code &nbsp;::
             <a href="https://github.com/alda-lang/alda" target="_blank">alda</a>,
             <a href="https://github.com/daveyarwood/midi.soundfont" target="_blank">midi.soundfont</a>,
             <a href="https://github.com/daveyarwood/djy" target="_blank">djy.char</a>,
@@ -51,13 +51,13 @@
             <a href="https://github.com/daveyarwood/chronoid" target="_blank">chronoid</a>
           </p>
           <p>
-            music :: 
+            music ::
             <a href="http://www.flashchorus.org" target="_blank">flash chorus</a>,
             <a href="http://noloveraleigh.bandcamp.com" target="_blank">no love</a>,
             <a href="http://antibubbles.bandcamp.com" target="_blank">antibubbles</a>
           </p>
           <p>
-            links :: 
+            links ::
             <a href="http://github.com/daveyarwood" target="_blank">github</a>,
             <a href="http://twitter.com/dave_yarwood" target="_blank">twitter</a>,
             <a href="http://soundcloud.com/daveyarwood" target="_blank">soundcloud</a>,
@@ -73,7 +73,7 @@
     <div id="content-container">
       <main>{{ content }}</main>
     </div>
-    
+
     <div id="footer-container">
       <footer>
         <h1 class="pagination">
@@ -88,7 +88,7 @@
           {% else %}
             &gt;&gt;
           {% endif %}
-        </h1>      
+        </h1>
         <div id="latest">
           <strong><u>latest</u>:</strong>
           <ul style="list-style-type: none; padding: 0px">
@@ -99,7 +99,7 @@
           {% endfor %}
           </ul>
         </div>
-        
+
         <div id="cats-and-tags-and-feeds">
           <div id="cats">
             <strong><u>categories</u>:</strong>
