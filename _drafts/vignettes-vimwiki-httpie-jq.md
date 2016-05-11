@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Vignettes: Vimwiki, httpie, jq"
+title: "Vignettes: Vimwiki, HTTPie, jq"
 tags:
   - vim
   - httpie
@@ -28,7 +28,35 @@ I think having a [personal wiki][pwiki] is a great way to organize your life. It
 [pwiki]: https://en.wikipedia.org/wiki/Personal_wiki
 [vwiki]: http://vimwiki.github.io
 
-# httpie
+# HTTPie
+
+<a href="{{ site.url }}/assets/2016-05-11-httpie.png" class="img-link">
+  <img src="{{ site.url }}/assets/2016-05-11-httpie.png" width="450" height="375" title="vimwiki (source: http://vimwiki.github.io)">
+</a>
+
+[HTTPie][httpie] is a user-friendly cURL replacement. In addition to pretty-printing and syntax-highlighting JSON responses, it provides a nicer syntax for setting request parameters that I find easier to remember than cURL. HTTPie also features a number of sane defaults for things like Accept and Content-Type headers, making it fast and easy to make HTTP requests without having to do as much double-checking that your headers are correct.
+
+The "hello world" example in the HTTPie documentation does a nice job of illustrating the relative ease of using it instead of cURL:
+
+{% highlight shell %}
+# cURL
+curl -i -X PUT httpbin.org/put -H Content-Type:application/json -d '{"hello": "world"}'
+
+# HTTPie
+http PUT httpbin.org/put hello=world
+{% endhighlight %}
+
+You can also redirect input from files, which is a handy feature:
+
+{% highlight shell %}
+http PUT httpbin.org/put < hello_world.json
+{% endhighlight %}
+
+I've been using HTTPie for a while, and I use it 90% of the time instead of cURL. There was a slight learning curve in that advanced usage requires a basic understanding of what defaults HTTPie uses, but in my experience with it so far, the defaults make sense in the majority of cases.
+
+The 10% of cases where I *don't* use HTTPie are support-related, e.g. when I'm debugging another person's cURL command that isn't working, or when I'm seeking support for an HTTP request that *I* can't get to work, and I need to provide a cURL example of the request that I'm trying. cURL is the de facto standard way to make HTTP requests, so I'm effectively forced to use cURL when other people are involved, or else I'd have to explain what HTTPie is and another layer of complexity would be introduced to the support issue. This is probably for the best, as it keeps my cURL skills from getting rusty.
+
+[httpie]: http://httpie.org
 
 # jq
 
