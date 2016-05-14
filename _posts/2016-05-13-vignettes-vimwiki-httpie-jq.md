@@ -4,6 +4,7 @@ title: "Vignettes: Vimwiki, HTTPie, jq"
 tags:
   - vim
   - httpie
+  - http
   - jq
   - json
 published: true
@@ -21,7 +22,7 @@ I [tried this once before][vignettes1] and it was pretty fun. I continue to find
   <img src="{{ site.url }}/assets/2016-05-10-vimwiki.png" width="450" height="280" title="vimwiki (source: http://vimwiki.github.io)">
 </a>
 
-I think having a [personal wiki][pwiki] is a great way to organize your life. It's like the digital equivalent of a handy scratchpad that you can use to jot down notes about anything that comes to your mind. (I use mine to keep track of fragments of melodies and lyrics that pop into my head, stupid band name ideas, programming project ideas, and all kinds of other things.) You can organize your ideas into separate files and link them to each other. Over time, you gradually build your own interconnected web of information that is useful to you.
+I think keeping a [personal wiki][pwiki] is a great way to organize your life. It's like the digital equivalent of a handy scratchpad that you can use to jot down notes about anything that comes to your mind. (I use mine to keep track of fragments of melodies and lyrics that pop into my head, stupid band name ideas, programming project ideas, talk proposals, and all kinds of other things.) You can organize your ideas into separate files and link them to each other. Over time, you'll gradually build your own interconnected web of information that is useful to you.
 
 [Vimwiki][vwiki] is a Vim plugin that lets you maintain a personal wiki in the form of a bunch of interlinked text files. Wiki pages can be written in Markdown or MediaWiki syntax, and the interface and keybindings are quite intuitive. Links can be made easily by highlighting text and pressing Enter, then opened by pressing Enter again.
 
@@ -34,7 +35,7 @@ I think having a [personal wiki][pwiki] is a great way to organize your life. It
   <img src="{{ site.url }}/assets/2016-05-11-httpie.png" width="450" height="375" title="vimwiki (source: http://vimwiki.github.io)">
 </a>
 
-[HTTPie][httpie] is a user-friendly cURL replacement. In addition to pretty-printing and syntax-highlighting JSON responses, it provides a nicer syntax for setting request parameters that I find easier to remember than cURL. HTTPie also features a number of sane defaults for things like Accept and Content-Type headers, making it fast and easy to make HTTP requests without having to do as much double-checking that your headers are correct.
+[HTTPie][httpie] is a user-friendly cURL replacement. In addition to pretty-printing and syntax-highlighting JSON responses, it provides a nicer syntax for setting request parameters that I find easier to remember than the equivalent cURL syntax. HTTPie also features a number of sane defaults for things like Accept and Content-Type headers, making it fast and easy to make HTTP requests without having to do as much double-checking that your headers are correct.
 
 The "hello world" example in the HTTPie documentation does a nice job of illustrating the relative ease of using it instead of cURL:
 
@@ -60,4 +61,13 @@ The 10% of cases where I *don't* use HTTPie are support-related, e.g. when I'm d
 
 # jq
 
-# *~ fin ~*
+<a href="{{ site.url }}/assets/2016-05-13-jq.png" class="img-link">
+  <img src="{{ site.url }}/assets/2016-05-13-jq.png" width="450" height="300" title="vimwiki (source: http://vimwiki.github.io)">
+</a>
+
+I don't know which one of my coworkers started using [`jq`][jq] first, but it spread like wildfire! We work with JSON data almost constantly, and we also like to do things as much in line with the Unix philosophy as possible. Bearing those two things in mind, it was only natural that we would need a flexible command-line tool that we could pipe JSON to and manipulate it with ease.
+
+For me, it wasn't immediately obvious that I would need such a thing -- editing JSON in a file is easy enough, right?  -- but ever since I started using `jq`, it has been utterly indispensable.
+
+[jq]: https://stedolan.github.io/jq/
+
