@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Alda: A Music Programming Language Written in Clojure"
+title: "Alda: A Music Programming Language Built With Clojure"
 category: alda
 tags:
   - alda
