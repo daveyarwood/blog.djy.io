@@ -23,9 +23,8 @@ This first cut of Alda used to work like this:
 
 Here is a Clojure REPL session demonstrating how this worked:
 
-```
+{% highlight clojure %}
 ; alda v1.0.0-rc14
-
 
 boot.user=> (require '[alda.lisp :refer :all])
 nil
@@ -40,22 +39,64 @@ nil
 boot.user=> *current-instruments*
 #{"bassoon-x5BWg"}
 boot.user=> *instruments*
-{"bassoon-x5BWg" {:octave 4, :current-offset #alda.lisp.AbsoluteOffset{:offset 0}, :key-signature {}, :config {:type :midi, :patch 71}, :duration 1, :volume 1.0, :last-offset #alda.lisp.AbsoluteOffset{:offset 0}, :id "bassoon-x5BWg", :quantization 0.9, :tempo 120, :panning 0.5, :current-marker :start, :stock "midi-bassoon", :track-volume 0.7874015748031497}}
+{"bassoon-x5BWg" {:octave 4,
+                  :current-offset #alda.lisp.AbsoluteOffset{:offset 0},
+                  :key-signature {},
+                  :config {:type :midi, :patch 71},
+                  :duration 1,
+                  :volume 1.0,
+                  :last-offset #alda.lisp.AbsoluteOffset{:offset 0},
+                  :id "bassoon-x5BWg",
+                  :quantization 0.9,
+                  :tempo 120,
+                  :panning 0.5,
+                  :current-marker :start,
+                  :stock "midi-bassoon",
+                  :track-volume 0.7874015748031497}}
 boot.user=> (note (pitch :c) (duration (note-length 2 {:dots 1}))) ; add a note
-(#alda.lisp.Note{:offset #alda.lisp.AbsoluteOffset{:offset 0}, :instrument "bassoon-x5BWg", :volume 1.0, :track-volume 0.7874015748031497, :panning 0.5, :midi-note 60, :pitch 261.6255653005986, :duration 1350.0})
+(#alda.lisp.Note{:offset #alda.lisp.AbsoluteOffset{:offset 0},
+                 :instrument "bassoon-x5BWg",
+                 :volume 1.0,
+                 :track-volume 0.7874015748031497,
+                 :panning 0.5,
+                 :midi-note 60,
+                 :pitch 261.6255653005986,
+                 :duration 1350.0})
 boot.user=> *events*
-{:start {:offset #alda.lisp.AbsoluteOffset{:offset 0}, :events [#alda.lisp.Note{:offset #alda.lisp.AbsoluteOffset{:offset 0}, :instrument "bassoon-x5BWg", :volume 1.0, :track-volume 0.7874015748031497, :panning 0.5, :midi-note 60, :pitch 261.6255653005986, :duration 1350.0}]}}
+{:start {:offset #alda.lisp.AbsoluteOffset{:offset 0},
+         :events [#alda.lisp.Note{:offset #alda.lisp.AbsoluteOffset{:offset 0},
+                                  :instrument "bassoon-x5BWg",
+                                  :volume 1.0,
+                                  :track-volume 0.7874015748031497,
+                                  :panning 0.5,
+                                  :midi-note 60,
+                                  :pitch 261.6255653005986,
+                                  :duration 1350.0}]}}
 boot.user=> *instruments*
-{"bassoon-x5BWg" {:octave 4, :current-offset #alda.lisp.AbsoluteOffset{:offset 1500.0}, :key-signature {}, :config {:type :midi, :patch 71}, :duration 3.0, :volume 1.0, :last-offset #alda.lisp.AbsoluteOffset{:offset 0}, :id "bassoon-x5BWg", :quantization 0.9, :tempo 120, :panning 0.5, :current-marker :start, :stock "midi-bassoon", :track-volume 0.7874015748031497}}
+{"bassoon-x5BWg" {:octave 4,
+                  :current-offset #alda.lisp.AbsoluteOffset{:offset 1500.0},
+                  :key-signature {},
+                  :config {:type :midi, :patch 71},
+                  :duration 3.0,
+                  :volume 1.0,
+                  :last-offset #alda.lisp.AbsoluteOffset{:offset 0},
+                  :id "bassoon-x5BWg",
+                  :quantization 0.9,
+                  :tempo 120,
+                  :panning 0.5,
+                  :current-marker :start,
+                  :stock "midi-bassoon",
+                  :track-volume 0.7874015748031497}}
 boot.user=> (score*) ; start a new score
 {}
 boot.user=> *events*
-{:start {:offset #alda.lisp.AbsoluteOffset{:offset 0}, :events []}}
+{:start {:offset #alda.lisp.AbsoluteOffset{:offset 0},
+         :events []}}
 boot.user=> *instruments*
 {}
 boot.user=> *current-instruments*
 #{}
-```
+{% endhighlight %}
 
 This was our immediate problem: an Alda process could only handle one score at a time. This worked OK for experimenting in a Clojure REPL, but in practice, it became evident that we needed an Alda process to be able to manage multiple scores. For example, a user might want to play one score, and then parse or play another score while the first score is still playing. The top-level var-based system was simply not able to accommodate this use case; this was my catalyst for rewriting Alda in a more functional style.
 
