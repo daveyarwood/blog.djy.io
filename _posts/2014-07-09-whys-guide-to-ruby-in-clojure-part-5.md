@@ -2,12 +2,12 @@
 layout: post
 title: "_why's (Poignant) Guide to Ruby in Clojure: Part 5"
 category: null
-tags: 
+tags:
   - clojure
   - ruby
 published: true
 
-redirect_from: '/2014/07/09/whys-guide-to-ruby-in-clojure-part-5'
+redirect_from: '/2014/07/09/whys-guide-to-ruby-in-clojure-part-5/'
 ---
 
 {% include JB/setup %}
@@ -23,7 +23,7 @@ At long last, here is part 5 of my series translating the code examples from w(p
 
 [theremin]: {% post_url 2014-07-05-saint-saens-the-swan-on-theremin %}
 
-Here's where things really get interesting. \_why decides to throw some metaprogramming at us, showcasing an area where Ruby truly shines. Dwemthy's Array is without a doubt the coolest part of the entire guide. The fact that you can mold and shape the syntax of Ruby to make your own custom DSLs is flat-out inspiring. As it turns out, this is another area in which Clojure (actually, Lisp in general) excels, with its macro system. If I wanted to write an idiomatic implementation of Dwemthy's Array in Clojure, I would probably actually avoid using metaprogramming and instead use a more functional style and ordinary maps instead of records. But that wouldn't address the burning question I had going into this translation project, which is essentially, "Can Clojure do everything Ruby can?" So, I took this as an opportunity to compare metaprogramming and classes in Ruby to metaprogramming and records in Clojure. 
+Here's where things really get interesting. \_why decides to throw some metaprogramming at us, showcasing an area where Ruby truly shines. Dwemthy's Array is without a doubt the coolest part of the entire guide. The fact that you can mold and shape the syntax of Ruby to make your own custom DSLs is flat-out inspiring. As it turns out, this is another area in which Clojure (actually, Lisp in general) excels, with its macro system. If I wanted to write an idiomatic implementation of Dwemthy's Array in Clojure, I would probably actually avoid using metaprogramming and instead use a more functional style and ordinary maps instead of records. But that wouldn't address the burning question I had going into this translation project, which is essentially, "Can Clojure do everything Ruby can?" So, I took this as an opportunity to compare metaprogramming and classes in Ruby to metaprogramming and records in Clojure.
 
 Also of note, the beginning of this chapter reminded me of how ugly Clojure's (really Java's) lower-level methods for dealing with webpage retrieval are, when compared to Ruby's `File` class and `open-uri` library. This is something I noticed back in [part 2][part2] when dealing specifically with file I/O. Clojure's `spit` and `slurp` methods are nice, but in order to read a file (or website content) in line by line, we still have to resort to Java inter-op and deal with explicit reader and writer objects. You'd think there'd be some higher-level construct available in Clojure's core libraries by now...
 
@@ -68,7 +68,7 @@ Chapter 6 (Sections 1-3)
 
 ; ex. 9:
 (defmacro double-open [[a filename1, b filename2] & body]
-  (letfn [(filename->reader [filename] 
+  (letfn [(filename->reader [filename]
             (-> filename io/resource io/file io/reader))]
   `(with-open [~a (~filename->reader ~filename1)]
      (with-open [~b (~filename->reader ~filename2)]
@@ -88,7 +88,7 @@ The Ruby version of the above example uses the `readline` function, which return
   (:import (java.net URLEncoder)))
 
 (defn open [page query]
-  (let [qs (str/join "&" 
+  (let [qs (str/join "&"
                      (map (fn [[k v]] (java.net.URLEncoder/encode (str k "=" v)))
                           query))
         address (str "http://preeventualist.org/lost/" page "?" qs)]
@@ -99,7 +99,7 @@ The Ruby version of the above example uses the `readline` function, which return
 (defn searchfound [word] (open "searchfound" {"q" word}))
 
 (defn addfound [your-name item-lost found-at description]
-  (open "addfound" {"name" your-name, "item" item-lost, 
+  (open "addfound" {"name" your-name, "item" item-lost,
                     "at" found-at, "desc" description}))
 
 (defn addlost [your-name item-found last-seen description]
@@ -107,7 +107,7 @@ The Ruby version of the above example uses the `readline` function, which return
                    "seen" last-seen, "desc" description}))
 {% endhighlight %}
 
-Okay, and we've finally reached the infamous Dwemthy's Array! 
+Okay, and we've finally reached the infamous Dwemthy's Array!
 
 This is a great example of the strength of metaprogramming in Ruby. \_why concocts a Creature class that contains some sorcery that allows you to, when inheriting the class from another, more specific class such as a Dragon class, utilize a more concise and fun format for representing RPG-style attributes.
 
@@ -150,7 +150,7 @@ In the next example, \_why shows us what Ruby does "behind the scenes" with his 
 
 {% highlight clojure %}
 ; ex. 17:
-(do 
+(do
   (defrecord DragonRecord [life strength charisma weapon])
   (defn Dragon [] (new DragonRecord 1340 451 1020 939)))
 {% endhighlight %}
@@ -214,7 +214,7 @@ Whereas the original Dwemthy's Array relies on monkey-patching (via `method_miss
 (defn fight [^clojure.lang.Atom creature, ^clojure.lang.Atom enemy, weapon]
   (if (not (pos? (:life @creature)))
     (printf "[%s is too dead to fight!]\n" (creature-name @creature))
-    (do 
+    (do
       (let [your-hit (rand-int (+ (:strength @creature) (:weapon @creature)))]
         (println "[You hit with" your-hit "points of damage!]")
         (hit enemy your-hit))
@@ -227,11 +227,11 @@ Whereas the original Dwemthy's Array relies on monkey-patching (via `method_miss
 (defn attack [^clojure.lang.Atom challenger, move, ^clojure.lang.Atom dwary]
   (if (pos? (:life @(first @dwary)))
     (move challenger (first @dwary))
-    (do 
+    (do
       (swap! dwary next)
       (if-not @dwary
         (println "[Whoa. You decimated Dwemthy's Array!]")
-        (printf "[Get ready. %s has emerged.]\n" 
+        (printf "[Get ready. %s has emerged.]\n"
                 (creature-name @(first @dwary)))))))
 
 ; ex. 22:
@@ -256,7 +256,7 @@ Whereas the original Dwemthy's Array relies on monkey-patching (via `method_miss
 (defmethod / nil [rabbit enemy]
   "the hero's sword is unlimited!!"
   (let [elm10 (rem (:life @enemy) 10)
-        damage (rand-int (+ 4 (* elm10 elm10)))] 
+        damage (rand-int (+ 4 (* elm10 elm10)))]
     (fight rabbit enemy damage)))
 
 (defn % [rabbit enemy]
@@ -274,7 +274,7 @@ Whereas the original Dwemthy's Array relies on monkey-patching (via `method_miss
   "bombs, but you only have three!!"
   (if (zero? (:bombs @rabbit))
     (println "[UHN!! You're out of bombs!!]")
-    (do 
+    (do
       (swap! rabbit update-in [:bombs] - 1)
       (fight rabbit enemy 86))))
 
@@ -299,7 +299,7 @@ Whereas the original Dwemthy's Array relies on monkey-patching (via `method_miss
 (% r s)
 (* r s)
 
-; Ruby example of overloading math operators to do useful 
+; Ruby example of overloading math operators to do useful
 ; array functions... Clojure doesn't do this, but here are
 ; the equivalent functions for doing these things:
 
@@ -346,11 +346,11 @@ Whereas the original Dwemthy's Array relies on monkey-patching (via `method_miss
   weapon 105)
 
 (defcreature Dragon
-  life 1340 
-  strength 451 
+  life 1340
+  strength 451
   charisma 1020
   weapon 939)
- 
+
 ; ex. 25:
 (def dwary
   (atom (mapv atom [(IndustrialRaverMonkey)
@@ -369,7 +369,7 @@ Whereas the original Dwemthy's Array relies on monkey-patching (via `method_miss
   (flush)
   (println "=>" (eval (read-string (read-line))))
   (recur))
-  
+
 {% endhighlight %}
 
 How would you have done Dwemthy's Array differently? Comments welcome!

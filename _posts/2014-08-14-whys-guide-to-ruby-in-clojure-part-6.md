@@ -2,12 +2,12 @@
 layout: post
 title: "_why's (Poignant) Guide to Ruby in Clojure: Part 6"
 category: null
-tags: 
+tags:
   - clojure
   - ruby
 published: true
 
-redirect_from: '/2014/08/14/whys-guide-to-ruby-in-clojure-part-6'
+redirect_from: '/2014/08/14/whys-guide-to-ruby-in-clojure-part-6/'
 ---
 
 {% include JB/setup %}
@@ -32,18 +32,18 @@ From a practical standpoint, you probably won't ever run into a situation, progr
 {% highlight clojure %}
 ; ex. 28:
 (defmulti call (fn [method & args] method))
- 
+
 (defmethod call :default [method & args]
   (printf "You're calling '%s' and you say:\n" (name method))
   (doseq [arg args] (println " " arg))
   (println "But no one is there yet."))
- 
+
 (defmethod call :deirdre [_ & args]
   (println "Deirdre is right here and you say:")
   (doseq [arg args] (println " " arg))
   (println "And she loves every second of it.")
   (println "(I think she thinks you're poetic.)"))
- 
+
 (call :deirdre "Deirdre!")
 (call :simon "Hello?" "Hello? Simon?")
 {% endhighlight %}

@@ -4,7 +4,7 @@ title: "Saint-Saëns' \"The Swan\" on Theremin"
 category: music
 tags: [theremin]
 
-redirect_from: '/music/2014/07/05/saint-saens-the-swan-on-theremin'
+redirect_from: '/music/2014/07/05/saint-saens-the-swan-on-theremin/'
 ---
 {% include JB/setup %}
 

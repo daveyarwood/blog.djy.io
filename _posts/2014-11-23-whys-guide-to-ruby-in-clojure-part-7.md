@@ -2,12 +2,12 @@
 layout: post
 title: "_why's (Poignant) Guide to Ruby in Clojure: Part 7"
 category: null
-tags: 
+tags:
   - clojure
   - ruby
 published: true
 
-redirect_from: '/2014/11/23/whys-guide-to-ruby-in-clojure-part-7'
+redirect_from: '/2014/11/23/whys-guide-to-ruby-in-clojure-part-7/'
 ---
 
 {% include JB/setup %}
@@ -21,7 +21,7 @@ redirect_from: '/2014/11/23/whys-guide-to-ruby-in-clojure-part-7'
 [part5]: {% post_url 2014-07-09-whys-guide-to-ruby-in-clojure-part-5 %}
 [part6]: {% post_url 2014-08-14-whys-guide-to-ruby-in-clojure-part-6 %}
 
-Alright, so I kind of just remembered that there was still one chapter left to go -- so here it is! Until \_why decides to come out of hiding and write an 8th chapter (whenever that happens, if ever...), this will be the final installment of my translation of *\_why's (poignant) guide to ruby* into Clojure. 
+Alright, so I kind of just remembered that there was still one chapter left to go -- so here it is! Until \_why decides to come out of hiding and write an 8th chapter (whenever that happens, if ever...), this will be the final installment of my translation of *\_why's (poignant) guide to ruby* into Clojure.
 
 This is kind of a weird chapter in that the whole thing is hand-drawn (by one of the foxes, presumably), making the actual code examples a little hard to find. I feel like I've hit all the important bits that would constitute "examples." This is kind of a short chapter in terms of code content, but it's a fun one nonetheless. We've got a very brief example of how you might build a text adventure game using classes and metaprogramming, a function that takes a string and turns it upside-down, an example of overloading an arithmetic operator to work on arrays, and an interesting encryption algorithm.
 
@@ -83,11 +83,11 @@ I noticed in the "Decody" example that \_why made a small, but confusing mistake
                        (#(clojure.string/replace % "j" "i"))
                        (partition 2 2 nil)
                        (mapcat (fn [[ltr1 ltr2]]
-                                 (cond 
+                                 (cond
                                    (nil? ltr2) [[ltr1 \x]]
-                                   (= ltr1 ltr2) (repeat 2 [ltr1 \q]) 
+                                   (= ltr1 ltr2) (repeat 2 [ltr1 \q])
                                    :else [[ltr1 ltr2]]))))]
-        (apply str 
+        (apply str
                (mapcat (fn [pair]
                          (let [[l1 l2 :as ls] (map #(locate decody %) pair)]
                            (cond
@@ -103,12 +103,12 @@ I noticed in the "Decody" example that \_why made a small, but confusing mistake
 
                              :else ; normal swap
                              [(at decody (first l1) (last l2))
-                              (at decody (first l2) (last l1))]))) 
+                              (at decody (first l2) (last l1))])))
                         pairs)))))
 
 (defn decody [key]
-  "Takes a string with arbitrary whitespace and removes all whitespace 
-   and other non-letter characters, returning a DeCody instance with 
+  "Takes a string with arbitrary whitespace and removes all whitespace
+   and other non-letter characters, returning a DeCody instance with
    the resulting string as a key (25 letters arranged in a 5x5 grid)."
   (DeCody. (clojure.string/replace key #"[^a-z]" "")))
 

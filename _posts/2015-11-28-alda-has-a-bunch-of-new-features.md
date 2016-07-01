@@ -8,7 +8,7 @@ tags:
   - composition
 published: true
 
-redirect_from: '/alda/2015/11/28/alda-has-a-bunch-of-new-features'
+redirect_from: '/alda/2015/11/28/alda-has-a-bunch-of-new-features/'
 ---
 
 {% include JB/setup %}

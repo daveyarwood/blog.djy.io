@@ -4,7 +4,7 @@ title: "4Clojure Problem #178"
 category:
 tags: [clojure]
 
-redirect_from: '/2014/04/03/4clojure-problem-178'
+redirect_from: '/2014/04/03/4clojure-problem-178/'
 ---
 {% include JB/setup %}
 

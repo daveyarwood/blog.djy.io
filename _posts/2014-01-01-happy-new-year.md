@@ -4,7 +4,7 @@ title: "Happy New Year!"
 category: alda
 tags: [alda, clojure, python, ruby]
 
-redirect_from: '/alda/2014/01/01/happy-new-year'
+redirect_from: '/alda/2014/01/01/happy-new-year/'
 ---
 {% include JB/setup %}
 

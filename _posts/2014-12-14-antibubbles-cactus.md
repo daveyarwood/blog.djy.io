@@ -3,10 +3,10 @@ published: true
 layout: post
 title: "Antibubbles - 'Cactus'"
 category: music
-tags: 
+tags:
   - antibubbles
 
-redirect_from: '/music/2014/12/14/antibubbles-cactus'
+redirect_from: '/music/2014/12/14/antibubbles-cactus/'
 ---
 
 {% include JB/setup %}
@@ -17,12 +17,12 @@ redirect_from: '/music/2014/12/14/antibubbles-cactus'
 </center>
 <br>
 
-Here's an unreleased Antibubbles song -- it was part of a small batch of songs we were working on right before we broke up. This is a rehearsal recording from December 8, 2012, about a month before our last show. 
+Here's an unreleased Antibubbles song -- it was part of a small batch of songs we were working on right before we broke up. This is a rehearsal recording from December 8, 2012, about a month before our last show.
 
 The drums are a bit clippy and there's no vocals (I hadn't written lyrics yet), but there you have it. I'm still pretty stoked about this song. Me on guitar, Anne Tomasevich on keys, Jon Sebastian on drums, and although there's no bass in this recording, Joe Csurpek was our bassist during this period.
 
 Enjoy!
 
-More Antibubbles recordings here:  
+More Antibubbles recordings here:
 [bandcamp](http://antibubbles.bandcamp.com)
 {: align="center"}

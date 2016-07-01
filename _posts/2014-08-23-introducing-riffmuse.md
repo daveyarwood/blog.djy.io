@@ -3,11 +3,11 @@ published: true
 layout: post
 title: Introducing Riffmuse
 category: music
-tags: 
+tags:
   - composition
   - clojure
 
-redirect_from: '/music/2014/08/23/introducing-riffmuse'
+redirect_from: '/music/2014/08/23/introducing-riffmuse/'
 ---
 
 {% include JB/setup %}
@@ -20,27 +20,27 @@ Here's an example:
 
 {% highlight text %}
 $ riffmuse c-sharp minor
-    
+
 Riffmuse v1.0.0
 ---------------
-    
+
 Scale:
-    
+
     C# minor
 
 Notes:
-    
+
     1                2                 3                4
     | A |   | C# |   |   | C# | C# |   | F# |   |   |   | E | G# | E | A |
-    
+
 Guitar:
-    
+
          1               2               3               4
      A|----------4---------------------------------------7-------7--12-
      E|--5-------------------9---9-------2-------------------4---------
 {% endhighlight %}
 
-That's not the best-sounding riff, but if you run Riffmuse a handful of times, you're bound to end up with a musical idea that inspires you in some way, and you can then tweak it and play around with it to your liking. 
+That's not the best-sounding riff, but if you run Riffmuse a handful of times, you're bound to end up with a musical idea that inspires you in some way, and you can then tweak it and play around with it to your liking.
 
 The idea for this program was inspired by some of the music that I wrote in college for Composition classes. I became interested in [algorithmic composition](http://en.wikipedia.org/wiki/Algorithmic_composition), the idea of leaving some portion of the composition process up to chance by using some sort of algorithm to generate musical material. I wrote a few interesting pieces of music whose pitch content was derived from a list of [randomly generated numbers](http://www.random.org). You can use Riffmuse as a tool for writing algorithmic music, but you can also use it more generally as a source of inspiration, a muse that can help you think outside of the box and come up with some interesting musical ideas.
 
@@ -52,7 +52,7 @@ Some ideas I have for the future of Riffmuse:
 * Build a GUI interface with drop-down selectors for the pitches and scale types
 * Make it into a web app
 * ... and/or an Android app?
-* Find some way for Riffmuse to synthesize the riff into sound so that you can hear what it sounds like. This will take more work... I could potentially use Overtone for this. 
+* Find some way for Riffmuse to synthesize the riff into sound so that you can hear what it sounds like. This will take more work... I could potentially use Overtone for this.
 * Expand this idea to generating chord progressions. This might end up spinning off as a new project.
 
 I'm pretty excited about Riffmuse as the first step toward more interesting algorithmic music compositional tools. I can already see myself using it to come up with interesting riffs and progressions. I'll be sure to post updates as I add new features.

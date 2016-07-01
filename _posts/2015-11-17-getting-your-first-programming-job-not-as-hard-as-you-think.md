@@ -3,7 +3,7 @@ layout: post
 title: "Getting Your First Programming Job: Not as Hard as You Think"
 published: true
 
-redirect_from: '/2015/11/17/getting-your-first-programming-job-not-as-hard-as-you-think'
+redirect_from: '/2015/11/17/getting-your-first-programming-job-not-as-hard-as-you-think/'
 ---
 
 {% include JB/setup %}

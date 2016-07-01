@@ -4,7 +4,7 @@ title: "A novel solution to FizzBuzz"
 category:
 tags: [clojure]
 
-redirect_from: '/2014/06/14/a-novel-solution-to-fizzbuzz'
+redirect_from: '/2014/06/14/a-novel-solution-to-fizzbuzz/'
 ---
 {% include JB/setup %}
 

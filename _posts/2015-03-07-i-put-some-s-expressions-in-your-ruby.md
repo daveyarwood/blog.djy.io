@@ -2,17 +2,17 @@
 layout: post
 title: "I put some S-expressions in your Ruby"
 category: null
-tags: 
+tags:
   - lisp
   - ruby
 published: true
 
-redirect_from: '/2015/03/07/i-put-some-s-expressions-in-your-ruby'
+redirect_from: '/2015/03/07/i-put-some-s-expressions-in-your-ruby/'
 ---
 
 {% include JB/setup %}
 
-I just rediscovered [Rubeque](http://www.rubeque.com), a set of short problems/koans to solve using Ruby, ranging in difficulty from ["What does true equal?"](http://www.rubeque.com/problems/the-truth) to [writing simple AIs](http://www.rubeque.com/problems/battleship) and [solving logic puzzles](http://www.rubeque.com/problems/architect-of-sixcity). The web UI provides an interactive code editor that you can use to write your solution in Ruby and see if the tests pass. 
+I just rediscovered [Rubeque](http://www.rubeque.com), a set of short problems/koans to solve using Ruby, ranging in difficulty from ["What does true equal?"](http://www.rubeque.com/problems/the-truth) to [writing simple AIs](http://www.rubeque.com/problems/battleship) and [solving logic puzzles](http://www.rubeque.com/problems/architect-of-sixcity). The web UI provides an interactive code editor that you can use to write your solution in Ruby and see if the tests pass.
 
 I found [this problem](http://www.rubeque.com/problems/i-put-some-s-expressions-in-your-ruby/solutions) particularly interesting. The task is to write an [S-expression](http://en.wikipedia.org/wiki/S-expression) evaluator in Ruby. S-expressions are provided in the tests as nested arrays of symbols (`:the :ruby :kind`) and other values. The symbols represent functions, which is convenient because out of the box, Ruby gives you the ability to refer to and call functions by using their names as symbols. For example, `49.to_s` (i.e.calling the method `to_s` on the number `49`) can also be expressed like this: `49.send(:to_s)`. This means we can dynamically send any symbol (representing a function) to any value and it will be evaluated as a function call, which is basically all it takes to write an S-expression evaluator.
 
@@ -43,7 +43,7 @@ def sexp_eval(sexp)
   return sexp unless sexp.is_a? Array
   return sexp.map {|x| sexp_eval x} unless [Symbol, Proc].include? sexp.first.class
   fn, *args = *sexp
-  args = sexp_eval args  
+  args = sexp_eval args
   fn.to_proc.call(*args)
 end
 

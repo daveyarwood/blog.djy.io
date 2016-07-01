@@ -4,11 +4,11 @@ title: "Making MIDI Sound Awesome in Your JVM"
 category: alda
 tags: [alda, java, jvm, midi]
 
-redirect_from: '/alda/2015/04/17/making-midi-sound-awesome-in-your-jvm'
+redirect_from: '/alda/2015/04/17/making-midi-sound-awesome-in-your-jvm/'
 ---
 {% include JB/setup %}
 
-You might be surprised to learn that your Java Virtual Machine is a capable musician. A MIDI soft synthesizer has actually been built into the JVM for years and years, and starting with Java 7, it's gotten a whole lot more awesome. 
+You might be surprised to learn that your Java Virtual Machine is a capable musician. A MIDI soft synthesizer has actually been built into the JVM for years and years, and starting with Java 7, it's gotten a whole lot more awesome.
 
 # MIDI: A Primer
 
@@ -16,7 +16,7 @@ Quoth [Wikipedia](http://en.wikipedia.org/wiki/MIDI):
 
 > **MIDI** (/ˈmɪdi/; short for **Musical Instrument Digital Interface**) is a technical standard that describes a protocol, digital interface and connectors and allows a wide variety of electronic musical instruments, computers and other related devices to connect and communicate with one another.[1] A single MIDI link can carry up to sixteen channels of information, each of which can be routed to a separate device.
 
-If you started computing in the 90's like I did, the word "MIDI" probably makes you think of [canyon.mid](https://www.youtube.com/watch?v=OIW4F285QjA) and the handful of other amazing MIDI files that came bundled with Windows 95. This was amazing at the time because *your computer was synthesizing music!* (I still find this pretty amazing, to be honest.) 
+If you started computing in the 90's like I did, the word "MIDI" probably makes you think of [canyon.mid](https://www.youtube.com/watch?v=OIW4F285QjA) and the handful of other amazing MIDI files that came bundled with Windows 95. This was amazing at the time because *your computer was synthesizing music!* (I still find this pretty amazing, to be honest.)
 
 We tend to think of those cheesy SoundBlaster sound card sounds when we think of MIDI, but technically, MIDI doesn't really have a sound of its own. Really, all it is is a standard for a set of 128 named instruments and a bunch of instructions that you can give them to get them to make music. What the instruments will actually sound like is up to the synthesizer that interprets these instructions. Professional keyboardists use expensive MIDI controllers all the time to drive powerful (and even more expensive) hardware synthesizers, which can sound breathtakingly realistic. Personal computers have had software synthesizers built into their sound cards ever since the inception of the MIDI standard in the early 80's, and every sound card's interpretation of MIDI is different. I used to create MIDI files a lot in my adolescence, and part of the fun was comparing the way they sounded on my computer, vs. the ones in the computer lab at school, vs. my friends' computers, etc. What does your computer's MIDI sound like? If you're curious, you might want to try downloading a few of the `.mid` files on [this site](https://sites.google.com/site/musiccurios/downloads), opening them and seeing what happens. If you're on a Mac, GarageBand will probably open and you'll hear the gorgeous sounds of its built-in soft synth. If you're running Linux, good luck! (j/k; actually, I hear that some modern Linux distributions can handle MIDI pretty well out of the box nowadays. In the past, I've had to spend quite a bit of time tinkering with [FluidSynth](http://www.fluidsynth.org) or [Timidity](http://sourceforge.net/projects/timidity) to get MIDI working in Linux. If you're in this boat, you have my utmost sympathy.)
 
