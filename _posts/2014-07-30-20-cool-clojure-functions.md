@@ -4,7 +4,7 @@ title: "20 cool Clojure functions"
 category: 
 tags: [clojure]
 
-redirect_from: '/2014/07/30/20-cool-clojure-functions'
+redirect_from: '/2014/07/30/20-cool-clojure-functions/'
 ---
 {% include JB/setup %}
 
