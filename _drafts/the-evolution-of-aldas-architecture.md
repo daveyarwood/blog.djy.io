@@ -158,9 +158,9 @@ case, I saw a couple of advantages to writing the Alda client in Java:
   can contribute to without having to learn a new programming language.
 
 My first stab at the client/server architecture was one in which the client and
-server communicated over HTTP. The server was a standard HTTP server that
-accepted JSON requests, and different commands were mapped to different routes.
-This worked fine, although it was a little bit clunky and unnecessary.
+server communicated over HTTP. The server was an HTTP server that accepted JSON
+requests, and different commands were mapped to different routes.  This worked
+fine, although it was a little bit clunky and unnecessary.
 
 [j2b]: https://github.com/adzerk-oss/boot-jar2bin
 [aldagithub]: https://github.com/alda-lang
