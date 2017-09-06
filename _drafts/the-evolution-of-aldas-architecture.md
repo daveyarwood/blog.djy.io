@@ -21,11 +21,13 @@ compiles down to a data that can be played by Alda's sound engine.
 [dsl]: https://en.wikipedia.org/wiki/Domain-specific_language
 
 In this post, I'd like to talk about another way in which Alda has evolved over
-the past year and a half. On the way there, I will give you a brief history of
-how I've architected Alda since I started working on it in 2012.
+the past year and a half. On the way there, I will tell you the tale of how I've
+architected Alda since I started working on it in 2012.
 
 At the time of writing, I consider Alda to be in "Phase 5" of an ongoing series
 of architectural improvements.
+
+_TODO: table of contents because this is long_
 
 # Phase 1 (2012-2015): Minimum Viable Product
 
@@ -209,80 +211,100 @@ connectivity issues or the server being down.
 
 # Phase 4: Load-Balanced Workers
 
-* break server out into a broker and workers ("paranoid pirate" pattern)
-  * https://github.com/alda-lang/alda/blob/master/CHANGELOG.md#100-rc35-9416
-* the main impetus for this change was that users were starting to report performance/audio issues related to the server trying to parse, evaluate and play multiple scores at once
-* i read somewhere that in performance-intensive audio applications, it is important to do all the audio "performance" on a separate thread, e.g. on a dedicated thread running on your sound card
-* because zeromq makes it so easy, i decided to try giving each audio "performer" its own process, running on a separate jvm
-* this solved a number of issues related to using multiple midi synthesizer instances in the same jvm
-* the server is more responsive now that it doesn't have to compete for resources with an audio performance occurring in the same JVM
-* worker processes do not exhibit the audio glitches that were observable before because they are mostly free to focus on performing audio, in between polling for messages
+_diagram here: client <-> server <-> workers_
+
+One of ZeroMQ's greatest assets is its excellent [zguide][zguide], a friendly
+and comprehensive walkthrough of not only ZeroMQ, but IPC in general. The zguide
+shows you how to use ZeroMQ starting with the very basics, illustrating the
+concepts with code examples along the way. Along with each example, there is a
+brief discussion of the strengths and weaknesses of that particular approach or
+pattern, seguing into another example that is slightly stronger than the
+previous.
+
+After reading far enough to implement a simple client/server architecture, I
+realized that we needed to [break the server up into separate "worker"
+processes][alda100rc35] (Alda 1.0.0-rc35, September 4, 2016). This allows requests to be handled asynchronously,
+with newer requests being handled promptly even while older requests are still
+in progress.
+
+(If it interests anyone, the ZeroMQ pattern I adapted is called the [Paranoid
+Pirate Pattern][ppp].)
+
+The main impetus for this change was that users were starting to report
+performance/audio issues related to the server trying to parse, evaluate and
+play multiple scores at once. I read somewhere that in performance-intensive
+audio applications, it is important to do all of the audio "performance" on a
+separate thread, e.g. on a dedicated thread running on your sound card. So,
+after some experimentation, I ended up giving each audio "performer" (a.k.a.
+worker) its own process, running in a separate JVM. This solved a number of
+issues caused by using multiple MIDI synthesizer instances in the same JVM.
+
+After making this change, Alda's audio performance improved noticeably. The
+worker processes did not exhibit the audio glitches that were observable before
+because they were mostly free to focus on performing audio, in between polling
+for messages. Similarly, the server became more responsive now that it didn't
+have to compete for resources with an audio performance occurring in the same
+JVM.
+
+[zguide]: http://zguide.zeromq.org
+[ppp]: http://zguide.zeromq.org/page:all#Robust-Reliable-Queuing-Paranoid-Pirate-Pattern
+[alda100rc35]: https://github.com/alda-lang/alda/blob/master/CHANGELOG.md#100-rc35-2016-09-04
 
 # Phase 5 (WIP): Modular Components
 
-* right now, we have only a single program, which is created by bundling the
-  (java) client, (clojure) server and (clojure) worker into an executable
-  uberjar, but i'm thinking it may be better to organize it so that the
-  components can be implemented in non-JVM languages, e.g. a rust client
+_some sort of image here representing modularity_
 
-* already heading in a modular direction with the current progression
-  * program
-  * client + server
-  * client + server + worker
+At the moment, Alda is still packaged and released as a single program, which we
+create by bundling the (Java) client, (Clojure) server and (Clojure) worker into
+an executable uberjar. But, I've been thinking a lot about setting things up so
+that the components could be implemented in non-JVM languages. I think it might
+be compelling to explore alternative languages and runtimes for some of the
+difficult work that Alda needs to do. For example, it might be compelling to
+write a faster compiler in C (or perhaps something slightly higher-level like
+[Rust][rust]), or an alternative, [Web Audio API][webaudio]-based audio
+generator that can run in the browser.
 
-* the worker could be further broken up into separate services:
-  * compiler (parses alda code and turns it into a playable score)
-  * performer (plays the compiled score)
+We are already heading in a "modular" direction with the progression of Phases 1
+through 4 described above. We have gone from a single program, to a client/server
+architecture, to a load-balanced server/worker achitecture.
 
-* this modularity is great for at least a couple reasons
-  * each module can be a separate project with its own github repo in the alda-lang org
-    * already doing this, enjoying it so far
-    * each project is conceptually simpler to understand
-    * contributors can explore and discover the alda projects to which they are most interested in contributing
-    * less issues per repo, more specialized issues
-      * issues become more visible, can get the attention they need
-  * more exciting: isolating alda components into external modules paves the way for a "plug 'n play" architecture where developers could feasibly write their own implementations of modules they want to improve, in any programming language they want to use
-    * arbitrary examples:
-      * an alda client written in rust
-      * an alda server written in ruby
-      * an alda parser/score construction component written in node.js
-      * an alternate sound engine using the Web Audio API via a headless browser
+Going forward, I believe the worker can be further broken up into at least two
+discrete services:
 
-* already done: organized the repos as separate projects/codebases
+  1. The compiler, which parses Alda code and turns it into a playable score.
+  2. The performer, which plays the compiled score.
 
-* (TODO) set up a system where it's easy to replace the existing components
-  (client, server and worker) with alternate implementations, and the client (or
-  maybe a new, separate program?) keeps track of managing and updating these
-  components, which can now be separate programs
+I haven't yet dived too deep into this idea, but from what I've read in the
+ZeroMQ zguide, there are some patterns like [Majordomo][majordomo] and
+[Titanic][titanic] that look to be able to provide the type of service-oriented
+architecture that I'm imagining. In the case of the Titanic pattern, work that
+needs to be done is stored on disk, a specialized service does the work and
+writes the result to disk, and a server (or "broker") manages the services and
+coordinates the process of a client making a request, the work happening, and
+the client getting a response.
 
-* (TODO) break the worker out into services
-  * from ZMQ standpoint, considering using elements of the majordomo and titanic patterns
-    * services registered with server
-    * client still only interacts with the server
-    * workers are idempotent
-    * server maintains the state of requests and responses
-    * request/response is asynchronous:
-      * client makes a request, immediately gets a response ("your request is in the queue")
-      * workers take jobs off the queue and write the results to disk
-      * client periodically checks back with server for status
-      * server immediately knows whether the response has arrived, because it can
-        see the response on disk
-      * server delivers response to client
-    * the queue is persistent, which is nice; servers and workers can go down and
-      then come back online and pick right up where they left off
-    * might modify this pattern a little to allow for multi-step transactions
-      * client makes a multi-part request (e.g. parse, build, and play a score)
-      * worker A does part 1 of the request (e.g. compile alda code into score
-        events), writes result to somewhere temporary
-      * server getting status request in the meantime will not see a final result
-        and tell the client it's still pending
-      * worker B takes temporary result as its job and does part 2 of the request
-        (e.g. build score from score events), writes result to somewhere temporary
-      * server still sees request as pending, can even tell the client the latest
-        step that has been completed
-      * worker C takes temporary result of worker B as its job and does part 3 of
-        the request (e.g. play the compiled score), writes final result to disk
-      * server can now tell client the job is complete and send client the final
-        result
-      * the appeal of this is that specialized workers can be written in different
-        languages that might be better suited to the task at hand
+_TODO: move these paragraphs up?_
+
+On a separate note, this modularity we've been exploring is great for a couple
+of other reasons:
+
+* We have restructured the [alda-lang GitHub organization][aldalang] so that
+  each module is maintained as a separate project with its own repository where
+  issues are filed and code is contributed. I like this because each individual
+  project is smaller and conceptually simpler to understand than Alda as a
+  whole. New contributors can explore and discover the Alda projects to which
+  they are most interested in contributing. There are less issues per repo, the
+  issues are more specialized, and more visible, so they can get the attention
+  they need.
+
+* Isolating Alda components into external modules that aren't tied to the JVM
+	would pave the way for a "plug 'n play" architecture where developers in the
+	open-source community could feasibly write their own implementations of modules
+	that they want to improve, using whichever programming language they prefer.
+
+[aldalang]: https://github.com/alda-lang
+[rust]: https://www.rust-lang.org
+[webaudio]: https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API
+[majordomo]: http://zguide.zeromq.org/page:all#Service-Oriented-Reliable-Queuing-Majordomo-Pattern
+[titanic]: http://zguide.zeromq.org/page:all#Disconnected-Reliability-Titanic-Pattern
+
