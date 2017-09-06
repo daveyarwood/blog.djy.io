@@ -92,7 +92,8 @@ The parser proved to be very easy to write, thanks to the excellent
 [Instaparse][instaparse] parser-generator library.
 
 We used [at-at][atat] for note scheduling at first, and then switched to the
-more robust [JSyn][jsyn].
+more robust [JSyn][jsyn], which offers better precision by scheduling events in
+realtime on a dedicated audio thread.
 
 [instaparse]: https://github.com/Engelberg/instaparse
 [atat]: https://github.com/overtone/at-at
@@ -120,10 +121,10 @@ hardware. Something had to be done about this.
 Slow startup time has long been a [known issue for Clojure][cljstartuptime], and
 it remains a problem in 2017. It's usually a non-issue when you use Clojure to
 make long-running processes like servers and web services. The process may take
-a while to start, but once it's up, it stays up and it runs fast. The slow
-startup time really only hurts whenever you want to write a program that you
-have to run a lot and you always want it to respond quickly: a command-line
-utility like Alda.
+a while to start, but once it's up, it stays up and it runs fast. But the slow
+startup time starts to become problematic when you want to write a program that
+you have to run a lot and you always want it to respond quickly; in other words,
+a command-line utility like Alda.
 
 [cljstartuptime]: http://blog.ndk.io/jvm-slow-startup.html
 
@@ -150,7 +151,8 @@ case, I saw a couple of advantages to writing the Alda client in Java:
 * Because both the client and server compile down to Java bytecode, we can
   package both of them together in the same uberjar, and then produce a single
   executable program (`alda`, or `alda.exe` for Windows users) via a Boot task I
-  wrote called [jar2bin][j2b]. This greatly simplifies releases.
+  wrote called [jar2bin][j2b]. This greatly simplifies releases and makes Alda
+  easy to install.
 
 * It's nice to have a project in the [Alda organization][aldagithub] that's
   written in a language as ubiquitous as Java. Lots of people know Java, so when
@@ -181,9 +183,9 @@ performance-sensitive as Alda, I was interested in exploring better ways to do
 As recommended by the same contributor, I looked into [ZeroMQ][zmq] and I was
 immediately hooked. I won't go into too much depth here about ZeroMQ, but
 sufficeth to say, it's opened the door to a world where Alda consists of
-multiple, specialized programs that can talk to each other in all kinds of
-interesting ways. With ZeroMQ, I can build arbitrarily complex, multi-process
-programs out of simple, composable parts.
+multiple, specialized programs that talk to each other in interesting ways. With
+ZeroMQ, I can build arbitrarily complex, multi-process programs out of smaller,
+composable parts.
 
 ZeroMQ proved to be a better way to implement the client/server architecture I
 had slapped together previously. It turns out that parsing and handling HTTP
