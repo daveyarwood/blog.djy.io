@@ -23,7 +23,7 @@ published: true
 In [my last blog post]({% post_url 2016-06-15-alda-for-clojurists %}), I talked
 about an important evolution in the implementation of [alda.lisp][aldalisp], a
 sort of [DSL][dsl] or "mini-language" that represents a musical score and
-compiles down to a data that can be interpreted and performed by Alda's sound
+compiles down to data that can be interpreted and performed by Alda's sound
 engine.
 
 [aldalisp]: https://github.com/alda-lang/alda/blob/master/doc/alda-lisp.md
