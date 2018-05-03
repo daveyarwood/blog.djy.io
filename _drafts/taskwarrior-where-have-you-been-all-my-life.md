@@ -10,6 +10,14 @@ published: true
 
 {% include JB/setup %}
 
+<p align="center">
+  <img src="{{site.url}}/assets/2018-04-27-taskwarrior-screenshot.png"
+       alt="Screenshot of Taskwarrior in action"
+       title="Screenshot of Taskwarrior in action"
+       width="800"
+       height="146"/>
+</p>
+
 I've been thinking a lot about task management lately. I've actually been
 thinking about it for years. I've always been searching for the optimal way to
 sort through the bajillion things I have to do and remain productive.
@@ -120,71 +128,60 @@ took a step back and thought about what I really wanted to create. This led me
 to my next iteration, which was different enough that I decided to give it a
 different name.
 
----
-
-(just dumping a bunch of word garbage here for now... needs work)
-
 # Attempt 2: `tdz`
 
-Grew weary of managing a database and building my own tasks API. I had a
-shower-thought that Google Calendar already provides a database and an API that
-I could leverage to build my tool. At the same time, I was starting to get a
-little bit frustrated with my lack of speed while attempting to develop in Rust.
-I already had half a mind to rewrite `ews` just so I could use a language in
-which I could be more productive, so I took this as an opportunity to rethink
-the app from scratch.
+I had a shower-thought that Google Calendar provides a database for events and
+an API for interacting with them, so I could leverage this platform to build my
+tool. So, I started writing [tdz][tdz] as an experiment in that direction. (NB:
+I didn't get very far, so don't expect to find much in that repo!)
 
-In rethinking the app, I realized that the model was simpler than I thought.
-_TODO: details about move from project + tasks to just tasks_
+While I was thinking about how my mental model of projects and tasks could map
+onto the Google Calendar API, I also realized that the model could be
+simplified. I didn't really need to manage projects; I only needed to manage
+individual tasks that have scheduled dates and due dates. (If I could organize
+them into projects, that would be icing on the cake, but it wasn't a
+requirement.)
 
 With the conceptual model simplified to just tasks, I (finally) started to
-wonder if maybe somebody else had already built something like what I was trying
-to build. _TODO: restatement of the problem leading to my Google search for a
-command-line tool to manage tasks that have a due date. Link to the stackify.com
-article I found, which pointed me to Taskwarrior_
-
-[useful-cli-tools]: https://stackify.com/top-command-line-tools/
-
-
+wonder if maybe somebody else had already created something like my idea. So,
+after some googling, I stumbled upon [this article][useful-cli-tools], which
+mentions Taskwarrior, a feature-rich, command-line TODO management application.
 
 # Enter Taskwarrior
 
-<p align="center">
-  <img src="{{site.url}}/assets/2018-04-27-taskwarrior-screenshot.png"
-       alt="Screenshot of Taskwarrior in action"
-       title="Screenshot of Taskwarrior in action"
-       width="800"
-       height="146"/>
-</p>
+I'd briefly encountered Taskwarrior before in the past and thought, "This is
+cool, but how is it different from the other command-line TODO apps I've seen?"
 
-I was blown away when I looked into it and discovered that it is exactly the
-tool I not only envisioned, but was starting to build for myself. Getting to
-throw away what I was working on and use a high-quality tool that already exists
-is an amazing feeling. It goes to show you that when you have an idea for a
-project, it's worth investing some time up-front researching and considering
-alternatives.
+At that point, I'd already come across a number of command-line TODO list
+managers in the open source space; it's a fun, easy project that any beginning
+programmer can build and get working in a short amount of time. So, by
+association, I had come to expect any command-line TODO manager to be simplistic
+and devoid of useful features.
 
-I'd briefly encountered Taskwarrior before in the past and thought "this is
-cool," but at that point, I'd already seen a million examples of TODO apps --
-it's a fun, easy project that anybody can build and get working in a small
-amount of time. I had come to expect all of these tools to be simplistic and
-devoid of the features that I needed from a task manager. I didn't want a tool
-that would simply keep track of a list of tasks and let me check them off when I
-did them. This is akin to a traditional paper-and-pen TODO list -- I've always
-hated those because there's no way to assign dates to things and filter out
-tasks that aren't ready for action. It didn't occur to me that there might be a
-more sophisticated task management CLI tool that had all the features I needed
-to follow an "Inbox Zero" style of task management. Taskwarrior turned out to be
-the right tool for the job.
+I didn't want a tool that would simply keep track of a list of tasks and let me
+check them off when I did them.  This is akin to a traditional paper-and-pen
+TODO list; I've always hated those because there's no way to assign dates to
+things and filter out the noise of backlog tasks that aren't yet ready for
+action.  It didn't occur to me that there might be a more sophisticated task
+management CLI tool that had all of the features I needed in order to follow an
+"Inbox Zero" style of task management. Taskwarrior turned out to be the right
+tool for the job.
 
+As I started to explore Taskwarrior, I was blown away. It turned out that it was
+exactly the tool I not only envisioned, but had started to build for myself.
+Getting to throw away what I was working on and use a high-quality tool that
+already exists is an amazing feeling! It goes to show you that when you have an
+idea for a project, it's worth investing some time up-front researching and
+considering alternatives.
 
 [taskwarrior]: https://taskwarrior.org
 [inboxzero]: https://www.google.com/search?q=inbox+zero
 [fut]: https://followupthen.com
 [fut-formats]: https://www.followupthen.com/how#timeformats
 [ews]: https://github.com/daveyarwood/ews
+[tdz]: https://github.com/daveyarwood/tdz
 [cljs]: https://clojurescript.org
 [nodejs]: https://nodejs.org
 [rust]: https://rust-lang.org
 [crystal]: https://crystal-lang.org
-
+[useful-cli-tools]: https://stackify.com/top-command-line-tools/
