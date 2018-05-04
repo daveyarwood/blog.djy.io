@@ -147,12 +147,12 @@ img#portrait {
 
 #project-links {
   margin-top: 1em;
+  margin-bottom: 1em;
   p {
-    margin-bottom: 0.5em;
+    margin-bottom: -1em;
     font-family: $retro-fonts;
     font-weight: bold;
     font-size: 17px;
-    line-height: 10px;
   }
 }
 
