@@ -56,13 +56,17 @@ img { max-width: 100%; }
 
 main {
   font-family: $retro-fonts;
-  font-size: 15px;
-  line-height: 20px;
+  font-size: 17px;
+  line-height: 24px;
+  min-width: 300px;
+  width: 75%;
+  margin: 0 auto;
 }
 
 article {
   h1, h2, h3 {
     margin: 40px 0;
+    line-height: 1.2em
   }
   p {
     margin: 1.5em 0;
@@ -147,7 +151,7 @@ img#portrait {
     margin-bottom: 0.5em;
     font-family: $retro-fonts;
     font-weight: bold;
-    font-size: 15px;
+    font-size: 17px;
     line-height: 10px;
   }
 }

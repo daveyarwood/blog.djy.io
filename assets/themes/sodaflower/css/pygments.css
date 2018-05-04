@@ -1,6 +1,6 @@
 /* adapted from the gruvbox vim color scheme */
 .highlight .hll { background-color: #ffffcc }
-.highlight  { background: #282828; color: #ebdbb2; background-color: #282828; padding: 5px 10px; width: 80%; max-width: 775px; margin: 0 auto; text-indent: 0px; border: 1px solid #5D5C63; }
+.highlight  { background: #282828; color: #ebdbb2; background-color: #282828; padding: 5px 10px; max-width: 875px; margin: 0 auto; text-indent: 0px; border: 1px solid #5D5C63; }
 .highlight .c { color: #928374; font-style: italic; background-color: #282828 } /* Comment */
 .highlight .err { color: #ebdbb2; background-color: #282828 } /* Error */
 .highlight .esc { color: #ebdbb2; background-color: #282828 } /* Escape */
