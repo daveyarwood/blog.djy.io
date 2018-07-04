@@ -1,7 +1,7 @@
 ---
 published: true
 layout: post
-title: "Exit Mice and an Ode to Grunge Pop"
+title: "Exit Mice and an ode to grunge pop"
 category: music
 tags:
   - exit-mice
