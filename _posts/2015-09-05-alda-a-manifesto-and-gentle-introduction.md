@@ -46,7 +46,7 @@ After reading through [Nullsleep][nullsleep]'s excellent [MML tutorial][mmltut] 
 [mml]: https://en.wikipedia.org/wiki/Music_Macro_Language#Modern_MML
 [chiptune]: https://en.wikipedia.org/wiki/Chiptune
 [nullsleep]: http://www.nullsleep.com/
-[mmltut]: http://www.nullsleep.com/treasure/mck_guide/
+[mmltut]: http://tilde.club/~nullsleep/#6.1.2
 [pixelrain]: {% post_url 2015-01-24-pixel-rain %}
 
 MML ended up becoming a major influence on Alda. I really enjoyed the workflow of creating NES music by writing code in a text editor. But what I wanted was a more general-purpose music programming language. I wanted to take MML's approach to generating NES music and extend it to other realms of digital music creation: additive/subtractive synthesis, electroacoustic music, and even classical music.
@@ -106,6 +106,11 @@ When you notate music using a GUI application, you have menus upon menus in fron
 
 [Follow the instructions here](https://github.com/alda-lang/alda#installation) to install the latest version of Alda.
 
+Once you've installed Alda, run `alda up` to start an Alda server in the
+background. This will take a minute, but then after that, you can leave the
+server running and you won't need to start it again (at least, not until the
+next time you restart your computer).
+
 You should now be able to use a handful of built-in commands that start with `alda`. You can parse and/or play Alda code from a file or a string of Alda code provided as a command-line argument. Or, you can build a score incrementally by using the Alda REPL (Read-Evaluate-Play Loop).
 
 # Alda 101
@@ -115,16 +120,6 @@ We will use the Alda REPL at first, to experiment a little with Alda syntax. To 
 {% highlight text %}
 alda repl
 {% endhighlight %}
-
-When the REPL is up and running, you should see something like this:
-
-<center>
-  <img src="{{site.url}}/assets/2015-09-05-alda-repl.png"
-       alt="the Alda REPL"
-       title="the Alda REPL"
-       width="500"
-       height="200">
-</center>
 
 You can type snippets of Alda code into the REPL, press Enter, and hear the results instantly.
 
@@ -337,7 +332,10 @@ To exit the Alda REPL, type `bye` and press Enter.
 
 So far, we have been feeding Alda some code, line by line, and hearing the result each time. This is a good way to test the waters and see how small pieces of code sound before you commit to them. When you're ready to set some music down in stone, it's time to write a score.
 
-In Alda, a score is just a text file. You can use any text editor you'd like to create this text file. By convention, the file's name should end in `.alda`. Create a blank text file in whatever directory you're currently in in your terminal, and name it `test.alda`.
+To Alda, a score is just a text file. You can use any text editor you'd like to
+create this text file. By convention, the file's name should end in `.alda`.
+Create a blank text file in whatever directory you're currently in in your
+terminal, and name it `test.alda`.
 
 Type the following into `test.alda`:
 
@@ -361,10 +359,6 @@ bassoon: o2 d8 e (quant 30) (vol 65) f+ g (quant 99) a2
 {% endhighlight %}
 
 Run `alda play --file test.alda` again to hear the difference in volume between the first two and last three notes.
-
-> As an aside: you may have noticed there is a little bit of a wait every time you run an `alda` command. This is an unfortunate side effect of Alda being a Clojure project; [Clojure has a notoriously slow start-up time](http://blog.ndk.io/2014/02/11/jvm-slow-startup.html). You might prefer to use the Alda REPL to experiment -- once the REPL is started up, you will hear the results of each line of code instantly.
-
-> It's also worth noting that in the near future, Alda will be available as an ahead-of-time-compiled, standalone executable, which should speed things up a bit.
 
 ## Multiple instruments
 
@@ -431,8 +425,5 @@ trombone: o3 e8 f g a b > c d e4.~2
 tuba: @last-note o2 c4.~2
 {% endhighlight %}
 
-So, that's Alda in a nutshell. Please don't hesitate to [e-mail me](mailto:dave.yarwood@gmail.com?subject=alda) if you have any questions about how to do something in Alda. Or, better yet, if you're a Clojure programmer and you like open-source software, [consider contributing](https://github.com/alda-lang/alda/issues)! Pull requests are warmly accepted.
+So, that's Alda in a nutshell. Please don't hesitate to [e-mail me](mailto:dave.yarwood@gmail.com?subject=alda) if you have any questions about how to do something in Alda. Or, better yet, if you're a Clojure programmer and you like open-source software, [consider contributing](https://github.com/alda-lang/alda/blob/master/CONTRIBUTING.md)! Pull requests are warmly accepted.
 
-*EDIT 10/4/15: The `(quant 30, vol 65)` syntax has been updated in newer versions of Alda. I've updated this article to reflect the new syntax, which is `(quant 30) (vol 65)`.*
-
-*EDIT 1/2/16: Alda is now considerably easier to install, and no longer comes packaged with the FluidR3 MIDI soundfont (although there are instructions in the README for how to install it on Mac/Linux systems). I've updated this blog post to reflect the new, easier install process.*
