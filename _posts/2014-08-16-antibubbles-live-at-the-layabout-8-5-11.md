@@ -20,16 +20,16 @@ I was going through my computer and found this old Antibubbles live set -- thoug
 
 Antibubbles was a band from 2008-2013. I played guitar and sang. A bunch of other people were involved too at varying times, but our "all-star" line-up (2011-2013) was Seth Beard on drums, Anne Tomasevich on synth/vocals, and Joe Csurpek on bass/vocals.
 
-**Set list:**
-Tonight Tonight Tonight
-Battle on the Mars
-Our Capsule
-Couple Skate
-Red Blanket
-You Gave Your Love to Me Softly (Weezer)
-Flux
-This Feeling
-{: align="center"}
+* **Set list:**
+* Tonight Tonight Tonight
+* Battle on the Mars
+* Our Capsule
+* Couple Skate
+* Red Blanket
+* You Gave Your Love to Me Softly (Weezer)
+* Flux
+* This Feeling
+{: align="center" style="list-style-type: none"}
 
 The full, 8-song set is here:
 [sendspace](https://www.sendspace.com/file/8fe0dl)
