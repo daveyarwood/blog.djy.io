@@ -1,0 +1,145 @@
+---
+layout: post
+title: "Minutiae #1: Alda stuff, Clojure tooling for Vim"
+category: minutiae
+tags:
+  - alda
+  - talks
+  - conjure
+  - vim
+  - prepl
+  - clojure
+  - strange loop
+published: true
+---
+
+{% include JB/setup %}
+
+I've been meaning to update this blog more often for a long time now. The
+problem I have is that I have a lot of interesting things that I could write
+about, but I feel like it would take so much effort to produce a blog post worth
+reading, I just never have the time to do it. As a result, I've been setting
+aside time only about once every 2 to 6 months to write a long blog post about a
+particular topic.
+
+I've been thinking lately that it might be interesting to explore writing
+smaller, more frequent posts about various things I've been spending time on or
+that have captured my interest lately. [Alex Miller][alexmiller] and [Bozhidar
+Batsov][bozhidarbatsov] have been doing this sort of journaling recently and I
+really enjoy reading it, so I figured I'd take a stab at it too.
+
+Here we go!
+
+# Strange Loop
+
+I'm thrilled to be [speaking at Strange Loop][strangeloop] in September! I'll be
+talking about a handful of interesting directions that I've taken [Alda][alda]
+over the last 7 years, and in particular, Alda's evolving relationship with
+Clojure.
+
+# Alda v2
+
+Since December, I've been gradually rewriting Alda from the ground up. It's a
+huge undertaking, but something I've been wanting to do for a very long time.
+I'll be talking about this in more depth in [my talk at Strange
+Loop][strangeloop], but just as a teaser, the next version of Alda will feature:
+
+* A simpler architecture that does more work on the client side.
+* A native executable client written in Go.
+* Support for [live coding][live-coding].
+
+If you're interested in following my progress, you can watch the [Alda v2
+project on GitHub][alda-v2-project] or say hello in the #development channel in
+the [Alda Slack group][alda-slack].
+
+# alda4j
+
+I recently hacked together something interesting to help someone build a game
+for a competition. I call it [alda4j].
+
+Alda4j is for the niche use case where you want to embed Alda into your Java
+application. It leverages the [Clojure Java API][clojure-java-api] to invoke the
+Clojure code being run on the Alda background worker process, but in the
+foreground in your application.
+
+Here is some [example Java code][alda4j-example] that uses Alda4j to play lines
+of Alda code that are input by the user.
+
+# Vim Clojure tooling and the prepl
+
+It's always been interesting to be a Vim user in the Clojure community. By and
+large, Clojure programmers tend to use either Emacs or Cursive. The [2019 State
+of Clojure survey results][2019-soc-results] show 46% of respondents using
+Emacs, 30% using Cursive, and a scant **10%** using Vim as a primary Clojure
+development environment.
+
+## Fireplace
+
+[Fireplace][fireplace] has been the standard Vim plugin for Clojure development
+for quite a long time, and it's still the one that I would recommend to people
+who are just getting started with using Vim tooling for Clojure. The main
+reasons that I would recommend it are that it's been around for the longest, and
+it's the one that I would guess most Clojurist Vimmers use today, so if run into
+any problems, chances are you'll be able to find someone who can help.
+
+I've never had any major problems with Fireplace, but I've noticed more and more
+Vim plugins doing their work asynchronously, which is super awesome because it
+makes the overall Vim experience feel fast and lightweight. As of the last time
+I used Fireplace, it was handling code evaluation synchronously, meaning that
+every time I evaluated a Clojure expression, I would have to wait however many
+milliseconds it took for the result to come back before I could do anything else
+in Vim. That might not sound terrible, but when you live in your text editor
+like I do, being able to speed up things like this is a major quality-of-life
+improvement!
+
+## Acid, vim-iced
+
+Not long ago, I started seeing alternative Clojure plugins for Vim begin to
+spring up, some of which advertised that they were doing things asynchronously,
+which piqued my interest. Two plugins worth exploring in this arena are
+[acid][acid] and [vim-iced][iced]. Both acid and vim-iced operate by
+communicating with an nREPL server that you start within the context of your
+project.
+
+## Conjure
+
+More recently, there is a new plugin called [Conjure][conjure] that provides
+Clojure tooling by using a [prepl] connection instead of an nREPL connection.
+The prepl itself is a new tool that has only been a part of Clojure since
+version 1.10, which was released in December 2018. The prepl is conceptually
+simpler than the nREPL, and it is designed for programmatic use by things like
+editor plugins. Conjure provides a really excellent development experience out
+of the box, and it's obvious that a lot of thought has gone into the user
+experience, which I appreciate. I've had a handful of conversations with the
+author and he's been very responsive and considerate. The plugin continues to
+improve week by week and it's a joy to use.
+
+# No comment
+
+You may have noticed that I've quietly removed the comments section of this
+blog. For the most part, my blog posts don't really get any comments via the
+Disqus widget. If people comment on or discuss my writing at all, it mostly
+tends to happen on Reddit and Hacker News, where I'm in the habit of posting my
+lengthier blog posts.
+
+I probably won't post smaller posts like this one on Reddit and Hacker News, but
+I will at least mention them on Twitter, so if you have any questions, comments,
+etc. for me, [tweet them at @dave\_yarwood][tweet]!
+
+[alexmiller]: http://insideclojure.org/2019/07/26/journal/
+[bozhidarbatsov]: https://metaredux.com/posts/2019/07/07/meta-reduce-2019-3-style-guide-docs-updates.html
+[tweet]: https://twitter.com/dave_yarwood
+[strangeloop]: https://www.thestrangeloop.com/2019/aldas-dynamic-relationship-with-clojure.html
+[alda]: https://alda.io
+[live-coding]: https://en.wikipedia.org/wiki/Live_coding
+[alda-v2-project]: https://github.com/orgs/alda-lang/projects/2
+[alda-slack]: https://slack.alda.io
+[alda4j]: https://github.com/daveyarwood/alda4j
+[alda4j-example]: https://github.com/daveyarwood/alda4j/blob/master/example/src/main/java/alda4j/example/App.java
+[clojure-java-api]: https://clojure.org/reference/java_interop#_calling_clojure_from_java
+[2019-soc-results]: https://www.surveymonkey.com/results/SM-S9JVNXNQV/
+[fireplace]: https://github.com/tpope/vim-fireplace
+[acid]: https://github.com/clojure-vim/acid.nvim
+[iced]: https://github.com/liquidz/vim-iced
+[conjure]: https://github.com/Olical/conjure
+[prepl]: https://oli.me.uk/2019-03-22-clojure-socket-prepl-cookbook/
