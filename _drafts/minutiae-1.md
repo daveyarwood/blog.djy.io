@@ -79,8 +79,8 @@ development environment.
 for quite a long time, and it's still the one that I would recommend to people
 who are just getting started with using Vim tooling for Clojure. The main
 reasons that I would recommend it are that it's been around for the longest, and
-it's the one that I would guess most Clojurist Vimmers use today, so if run into
-any problems, chances are you'll be able to find someone who can help.
+it's the one that I would guess most Clojurist Vimmers use today, so if you run
+into any problems, chances are you'll be able to find someone who can help.
 
 I've never had any major problems with Fireplace, but I've noticed more and more
 Vim plugins doing their work asynchronously, which is super awesome because it
