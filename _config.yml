@@ -6,7 +6,6 @@ plugins:
 permalink: /:title/
 
 source: "src"
-exclude: [".rvmrc", ".rbenv-version", "README.md", "Rakefile", "changelog.md"]
 highlighter: rouge
 markdown: kramdown
 
