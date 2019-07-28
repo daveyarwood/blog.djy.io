@@ -3,6 +3,9 @@ published: true
 layout: post
 title: "Out of the Blue"
 category: music
+tags:
+  - alda
+  - composition
 ---
 
 {% include JB/setup %}
