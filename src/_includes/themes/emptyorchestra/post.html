@@ -1,0 +1,44 @@
+<h1 class="page-header">
+  {{ page.title }}
+  {% if page.tagline %}
+    <small>{{page.tagline}}</small>
+  {% endif %}
+</h1>
+
+<h2 class="date">
+  {{ page.date | date: "%B %-d, %Y" }}
+</h2>
+
+{% unless page.categories == empty %}
+<div class="classification">
+  <h3>categories:</h3>
+  <ul>
+  {% for category in page.categories %}
+    <li>
+      <a href="{{ BASE_PATH }}{{ site.JB.categories_path }}#{{ category }}-ref">
+        {{ category }}
+      </a>
+    </li>
+  {% endfor %}
+  </ul>
+</div>
+{% endunless %}
+
+{% unless page.tags == empty %}
+<div class="classification">
+  <h3>tags:</h3>
+  <ul>
+  {% for tag in page.tags %}
+    <li>
+      <a href="{{ BASE_PATH }}{{ site.JB.tags_path }}#{{ tag }}-ref">
+        {{ tag }}
+      </a>
+    </li>
+  {% endfor %}
+  </ul>
+</div>
+{% endunless %}
+
+<article>{{ content }}</article>
+
+{% include JB/comments %}

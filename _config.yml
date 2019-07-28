@@ -5,7 +5,8 @@ plugins:
 # For more see: http://jekyllrb.com/docs/permalinks/
 permalink: /:title/
 
-exclude: [".rvmrc", ".rbenv-version", "README.md", "Rakefile", "changelog.md", "tags"]
+source: "src"
+exclude: [".rvmrc", ".rbenv-version", "README.md", "Rakefile", "changelog.md"]
 highlighter: rouge
 markdown: kramdown
 
