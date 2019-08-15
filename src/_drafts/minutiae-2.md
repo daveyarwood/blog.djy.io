@@ -1,13 +1,14 @@
 ---
 layout: post
-title: "Minutiae #2: Crux, slideshow tools, Asciidoc"
+title: "Minutiae #2: Crux, slideshow tools, Asciidoc, Heart of Clojure"
 category: minutiae
 tags:
-  - talks
   - asciidoc
   - antora
   - reveal.js
   - crux
+  - clojure
+  - conferences
 published: true
 ---
 
@@ -22,8 +23,8 @@ open source, bitemporal, document-oriented database. I thought it was
 interesting when I heard about it, but I haven't had a good opportunity to try
 it out yet. Now they have an entertaining [tutorial][crux-tutorial] that guides
 you through the concepts at a gradual pace, interleaving code examples, excerpts
-of the actual documentation, and a delightful sci-fi story. I've gone through
-the first few chapters and it's quite fun!
+of the actual documentation, and a delightful sci-fi story. I worked my way
+through it over the course of a week and it's quite fun!
 
 # Making slides
 
@@ -94,6 +95,41 @@ published [its documentation site][cider-docs] using Antora, and I think the
 result looks fantastic. I recently played around a little bit with using Antora
 to make a documentation site for Alda. We'll see how that goes.
 
+# Heart of Clojure
+
+I was fortunate enough to fly to Belgium a couple weeks ago to attend the [Heart
+of Clojure][heartofclojure] conference in Leuven. I had a great time! Some
+highlights:
+
+* Many interesting and varied talks, with topics ranging from using ClojureScript to
+  live-code graphics, to the environmental impact of software development, to
+  the use of Clojure in law software, to exploring different modes of thinking
+  within the context of programming.
+
+* Great vegetarian food.
+
+* Attendees were invited to use the conference website to organize activities
+  with other attendees, such as getting dinner with people you don't know, going
+  rock climbing, or having a music/art coding jam.
+
+* There were plenty of half-hour breaks scattered throughout the 2-day
+  conference, which helped to keep one's head from exploding with all of the
+  information from the talks. There was even a 4-hour "siesta break" from noon
+  to 4 on Day 2, which could be used for socializing, sightseeing around Leuven,
+  or going back to your hotel for a nap.
+
+* I ended up giving a lightning talk about [Alda][alda], which I signed up for
+  right before the siesta break, so I spent most of the break in my hotel room
+  preparing the demo and enjoying a Skype session with my wife and sons. They
+  had just finished breakfast back home, so it was timed perfectly.
+
+* As an American in the international Clojure community, I felt a little bit
+  starstruck. I met in person a lot of people who I've known for a long time on
+  the internet: people whose projects I've used, who I've heard on Clojure
+  podcasts, or who I've chatted with on the [Clojurians Slack
+  group][clojurians]. I even got to meet and hang out with someone I know well
+  as a contributor to Alda!
+
 [crux]: https://juxt.pro/crux/
 [crux-tutorial]: https://juxt.pro/blog/posts/crux-tutorial-setup.html
 [slides.com]: https://slides.com/
@@ -105,3 +141,6 @@ to make a documentation site for Alda. We'll see how that goes.
 [antora]: https://antora.org/
 [cider]: https://cider.mx/
 [cider-docs]: https://docs.cider.mx
+[heartofclojure]: https://heartofclojure.eu
+[clojurians]: https://clojurians.herokuapp.com/
+[alda]: https://alda.io
