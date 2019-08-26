@@ -1,0 +1,95 @@
+---
+layout: post
+title: "Minutiae #3: alda-clj lightning demo, weather data, Seven Languages in Seven Weeks"
+category: minutiae
+tags:
+  - alda
+  - talks
+published: true
+---
+
+{% include JB/setup %}
+
+# alda-clj lightning demo
+
+As I mentioned in [my last blog post][minutiae2], I had the pleasure of
+attending the [Heart of Clojure][heartofclojure] conference in Belgium this
+month. Somebody suggested that I give a 5-minute lightning talk about
+[Alda][alda], so I signed up at the last minute and (after some hasty
+preparation) gave a quick demo of [alda-clj].
+
+Because it was a Clojure conference, I decided to skim through the basics and
+save time for some interesting examples of algorithmically generated music that
+I created by writing Clojure code. Somehow, I managed to get through all of the
+material in just about 5 minutes.
+
+Here's the video:
+
+<center>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/8HOflt1_cH4" frameborder="0" allowfullscreen></iframe>
+</center>
+
+# Musical forecast data
+
+I'm continuing to develop [the talk I'll be giving at Strange Loop next
+month][strangeloop], and I think it's coming along nicely. One focus of my talk
+is what alda-clj can bring to the table that isn't possible with embedded
+Clojure code in an Alda score.
+
+To demonstrate this, I came up with a fun example Clojure program that pulls
+weather forecast data from the [National Weather Service API][nwsapi] and uses
+it to generate a musical score. The generated score consists of several
+instrument parts, each one representing the weather forecast for a different
+city, and the notes' pitch, duration, volume, and panning are influenced by the
+temperature, wind speed and wind direction during a one-hour period in that
+city.
+
+As usual, writing a program like this in Clojure, one that fetches data from
+some API and transforms it into a desired result, was dead simple. It's exactly
+the sort of task at which Clojure excels.
+
+I was pleasantly surprised at how easy it was to use the National Weather
+Service API. No API key is required (although the documentation does state that
+there will be API keys at some point in the future), and the API is based upon
+[JSON-LD (JSON for Linked Data)][json-ld], which makes it easy to discover
+related data via embedded links in the response body. I would recommend the
+National Weather Service API to anyone who's looking for a data source for
+educational or testing purposes or as an input for generative art.
+
+# Seven Languages in Seven Weeks
+
+There's this really great book by Bruce Tate called [_Seven Languages in Seven
+Weeks: A Pragmatic Guide to Learning Programming Languages_][7li7w]. I read it
+not too long after it came out in 2012, and I found it very inspiring and
+enjoyable. I've been re-reading it recently for no particular reason and seven
+years later (aeons in the world of software), it still holds up!
+
+The book walks you through the condensed version of learning each language from
+scratch, providing engaging summaries about what makes the language unique,
+easy-to-follow code examples, and rigorous self-study exercises at the end of
+each chapter. The languages covered are Ruby, Io, Prolog, Scala, Erlang,
+Clojure, and Haskell.
+
+(By the way, Tate released a sequel in 2014, [_Seven More Languages in Seven
+Weeks: Languages That Are Shaping the Future_][7mli7w], which I also quickly
+devoured. The second round of languages consisted of Lua, Factor, Elixir, Elm,
+Julia, miniKanren, and Idris. It's also well worth reading!)
+
+# Comments?
+
+Reply to [this tweet][tweet] with any comments, questions, etc.!
+
+[tweet]: https://twitter.com/dave_yarwood/status/FIXME
+
+[minutiae2]: {% post_url 2019-08-15-minutiae-2 %}
+[heartofclojure]: https://heartofclojure.eu
+[alda]: https://alda.io
+[alda-clj]: https://github.com/daveyarwood/alda-clj
+[strangeloop]: https://www.thestrangeloop.com/2019/aldas-dynamic-relationship-with-clojure.html
+[nwsapi]: https://www.weather.gov/documentation/services-web-api
+[json-ld]: https://json-ld.org/
+[7li7w]: https://pragprog.com/book/btlang/seven-languages-in-seven-weeks
+[7mli7w]: https://pragprog.com/book/7lang/seven-more-languages-in-seven-weeks
+[sleeping-barber]: https://en.wikipedia.org/wiki/Sleeping_barber_problem
+[io]: https://iolanguage.org/
+[io-github]: https://github.com/IoLanguage/io
