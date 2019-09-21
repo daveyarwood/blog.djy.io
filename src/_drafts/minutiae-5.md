@@ -1,0 +1,180 @@
+---
+layout: post
+title: "Minutiae #5: Strange Loop, Mantra & Chronoid"
+category: minutiae
+tags:
+  - alda
+  - clojure
+  - clojurescript
+  - unison
+  - talks
+  - conferences
+  - generative art
+  - composition
+  - web audio api
+published: true
+---
+
+{% include JB/setup %}
+
+# Strange Loop
+
+I attended [Strange Loop][strangeloop] for the third time last weekend, and the
+experience was as awesome as ever. This year, I had the honor of giving a talk,
+and I think it went over well! I talked about the history of the architectural
+design of [Alda][alda], and how the relationship between Alda and Clojure has
+changed over the years as the architecture has evolved. I concluded the talk
+with a live demo showing how I compose music algorithmically by writing Clojure
+code that generates Alda code. Here's the video; stick around 'til the end for
+a musical score generated using forecast data from the National Weather Service!
+
+<center>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/6hUihVWdgW0" frameborder="0" allowfullscreen></iframe>
+</center>
+
+The Strange Loop organizers upload videos of the talks super fast, and they're
+all up on YouTube already, so I thought I'd share a few of my favorites:
+
+## Recreating forgotten programming languages, for art! (Sher Minn Chong)
+
+<center>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/jRfrLL-y2ms" frameborder="0" allowfullscreen></iframe>
+</center>
+
+To be honest, talks like this one are the real reason that I go to Strange Loop
+every year. I'm a sucker for any talk that involves making art with computers,
+and generative art is a really broad subject, so there's a lot to explore.
+
+Sher Minn Chong went down the rabbit hole of early computer graphics,
+reverse-engineered some of these early computer-generated works of art, and
+shared with us a couple of libraries that she's been working on to reproduce the
+experience of using forgotten languages like ART 1 and EXPLOR.
+
+One of those libraries is [art1.js][art1js], a JavaScript implementation of the
+1960s language ART 1. Whereas ART 1 produced art to be printed on a line
+printer, art1.js displays its results in the terminal, but the techniques used
+to generate the art remain the same. Interesting patterns are created by
+printing characters on a grid, then printing other characters overlaid on top in
+geometric patterns. The results are very visually satisfying!
+
+## Voice driven development: who needs a keyboard anyway? (Emily Shea)
+
+<center>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/YKuRkGkf5HU" frameborder="0" allowfullscreen></iframe>
+</center>
+
+Emily Shea suffers from repetitive strain injury (RSI) in her wrists, which is a
+common problem that software developers face. She shared with us how she has
+become part of an online community of people who use voice recognition software
+like [Talon][talon] to write code. Her talk included an entertaining and truly
+awe-inspiring live demo where she wrote some Perl using her voice. She is even
+able to commit code to source control and make a Pull Request in the GitHub UI,
+all without touching her keyboard. The audience was captivated as we watched
+her control the computer with her voice quickly and fluently.
+
+The best part of the talk is that it added the term "whale quench" to my
+vocabulary. I won't spoil it by explaining it here -- you'll have to watch the
+talk!
+
+## Minimalist piano forever (Mouse Reeve)
+
+<center>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/ANYMii3Sypg" frameborder="0" allowfullscreen></iframe>
+</center>
+
+I enjoyed Mouse's talk at Strange Loop last year about [generating maps of
+imaginary cities][imaginary-cities], so I was excited to see that they were
+giving a talk again this year, this time about procedurally generating a version
+of Erik Satie's _[Gnossienne No. 1][gnossiennes]_ that lasts forever.
+
+Mouse analyzed the structure of _Gnossienne No. 1_ and observed that it consists
+of small "chunks" that are sequenced together in various orders. They recorded
+the probabilities of each chunk being followed by another, and used this
+information to generate an "infinite _gnossienne_". They rendered the music by
+sending MIDI messages in the browser, and used [VexFlow][vexflow] to display
+the sheet music in real time. The bizarre, randomly generated, Satie-like
+instructions above the measures of music (e.g. "Be diligently gaunt") are the
+icing on the cake.
+
+If you can't tell already, I'm really jazzed about Mouse's procedurally
+generated _gnossiennes_. [Check them out here][mouse-gnossiennes] and then watch
+the talk to see how they did it!
+
+## Unison: a new distributed programming language (Paul Chiusano)
+
+<center>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/gCWtkvDQ2ZI" frameborder="0" allowfullscreen></iframe>
+</center>
+
+Unison is an open source, statically typed, functional programming language
+influenced by Haskell and Erlang. It has a unique property that I haven't seen
+in any other programming language: code is content-addressed. Each function is
+identified not only by name, but also by a hash of its content. Functions are
+stored on disk as a serialized AST, and they depend on specific versions of
+other functions.
+
+This property has some intriguing benefits. The system is set up in such a way
+that there is "no build"; the code is basically self-contained. The compiler is
+easily able to tell what changed, which enables caching; for example, if you
+change one function, you can easily re-run tests just for the specific part of
+your codebase affected by the change.
+
+Most interestingly, it also makes it possible to send functions over the wire to
+other nodes, which would allow you to do things like perform expensive
+computations on another machine running on a server somewhere. The idea that
+programs can deploy themselves and describe distributed systems is baked into
+the language.
+
+An alpha 1.0 release of Unison just recently came out, and I'm eager to try it
+out at some point. The language is full of interesting ideas!
+
+## Other talks
+
+As usual, there were a ton of interesting talks; check out [the Strange Loop
+YouTube channel][strangeloop-youtube] for more!
+
+# Mantra & Chronoid
+
+In 2015, I created two ClojureScript libraries that complement one another:
+
+* [Mantra][mantra]: a library for making music with the Web Audio API
+
+* [Chronoid][chronoid]: a library for scheduling events with super-accurate timing
+
+I hadn't touched either library since 2016, but then the other day, a guy named
+Kiran submitted [a pull request][chronoid-pr] to make Chronoid compatible with
+[a change that Chrome made in April 2018][chrome-autoplay] to prevent audio from
+playing automatically when you navigate to a page. This was an awesome
+contribution, and it prompted me to spend some time revisiting Chronoid,
+cleaning up the code and fixing a couple bugs that I found in the process.
+
+The result is that I published chronoid 0.2.0 and mantra 0.6.1, the first
+releases of these libraries in over 3 years!
+
+As I was testing Mantra and Chronoid prior to releasing the new versions, I was
+happy to hear the blips & bloops that showed me that the libraries still work
+nicely, even after over 3 years of development in browsers like Chrome.
+
+If you ever find yourself wanting to make chiptuney music in the browser by
+writing ClojureScript, give [Mantra][mantra] a try!
+
+# Comments?
+
+Reply to [this tweet][tweet] with any comments, questions, etc.!
+
+[tweet]: https://twitter.com/dave_yarwood/status/FIXME
+
+[alda]: https://alda.io
+[strangeloop]: https://www.thestrangeloop.com
+[strangeloop-youtube]: https://www.youtube.com/channel/UC_QIfHvN9auy2CoOdSfMWDw
+[mantra]: https://github.com/daveyarwood/mantra
+[chronoid]: https://github.com/daveyarwood/chronoid
+[chronoid-pr]: https://github.com/daveyarwood/chronoid/pull/1
+[chrome-autoplay]: https://developers.google.com/web/updates/2017/09/autoplay-policy-changes
+[art1js]: https://github.com/piratefsh/art1.js
+[talon]: https://talonvoice.com/
+[imaginary-cities]: https://www.youtube.com/watch?v=Ic_5gRVTQ_k
+[gnossiennes]: https://en.wikipedia.org/wiki/Gnossiennes
+[vexflow]: http://www.vexflow.com/
+[mouse-gnossiennes]: https://gnossiennes.mousereeve.com/
+
