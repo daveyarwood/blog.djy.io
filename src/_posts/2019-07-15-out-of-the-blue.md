@@ -6,6 +6,7 @@ category: music
 tags:
   - alda
   - composition
+  - generative art
 ---
 
 {% include JB/setup %}
