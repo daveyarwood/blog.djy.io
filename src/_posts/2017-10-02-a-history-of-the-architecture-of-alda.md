@@ -99,7 +99,7 @@ advantages:
 [lisp]: https://en.wikipedia.org/wiki/Lisp_(programming_language)
 [fp]: https://en.wikipedia.org/wiki/Functional_programming
 [sexp]: https://en.wikipedia.org/wiki/S-expression
-[jvmsynth]: http://blog.djy.io/making-midi-sound-awesome-in-your-jvm/
+[jvmsynth]: {% post_url 2015-04-17-making-midi-sound-awesome-in-your-jvm %}
 
 The first, "single Clojure program" version of Alda was run directly via the
 build tool [Boot][boot] and leveraged Boot's elegant [`defclifn`][defclifn]
