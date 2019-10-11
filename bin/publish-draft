@@ -22,7 +22,14 @@ if [[ $? -ne 0 ]]; then exit 1; fi
 announce "Staging..."
 git add "$srcdir"
 if [[ $? -ne 0 ]]; then exit 1; fi
+
 git status
+echo
+read -p "Proceed? [yN]"
+if [[ "$REPLY" != "y" ]]; then
+  echo "Aborting."
+  exit 1
+fi
 
 post_slug="$(basename ${draft_file%.*})"
 
