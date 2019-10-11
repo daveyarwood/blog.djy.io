@@ -11,36 +11,40 @@ srcdir="$(dirname $0)/../src"
 
 post_file="$srcdir/_posts/$(date '+%Y-%m-%d')-$(basename "$draft_file")"
 
-echo "Moving $draft_file => $post_file"
+function announce() {
+  echo -e "\n●" $*
+}
+
+announce "Moving $draft_file => $post_file"
 mv "$draft_file" "$post_file"
 if [[ $? -ne 0 ]]; then exit 1; fi
 
-echo "Staging..."
+announce "Staging..."
 git add "$srcdir"
 if [[ $? -ne 0 ]]; then exit 1; fi
 git status
 
 post_slug="$(basename ${draft_file%.*})"
 
-echo "Committing..."
+announce "Committing..."
 git commit -m "Publish $post_slug"
 if [[ $? -ne 0 ]]; then exit 1; fi
 
-echo "Pushing..."
+announce "Pushing..."
 git push
 if [[ $? -ne 0 ]]; then exit 1; fi
 
 post_url="https://blog.djy.io/$post_slug"
 
-echo "Waiting for post to go live at: $post_url"
+announce "Waiting for post to go live at: $post_url"
 while true; do
   if curl --fail "$post_url" > /dev/null 2>&1; then
-    echo "Post is live."
+    announce "Post is live."
     break
   fi
 done
 
-echo "Waiting for a tweet..."
+announce "Waiting for a tweet..."
 xdg-open "https://twitter.com/compose/tweet?text=%0A%0A$post_url" >/dev/null &
 
 read -p "Paste tweet URL here: " tweet_url
