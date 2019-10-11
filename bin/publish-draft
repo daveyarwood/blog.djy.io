@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+if [[ $# -ne 1 ]]; then
+  echo "Usage: $0 DRAFT_FILE"
+  exit 1
+fi
+
+draft_file="$1"
+
+posts_directory="$(dirname $0)/../src/_posts"
+post_file="$posts_directory/$(date '+%Y-%m-%d')-$(basename "$draft_file")"
+
+echo "Moving $draft_file => $post_file"
+
+mv "$draft_file" "$post_file"
