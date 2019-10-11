@@ -49,4 +49,35 @@ xdg-open "https://twitter.com/compose/tweet?text=%0A%0A$post_url" >/dev/null &
 
 read -p "Paste tweet URL here: " tweet_url
 
-echo "TODO: Replace tweet link in post with $tweet_url, add, commit, push"
+announce "Inserting tweet URL into blog post..."
+# Using `#` as a delimiter here because the URL contains slashes.
+sed -i "s#^\(\[tweet\]:\) .*#\\1 $tweet_url#" "$post_file"
+
+git --no-pager diff
+echo
+read -p "Proceed? [yN]"
+if [[ "$REPLY" != "y" ]]; then
+  echo "Aborting."
+  exit 1
+fi
+
+announce "Staging..."
+git add "$srcdir"
+if [[ $? -ne 0 ]]; then exit 1; fi
+git status
+
+announce "Committing..."
+git commit -m "Add tweet URL to $post_slug"
+if [[ $? -ne 0 ]]; then exit 1; fi
+
+announce "Pushing..."
+git push
+if [[ $? -ne 0 ]]; then exit 1; fi
+
+announce "Waiting for tweet URL update to go live at $post_url..."
+while true; do
+  if curl --fail "$post_url" 2> /dev/null | grep -q "$tweet_url"; then
+    announce "Tweet URL update is live."
+    break
+  fi
+done
