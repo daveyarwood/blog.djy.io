@@ -30,7 +30,7 @@ echo "Pushing..."
 git push
 if [[ $? -ne 0 ]]; then exit 1; fi
 
-post_url="https://blog.djy.io/$post_slug/"
+post_url="https://blog.djy.io/$post_slug"
 
 echo "Waiting for post to go live at: $post_url"
 while true; do
@@ -39,3 +39,10 @@ while true; do
     break
   fi
 done
+
+echo "Waiting for a tweet..."
+xdg-open "https://twitter.com/compose/tweet?text=%0A%0A$post_url" >/dev/null &
+
+read -p "Paste tweet URL here: " tweet_url
+
+echo "TODO: Replace tweet link in post with $tweet_url, add, commit, push"
