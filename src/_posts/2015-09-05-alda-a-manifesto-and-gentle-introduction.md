@@ -4,7 +4,7 @@ title: "Alda: A Manifesto and Gentle Introduction"
 category: alda
 tags:
   - alda
-  - music-programming
+  - music programming
   - composition
 published: true
 

@@ -4,7 +4,7 @@ layout: post
 title: "Exit Mice and an ode to grunge pop"
 category: music
 tags:
-  - exit-mice
+  - exit mice
 
 ---
 

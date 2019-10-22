@@ -4,7 +4,7 @@ layout: post
 title: "No Love @ WKNC"
 category: music
 tags:
-  - no-love
+  - no love
 
 redirect_from: '/music/2015/01/30/no-love-at-wknc/'
 ---

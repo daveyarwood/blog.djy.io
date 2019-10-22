@@ -4,7 +4,7 @@ layout: post
 title: "moar no love videos!!!"
 category: music
 tags:
-  - no-love
+  - no love
 
 ---
 

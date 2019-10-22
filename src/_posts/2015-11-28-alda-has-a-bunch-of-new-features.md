@@ -4,7 +4,7 @@ title: "Alda Has a Bunch of New Features"
 category: alda
 tags:
   - alda
-  - music-programming
+  - music programming
   - composition
 published: true
 

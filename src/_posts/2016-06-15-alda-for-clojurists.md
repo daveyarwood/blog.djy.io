@@ -4,7 +4,7 @@ title: "Alda for Clojurists"
 category: alda
 tags:
   - alda
-  - music-programming
+  - music programming
   - composition
 published: true
 ---

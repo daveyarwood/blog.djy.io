@@ -4,7 +4,7 @@ title: "Writing music with Alda #1: your first notes"
 category: alda
 tags:
   - alda
-  - music-programming
+  - music programming
   - composition
 published: true
 ---

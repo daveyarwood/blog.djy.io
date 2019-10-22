@@ -4,8 +4,8 @@ title: "A Music Composition Language With a Functional Backbone"
 category: alda
 tags:
   - alda
-  - music-programming
-  - functional-programming
+  - music programming
+  - functional programming
   - composition
   - talks
 published: true

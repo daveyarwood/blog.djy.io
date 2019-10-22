@@ -4,7 +4,7 @@ title: "A History of the Architecture of Alda"
 category: alda
 tags:
   - alda
-  - music-programming
+  - music programming
   - composition
   - zeromq
 published: true
