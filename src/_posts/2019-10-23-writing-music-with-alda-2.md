@@ -199,6 +199,6 @@ there is a note (the "and") that is positioned exactly between beats 3 and 4.
 
 Reply to [this tweet][tweet] with any comments, questions, etc.!
 
-[tweet]: https://twitter.com/dave_yarwood/status/FIXME
+[tweet]: https://twitter.com/dave_yarwood/status/1186969469962334208
 
 [alda]: https://alda.io
