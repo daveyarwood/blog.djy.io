@@ -52,8 +52,10 @@ because those particular note lengths don't actually exist in standard notation!
 For whatever reason, the symbols that we have available to us only cover the
 powers of 2:
 
+<center>
 <img src="{{ site.url }}/assets/2019-10-21-note-hierarchy.gif"
      title="Standard music notation works in powers of 2 (source: https://www.schoolofcomposition.com/music-rhythm/)">
+</center>
 
 Mathematically, other fractions make perfect sense. Four quarter notes last the
 same amount of time as two half notes or one whole note. Five "fifth notes"

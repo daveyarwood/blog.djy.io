@@ -126,11 +126,15 @@ selected) just by pressing a couple of keys.
 When you're learning to play the piano, one of the first things you learn is
 where to find "middle C" on the keyboard.
 
+<center>
 <img src="{{ site.url }}/assets/2019-10-10-middle-c-on-keyboard.png"
      title="Middle C on the piano keyboard (source: https://music.stackexchange.com/questions/9987/on-a-piano-scale-what-is-considered-middle-c)">
+</center>
 
+<center>
 <img src="{{ site.url }}/assets/2019-10-10-middle-c-between-staves.jpg"
      title="Middle C between the treble and bass staves (source: https://music.stackexchange.com/questions/9987/on-a-piano-scale-what-is-considered-middle-c)">
+</center>
 
 To play middle C in Alda, switch to the fourth octave (`o4`) and play `c`:
 
