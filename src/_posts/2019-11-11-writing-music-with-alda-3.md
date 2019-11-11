@@ -180,7 +180,7 @@ piano:
 
 Reply to [this tweet][tweet] with any comments, questions, etc.!
 
-[tweet]: https://twitter.com/dave_yarwood/status/FIXME
+[tweet]: https://twitter.com/dave_yarwood/status/1193865046469828609
 
 [alda]: https://alda.io
 [wmwa1]: {% post_url 2019-10-11-writing-music-with-alda-1 %}
