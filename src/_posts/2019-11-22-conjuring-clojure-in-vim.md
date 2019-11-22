@@ -178,7 +178,7 @@ inspired you to give [Conjure][conjure] a try. Go ahead, it's fun!
 
 Reply to [this tweet][tweet] with any comments, questions, etc.!
 
-[tweet]: https://twitter.com/dave_yarwood/status/FIXME
+[tweet]: https://twitter.com/dave_yarwood/status/1197860958842044416
 
 [fireplace]: https://github.com/tpope/vim-fireplace
 [acid]: https://github.com/clojure-vim/acid.nvim
