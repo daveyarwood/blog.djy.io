@@ -11,3 +11,5 @@ Thumbs.db
 .ruby-version
 .rvmrc
 .netlify
+
+.lsp/
