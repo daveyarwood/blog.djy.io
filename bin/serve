@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+# This initial build without --incremental seems to be necessary in order to
+# pick up on new files added since the last time you ran `serve --incremental`.
+# I don't fully understand this, but this way, at least I can ^C and re-run a
+# single script and pick up on those changes.
+bundle exec jekyll build "$@" || exit 1
+
+# Serve locally and rebuild incrementally whenever files change. Adding or
+# renaming files won't be picked up; that requires interrupting and re-running
+# this script.
+bundle exec jekyll serve --incremental "$@"
