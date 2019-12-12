@@ -57,7 +57,15 @@ Running that through PlantUML produces this png file:
 
 Things I like about this:
 
-**TODO**
+* I was able to write the source for this in very little time.
+* I didn't have to worry about adjusting the visual layout of all the nodes and
+  arrows; I only needed to declare the relationships between the nodes, and
+  PlantUML figured out where to place everything.
+* PlantUML has a GUI mode where it displays the diagram output and continuously
+  updates it as you make changes to the source. This made it easy for me to
+  iterate on the diagram, observing the output as I made each change.
+* The output actually looks halfway decent! It's not the most beautiful thing in
+  the world, but I think it's good enough for everyday use.
 
 The next time you find yourself wanting to make a quick diagram, give PlantUML a
 try!
