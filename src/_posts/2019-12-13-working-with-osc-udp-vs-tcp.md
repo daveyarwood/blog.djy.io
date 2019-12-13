@@ -60,7 +60,7 @@ preparing to contribute TCP support to both. Wish me luck!
 
 Reply to [this tweet][tweet] with any comments, questions, etc.!
 
-[tweet]: https://twitter.com/dave_yarwood/status/FIXME
+[tweet]: https://twitter.com/dave_yarwood/status/1205472303892570112
 
 [strange-loop-talk]: https://www.youtube.com/watch?v=6hUihVWdgW0
 [alda]: https://alda.io
