@@ -79,7 +79,7 @@ dotfiles][vim-dotfiles].
 
 Reply to [this tweet][tweet] with any comments, questions, etc.!
 
-[tweet]: https://twitter.com/dave_yarwood/status/FIXME
+[tweet]: https://twitter.com/dave_yarwood/status/1207643496699617280
 
 [ultimate-vimrc]: https://github.com/amix/vimrc
 [spf13-vim]: https://github.com/spf13/spf13-vim
