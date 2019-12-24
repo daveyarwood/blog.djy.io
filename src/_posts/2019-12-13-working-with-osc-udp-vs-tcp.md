@@ -13,7 +13,7 @@ published: true
 
 If you've seen [my talk at Strange Loop this year][strange-loop-talk], you may
 have noticed, during the part where I talked about the future direction of
-[Alda][alda] where we'll be using [OSC][osc] to communicate between the client
+[Alda][alda], that we'll be using [OSC][osc] to communicate between the client
 and the player processes. I've been spending a lot of my time lately
 implementing this, and it's coming along nicely.
 
