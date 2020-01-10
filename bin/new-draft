@@ -15,6 +15,8 @@ draft_title="$1"
 scriptdir=$(dirname $0)
 drafts_dir="$(dirname $0)/../src/_drafts"
 
+mkdir -p "$drafts_dir"
+
 draft_template=$(cat <<-EOF
 ---
 layout: post
