@@ -57,9 +57,10 @@ done
         proceed to the next script
     * i3 keybinding that puts a "bang" onto the FIFO
 
-* Performance #1 (date?) was a smash success
+* Performance #1 (January 2019) was a smash success
 
-* Performance #2 (date?) was, unfortunately, ruined by technical difficulties
+* Performance #2 (November 2019) was, unfortunately, ruined by technical
+  difficulties
   * Partway through the narration, the narration just stopped working. I
     switched over to my terminal and was presented with a long Python
     stacktrace. Someone in the crowd went "hey, that's Python!" We had to
