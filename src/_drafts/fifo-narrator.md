@@ -33,14 +33,47 @@ between humans and computers and add a little bit of humor to the performance.
 To make the pace of the conversation sound more natural, I would cue each
 portion of dialog from my laptop.
 
+# `say`
+
+I had used the `say` command in the past to generate text-to-speech audio. The
+`say` that comes with macOS is great. But I've been developing in an Ubuntu
+environment for several years now, and I was curious to explore the
+text-to-speech options available for Linux.
+
+A while back, I installed some audio package (I forget which one) via `apt` and
+unbeknownst to me, one of the package's dependencies was [GNUstep], a software
+bundle that provides a `say` command, among other things.
+
+I gave GNUstep's `say` a try, and the results were underwhelming compared to the
+Apple version:
+
+{% highlight bash %}
+say "I am a terrible speech synthesizer"
+{% endhighlight %}
+
+**TODO: See if I can record a wav of the output and embed an audio player into
+the page.**
+
+**Maybe I could use an HTML5 `<audio src="..."></audio>` element?**
+
+It just didn't sound natural enough. I think it's wonderful that the Free
+Software Foundation implemented an OSS replacement for the macOS `say` command,
+but in a time where children grow up talking to natural-sounding TTS
+personalities like Siri and Alexa, GNUstep's `say` ends up sounding robotic and
+corny by comparison.
+
+# Google Text-to-Speech
+
+After looking around for a while for other options, I saw that Google Cloud has
+a [Text-to-Speech][google-tts] product. The quality is excellent, but it is a
+paid product that requires a Google Cloud account if you want to use the
+Text-to-Speech API directly.
+
+It turns out, however, [Google Translate][google-translate] uses the same
+Text-to-Speech engine (albeit with less options), and you can use it out of the
+box with much less ceremony (and for free, to boot).
+
 * Text-to-speech narrator
-  * I tried the built-in `say` command on Ubuntu (TODO: find the package), and
-    it's cool, but it doesn't sound natural enough, sounds robotic and corny; in
-    this day and age we are all used to more natural sounding robot voices like
-    Siri and Alexa
-    * For entertainment value, see if I can record a wav of `/usr/bin/say 'I am
-      a terrible speech synthesizer'` and embed an audio player into the page
-      * could use HTML5 `<audio src="..."></audio>` element
   * The best solution I found was the Google Text-to-Speech service
     * To use the Google Text-to-Speech service directly requires a Google Cloud
       Services account, but it turns out that you can use it with less ceremony
@@ -121,3 +154,6 @@ Reply to [this tweet][tweet] with any comments, questions, etc.!
 [renay-aumiller]: https://www.radances.com
 [out-of-the-blue]: {% post_url 2019-07-15-out-of-the-blue %}
 [tts-wiki]: https://en.wikipedia.org/wiki/Speech_synthesis
+[GNUstep]: http://wiki.gnustep.org/index.php/User_FAQ#What_is_GNUstep.3F
+[google-tts]: https://cloud.google.com/text-to-speech/
+[google-translate]: https://translate.google.com/
