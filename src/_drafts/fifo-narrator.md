@@ -59,8 +59,8 @@ the page.**
 It just didn't sound natural enough. I think it's wonderful that the Free
 Software Foundation implemented an OSS replacement for the macOS `say` command,
 but in a time where children grow up talking to natural-sounding TTS
-personalities like Siri and Alexa, GNUstep's `say` ends up sounding robotic and
-corny by comparison.
+personalities like Siri and Alexa, GNUstep's `say` comes off as sounding robotic
+and corny by comparison.
 
 # Google Text-to-Speech
 
