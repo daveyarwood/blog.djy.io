@@ -64,9 +64,9 @@ and corny by comparison.
 
 # Google Text-to-Speech
 
-After looking around for a while for other options, I saw that Google Cloud has
-a [Text-to-Speech][google-tts] product. The quality is excellent, but it is a
-paid product that requires a Google Cloud account if you want to use the
+As I was looking around for other options, I saw that Google Cloud has a
+[Text-to-Speech][google-tts] product. The quality is excellent, but it is a paid
+product that requires a Google Cloud account if you want to use the
 Text-to-Speech API directly.
 
 It turns out, however, [Google Translate][google-translate] uses the same
