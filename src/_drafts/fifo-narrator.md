@@ -31,7 +31,7 @@ synthesis. Renay's idea was that she would converse with a robotic-sounding
 narrator while she performed, which would both highlight the relationship
 between humans and computers and add a little bit of humor to the performance.
 To make the pace of the conversation sound more natural, I would cue each
-portion of dialog from my laptop.
+portion of dialogue from my laptop.
 
 # `say`
 
@@ -65,36 +65,77 @@ and corny by comparison.
 # Google Text-to-Speech
 
 As I was looking around for other options, I saw that Google Cloud has a
-[Text-to-Speech][google-tts] product. The quality is excellent, but it is a paid
-product that requires a Google Cloud account if you want to use the
+[Text-to-Speech][google-tts] product. The speech quality is excellent, but it is
+a paid product that requires a Google Cloud account if you want to use the
 Text-to-Speech API directly.
 
-It turns out, however, [Google Translate][google-translate] uses the same
+It turns out, however, that [Google Translate][google-translate] uses the same
 Text-to-Speech engine (albeit with less options), and you can use it out of the
-box with much less ceremony (and for free, to boot).
+box with a lot less ceremony (and for free, to boot).
 
-* Text-to-speech narrator
-  * The best solution I found was the Google Text-to-Speech service
-    * To use the Google Text-to-Speech service directly requires a Google Cloud
-      Services account, but it turns out that you can use it with less ceremony
-      by hitting the free Google Translate API
-    * There are multiple command-line tools that do this out of the box with no
-      setup
-    * The one I use is https://github.com/desbma/GoogleSpeech
-      * demo audio player playing the output of `google_speech -l en-uk "i'm a
-        good speech synthesizer"`
-  * Code example of looping through all the files in a directory, reading line
-    by line, and piping each line to `google_speech`:
+There are multiple command-line tools available that implement this method of
+using Google Text-to-Speech via Google Translate. I ended up using [this
+one][desbma-google-speech]. Here's what it sounds like:
 
 {% highlight bash %}
-find "$narration_dir" | sort | tail -n+2 | while read filename; do
-  cat $filename | while read line; do
+google_speech -l en-uk "i'm a good speech synthesizer"
+{% endhighlight %}
+
+**TODO: See if I can record a wav of the output and embed an audio player into
+the page.**
+
+**Maybe I could use an HTML5 `<audio src="..."></audio>` element?**
+
+# Narration files
+
+I structured the chunks of narrated text in the most basic way that I could
+think of: a bunch of plain text files in a directory:
+
+{% highlight bash %}
+$ ls -1 narration/
+02-introduction.txt
+03-description.txt
+04-collecting-input-01.txt
+05-collecting-input-02.txt
+07-ready-to-start.txt
+08-starting.txt
+09-the-end.txt
+{% endhighlight %}
+
+Each file contains anywhere from 1 to 119 lines of narration, depending on how
+much the narrator has to say in that section. Each line of the file is either
+empty or it contains an isolated sentence or phrase. I noticed that by inserting
+empty lines, I could introduce pauses. This was useful because, as Renay and I
+rehearsed her dialogue with the TTS narrator, we often found that we needed to
+adjust the amount of pause time between the narrator's utterances, and doing so
+was as easy as adding or removing empty lines.
+
+I put together a quick Bash script to narrate every line of every narration text
+file, in order, by piping each line through `google_speech`:
+
+{% highlight bash %}
+find narration/ | sort | tail -n+2 | while read filename; do
+  cat "$filename" | while read line; do
     google_speech $gs_opts "$line"
   done
 done
 {% endhighlight %}
 
+This worked great! But there was another requirement: we needed to be able to
+pause for an indefinite amount of time in between narration files, and continue
+only when I send a cue.
+
+That's where the FIFO comes in.
+
+# The FIFO
+
+There is a feature of Unix called [named pipes][named-pipe], which are also commonly known
+as FIFOs because of their _first in, first out_ behavior (not to mention the
+fact that you create them by using a command called `mkfifo`).
+
 * FIFO (mkfifo, etc.)
+  * Explain more about named pipes. The info from the wikipedia article is a
+    good resource.
   * Demo gif using `file example-fifo`, `cat example-fifo`
   * `fifo-narrator` script
     * creates the FIFO
@@ -157,3 +198,5 @@ Reply to [this tweet][tweet] with any comments, questions, etc.!
 [GNUstep]: http://wiki.gnustep.org/index.php/User_FAQ#What_is_GNUstep.3F
 [google-tts]: https://cloud.google.com/text-to-speech/
 [google-translate]: https://translate.google.com/
+[desbma-google-speech]: https://github.com/desbma/GoogleSpeech
+[named-pipe]: https://en.wikipedia.org/wiki/Named_pipe
