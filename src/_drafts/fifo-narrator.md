@@ -52,12 +52,14 @@ say "I am a terrible speech synthesizer"
 {% endhighlight %}
 
 <center>
-  <figure>
-    <figcaption>
-    Audio output:
-    </figcaption>
-    <audio controls src="{{ site.url }}/assets/2020-01-25-gnustep-say.mp3"></audio>
-  </figure>
+  <p>
+    <figure>
+      <figcaption>
+      Audio output:
+      </figcaption>
+      <audio controls src="{{ site.url }}/assets/2020-01-25-gnustep-say.mp3"></audio>
+    </figure>
+  </p>
 </center>
 
 It just didn't sound natural enough. I think it's wonderful that the Free
@@ -86,12 +88,14 @@ google_speech -l en-us "I'm a good speech synthesizer"
 {% endhighlight %}
 
 <center>
-  <figure>
-    <figcaption>
-    Audio output:
-    </figcaption>
-    <audio controls src="{{ site.url }}/assets/2020-01-25-google-speech.mp3"></audio>
-  </figure>
+  <p>
+    <figure>
+      <figcaption>
+      Audio output:
+      </figcaption>
+      <audio controls src="{{ site.url }}/assets/2020-01-25-google-speech.mp3"></audio>
+    </figure>
+  </p>
 </center>
 
 
