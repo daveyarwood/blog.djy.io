@@ -51,10 +51,14 @@ Apple version:
 say "I am a terrible speech synthesizer"
 {% endhighlight %}
 
-**TODO: See if I can record a wav of the output and embed an audio player into
-the page.**
-
-**Maybe I could use an HTML5 `<audio src="..."></audio>` element?**
+<center>
+  <figure>
+    <figcaption>
+    Audio output:
+    </figcaption>
+    <audio controls src="{{ site.url }}/assets/2020-01-25-gnustep-say.mp3"></audio>
+  </figure>
+</center>
 
 It just didn't sound natural enough. I think it's wonderful that the Free
 Software Foundation implemented an OSS replacement for the macOS `say` command,
@@ -78,13 +82,18 @@ using Google Text-to-Speech via Google Translate. I ended up using [this
 one][desbma-google-speech]. Here's what it sounds like:
 
 {% highlight bash %}
-google_speech -l en-uk "i'm a good speech synthesizer"
+google_speech -l en-us "I'm a good speech synthesizer"
 {% endhighlight %}
 
-**TODO: See if I can record a wav of the output and embed an audio player into
-the page.**
+<center>
+  <figure>
+    <figcaption>
+    Audio output:
+    </figcaption>
+    <audio controls src="{{ site.url }}/assets/2020-01-25-google-speech.mp3"></audio>
+  </figure>
+</center>
 
-**Maybe I could use an HTML5 `<audio src="..."></audio>` element?**
 
 # Narration files
 
