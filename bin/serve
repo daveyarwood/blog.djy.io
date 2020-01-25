@@ -1,5 +1,16 @@
 #!/usr/bin/env bash
 
+# There seems to be some kind of bug where if I do this:
+#
+# * Create a new draft, work on it for a while, don't publish it yet.
+# * Create ANOTHER new draft, start working on it.
+#
+# The index page never seems to update; it always just shows the first draft,
+# and not the second.
+#
+# Blowing away _site fixes it. So we'll just always do that.
+rm -rf "$(dirname $0)/../_site/"
+
 # This initial build without --incremental seems to be necessary in order to
 # pick up on new files added since the last time you ran `serve --incremental`.
 # I don't fully understand this, but this way, at least I can ^C and re-run a
