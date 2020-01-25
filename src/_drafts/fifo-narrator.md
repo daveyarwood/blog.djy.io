@@ -142,9 +142,9 @@ That's where the FIFO comes in.
 
 # The FIFO
 
-There is a feature of Unix called [named pipes][named-pipe], which are also commonly known
-as FIFOs because of their _first in, first out_ behavior (not to mention the
-fact that you create them by using a command called `mkfifo`).
+There is a neat feature of Unix called [named pipes][named-pipe], which are also
+commonly known as FIFOs because of their _first in, first out_ behavior (not to
+mention the fact that you can create them by using a command called `mkfifo`).
 
 * FIFO (mkfifo, etc.)
   * Explain more about named pipes. The info from the wikipedia article is a
