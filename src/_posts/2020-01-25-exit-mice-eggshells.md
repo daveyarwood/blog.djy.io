@@ -36,6 +36,12 @@ sounds out of a synthesizer, and I think it really shows on _Eggshells_.
 For more Exit Mice news, follow us on [twitter][exit-mice-twitter],
 [instagram][exit-mice-instagram] and [facebook][exit-mice-facebook]!
 
+# Comments?
+
+Reply to [this tweet][tweet] with any comments, questions, etc.!
+
+[tweet]: https://twitter.com/dave_yarwood/status/1221102544606375938
+
 [exit-mice]: http://exitmice.com
 [buy-eggshells]: https://exitmice.bandcamp.com/album/eggshells
 [exit-mice-first-ep-post]: {% post_url 2018-07-04-exit-mice-and-an-ode-to-grunge-pop %}
