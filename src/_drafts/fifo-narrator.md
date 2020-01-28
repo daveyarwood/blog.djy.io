@@ -146,6 +146,18 @@ There is a neat feature of Unix called [named pipes][named-pipe], which are also
 commonly known as FIFOs because of their _first in, first out_ behavior (not to
 mention the fact that you can create them by using a command called `mkfifo`).
 
+A named pipe is a special type of file that can be used like a
+[pipe][unix-pipes]. You can put things into it and take things out of it in a
+_first in, first out_ fashion.
+
+The best way to understand how named pipes work is to try them yourself. You'll
+need two terminals for this. In the first terminal, create a FIFO and use `cat`
+to print the first data that arrives:
+
+{% highlight text %}
+TODO
+{% endhighlight %}
+
 * FIFO (mkfifo, etc.)
   * Explain more about named pipes. The info from the wikipedia article is a
     good resource.
@@ -213,3 +225,4 @@ Reply to [this tweet][tweet] with any comments, questions, etc.!
 [google-translate]: https://translate.google.com/
 [desbma-google-speech]: https://github.com/desbma/GoogleSpeech
 [named-pipe]: https://en.wikipedia.org/wiki/Named_pipe
+[unix-pipes]: https://en.wikipedia.org/wiki/Pipeline_(Unix)
