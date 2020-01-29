@@ -152,16 +152,34 @@ _first in, first out_ fashion.
 
 The best way to understand how named pipes work is to try them yourself. You'll
 need two terminals for this. In the first terminal, create a FIFO and use `cat`
-to print the first data that arrives:
+to print the first data that comes out of the pipe:
 
 {% highlight text %}
-TODO
+mkfifo the-fifo
+cat the-fifo
 {% endhighlight %}
 
+You'll notice that the terminal "hangs" after the `cat` command. That's because
+there is nothing available to `cat` just yet.
+
+In another terminal, put some data into the pipe:
+
+{% highlight text %}
+echo "hello, fifo" > the-fifo
+{% endhighlight %}
+
+You'll see `hello, fifo` printed in the first terminal. Nice job, you just moved
+data from one terminal to another!
+
+When you're done, you can `rm the-fifo` just like any other file.
+
+<center>
+<img src="{{ site.url }}/assets/2020-01-29-fifo-demo.gif"
+     title="Basic usage of a FIFO"
+     width="75%">
+</center>
+
 * FIFO (mkfifo, etc.)
-  * Explain more about named pipes. The info from the wikipedia article is a
-    good resource.
-  * Demo gif using `file example-fifo`, `cat example-fifo`
   * `fifo-narrator` script
     * creates the FIFO
     * waits for "bangs" to arrive on the FIFO, and those "bangs" trigger one
