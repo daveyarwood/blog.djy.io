@@ -179,14 +179,54 @@ When you're done, you can `rm the-fifo` just like any other file.
      width="75%">
 </center>
 
-* FIFO (mkfifo, etc.)
-  * `fifo-narrator` script
-    * creates the FIFO
-    * waits for "bangs" to arrive on the FIFO, and those "bangs" trigger one
-      script file to be narrated
-      * timing depends on live performance, so this allows me to control when to
-        proceed to the next script
-    * i3 keybinding that puts a "bang" onto the FIFO
+In addition to shoveling data from one process to another, a FIFO can be used to
+send signals. One process can receive continuously from the FIFO and proceed to
+do work of some kind whenever it receives a signal.
+
+This gif illustrates the concept:
+
+<center>
+<img src="{{ site.url }}/assets/2020-01-31-fifo-signaling.gif"
+     title="Using a FIFO to send signals"
+     width="75%">
+</center>
+
+"Bang" is a term that I took from the multimedia signal processing language
+[Pure Data][pure-data]. A "bang" is a signal with no content that is used to
+control timing.
+
+# The FIFO narrator
+
+It occurred to me that I could use this type of signaling to cue the TTS
+narration blurbs in _By Chance_. I wrote a simple `fifo-narrator` script that
+receives "bangs" from a FIFO in a loop. Each time it receives a "bang," it
+narrates the next file in the `narration` directory:
+
+{% highlight bash %}
+fifo="narration.fifo"
+rm -f $fifo
+mkfifo $fifo
+
+i=1
+
+while true; do
+  filename="$(find narration/ | tail -n+2 | sort | sed -n "${i}p")"
+  if [[ -z "$filename" ]]; then break; fi
+
+  echo -------------------------
+  echo "Waiting for a \"bang\" on: $fifo"
+  echo -------------------------
+  cat $fifo >/dev/null
+
+  cat "$filename" | while read line; do
+    google_speech $gs_opts "$line"
+  done
+
+  ((++i))
+done
+{% endhighlight %}
+
+* i3 keybinding that puts a "bang" onto the FIFO
 
 * Performance #1 (January 2019) was a smash success
 
@@ -244,3 +284,4 @@ Reply to [this tweet][tweet] with any comments, questions, etc.!
 [desbma-google-speech]: https://github.com/desbma/GoogleSpeech
 [named-pipe]: https://en.wikipedia.org/wiki/Named_pipe
 [unix-pipes]: https://en.wikipedia.org/wiki/Pipeline_(Unix)
+[pure-data]: https://puredata.info/
