@@ -226,7 +226,19 @@ while true; do
 done
 {% endhighlight %}
 
-* i3 keybinding that puts a "bang" onto the FIFO
+To send the signals, I set up an [i3] keybinding that puts the word `BANG`
+into the FIFO whenever I press the "mod" key and `;` at the same time:
+
+{% highlight bash %}
+bindsym $mod+semicolon \
+  exec --no-startup-id \
+  "[ -p ~/code/by-chance/narration.fifo ] \
+     && echo BANG > ~/code/by-chance/narration.fifo"
+{% endhighlight %}
+
+And that's all there was to it!
+
+# Success?
 
 * Performance #1 (January 2019) was a smash success
 
@@ -269,6 +281,9 @@ done
     * stitch together TTS mp3s padded by the silent wav files to add pauses
       * `sox $(ls $parts_dir/*) "$mp3_filename"`
 
+
+* Performance #3 (January 2020) went more smoothly.
+
 # Comments?
 
 Reply to [this tweet][tweet] with any comments, questions, etc.!
@@ -285,3 +300,4 @@ Reply to [this tweet][tweet] with any comments, questions, etc.!
 [named-pipe]: https://en.wikipedia.org/wiki/Named_pipe
 [unix-pipes]: https://en.wikipedia.org/wiki/Pipeline_(Unix)
 [pure-data]: https://puredata.info/
+[i3]: https://i3wm.org/
