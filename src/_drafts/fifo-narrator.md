@@ -227,7 +227,7 @@ done
 {% endhighlight %}
 
 To send the signals, I set up an [i3] keybinding that puts the word `BANG`
-into the FIFO whenever I press the "mod" key and `;` at the same time:
+into the FIFO whenever I press the `mod` key and `;` at the same time:
 
 {% highlight bash %}
 bindsym $mod+semicolon \
@@ -236,35 +236,63 @@ bindsym $mod+semicolon \
      && echo BANG > ~/code/by-chance/narration.fifo"
 {% endhighlight %}
 
-And that's all there was to it!
+And with that, I was able to control the length of the pauses, allowing the
+narration to proceed by pressing `mod + ;`.
 
 # Success?
 
-* Performance #1 (January 2019) was a smash success
+Our first performance of _By Chance_ (at the time called _Out of the Blue_) in
+January 2019 was a smash success! We performed in a warehouse space where we set
+up the lighting and sound system ourselves. I ran the sound from my laptop out
+of the headphone jack and into a small bass amplifier, which worked flawlessly.
+We were the only performers in that particular part of the warehouse, which
+meant that we were able to set everything up for the tech rehearsals, leave it
+in place for the three performances that weekend, and double-check right before
+each performance that everything was still working. All three performances went
+off without a hitch! Renay danced wonderfully, the crowds were engaged with the
+idea and they really seemed to enjoy it.
 
-* Performance #2 (November 2019) was, unfortunately, ruined by technical
-  difficulties
-  * Partway through the narration, the narration just stopped working. I
-    switched over to my terminal and was presented with a long Python
-    stacktrace. Someone in the crowd went "hey, that's Python!" We had to
-    stumble onward without the narrator. Renay was furious with me.
-  * I hadn't thought about the fact that you need to have access to the Internet
-    in order to use the Google Text-to-Speech.
-  * Incidentally, it turns out that the google_speech CLI tool works offline by
-    caching the audio synthesized from text input that you've handed to it
-    before.
-    * Performance #1 had (luckily) gone off without a hitch despite my laptop
-      not being connected to the internet at the time. The text-to-speech audio
-      was being played back from the cache from when we had rehearsed at home.
-    * Somehow, during performance #2, I think the cache failed. (Maybe it was
-      a TTL cache and it just happened to expire at the worst possible time?
-      Who knows?)
-  * It became clear that our performance should not depend on the reliability of
-    a network connection or the availability of the Google Text-to-Speech
-    service.
-  * A better approach would be to pre-record the text-to-speech narration and
-    simply play it back during the performance. I could use the same FIFO setup
-    to cue moving from each audio file to the next.
+We performed the piece again in November, but unfortunately, it was ruined by
+technical difficulties. This time, the venue was a [black box
+theater][black-box-theater] that had a really kick-ass sound system and a house
+projector. I ran both the audio and the visuals (a web application I wrote that
+randomly generates a dance piece based on suggestions from the audience) off of
+my laptop via an HDMI cable that led into a bunch of A/V equipment that I didn't
+understand. But it looked and sounded great during our tech run, right before
+the show.
+
+By the time the show started and it was our turn to perform, my laptop's display
+had fallen asleep, so I had to press a button on the keyboard to wake it up. The
+visuals were still displaying fine, but unbeknownst to me, the audio part of the
+HDMI connection had somehow disconnected and wasn't working anymore. Thinking
+quickly, I got it to work again by reconnecting the HDMI cable altogether, which
+seemed to get everything back in sync.
+
+We thought we were out of the woods at that point, but then partway through the
+introductory text-to-speech narration, the narrator stopped unexpectedly. In a
+panic, I flipped over to the terminal window where my `fifo-narrator` script was
+running, and there I was presented with a long Python stacktrace. Someone in the
+crowd went "hey, that's Python!" Being already in the middle of a performance,
+Renay had to improvise and stumble onward without having a narrator to converse
+with. Afterward, she was furious with me.
+
+* I hadn't thought about the fact that you need to have access to the Internet
+  in order to use the Google Text-to-Speech.
+* Incidentally, it turns out that the google_speech CLI tool works offline by
+  caching the audio synthesized from text input that you've handed to it
+  before.
+  * Performance #1 had (luckily) gone off without a hitch despite my laptop
+    not being connected to the internet at the time. The text-to-speech audio
+    was being played back from the cache from when we had rehearsed at home.
+  * Somehow, during performance #2, I think the cache failed. (Maybe it was
+    a TTL cache and it just happened to expire at the worst possible time?
+    Who knows?)
+* It became clear that our performance should not depend on the reliability of
+  a network connection or the availability of the Google Text-to-Speech
+  service.
+* A better approach would be to pre-record the text-to-speech narration and
+  simply play it back during the performance. I could use the same FIFO setup
+  to cue moving from each audio file to the next.
 
 * Rough calculation of the pauses between utterances in each script file, based
   on the number of consecutive blank lines.
@@ -301,3 +329,4 @@ Reply to [this tweet][tweet] with any comments, questions, etc.!
 [unix-pipes]: https://en.wikipedia.org/wiki/Pipeline_(Unix)
 [pure-data]: https://puredata.info/
 [i3]: https://i3wm.org/
+[black-box-theater]: https://en.wikipedia.org/wiki/Black_box_theater
