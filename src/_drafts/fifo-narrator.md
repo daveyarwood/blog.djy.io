@@ -261,41 +261,79 @@ Python!" Being already in the middle of a performance, Renay had to improvise
 and stumble onward without having a narrator to converse with. Afterward, she
 was furious with me.
 
-* I hadn't thought about the fact that you need to have access to the Internet
-  in order to use the Google Text-to-Speech.
-* Incidentally, it turns out that the google_speech CLI tool works offline by
-  caching the audio synthesized from text input that you've handed to it
-  before.
-  * Performance #1 had (luckily) gone off without a hitch despite my laptop
-    not being connected to the internet at the time. The text-to-speech audio
-    was being played back from the cache from when we had rehearsed at home.
-  * Somehow, during performance #2, I think the cache failed. (Maybe it was
-    a TTL cache and it just happened to expire at the worst possible time?
-    Who knows?)
-* It became clear that our performance should not depend on the reliability of
-  a network connection or the availability of the Google Text-to-Speech
-  service.
-* A better approach would be to pre-record the text-to-speech narration and
-  simply play it back during the performance. I could use the same FIFO setup
-  to cue moving from each audio file to the next.
+# Recording the output
 
-* Rough calculation of the pauses between utterances in each script file, based
-  on the number of consecutive blank lines.
+I hadn't thought about the fact that you need to have access to the Internet in
+order to use the Google Text-to-Speech.
 
-* SoX
-  * man page: "Sound eXchange, the Swiss Army knife of audio manipulation"
-  * reads and writes audio files
-  * actually does a lot more than that, and I've barely scratched the surface of
-    what it can do
-    * maybe use some of the examples in the man page, which look interesting
-  * I'm using it for two things:
-    * generate wav files for specific durations of silence
-      * `sox -n -r 24k -c 1 "$part_filename" trim 0.0 "$duration"`
-    * stitch together TTS mp3s padded by the silent wav files to add pauses
-      * `sox $(ls $parts_dir/*) "$mp3_filename"`
+Incidentally, it turns out that the `google_speech` CLI tool works offline by
+caching the audio synthesized from text input that you've handed to it
+before.  Performance #1 had (luckily) gone off without a hitch despite my laptop
+not being connected to the internet at the time. The text-to-speech audio was
+being played back from the cache from when we had rehearsed at home.
 
+During performance #2, I think the cache failed, somehow. (Maybe it was a TTL
+cache and it just happened to expire at the worst possible time?  Who knows?)
 
-* Performance #3 (January 2020) went more smoothly.
+It became clear that our performance should not depend on the reliability of a
+network connection or the availability of the Google Text-to-Speech service. A
+better approach would be to record the text-to-speech narration ahead of time
+and simply play it back during the performance. I could use the same FIFO setup
+to cue moving from each audio file to the next.
+
+To start, I did a rough calculation of the average length of the pauses between
+the lines of text being narrated. Then I wrote a script that generated silent
+wav files with a duration of `average pause length X number of consecutive empty
+lines`, in addition to using `google_speech` to output mp3s of each non-empty
+line being narrated, and then stitched everything together into a single mp3 per
+narration text file.
+
+I was able to do all of this audio file Frankensteining with the help of a very
+handy command-line tool called [SoX][sox]. SoX describes itself as "the Swiss
+Army knife of sound processing programs," which is an appropriate description.
+SoX can read and write audio files, convert to and from various audio formats,
+and even apply some sound effects.
+
+After spending some time with the man page and a little bit of trial and error,
+I was able to put together the commands to do what I needed to do:
+
+{% highlight bash %}
+# Generate a wav file of silence for a specific duration
+sox -n -r 24k -c 1 "$parts_dir/$filename" trim 0.0 "$duration"
+
+# Stitch together TTS mp3s padded by the silent wav files to add pauses
+sox $(ls $parts_dir/*) "$output_mp3_filename"
+{% endhighlight %}
+
+Sox also provides `play` and `rec` commands, which allow you to play or record
+an audio file from the command line. Playing an mp3 file is as simple as running
+`play the-file.mp3`.
+
+I ended up with two scripts:
+
+1. `export_narration` uses `google_speech` and `sox` to generate a bunch of mp3
+   files, each containing a portion of the Text-to-Speech narration for the
+   performance.
+
+2. `fifo_narration` waits for "bang" signals to arrive on the FIFO and each time
+   it receives one, it runs `play "$filename"`, where `$filename` is the next
+   file in the narration output directory.
+
+# Success!
+
+In January 2020, we performed _By Chance_ for the third time, and with the above
+setup in place, the performance went much more smoothly! This time, we were more
+confident, knowing that our Text-to-Speech narrator wouldn't let us down in the
+heat of the moment.
+
+In summary:
+
+* something about text to speech CLI tools
+* something about not relying on the availability of an Internet connection
+* something about FIFOs
+* something about sox
+* Writing reliable software isn't just a good practice, it also scores you bonus
+  points with your wife, or something like that
 
 # Comments?
 
@@ -315,3 +353,4 @@ Reply to [this tweet][tweet] with any comments, questions, etc.!
 [pure-data]: https://puredata.info/
 [i3]: https://i3wm.org/
 [black-box-theater]: https://en.wikipedia.org/wiki/Black_box_theater
+[sox]: http://sox.sourceforge.net/
