@@ -252,7 +252,7 @@ each performance that everything was still working. All three performances went
 off without a hitch! Renay danced wonderfully, the crowds were engaged with the
 idea and they really seemed to enjoy it.
 
-We performed the piece again in November, but unfortunately, it was ruined by
+We performed the piece again in November, but unfortunately, it was marred by
 technical difficulties. This time, the venue was a [black box
 theater][black-box-theater] that had a really kick-ass sound system and a house
 projector. I ran both the audio and the visuals (a web application I wrote that
