@@ -253,28 +253,13 @@ off without a hitch! Renay danced wonderfully, the crowds were engaged with the
 idea and they really seemed to enjoy it.
 
 We performed the piece again in November, but unfortunately, it was marred by
-technical difficulties. This time, the venue was a [black box
-theater][black-box-theater] that had a really kick-ass sound system and a house
-projector. I ran both the audio and the visuals (a web application I wrote that
-randomly generates a dance piece based on suggestions from the audience) off of
-my laptop via an HDMI cable that led into a bunch of A/V equipment that I didn't
-understand. But it looked and sounded great during our tech run, right before
-the show.
-
-By the time the show started and it was our turn to perform, my laptop's display
-had fallen asleep, so I had to press a button on the keyboard to wake it up. The
-visuals were still displaying fine, but unbeknownst to me, the audio part of the
-HDMI connection had somehow disconnected and wasn't working anymore. Thinking
-quickly, I got it to work again by reconnecting the HDMI cable altogether, which
-seemed to get everything back in sync.
-
-We thought we were out of the woods at that point, but then partway through the
-introductory text-to-speech narration, the narrator stopped unexpectedly. In a
-panic, I flipped over to the terminal window where my `fifo-narrator` script was
-running, and there I was presented with a long Python stacktrace. Someone in the
-crowd went "hey, that's Python!" Being already in the middle of a performance,
-Renay had to improvise and stumble onward without having a narrator to converse
-with. Afterward, she was furious with me.
+technical difficulties. Partway through the introductory text-to-speech
+narration, the narrator stopped unexpectedly. In a panic, I flipped over to the
+terminal window where my `fifo-narrator` script was running, and there I was
+presented with a long Python stacktrace. Someone in the crowd went "hey, that's
+Python!" Being already in the middle of a performance, Renay had to improvise
+and stumble onward without having a narrator to converse with. Afterward, she
+was furious with me.
 
 * I hadn't thought about the fact that you need to have access to the Internet
   in order to use the Google Text-to-Speech.
