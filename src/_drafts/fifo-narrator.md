@@ -328,12 +328,21 @@ heat of the moment.
 
 In summary:
 
-* something about text to speech CLI tools
-* something about not relying on the availability of an Internet connection
-* something about FIFOs
-* something about sox
-* Writing reliable software isn't just a good practice, it also scores you bonus
-  points with your wife, or something like that
+* There are a variety of good command-line tools available that can generate
+  text-to-speech audio. The ones that leverage the Google Translate
+  text-to-speech API are particularly nice.
+
+* When you're doing something important like a live performance, you should
+  never rely on the availability of an Internet connection, if you can help it!
+
+* Named pipes (a.k.a. FIFOs) can be a wonderful tool when you're writing Bash
+  scripts and you need a simple queuing mechanism.
+
+* SoX (the Swiss Army knife of audio manipulation) is handy when you want to
+  stitch together audio files at the command line.
+
+* Writing reliable software isn't just a good practice; in rare situations, it
+  might just score you some bonus points with your spouse!
 
 # Comments?
 
