@@ -347,7 +347,7 @@ In summary:
 
 Reply to [this tweet][tweet] with any comments, questions, etc.!
 
-[tweet]: https://twitter.com/dave_yarwood/status/FIXME
+[tweet]: https://twitter.com/dave_yarwood/status/1233401002105110529
 
 [renay-aumiller]: https://www.radances.com
 [out-of-the-blue]: {% post_url 2019-07-15-out-of-the-blue %}
