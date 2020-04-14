@@ -11,14 +11,15 @@ published: true
 
 # The premise
 
-Let's say you're writing some tests that describe the behavior of something
+Let's say you need to write some tests about the behavior of something
 asynchronous. Imagine that you have a worker process that consumes messages from
 a queue and uses them to update some state, and you want to test that when you
 put a message on the queue, the worker ends up receiving the message and doing
 what it's supposed to do.
 
-Let's make this more concrete with an example scenario: the state that we're
-updating is a running tally of votes for users' favorite ice cream flavors.
+Let's make this a little more concrete with an example scenario: the state that
+we're updating is a running tally of votes for users' favorite ice cream
+flavors.
 
 {% highlight kotlin %}
 // e.g. {"butter pecan": 42, "cookie dough": 100}
@@ -43,8 +44,8 @@ thread {
 
 # The problem
 
-So now we want to test that, when a user votes for their favorite flavor, the
-data shows that their vote was counted.
+We want to test that, when a user votes for their favorite flavor, the data
+shows that their vote was counted.
 
 {% highlight kotlin %}
 fun voteCountedForRockyRoad() : Boolean {
@@ -59,8 +60,8 @@ queue is processed off to the side in a separate thread (our worker process),
 and we can't guarantee how long it's going to take before each vote is
 reflected in the tally.
 
-To better illustrate my point, let's imagine that the worker is a bit lazy and
-it decides to take a little break before it tallies each vote.
+To better illustrate my point, suppose that the worker is a bit lazy and it
+decides to take a little break before it tallies each vote.
 
 {% highlight kotlin %}
 // worker process
@@ -99,20 +100,19 @@ fun voteCountedForRockyRoad() : Boolean {
 }
 {% endhighlight %}
 
-This tends to get the tests passing in the short term, but it's not a very
-reliable approach.  Even if we're seeing the tests pass most of the time right
-_now_, we're bound to see them fail at some point, when we least expect it.
+This tends to get the tests passing in the short term, but it's not a reliable
+approach. Even if we're seeing the tests pass most of the time right _now_,
+we're still bound to see them fail at some point, when we least expect it.
 Maybe the worker will be especially lazy that day, and it will take longer than
 our `sleep` accounted for.
 
 It's also worth noting that in this simple example, we're storing our vote data
 in memory, so reading and writing it is not going to contribute much to the
-slowness of the worker.
-
-But if this were more like a real world application, we would probably be
-putting our votes into some kind of database instead. At that point, our tests
-would be even _more_ susceptible to timing issues because we would also have to
-contend with obstacles like network latency and database locks.
+slowness of the worker. But if this were more like a real world application, we
+would probably be putting our votes into some kind of database instead. At that
+point, our tests would be even _more_ susceptible to timing issues because we
+would also have to contend with obstacles like network latency and database
+locks.
 
 # If at first you don't succeed...
 
@@ -128,7 +128,7 @@ Ideally, we would only have to wait until the result we're expecting has
 arrived. So, a better question to ask is: "How do we wait for the result we're
 expecting?"
 
-There's a reliable and easy-to-implement solution to this problem: the **retry
+There's a reliable and easy-to-implement solution to this problem: a **retry
 loop**.
 
 Here's how it works:
