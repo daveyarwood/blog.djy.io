@@ -4,17 +4,70 @@ title: "Using git write-tree to cache builds"
 category: something
 tags:
   - git
+  - unix
+  - command line
+  - productivity
 published: true
 ---
 
 {% include JB/setup %}
 
+# Write, compile, run, observe
+
+When you're writing a program in a compiled language, you might find yourself
+repeating this cycle:
+
+* Write code
+* Compile executable
+* Run executable
+* Observe results
+
+(Lather, rinse, repeat.)
+
+When you're repeating this cycle over and over again, it can be cumbersome to
+have to worry about whether the build that you're running was compiled from the
+same code that you're looking at. In other words, each time you run the command
+that you use to run the build (e.g.  `java -jar target/project.jar`), you have
+to wonder whether or not you ran the command to compile your code (e.g. `javac
+...`) since the last time you changed the code.
+
+# Always build it before you run it
+
+A simple solution to this problem is to condense the "compile" and "run" steps
+of your build cycle into a single step: "compile and run."
+
+Picture a `bin/run` script in your project that looks something like this:
+
+{% highlight bash %}
+#!/usr/bin/env bash
+
+# Exit immediately if the build fails
+set -e
+
+# Compile executable jar file
+javac # ... arguments go here ...
+
+# Run the jar file
+java -jar target/project.jar
+{% endhighlight %}
+
+Now, your build cycle is:
+
+* Write code
+* Run `bin/run`
+* Observe results
+
+This isn't totally satisfying, though. Sometimes you want to run the **same**
+build a bunch of times in a row, and when that happens, you have to sit there
+and wait for the same code to recompile, each and every time you run `bin/run`.
+
+The solution to this problem is **build caching**.
+
 # Notes
 
 ## Use case
 
-* TODO: basic explanation of build caching, description of the problem that this
-  solves
+* TODO: basic explanation of build caching
 
 * Language-specific build tools will often do this sort of thing for you
   automatically
