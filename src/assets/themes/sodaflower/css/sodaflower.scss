@@ -119,7 +119,7 @@ article {
   }
 }
 
-p code {
+:not(pre) > code {
   background: $light-gray;
   padding: 4px;
 }
