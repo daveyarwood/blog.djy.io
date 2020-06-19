@@ -1,7 +1,6 @@
 ---
 layout: post
 title: "Using git write-tree to cache builds"
-category: something
 tags:
   - git
   - unix
@@ -25,11 +24,12 @@ repeating this cycle:
 (Lather, rinse, repeat.)
 
 When you're repeating this cycle over and over again, it can be cumbersome to
-have to worry about whether the build that you're running was compiled from the
-same code that you're looking at. In other words, each time you run the command
-that you use to run the build (e.g.  `java -jar target/project.jar`), you have
-to wonder whether or not you ran the command to compile your code (e.g. `javac
-...`) since the last time you changed the code.
+have to worry about whether or not the build that you're running was compiled
+from the same code that you're currently looking at. In other words, each time
+you run the command that you use to run the build (e.g.  `java -jar
+target/project.jar`), you have to wonder whether or not you've run the command
+to compile your code (e.g.  `javac ...`) since the last time you made changes to
+the code.
 
 # Always build it before you run it
 
@@ -47,8 +47,8 @@ set -e
 # Compile executable jar file
 javac # ... arguments go here ...
 
-# Run the jar file
-java -jar target/project.jar
+# Run the jar file, passing along the arguments from `bin/run ...`
+java -jar target/project.jar "$@"
 {% endhighlight %}
 
 Now, your build cycle is:
@@ -58,27 +58,42 @@ Now, your build cycle is:
 * Observe results
 
 This isn't totally satisfying, though. Sometimes you want to run the **same**
-build a bunch of times in a row, and when that happens, you have to sit there
-and wait for the same code to recompile, each and every time you run `bin/run`.
+build a bunch of times in a row,
+i.e.:
 
-The solution to this problem is **build caching**.
+* Write code
+* Run `bin/run some arguments`
+* Observe results
+* Run `bin/run some other arguments`
+* Observe results
+* Run `bin/run some different arguments`
+* Observe results
+
+In this situation, you have to sit there and wait for the same code to
+recompile, each and every time you run `bin/run`, even though you didn't make
+any changes to the code!
+
+This is the problem that **build caching** is meant to solve.
+
+# Build caching
+
+The idea with build caching is that we can speed up builds by not doing any more
+work than we have to. If we haven't made any changes to the code, then there is
+no reason for us to recompile; we can just reuse the last build.
+
+It's worth noting that some platforms and build tools (like
+[Gradle][gradle-bc], [AWS CodeBuild][codebuild-bc], and [Docker][docker-bc])
+have their own built-in caching to speed things up for the end user. For
+example, Gradle has an **incremental build** feature where it can reuse _parts_
+of previous builds in the current build, which can speed things up
+substantially.
+
+The technique I'm about to describe can provide some additional benefit in that
+it allows you to skip the build tool altogether if the code hasn't changed. It
+also provides build caching for the common case where the build tool doesn't
+provide it.
 
 # Notes
-
-## Use case
-
-* TODO: basic explanation of build caching
-
-* Language-specific build tools will often do this sort of thing for you
-  automatically
-
-* What follows is a simple, made-from-scratch solution that works just as well
-  as (if not better than!) the caching that these build tools do.
-
-* The end result is a single `bin/run` script that I can use to run the latest
-  build, building it only if it hasn't already been built. This is nice because
-  it means I never have to ask the question "Am I running the code that I'm
-  looking at right now?" when I'm developing.
 
 ## The target directory
 
@@ -140,3 +155,7 @@ The solution to this problem is **build caching**.
 Reply to [this tweet][tweet] with any comments, questions, etc.!
 
 [tweet]: https://twitter.com/dave_yarwood/status/FIXME
+
+[gradle-bc]: https://guides.gradle.org/using-build-cache/
+[codebuild-bc]: https://docs.aws.amazon.com/codebuild/latest/userguide/build-caching.html
+[docker-bc]: https://pythonspeed.com/articles/docker-caching-model/
