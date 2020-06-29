@@ -80,7 +80,7 @@ Alda library for `<insert language here>`.
 
 Reply to [this tweet][tweet] with any comments, questions, etc.!
 
-[tweet]: https://twitter.com/dave_yarwood/status/FIXME
+[tweet]: https://twitter.com/dave_yarwood/status/1277575502258229249
 
 [alda]: https://alda.io
 [alda-clj]: https://github.com/daveyarwood/alda-clj
