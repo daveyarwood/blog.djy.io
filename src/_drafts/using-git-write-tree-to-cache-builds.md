@@ -150,6 +150,9 @@ provide it.
   right away, using the cached build (because the content of the repo didn't
   change).
 
+* There is now a good blog post about by Julia Evans about `entr` that I can
+  link to!
+
 # Comments?
 
 Reply to [this tweet][tweet] with any comments, questions, etc.!
