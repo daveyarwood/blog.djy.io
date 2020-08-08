@@ -23,13 +23,14 @@ repeating this cycle:
 
 (Lather, rinse, repeat.)
 
-When you're repeating this cycle over and over again, it can be cumbersome to
-have to worry about whether or not the build that you're running was compiled
-from the same code that you're currently looking at. In other words, each time
-you run the command that you use to run the build (e.g.  `java -jar
-target/project.jar`), you have to wonder whether or not you've run the command
-to compile your code (e.g.  `javac ...`) since the last time you made changes to
-the code.
+I don't know about you, but when I'm repeating this cycle over and over again, I
+don't want to have to worry about whether or not the build that I'm running was
+compiled from the same code that I'm currently looking at. In other words, each
+time I run the command that runs the build (e.g.  `java -jar
+target/project.jar`), I have to wonder whether or not I've run the command that
+compiles my code (e.g.  `javac ...`) since the last time I made changes to the
+code. It would be nice to remove any uncertainty and be 100% confident that the
+build I'm running corresponds to the code I'm looking at.
 
 # Always build it before you run it
 
@@ -51,15 +52,14 @@ javac # ... arguments go here ...
 java -jar target/project.jar "$@"
 {% endhighlight %}
 
-Now, your build cycle is:
+Now, your build cycle is a little simpler:
 
 * Write code
 * Run `bin/run`
 * Observe results
 
-This isn't totally satisfying, though. Sometimes you want to run the **same**
-build a bunch of times in a row,
-i.e.:
+This isn't totally satisfying, though. Sometimes, you might want to run the
+**same** build a bunch of times in a row, i.e.:
 
 * Write code
 * Run `bin/run some arguments`
