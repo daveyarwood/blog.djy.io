@@ -93,65 +93,91 @@ it allows you to skip the build tool altogether if the code hasn't changed. It
 also provides build caching for the common case where the build tool doesn't
 provide it.
 
+# BYOBC (bring your own build caching)
+
+The secret sauce in our homebrew build caching setup is a script that
+**generates a hash of the content** of the files in the project.
+
+Any time you make a change to a file in your project, add a new file, remove a
+file, etc. the hash that the script outputs will be different. If you run the
+script twice in a row without making any changes in between, you will see the
+same hash. This way, we'll know if we need to rebuild the project (i.e. the hash
+is different, which means something changed) or if we can reuse an existing
+build.
+
+Once we're able to generate a hash for the current state of the files in the
+project, the next step is **store each build in a folder whose name includes the
+hash**. Whenever we want to build the project, we first generate the content
+hash and check to see if there is already a build for that hash. If there is,
+then we're done; we don't need to build it again. If there isn't, then we
+compile our code, etc. and we put the build artifacts (executables, etc.) into a
+folder whose name includes the hash so that we can reuse it.
+
+Here is an example shell session that should make this easier to visualize:
+
+{% highlight bash %}
+$ bin/current-content-hash
+e45c9cf94f64b28f852196d2b386d07f4640633d
+
+# We don't have a build yet for the current content, so `bin/build` creates a
+# build in the target directory, in a folder whose name includes the content
+# hash.
+$ bin/build
+Building target/e45c9cf94f64b28f852196d2b386d07f4640633d/my-program...
+Done.
+
+# If we run `bin/build` again without making changes, it's a no-op.
+$ bin/build
+Existing build: target/e45c9cf94f64b28f852196d2b386d07f4640633d/my-program
+
+# ... writing code, making changes ...
+
+# After saving a change to a file, the content hash is different.
+$ bin/current-content-hash
+ff7ada844186e67c0282324452e4a5be537f0771
+
+# Now if we run `bin/build`, it will create a new build because there is no
+# folder within the target directory that includes that content hash.
+$ bin/build
+Building target/ff7ada844186e67c0282324452e4a5be537f0771/my-program...
+Done.
+
+# Just like before, the build is cached, so `bin/build` is a no-op:
+$ bin/build
+Existing build: target/ff7ada844186e67c0282324452e4a5be537f0771/my-program
+{% endhighlight %}
+
+
+
 # Notes
 
-## The target directory
+## More details about the setup
 
-* gitignored
+* How `bin/current-content-hash` works / `git write-tree`
+  * Include an aside about how it's crucial to include the target directory in
+    .gitignore, otherwise builds themselves would invalidate the cache!
 
-* one folder per content SHA
-  * use `tree` to show an example
-
-* build script periodically cleans up old builds (> 7 days old)
-  * include command from `build` script as an example
+* Garbage collection
+  * Explain how old builds (e.g. > 7 days old) are periodically cleaned up by
+    the build script to save disk space.
+  * Include command from `build` script as an example.
 
 ## git write-tree
 
-* TODO: basic explanation of how git stores objects by hash
+(I'm assuming that your project is version-controlled using Git. If it isn't,
+you can still use this overall approach, but you will need to figure out another
+way to generate a hash of the content of your project!)
 
 * TODO: explain what `git write-tree` does
-
-## Scripts
-
-### `current-content-sha`
-
-* Uses `git write-tree` to print a SHA of the current content of the repo.
   * Considers both the current commit you're on and any un-committed changes you
     may have made.
 
+* TODO: basic explanation of how git stores objects by hash
+
 * TODO: Explain about the git index file
 
-* `current-content-sha` makes a copy of the git index file and uses that as the
+* `current-content-hash` makes a copy of the git index file and uses that as the
   index, in order to avoid affecting the current state of git.
-
-* TODO: explain further
-
-### `build`
-
-* Uses `current-content-sha` to identify the current content version.
-
-* Checks if the `target` directory already contains a build for that content.
-
-* If not, builds again, outputting the result into `target/$content_sha`
-
-### `run`
-
-* Runs the `build` script, which might be a no-op if the current content was
-  already built.
-
-* Runs the built executable directly.
-
-## `find` + `entr` workflow
-
-* Re-builds and re-runs (via the `run` script) every time I save a change to a
-  file in my editor.
-
-* I can easily re-run by just saving again with the same content, and it runs
-  right away, using the cached build (because the content of the repo didn't
-  change).
-
-* There is now a good blog post about by Julia Evans about `entr` that I can
-  link to!
 
 # Comments?
 
