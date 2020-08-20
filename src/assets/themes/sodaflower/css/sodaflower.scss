@@ -63,6 +63,17 @@ main {
   margin: 0 auto;
 }
 
+// For some reason, only on Chrome for Android, and not on anything else (I also
+// tried Firefox, Chrome, and Firefox for Android), the code blocks appear to be
+// in serif font which looks horrible because it isn't monospaced. I think the
+// issue might be that Chrome for Android is lacking a font that satisfies
+// "monospace"? Roboto Mono is explicitly loaded, though (and it's the first
+// font specified in $retro-fonts), so we can use that just like we're using it
+// in the "main" rule above.
+pre {
+  font-family: $retro-fonts;
+}
+
 article {
   h1, h2, h3 {
     margin: 40px 0;
