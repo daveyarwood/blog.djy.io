@@ -79,7 +79,7 @@ This is the problem that **build caching** is meant to solve.
 
 The idea with build caching is that we can speed up builds by not doing any more
 work than we have to. If we haven't made any changes to the code, then there is
-no reason for us to recompile; we can just reuse the last build.
+no reason to recompile; we can just reuse the last build.
 
 It's worth noting that some platforms and build tools (like
 [Gradle][gradle-bc], [AWS CodeBuild][codebuild-bc], and [Docker][docker-bc])
@@ -90,7 +90,7 @@ substantially.
 
 The technique I'm about to describe can provide some additional benefit in that
 it allows you to skip the build tool altogether if the code hasn't changed. It
-also provides build caching for the common case where the build tool doesn't
+also allows you to have build caching in scenarios where a build tool doesn't
 provide it.
 
 # BYOBC (bring your own build caching)
@@ -101,9 +101,8 @@ The secret sauce in our homebrew build caching setup is a script that
 Any time you make a change to a file in your project, add a new file, remove a
 file, etc. the hash that the script outputs will be different. If you run the
 script twice in a row without making any changes in between, you will see the
-same hash. This way, we'll know if we need to rebuild the project (i.e. the hash
-is different, which means something changed) or if we can reuse an existing
-build.
+same hash. This way, we'll know if we need to recompile (i.e. the hash is
+different, which means something changed) or if we can reuse an existing build.
 
 Once we're able to generate a hash for the current state of the files in the
 project, the next step is **store each build in a folder whose name includes the
@@ -113,7 +112,8 @@ then we're done; we don't need to build it again. If there isn't, then we
 compile our code, etc. and we put the build artifacts (executables, etc.) into a
 folder whose name includes the hash so that we can reuse it.
 
-Here is an example shell session that should make this easier to visualize:
+Here is an example shell session that should make this a little easier to
+visualize:
 
 {% highlight bash %}
 $ bin/current-content-hash
@@ -147,37 +147,94 @@ $ bin/build
 Existing build: target/ff7ada844186e67c0282324452e4a5be537f0771/my-program
 {% endhighlight %}
 
-
-
-# Notes
-
-## More details about the setup
-
-* How `bin/current-content-hash` works / `git write-tree`
-  * Include an aside about how it's crucial to include the target directory in
-    .gitignore, otherwise builds themselves would invalidate the cache!
-
-* Garbage collection
-  * Explain how old builds (e.g. > 7 days old) are periodically cleaned up by
-    the build script to save disk space.
-  * Include command from `build` script as an example.
-
-## git write-tree
+# `git write-tree`
 
 (I'm assuming that your project is version-controlled using Git. If it isn't,
 you can still use this overall approach, but you will need to figure out another
 way to generate a hash of the content of your project!)
 
-* TODO: explain what `git write-tree` does
-  * Considers both the current commit you're on and any un-committed changes you
-    may have made.
+You've probably never heard of the `git write-tree` command because it's rarely
+useful during common, everyday usage of Git. [The documentation][git-write-tree]
+is pretty confusing, and it isn't very obvious what it does, unless you happen
+to have a good working knowledge about Git's internals.
 
-* TODO: basic explanation of how git stores objects by hash
+For our purposes, I would describe `git write-tree` as a command that prints out
+a hash that represents the current state of the files in the Git repo. This
+considers not only the commit that you have checked out, but also any
+uncommitted changes that you may have made. In other words, the hash changes
+each time you make a change to a file, and that's exactly what we want for our
+build caching system!
 
-* TODO: Explain about the git index file
+There are a couple of things to be aware of when using `git write-tree`:
 
-* `current-content-hash` makes a copy of the git index file and uses that as the
-  index, in order to avoid affecting the current state of git.
+1. Unstaged changes are ignored, which means you have to stage everything first
+   by running `git add --all`.
+
+2. Technically, `git write-tree` creates a hash based on the **current index**,
+   which is a file that you can think of as representing the current state of
+   the commit you have checked out, plus any changes that you have staged.
+
+   By default, the Git index is a binary file that can be found at `.git/index`
+   at the root of the repo.
+
+   You can specify a different index file to use by setting the environment
+   variable `GIT_INDEX_FILE` to the path to a different file.
+
+We want to use `git write-tree` to print out a hash of the current content of
+the repo, but there is a minor hurdle in that to do so, we would have to stage
+any unstaged changes we have, and we don't really want to do that because that
+would mess with our current Git state. What if we don't _want_ to stage our
+unstaged changes yet?
+
+The solution is to make a _copy_ of the Git index and use that instead by
+setting `GIT_INDEX_FILE` to the copy of the index, then staging everything, then
+running `git write-tree`.
+
+Tying it all together, here is our `bin/current-content-hash` script:
+
+{% highlight bash %}
+#!/usr/bin/env bash
+
+# Make sure we do all this in the root of the repo.
+cd "$(dirname "$0")/../"
+
+# Make a copy of the Git index and use it instead.
+tmp_git_index="$(mktemp)"
+cp .git/index "$tmp_git_index"
+export GIT_INDEX_FILE="$tmp_git_index"
+
+# Stage any unstaged changes.
+git add --all
+
+# Print the hash.
+git write-tree
+{% endhighlight %}
+
+# Garbage collection
+
+One last thing I'll mention is that build caching generates a lot of garbage in
+the form of old builds. All those builds hanging around can really add up over
+time and eat up your disk space!
+
+To address that, I have this little `find` command right at the beginning of my
+`bin/build` script that deletes any builds that were created more than 7 days
+ago:
+
+{% highlight bash %}
+target_dir="$(dirname "$0")/../target/"
+mkdir -p "$target_dir"
+find "$target_dir" -maxdepth 1 -type d -mtime +7 -exec rm -vrf {} \;
+{% endhighlight %}
+
+# That's it!
+
+There you have it: your very own bespoke build caching system in about a couple
+dozen lines of Bash.
+
+I hope somebody finds this useful. I've been really enjoying this setup as I've
+been developing the next version of [Alda][alda]. It allows me to focus on
+writing code; whenever I want to run the program, I just run `bin/run with some
+arguments`; and it won't waste time recompiling if I haven't made any changes.
 
 # Comments?
 
@@ -188,3 +245,5 @@ Reply to [this tweet][tweet] with any comments, questions, etc.!
 [gradle-bc]: https://guides.gradle.org/using-build-cache/
 [codebuild-bc]: https://docs.aws.amazon.com/codebuild/latest/userguide/build-caching.html
 [docker-bc]: https://pythonspeed.com/articles/docker-caching-model/
+[git-write-tree]: https://git-scm.com/docs/git-write-tree
+[alda]: https://alda.io
