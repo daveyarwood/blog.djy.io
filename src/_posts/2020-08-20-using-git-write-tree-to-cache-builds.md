@@ -240,7 +240,7 @@ arguments`; and it won't waste time recompiling if I haven't made any changes.
 
 Reply to [this tweet][tweet] with any comments, questions, etc.!
 
-[tweet]: https://twitter.com/dave_yarwood/status/FIXME
+[tweet]: https://twitter.com/dave_yarwood/status/1296430598224056321
 
 [gradle-bc]: https://guides.gradle.org/using-build-cache/
 [codebuild-bc]: https://docs.aws.amazon.com/codebuild/latest/userguide/build-caching.html
