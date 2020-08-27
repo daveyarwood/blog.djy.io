@@ -11,6 +11,20 @@ published: true
 
 {% include JB/setup %}
 
+> **UPDATE:** In May 2020, [a ground-up rewrite of Conjure was
+> released][rewrite-2020]. It works a little differently than the older version
+> of Conjure that I was talking about when I wrote this blog post. The big
+> change is that Conjure now uses nREPL instead of prepl. [nREPL][nrepl] is a
+> well-established protocol that offers a ton of useful features out of the box,
+> and as a result, Conjure is now able to do a lot more with a lot less effort.
+>
+> I've been using the new Conjure since it dropped, and I have to say, it's even
+> more awesome than the older Conjure described below! I plan to write a new
+> version of this blog post in the near future showing off the new Conjure, but
+> for now, please feel free to keep reading to get an idea of what Conjure has
+> to offer. Just be aware that if you're following along at home, it won't work
+> exactly like I'm describing here.
+
 Clojure tooling for Vim has been getting more and more interesting over the past
 few years, especially in the last year or so.
 
@@ -194,3 +208,5 @@ Reply to [this tweet][tweet] with any comments, questions, etc.!
 [clj-cli-gist]: https://gist.github.com/daveyarwood/f890bf1529cb633c04b90ce5d5201d6d
 [clj-slack]: http://clojurians.net/
 [mranderson]: https://github.com/benedekfazekas/mranderson
+[rewrite-2020]: https://github.com/Olical/conjure/releases/tag/v3.0.0
+[nrepl]: https://nrepl.org
