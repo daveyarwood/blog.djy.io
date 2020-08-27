@@ -20,10 +20,10 @@ published: true
 >
 > I've been using the new Conjure since it dropped, and I have to say, it's even
 > more awesome than the older Conjure described below! I plan to write a new
-> version of this blog post in the near future showing off the new Conjure, but
-> for now, please feel free to keep reading to get an idea of what Conjure has
-> to offer. Just be aware that if you're following along at home, it won't work
-> exactly like I'm describing here.
+> version of this blog post soon showing off the new Conjure, but for now,
+> you can keep reading to get an idea of what Conjure has to offer. Just be
+> aware that if you're following along at home, it won't work exactly the way
+> I'm describing here.
 
 Clojure tooling for Vim has been getting more and more interesting over the past
 few years, especially in the last year or so.
