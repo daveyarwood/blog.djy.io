@@ -45,9 +45,9 @@ If you're a Neovim user and you know how to use a plugin manager like
 [vim-plug], all you have to do is:
 
 1. Install the Conjure plugin for Neovim.
-2. `cd` into the directory of a Clojure project.
-  * (You can easily start a new one by just making an empty directory.)
-3. Start an nREPL server (more about this below).
+2. `cd` into the directory of a Clojure project. (You can easily start a new one
+   by just making an empty directory.)
+3. Start an nREPL server. (More about this below.)
 4. In another terminal, `cd` into the same directory and open a Clojure source
    file in Neovim (e.g. `nvim foo.clj`).
 
@@ -57,7 +57,6 @@ immediately start writing forms like `(+ 1 2)` and evaluating them by pressing
 window.
 
 > TODO: update this gif
-
 <center>
 <img src="{{ site.url }}/assets/2019-11-21-conjure-basic-usage.gif"
      title="Basic usage of Conjure"
@@ -66,58 +65,64 @@ window.
 
 > TODO: continue reviewing the old blog post below and updating it as needed
 
-# BYOP (bring your own prepl)
+# nREPL and you
 
-This is great for one-off REPL experiments involving just the Clojure standard
-library, but the built-in REPL that Conjure connects to out of the box doesn't
-include your project's source code or the libraries it depends on. To complete
-your Clojure development setup, you'll need to be able to start a prepl server
-within the context of your project.
+If you're new to Clojure, you might not be familiar with what an nREPL server
+is, or how to start one.
 
-For an in-depth discussion of various ways to do this, you can refer to Oliver's
-[socket prepl cookbook][olical3].
+An [nREPL][nrepl] is a type of REPL ([Read-Eval-Print Loop][repl]) that operates
+over the network and integrates easily with external tools like Conjure.
 
-The majority of Clojure projects that I interact with use either [Boot][boot] or
-the [Clojure CLI][clj-cli] as a build tool.
+There are a handful of existing build tools for Clojure: [Leiningen][lein],
+[Boot][boot], and the official [`clojure` CLI][clj]. If you're working on an
+existing Clojure project, you can determine which one of these to use based on
+what type of configuration file you find at the top level of the project:
 
-For Boot projects, I have a custom `prepl-server` task that I defined in my
-`profile.boot`:
+* If there is a `project.clj` file, it's a Leiningen project.
+* If there is a `build.boot` file, it's a Boot project.
+* If there is a `deps.edn` file, it's a Clojure CLI project.
 
-{% highlight clojure %}
-(deftask prepl-server
-  "Start a prepl server."
-  [p port PORT int "The port on which to start the prepl server (optional)."]
-  (comp
-    (socket-server
-      :accept 'clojure.core.server/io-prepl
-      :port   port)
-    (wait)))
+If you're starting a new project, I recommend the official Clojure CLI. It's
+easy to get started. `deps.edn` is optional, you can just evaluate the command
+below to start an nREPL server and you're off to the races.
+
+Depending on the build tool you're using, run one of the following commands to
+start an nREPL server:
+
+{% highlight bash %}
+# Leiningen
+lein repl
+
+# Boot
+boot repl
+
+# Clojure CLI
+clojure -Sdeps '{:deps {nrepl/nrepl {:mvn/version "LATEST"}}}' -m nrepl.cmdline
 {% endhighlight %}
 
-> Worth noting: I contributed this task to Boot, and it got merged into the
-> master branch, so in some future release of Boot, `prepl-server` will be
-> available out of the box as a built-in task!
+> That Clojure CLI command is a mouthful! I recommend establishing an alias in
+> your personal `deps.edn` file, [as described here][nrepl-alias]. Then the
+> command is shorter:
+>
+> `clojure -A:nREPL -m nrepl.cmdline`
+>
+> ---
+>
+> In [my own personal `deps.edn` setup][dave-deps-edn], I have an `nrepl-server`
+> alias that includes the `-m nrepl.cmdline` part too, which allows me to run an
+> even shorter command:
+>
+> `clojure -A:nrepl-server`
 
-My Clojure CLI setup is [a little bit more complicated][clj-cli-gist], but the
-result is that I can start a prepl server in any Clojure project directory
-with a `deps.edn` by running `clj -Aprepl-server`.
+# Bringing in dependencies
 
-Both my Boot task and my Clojure CLI alias spit out a `.socket-port` file in the
-current directory containing the port number on which the prepl server is
-running. Configuring Conjure to automatically connect to the prepl server on the
-correct port is super easy:
+Your "project file" (`project.clj`, `build.boot` or `deps.edn`, depending on
+which build tool you're using) allows you to specify what Clojure libraries your
+project depends on.
 
-{% highlight clojure %}
-;; ~/.config/conjure/conjure.edn
-{:conns
- {:cwd {:port #slurp-edn ".socket-port"}}}
-{% endhighlight %}
+> TODO: show how to do this in `deps.edn`
 
-With this setup in place, I can start a prepl server via `boot` or `clj` and
-start editing Clojure source files, and Conjure will automatically connect to
-my prepl server. Then I can evaluate code within the context of my project, and
-I can use any dependencies that I've included in my `build.boot` or `deps.edn`.
-
+> TODO: update this gif
 <center>
 <img src="{{ site.url }}/assets/2019-11-21-conjure-clj-http.gif"
      title="Using clj-http via Conjure to fetch ASCII cat art from the internet"
@@ -203,11 +208,16 @@ Reply to [this tweet][tweet] with any comments, questions, etc.!
 [conjure]: https://github.com/Olical/conjure
 [neovim]: https://neovim.io/
 [vim-plug]: https://github.com/junegunn/vim-plug
+[nrepl]: https://nrepl.org
+[nrepl-alias]: https://nrepl.org/nrepl/0.8/usage/server.html
+[dave-deps-edn]: https://github.com/daveyarwood/dotfiles/blob/90d989e0a0cf23f6c4e7bcb4258d315b2e40f14a/clojure/deps.edn#L8-L10
+[repl]: https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop
+[lein]: https://leiningen.org/
 [boot]: https://github.com/boot-clj/boot
+[clj]: https://clojure.org/guides/getting_started
 [clj-cli]: https://clojure.org/guides/deps_and_cli
 [clj-cli-gist]: https://gist.github.com/daveyarwood/f890bf1529cb633c04b90ce5d5201d6d
 [clj-slack]: http://clojurians.net/
 [mranderson]: https://github.com/benedekfazekas/mranderson
 [rewrite-2020]: https://github.com/Olical/conjure/releases/tag/v3.0.0
-[nrepl]: https://nrepl.org
 
