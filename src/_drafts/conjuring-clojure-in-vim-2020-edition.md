@@ -63,8 +63,6 @@ window.
      width="75%">
 </center>
 
-> TODO: continue reviewing the old blog post below and updating it as needed
-
 # nREPL and you
 
 If you're new to Clojure, you might not be familiar with what an nREPL server
@@ -74,7 +72,7 @@ An [nREPL][nrepl] is a type of REPL ([Read-Eval-Print Loop][repl]) that operates
 over the network and integrates easily with external tools like Conjure.
 
 There are a handful of existing build tools for Clojure: [Leiningen][lein],
-[Boot][boot], and the official [`clojure` CLI][clj]. If you're working on an
+[Boot][boot], and the [official Clojure CLI][clj]. If you're working on an
 existing Clojure project, you can determine which one of these to use based on
 what type of configuration file you find at the top level of the project:
 
@@ -120,7 +118,16 @@ Your "project file" (`project.clj`, `build.boot` or `deps.edn`, depending on
 which build tool you're using) allows you to specify what Clojure libraries your
 project depends on.
 
-> TODO: show how to do this in `deps.edn`
+The gif below shows how you can use the popular [clj-http] library to make an
+HTTP request and print the response. The first step is to create a `deps.edn`
+file that looks like this:
+
+{% highlight clojure %}
+{:deps
+ {clj-http {:mvn/version "3.10.1"}}}
+{% endhighlight %}
+
+Then, simply start your nREPL server and start editing some code!
 
 > TODO: update this gif
 <center>
@@ -128,6 +135,8 @@ project depends on.
      title="Using clj-http via Conjure to fetch ASCII cat art from the internet"
      width="75%">
 </center>
+
+> TODO: continue reviewing the old blog post below and updating it as needed
 
 # A refreshing experience
 
@@ -216,8 +225,6 @@ Reply to [this tweet][tweet] with any comments, questions, etc.!
 [boot]: https://github.com/boot-clj/boot
 [clj]: https://clojure.org/guides/getting_started
 [clj-cli]: https://clojure.org/guides/deps_and_cli
-[clj-cli-gist]: https://gist.github.com/daveyarwood/f890bf1529cb633c04b90ce5d5201d6d
+[clj-http]: https://github.com/dakrone/clj-http
 [clj-slack]: http://clojurians.net/
-[mranderson]: https://github.com/benedekfazekas/mranderson
-[rewrite-2020]: https://github.com/Olical/conjure/releases/tag/v3.0.0
 
