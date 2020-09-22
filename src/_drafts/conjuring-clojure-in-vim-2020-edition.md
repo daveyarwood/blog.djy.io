@@ -56,9 +56,8 @@ immediately start writing forms like `(+ 1 2)` and evaluating them by pressing
 `<localleader>ee`, and you'll see the results appear in a neat little popup
 window.
 
-> TODO: update this gif
 <center>
-<img src="{{ site.url }}/assets/2019-11-21-conjure-basic-usage.gif"
+<img src="{{ site.url }}/assets/2020-09-21-conjure-basic-usage.gif"
      title="Basic usage of Conjure"
      width="75%">
 </center>
@@ -129,9 +128,8 @@ file that looks like this:
 
 Then, simply start your nREPL server and start editing some code!
 
-> TODO: update this gif
 <center>
-<img src="{{ site.url }}/assets/2019-11-21-conjure-clj-http.gif"
+<img src="{{ site.url }}/assets/2020-09-21-conjure-clj-http.gif"
      title="Using clj-http via Conjure to fetch ASCII cat art from the internet"
      width="75%">
 </center>
@@ -189,7 +187,7 @@ am in the implementation code and just press:
 * `<localleader>emF` to re-eval the form at mark `F`
 
 <center>
-<img src="{{ site.url }}/assets/2019-11-21-conjure-eval-at-mark.gif"
+<img src="{{ site.url }}/assets/2020-09-21-conjure-eval-at-mark.gif"
      title="Using Conjure's 'eval at mark' feature"
      width="75%">
 </center>
