@@ -134,27 +134,18 @@ Then, simply start your nREPL server and start editing some code!
      width="75%">
 </center>
 
-> TODO: continue reviewing the old blog post below and updating it as needed
-
 # A refreshing experience
 
-Conjure provides a convenient way to reload code that changed in your prepl via
-`clojure.tools.namespace/refresh`. Ordinarily, you would need to include
-clojure.tools.namespace as a dependency in your project in order to do that, but
-through clever use of [mranderson], Conjure automatically injects the dependency
-into your prepl connection. That means refreshing your REPL is always just a few
-keystrokes away!
+Conjure provides a convenient way to reload any code in your project that has
+changed since the last time you evaluated it, by using the tooling provided by
+`clojure.tools.namespace`. This builds on top of the [CIDER nREPL
+middleware][cider-middleware-setup], so to make use of this feature, you'll need
+to set it up so that your nREPL includes that middleware.
 
-I haven't tended to use clojure.tools.namespace refreshing much in the past, but
-since the feature was added to Conjure, I've found myself using it more and more
-because it's right there under my fingertips and it requires no setup. It's
-really handy for those times when I've changed a bunch of code and I don't
-remember exactly what I changed; I can simply reload everything by pressing
-`<localleader>rr`.
-
-You can even configure Conjure at the project level to run hooks before and
-after refresh, which can be handy when you're developing something that you
-might want to restart every time you make changes, like a web server.
+Once you've got that squared away, you can easily reload everything by pressing
+`<localleader>rr`. You can even configure Conjure to run hooks before and after
+refresh, which can be handy when you're developing something that you might want
+to restart every time you make changes, like a web server.
 
 # Casting spells
 
@@ -186,6 +177,9 @@ am in the implementation code and just press:
 
 * `<localleader>emF` to re-eval the form at mark `F`
 
+To tie it all together, here's a little demo of Conjure's refresh and "eval at
+mark" features:
+
 <center>
 <img src="{{ site.url }}/assets/2020-09-21-conjure-eval-at-mark.gif"
      title="Using Conjure's 'eval at mark' feature"
@@ -196,12 +190,6 @@ am in the implementation code and just press:
 
 If you're a Vim-using Clojurist or a Clojure-using Vimmer, hopefully I've
 inspired you to give [Conjure][conjure] a try. Go ahead, it's fun!
-
-# Notes
-
-1. Write a new blog post about how the new version of Conjure is even
-   better.
-2. Update the previous blog post to include a link to the new one.
 
 # Comments?
 
@@ -224,5 +212,6 @@ Reply to [this tweet][tweet] with any comments, questions, etc.!
 [clj]: https://clojure.org/guides/getting_started
 [clj-cli]: https://clojure.org/guides/deps_and_cli
 [clj-http]: https://github.com/dakrone/clj-http
+[cider-middleware-setup]: https://docs.cider.mx/cider/basics/middleware_setup.html
 [clj-slack]: http://clojurians.net/
 
