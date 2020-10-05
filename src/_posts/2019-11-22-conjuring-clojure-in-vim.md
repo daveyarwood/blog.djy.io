@@ -19,11 +19,10 @@ published: true
 > and as a result, Conjure is now able to do a lot more with a lot less effort.
 >
 > I've been using the new Conjure since it dropped, and I have to say, it's even
-> more awesome than the older Conjure described below! I plan to write a new
-> version of this blog post soon showing off the new Conjure, but for now,
-> you can keep reading to get an idea of what Conjure has to offer. Just be
-> aware that if you're following along at home, it won't work exactly the way
-> I'm describing here.
+> more awesome than the older Conjure described below!
+>
+> See [Conjuring Clojure in Vim: 2020 Edition][cciv-2020] for an updated version
+> of this blog post based on the newer version of Conjure.
 
 Clojure tooling for Vim has been getting more and more interesting over the past
 few years, especially in the last year or so.
@@ -210,3 +209,4 @@ Reply to [this tweet][tweet] with any comments, questions, etc.!
 [mranderson]: https://github.com/benedekfazekas/mranderson
 [rewrite-2020]: https://github.com/Olical/conjure/releases/tag/v3.0.0
 [nrepl]: https://nrepl.org
+[cciv-2020]: {% post_url 2020-10-05-conjuring-clojure-in-vim-2020-edition %}
