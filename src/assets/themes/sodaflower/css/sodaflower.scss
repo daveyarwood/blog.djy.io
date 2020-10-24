@@ -14,7 +14,7 @@ $dark-gray: #333332;
 $blue: #1352A2;
 $yellow: #FFD464;
 $orange: #FB6964;
- 
+
 // misc colors
 $deep-blue: #212029;
 $gray: #888888;
@@ -46,6 +46,12 @@ a.img-link { background-color: transparent; }
 
 // don't let images overflow their containers
 img { max-width: 100%; }
+
+table, th, td {
+  border: 1px solid black;
+  padding: 1em;
+  text-align: center;
+}
 
 /*************************************************************************/
 
