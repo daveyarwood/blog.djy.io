@@ -59,8 +59,8 @@ it. Read on to see how it turned out!
 The first step was to come up with a set of colors to use in both the logo and
 the website. There are a bunch of [useful tools][coolors] out there to help you
 generate a color palette, but in this case, I just sort of stumbled upon a shade
-of light blue that I liked, held it up next to a really simple set of beige,
-black, light gray and dark gray colors, and it ended up looking good, so I went
+of light blue that I liked, held it up next to a really simple set of black,
+beige, light gray and dark gray colors, and it ended up looking good, so I went
 with it.
 
 Here are the colors:
