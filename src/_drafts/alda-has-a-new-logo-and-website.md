@@ -90,13 +90,12 @@ For my first attempts to create a new logo, I tried to use a handful of the free
 "logo maker" tools that you find out there if you do a quick web search. I found
 them all to be about the same. You type in the name of your
 product/company/whatever, make some selections from a bunch of sample logos that
-look similar to the style you're going for, and you maybe pick a stock icon to
-put next to the text, and you end up with a reasonably professional-looking
-logo.
+look similar to the style you're going for, and maybe pick a stock icon to put
+next to the text, and you end up with a reasonably professional-looking logo.
 
-After doing this a few times, I found that I just wasn't happy with any of the
-results. I really wanted Alda to have a unique logo, and there was no way that I
-was going to get that from one of these logo making tools.
+After doing this a few times, I found that I just wasn't happy with the results.
+I really wanted the new Alda logo to have a unique graphical element, and there
+was no way that I was going to get that from one of these logo making tools.
 
 I've never been a great visual artist, so up until this point, I was putting off
 the idea of creating a logo myself from scratch. But after seeing the
@@ -106,10 +105,10 @@ how to do that.
 
 I had a few image concepts in mind:
 
-* An old CRT monitor displaying a single musical note
-* A musical note composed of bits or pixels
-* A command line prompt followed by a musical note, e.g.: `>♪`
-* A musical note between two repeat signs
+* An old CRT monitor displaying a music note
+* A music note composed of bits or pixels
+* A command line prompt followed by a music note, e.g.: `>♪`
+* A music note between two repeat signs
 
 I'd noticed that a bunch of professional software projects have logos that are
 [SVG][svg]s, so I set about trying to learn how to make an SVG logo. After a
@@ -126,14 +125,13 @@ polygons, rotate them, skew them, scale them, clone them a bajillion times and
 arrange them in a line, and click a button to align them exactly along their
 edges. You can select two interesting shapes and combine them in various ways to
 make an even more interesting shape. And best of all, just about anything you
-can do with the mouse, you can do in a more convenient way with keyboard
-shortcuts.
+can do with the mouse, you can do much faster with keyboard shortcuts.
 
 The tutorials that come with Inkscape are also fantastic. Within a few days, I
-was able to figure out how to take an existing SVG of a musical note that I
-found, make my own recreation of it out of a bunch of light blue squares and
-triangles spaced out evenly, and place it against the backdrop of a gray set of
-repeat signs. Before I knew it, Alda had a new logo:
+was able to figure out how to take an existing SVG of a music note that I found,
+recreate it using a bunch of light blue squares and triangles spaced out evenly,
+and place it against the backdrop of a gray set of repeat signs. Before I knew
+it, Alda had a new logo:
 
 <center>
 <img src="{{ site.url }}/assets/2020-10-23-alda-logo-horizontal.svg"
