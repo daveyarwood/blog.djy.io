@@ -76,11 +76,7 @@ main {
 // "monospace"? Roboto Mono is explicitly loaded, though (and it's the first
 // font specified in $retro-fonts), so we can use that just like we're using it
 // in the "main" rule above.
-//
-// UPDATE: I don't think this fixed it, although it's hard to tell on my phone
-// because I don't know if the CSS is being cached or what. I'm leaving this in
-// just in case it does fix it.
-pre {
+pre, code {
   font-family: $retro-fonts;
 }
 
