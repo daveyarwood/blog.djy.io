@@ -168,7 +168,7 @@ I hope you like it!
 
 Reply to [this tweet][tweet] with any comments, questions, etc.!
 
-[tweet]: https://twitter.com/dave_yarwood/status/FIXME
+[tweet]: https://twitter.com/dave_yarwood/status/1320724169445707779
 
 [alda-site]: https://alda.io
 [coolors]: https://coolors.co
