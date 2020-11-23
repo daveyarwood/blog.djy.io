@@ -20,12 +20,12 @@ that I've been enjoying as a Clojure programmer.
 The big idea about nREPL is that it is a [REPL][repl] that operates over a
 network connection. After starting an nREPL **server**, any number of nREPL
 **clients** can connect to the server and send over code to be evaluated. The
-server treats each client connection in a separate context, and sends evaluation
+server treats each client connection as a separate context, and sends evaluation
 results back to the client in response.
 
 As I was designing the next major version of Alda, I came to the conclusion that
 the Alda REPL should function in the same way. The exciting idea that I have in
-mind is that multiple Alda composers can connect to the same Alda REPL server
+mind is that multiple Alda composers could connect to the same Alda REPL server
 and compose music together by interacting with the server in real time.
 
 With this idea in mind, I started thinking about the protocol for these
@@ -57,23 +57,24 @@ $ alda play -c 'cello: o2 a'
 
 For years, I have been wishing that most of the Alda experience were more
 "self-contained" in the way that you typically see with most programming
-languages. Alda does need to start background processes to play your score in an
-asynchronous manner, but I have always wished that Alda would start these
-background processes _for_ me, instead of expecting me to run `alda up` and wait
-for the server to come up before I can do anything. I've also wished that Alda
-could do more of the work that it does without needing to talk to a server at
-all. For example, if my score has a syntax error, the `alda` CLI should be able
-to tell me that immediately without needing to talk to a background process.
+languages' command line tools. Alda does need to start background processes to
+play your score in an asynchronous manner, but I have always wanted Alda to
+start these background processes _for_ me, instead of expecting me to run `alda
+up` and wait for the server to come up before I can do anything. It would also
+be nice if Alda could do more of the work that it does without needing to talk
+to a server at all. For example, the `alda` CLI should be able to tell me if my
+score has a syntax error without needing to talk to a background process.
 
-So I implemented it that way for Alda v2, and now I feel like the basic,
-everyday usage of the Alda CLI is more comfortable and satisfying. When Alda v2
-is released, users will no longer need to know about Alda's background processes
-at all. After downloading and installing Alda, users can run `alda play -c 'some
-code'` or `alda play -f some-file.alda` whenever the inspiration strikes them
-and Alda will play their score, even though they never ran `alda up` (a command
-that no longer exists in Alda v2). There are still background processes out of
-necessity (an important goal of Alda is that playback is asynchronous), but now,
-the processes are entirely managed "behind the scenes" by Alda.
+So, I've implemented it that way for Alda v2, and now I feel like the basic,
+everyday usage of the Alda CLI is much more comfortable and satisfying! When
+Alda v2 is released, users will no longer need to know about Alda's background
+processes at all. After downloading and installing Alda, users can run `alda
+play -c 'some code'` or `alda play -f some-file.alda` whenever the inspiration
+strikes them and Alda will play their score, even though they never ran `alda
+up` (a command that no longer exists in Alda v2). There are still background
+processes out of necessity (an important goal of Alda is that playback is
+asynchronous), but now, the processes are entirely managed "behind the scenes"
+by Alda.
 
 # The Alda v2 REPL
 
@@ -100,7 +101,25 @@ The Alda v2 REPL loads instantaneously, and you can immediately start entering
 lines of input into your REPL session after you run `alda repl`. It doesn't
 _feel_ like a client/server setup, but under the hood, it is.
 
-> TODO: talk more about what we can do with the client/server model
+It might not look like much now, but this improved client/server REPL
+architecture unlocks new and exciting possibilities for Alda composers to
+collaborate in real time.
+
+Imagine a scenario where one composer is sharing their system's audio with
+others. Maybe they are performing live on a stage, and their audio is being
+projected over a sound system. Maybe it's a virtual event with an audience.  Or
+maybe it's just a small group of friends on a Zoom call. In any of these
+scenarios, the composer who's sharing their audio can start an Alda REPL server
+(`alda repl --server --port 12345`) and the other composers can participate by
+connecting to the REPL server (`alda repl --client --host 1.2.3.4 --port
+12345`). Now, all of the composers have access to the same audio programming
+environment, and they can interact with the same score, writing their own
+contributions and hearing them played together.
+
+Just talking about this is giving me goosebumps! I hope that someday, I can make
+this dream of live, collaborative Alda programming a reality. But for now, I'd
+like to talk more about the nREPL protocol and how much fun I had implementing
+it for Alda v2.
 
 # Notes
 
