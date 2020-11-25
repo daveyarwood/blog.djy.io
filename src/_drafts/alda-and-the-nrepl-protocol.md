@@ -55,15 +55,15 @@ $ alda play -c 'cello: o2 a'
 [27713] ERROR Alda server is down. To start the server, run `alda up`.
 {% endhighlight %}
 
-For years, I have been wishing that most of the Alda experience were more
-"self-contained" in the way that you typically see with most programming
-languages' command line tools. Alda does need to start background processes to
-play your score in an asynchronous manner, but I have always wanted Alda to
-start these background processes _for_ me, instead of expecting me to run `alda
-up` and wait for the server to come up before I can do anything. It would also
-be nice if Alda could do more of the work that it does without needing to talk
-to a server at all. For example, the `alda` CLI should be able to tell me if my
-score has a syntax error without needing to talk to a background process.
+I have often wished that most of the Alda experience were more "self-contained"
+in the way that you typically see with most programming languages' command line
+tools. Alda does need to start background processes to play your score in an
+asynchronous manner, but it would be nice if Alda could start these background
+processes _for_ me, instead of expecting me to run `alda up` and wait for the
+server to come up before I can do anything. It would also be nice if Alda could
+do more of the work that it does without needing to talk to a server at all. For
+example, the `alda` CLI should be able to tell me if my score has a syntax error
+without needing to talk to a background process.
 
 So, I've implemented it that way for Alda v2, and now I feel like the basic,
 everyday usage of the Alda CLI is much more comfortable and satisfying! When
@@ -118,14 +118,22 @@ contributions and hearing them played together.
 
 Just talking about this is giving me goosebumps! I hope that someday, I can make
 this dream of live, collaborative Alda programming a reality. But for now, I'd
-like to talk more about the nREPL protocol and how much fun I had implementing
-it for Alda v2.
+like to talk a little more about the nREPL protocol and the fun that I had
+implementing it for Alda v2.
+
+# The nREPL protocol
+
+## Messages and transport
+
+> TODO: overview of the transport and messages
+
+## Client/server interactions
+
+> TODO: high level description of an interaction between a client and a server
 
 # Notes
 
 * Alda and the nREPL protocol
-  * An experience report about implementing the Alda v2 REPL and using the nREPL
-    protocol for the communication between the REPL client and REPL server.
   * Brief technical overview / what I gleaned from the nREPL documentation as
     the most relevant / salient parts.
   * The most fun part was testing my implementation of the client and server
