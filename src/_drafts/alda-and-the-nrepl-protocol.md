@@ -42,9 +42,9 @@ already. To start the server, you run `alda up`, and to start a REPL client
 session, you run `alda repl`.
 
 I realized, however, that the Alda v1 client/server idea extends a little too
-far into user-land. The user is _forced_ to worry about whether or not a server
-is running, even outside of the context of a REPL session when they just want to
-perform basic evaluations at the command line.
+far into user-land. The end user is forced to worry about whether or not a
+server is running, even outside of the context of a REPL session when they just
+want to perform basic evaluations at the command line.
 
 For example, if you don't have a server running, any attempt to play an Alda
 score from the command line will fail:
@@ -102,7 +102,7 @@ lines of input into your REPL session after you run `alda repl`. It doesn't
 _feel_ like a client/server setup, but under the hood, it is.
 
 It might not look like much now, but this improved client/server REPL
-architecture unlocks new and exciting possibilities for Alda composers to
+architecture will unlock new and exciting possibilities for Alda composers to
 collaborate in real time.
 
 Imagine a scenario where one composer is sharing their system's audio with
