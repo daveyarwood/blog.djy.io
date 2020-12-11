@@ -13,9 +13,9 @@ published: true
 {% include JB/setup %}
 
 As you may have heard, I have been busy, working on Alda v2, a ground-up rewrite
-of [Alda][alda-website]. As part of this project, I have re-thought the Alda
-REPL experience to make it closer in spirit to the [nREPL][nrepl] experience
-that I've been enjoying as a Clojure programmer.
+of [Alda][alda-website] using Go and Kotlin. As part of this project, I have
+re-thought the Alda REPL experience to make it closer in spirit to the
+[nREPL][nrepl] experience that I've been enjoying as a Clojure programmer.
 
 The big idea about nREPL is that it is a [REPL][repl] that operates over a
 network connection. After starting an nREPL **server**, any number of nREPL
@@ -125,7 +125,58 @@ implementing it for Alda v2.
 
 ## Messages and transport
 
-> TODO: overview of the transport and messages
+nREPL messages are typically sent [bencoded][bencode] over sockets. Bencode is a
+simple encoding format developed by BitTorrent with existing library support in
+a number of languages. I tried several bencode libraries for Go, and I ended up
+choosing [this one][bencode-go] because it has a simple, intuitive API and it
+worked out of the box.
+
+Every nREPL message represents either a request from a client or a response from
+a server. In either case, the message is an associative data structure (think
+Clojure maps, Ruby hashes, Go maps, JSON objects, etc.). Every request message
+contains at least an operation (`op`), and often other entries whose names vary
+depending on the operation.
+
+Here's an example request from a client to evaluate a string of code:
+
+{% highlight json %}
+{
+  "op": "eval",
+  "code": "(+ 1 2 3)"
+}
+{% endhighlight %}
+
+Strictly speaking, this is all that's required in a request. However, there are
+a couple of other things that it is standard for a client request to include:
+
+* `id`: a unique identifier (e.g. a UUID) representing the request. The server
+  parrots the `id` value back in the response so that the client can be sure
+  that the response it's supposed to receive wasn't mixed up with the response
+  for another request.
+
+* `session`: another unique identifier that represents the _session_ that the
+  client and server are currently participating in. I'll talk more about
+  sessions below.
+
+Response messages also include `id` and `session` entries, and they also may
+include a `status` entry, which is actually a _list_ of strings that describe
+the status of the request. If a request was handled successfully, the status
+will be `["done"]`. If there was an error, the status will be `["done",
+"error"]`. If a response is missing status information altogether, it means that
+the request is still being processed, and the client should continue to receive
+responses from the server until it receives one where the `status` entry
+includes `"done"`.
+
+Here's an example response from a server with an evaluation result:
+
+{% highlight json %}
+{
+  "id": "d2fa0626-58a3-4abc-b0af-a8afd8b818ad",
+  "session": "bb05e357-d9c0-49d2-b206-067c88913e68",
+  "status": ["done"],
+  "value": "6"
+}
+{% endhighlight %}
 
 ## Client/server interactions
 
@@ -163,3 +214,5 @@ Reply to [this tweet][tweet] with any comments, questions, etc.!
 [nrepl]: https://nrepl.org
 [repl]: https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop
 [nrepl-beyond-clojure]: https://nrepl.org/nrepl/0.8/beyond_clojure.html
+[bencode]: https://wiki.theory.org/index.php/BitTorrentSpecification#Bencoding
+[bencode-go]: https://github.com/jackpal/bencode-go
