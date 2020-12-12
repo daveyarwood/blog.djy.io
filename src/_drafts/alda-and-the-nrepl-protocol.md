@@ -180,29 +180,110 @@ Here's an example response from a server with an evaluation result:
 
 ## Client/server interactions
 
-> TODO: high level description of an interaction between a client and a server
+The official nREPL documentation about [building servers][building-servers] and
+[building clients][building-clients] is concise and super informative. I was
+basically able to read and implement all of it over the course of a few days,
+and I had a lot of fun doing it!
 
-# Notes
+When an nREPL client starts, it first sends a `clone` request to the server to
+create a new session:
 
-* Alda and the nREPL protocol
-  * Brief technical overview / what I gleaned from the nREPL documentation as
-    the most relevant / salient parts.
-  * The most fun part was testing my implementation of the client and server
-    against the corresponding Clojure nREPL thing, i.e. having an Alda REPL
-    client talk to a Clojure nREPL server, and vice versa.
-  * The big finish: a code block copy-pasted from a terminal session where a
-    Clojure nREPL client is sending `eval` requests to an Alda REPL server,
-    the Alda REPL server is sending back `¯\_(ツ)_/¯`, and the Clojure nREPL
-    client is printing it out, lolol
-  * Final conclusions
-    * I had read that the nREPL protocol was simple enough to be easily
-      implemented from scratch, and I really did find that to be the case. I
-      found implementing both an nREPL client and server in Go to be fun and
-      satisfying. The nREPL documentation is very good and easy to follow.
-    * If you are a Clojure programmer, I would encourage you to try the
-      exercise of implementing an nREPL client or server from scratch. In the
-      process, you will discover how the nREPL protocol works, and you might be
-      surprised to learn just how simple it is.
+{% highlight json %}
+{
+  "id": "dc0a4fb1-0a30-483c-8384-de166cb9bf4d",
+  "op": "clone"
+}
+{% endhighlight %}
+
+The server sends a response that indicates the session was created successfully
+and includes the ID of the new session:
+
+{% highlight json %}
+{
+  "id": "dc0a4fb1-0a30-483c-8384-de166cb9bf4d",
+  "new-session": "b08f4313-7f8a-46a0-8a40-5b8424681dbf",
+  "status": ["done"]
+}
+{% endhighlight %}
+
+Next, the client sends a `describe` request to verify that the server supports
+all of the operations it needs to perform:
+
+{% highlight json %}
+{
+  "id": "0014c5ec-69bd-4fa1-ad78-1aabde04cc4f",
+  "op": "describe",
+  "session": "b08f4313-7f8a-46a0-8a40-5b8424681dbf"
+}
+{% endhighlight %}
+
+The server responds with information about what operations it can perform, as
+well as what versions of things (e.g. Alda) it is running:
+
+{% highlight json %}
+{
+  "id": "0014c5ec-69bd-4fa1-ad78-1aabde04cc4f",
+  "ops": {
+    "clone": {},
+    "describe": {},
+    "eval": {},
+    "eval-and-play": {},
+    "export": {},
+    "instruments": {},
+    "load": {},
+    "new-score": {},
+    "replay": {},
+    "score-data": {},
+    "score-events": {},
+    "score-text": {},
+    "stop": {}
+  },
+  "session": "b08f4313-7f8a-46a0-8a40-5b8424681dbf",
+  "status": ["done"],
+  "versions": {
+    "alda": {
+      "version-string": "1.99.2"
+    }
+  }
+}
+{% endhighlight %}
+
+This is useful because it means the client can fail gracefully if it
+inadvertently connects to an nREPL server that can't perform the operations that
+the client needs. In particular, `eval-and-play` is an operation that I
+implemented for the Alda nREPL server, but a different kind of nREPL server
+(like a Clojure nREPL server) would not support that operation, so the Alda
+client can easily detect that situation and let the user know.
+
+## Trying it out
+
+The most fun part was that I was able to test my implementations of the Alda
+nREPL client and server by pointing them at a Clojure nREPL server and client.
+This taught me a lot about what an nREPL client or server written "to spec"
+should do.
+
+The cool thing is that I was able to make my Alda nREPL server functional enough
+to participate in a Clojure nREPL client session. The Alda nREPL server doesn't
+really support `eval` (at least, not yet?), so it just responds with a shrug
+emoji, but it's still fun to see the communication happening:
+
+<center>
+<img src="{{ site.url }}/assets/2020-12-12-alda-clojure-nrepl.gif"
+     title="A dysfunctional nREPL session between a Clojure client and an Alda server"
+     width="75%">
+</center>
+
+# Conclusions
+
+I had read that the nREPL protocol was simple enough to be easily implemented
+from scratch, and I really did find that to be the case. I found implementing
+both an nREPL client and server in Go to be fun and satisfying. The nREPL
+documentation is very good and easy to follow.
+
+If you are a Clojure programmer, I would encourage you to try the exercise of
+implementing an nREPL client or server from scratch. In the process, you will
+discover how the nREPL protocol works, you might be surprised to learn just how
+simple it is, and maybe you'll build something interesting!
 
 # Comments?
 
@@ -216,3 +297,5 @@ Reply to [this tweet][tweet] with any comments, questions, etc.!
 [nrepl-beyond-clojure]: https://nrepl.org/nrepl/0.8/beyond_clojure.html
 [bencode]: https://wiki.theory.org/index.php/BitTorrentSpecification#Bencoding
 [bencode-go]: https://github.com/jackpal/bencode-go
+[building-servers]: https://nrepl.org/nrepl/0.8/building_servers.html
+[building-clients]: https://nrepl.org/nrepl/0.8/building_clients.html
