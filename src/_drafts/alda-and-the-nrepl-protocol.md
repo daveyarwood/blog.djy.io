@@ -28,12 +28,12 @@ the Alda REPL should function in the same way. The exciting idea that I have in
 mind is that multiple Alda composers could connect to the same Alda REPL server
 and compose music together by interacting with the server in real time.
 
-With this idea in mind, I started thinking about the protocol for these
-interactions between REPL clients and REPL servers. I had read that nREPL is a
-language-agnostic protocol (i.e. not specific to Clojure) and that it has been
-used to successfully implement [nREPL servers for other
-languages][nrepl-beyond-clojure]. So, I decided to try my hand at using the
-nREPL protocol as the basis for a new, improved Alda v2 REPL experience.
+So, I started thinking about the protocol for these interactions between REPL
+clients and REPL servers. I had read that nREPL is a language-agnostic protocol
+(i.e. not specific to Clojure) and that it has been used to successfully
+implement [nREPL servers for other languages][nrepl-beyond-clojure]. So, I
+decided to try my hand at using the nREPL protocol as the basis for a new,
+improved Alda v2 REPL experience.
 
 # Shortcomings of Alda v1
 
@@ -55,15 +55,14 @@ $ alda play -c 'cello: o2 a'
 [27713] ERROR Alda server is down. To start the server, run `alda up`.
 {% endhighlight %}
 
-I have often wished that most of the Alda experience were more "self-contained"
-in the way that you typically see with most programming languages' command line
-tools. Alda does need to start background processes to play your score in an
-asynchronous manner, but it would be nice if Alda could start these background
-processes _for_ me, instead of expecting me to run `alda up` and wait for the
-server to come up before I can do anything. It would also be nice if Alda could
-do more of the work that it does without needing to talk to a server at all. For
-example, the `alda` CLI should be able to tell me if my score has a syntax error
-without needing to talk to a background process.
+I have often wished that Alda had a better out-of-the-box experience. Alda does
+need to start background processes to play your score in an asynchronous manner,
+but it would be nice if Alda could start these background processes _for_ me,
+instead of expecting me to run `alda up` and wait for the server to come up
+before I can do anything. It would also be nice if Alda could do more of the
+work that it does without needing to talk to a server at all. For example, the
+`alda` CLI should be able to tell me if my score has a syntax error without
+needing to talk to a background process.
 
 So, I've implemented it that way for Alda v2, and now I feel like the basic,
 everyday usage of the Alda CLI is much more comfortable and satisfying! When
@@ -276,13 +275,13 @@ emoji, but it's still fun to see the communication happening:
 # Conclusions
 
 I had read that the nREPL protocol was simple enough to be easily implemented
-from scratch, and I really did find that to be the case. I found implementing
-both an nREPL client and server in Go to be fun and satisfying. The nREPL
+from scratch, and I really did find that to be the case. I found implementing an
+nREPL client and server in Go to be a fun little project. The nREPL
 documentation is very good and easy to follow.
 
 If you are a Clojure programmer, I would encourage you to try the exercise of
 implementing an nREPL client or server from scratch. In the process, you will
-discover how the nREPL protocol works, you might be surprised to learn just how
+discover how the nREPL protocol works, you'll be surprised to learn just how
 simple it is, and maybe you'll build something interesting!
 
 # Comments?
