@@ -288,7 +288,7 @@ simple it is, and maybe you'll build something interesting!
 
 Reply to [this tweet][tweet] with any comments, questions, etc.!
 
-[tweet]: https://twitter.com/dave_yarwood/status/FIXME
+[tweet]: https://twitter.com/dave_yarwood/status/1338490530666340352
 
 [alda-website]: https://alda.io
 [nrepl]: https://nrepl.org
