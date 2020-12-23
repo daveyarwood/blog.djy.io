@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Something Cool That Happened Every Month of My Life: 2010"
+title: "Something cool that happened every month of my life: 2010"
 category: music
 tags:
   - antibubbles
