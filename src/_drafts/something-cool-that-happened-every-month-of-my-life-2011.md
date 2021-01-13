@@ -28,29 +28,38 @@ some memories from 2011. I hope you enjoy them!
      width="75%">
 </center>
 
-**January 2011:** ...
+**January 2011:** [Antibubbles][antibubbles] had the pleasure of opening for
+[Anamanaguchi][anamanaguchi] when their tour came through Durham. I had noticed
+on [the Pinhook][the-pinhook]'s website that Anamanaguchi were scheduled to play
+there, and there was no opening act listed, so I took a chance and sent the
+venue an email, asking if perhaps my band could be added to the bill as an
+opener. I was pleasantly surprised when it worked out!
 
-Antibubbles had the pleasure of opening for [Anamanaguchi][anamanaguchi] when
-their tour came through Durham. I had noticed that ...
-
-* january 2011
-  * antibubbles at pinhook 1/12 with anamanaguchi! the first time we ever played
-    with them, although we played with them again at least 1 more time after
-    that. i'd sent the pinhook an email the previous month asking if we could
-    open the show, and was pleasantly surprised that it worked out. the night
-    was magical. the pinhook was packed wall to wall with people, and it looked
-    like literally everybody in the room was dancing when anamanaguchi played. i
-    was star-struck that we got an opportunity to play with anamanaguchi.
+The night was magical. The Pinhook was packed from wall to wall with people who
+were there to see Anamanaguchi (and they ended up being an enthusiastic audience
+for Antibubbles, too!). When Anamanaguchi took the stage, it looked like
+literally everybody in the room was dancing. I felt star-struck that my band had
+the opportunity to share a bill with a band of their calibre. They were also
+super down-to-earth and they chatted with us for a while after the show. Their
+drummer even bought an Antibubbles LP!
 
 ---
 
-**February 2011:** ...
+**February 2011:** [Renay][rad] and I collaborated on a modern dance piece that
+we performed at [Motorco][motorco] in Durham. Being held close to Valentine's
+Day, the show was a collection of performances by various artists (dancers,
+spoken word performers, martial artists, etc.) centered around the theme of
+love.
 
-* february 2011
-  * fragaria, collaboration between me and renay
-  * i played bass through a loop pedal and other effects, my full devour setup,
-    including the huge sunn bass cab that i borrowed from daniel
-  * renay danced
+Our piece was called _Fragaria_, named after the scientific name for the
+[strawberry plant][fragaria-plant]. We distributed home-made chocolate-covered
+strawberries to the audience, and Renay and I performed a live collaboration
+where she improvised modern dance movements and I improvised a looped soundscape
+by playing an electric bass through effect pedals.
+
+I still look back fondly on that performance. It's one of only a couple of
+collaborations that Renay and I have done where I've performed the music in a
+live setting to accompany her dance.
 
 ---
 
@@ -160,4 +169,9 @@ Reply to [this tweet][tweet] with any comments, questions, etc.!
 [tweet]: https://twitter.com/dave_yarwood/status/FIXME
 
 [something-cool-2010]: {% post_url 2015-10-12-something-cool-that-happened-every-month-of-my-life-2010 %}
+[antibubbles]: https://antibubbles.bandcamp.com/
 [anamanaguchi]: https://en.wikipedia.org/wiki/Anamanaguchi
+[the-pinhook]: https://www.thepinhook.com/
+[rad]: https://www.radances.com/
+[motorco]: https://www.motorcomusic.com/
+[fragaria-plant]: https://en.wikipedia.org/wiki/Fragaria
