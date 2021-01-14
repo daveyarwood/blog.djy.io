@@ -63,30 +63,52 @@ live setting to accompany her dance.
 
 ---
 
-**March 2011:** ...
+> TODO: image of me crowd surfing in the plush palace
 
-* march 2011
-  * on the weekend of my 25th birthday, devour played some shows out of town -
-    charlotte, atlanta, athens. the athens show in particular was a blast. the
-    plush palace, throwing beanie babies back and forth, crowd surfed in a tiny
-    living room while bukkake boys played
-  * excerpt from an email to my mom: "we were crammed into a tiny living room
-    where as we played, the crowd fought with Beanie Babies, Silly String and a
-    small plastic wiffle ball bat"
-  * i also ended up accidentally leaving my bass behind in that basement and the
-    basement flooded, but i did eventually manage to get my bass back to raleigh
-    through a network of friends-of-friends, and despite having survived a
-    flood, my bass amazingly still played just fine!
+**March 2011:** On the weekend of my 25th birthday, [Devour][devour] played some
+shows out of town in Charlotte, Atlanta and Athens. The Athens show, in
+particular, was a blast! We played at a house called the Plush Palace. I found
+an email where I described it to my mom like this: "We were crammed into a tiny
+living room where, as we played, the crowd fought with Beanie Babies, Silly
+String and a small plastic wiffle ball bat." I remember taking any opportunity
+when I wasn't playing to pick up Beanie Babies and throw them back at the crowd.
+I also remember crowd surfing (above) in this tiny living room while the
+[Bukkake Boys][bukkake-boys] played their set. The whole thing was delightfully
+chaotic.
+
+I an impressive display of bad luck, I somehow ended up accidentally leaving my
+bass behind in the basement of that house in Athens, and then there was a big
+rain storm and the basement was flooded! I did eventually manage to get my bass
+back to Raleigh through a network of friends-of-friends, and despite having
+_survived a flood_, my bass amazingly still played just fine!
 
 ---
 
-**April 2011:** ...
+<center>
+<iframe style="border: 0; width: 350px; height: 470px;" src="https://bandcamp.com/EmbeddedPlayer/album=658106597/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/transparent=true/" seamless><a href="https://antibubbles.bandcamp.com/album/planet-xanax-7">Planet Xanax 7&quot; by Antibubbles</a></iframe>
+</center>
 
-* april 2011
-  * antibubbles planet xanax 7" released
-  * played with royal bangs at local 506
-    * almost no one was there, which was crazy
-    * we did a fake half-cover of "carry on my wayward son"
+**April 2011:** This was the month that Antibubbles released our [Planet
+Xanax][planet-xanax] 7". On April 1, we got to play a show at the [Local
+506][local-506] with [Royal Bangs][royal-bangs], who were (and are!) amazing.
+Because it was April Fools' Day, we couldn't resist the temptation to do
+something silly during our set. So, we learned the first minute of the Kansas
+classic "Carry on My Wayward Son" and pretended we were playing it as a cover,
+with the introductory 3-part vocal harmony and everything. At the point in the
+song where I would have sung the first verse, I said "April Fools!" and we
+launched into one of our songs instead.
+
+As an aside, it looks like Royal Bangs had [just played on David
+Letterman][royal-bangs-letterman], maybe even the same day as they played with
+us in Chapel Hill!? I suppose it's possible that they filmed their performance
+on Letterman early that morning and then drove straight to North Carolina,
+although that seems unlikely because it's about an 8 hour drive if there's no
+traffic and you don't stop. Or perhaps they flew down and borrowed gear? Or
+maybe their performance on Letterman was filmed a day or two prior, and it was
+just aired the same day as the show. I have a vague memory from after our show
+at the Local 506 was over, of the Royal Bangs asking the bartender to turn the
+TV on, and perhaps it was so that they could watch themselves performing live on
+David Letterman!
 
 ---
 
@@ -175,3 +197,9 @@ Reply to [this tweet][tweet] with any comments, questions, etc.!
 [rad]: https://www.radances.com/
 [motorco]: https://www.motorcomusic.com/
 [fragaria-plant]: https://en.wikipedia.org/wiki/Fragaria
+[devour]: https://www.youtube.com/watch?v=cRUQ_G2y2ZQ
+[bukkake-boys]: https://www.youtube.com/watch?v=S6OOKxXYx1c&list=PLPQltrnvKhgSUZ45RvrMAXukcBDzGWHnZ
+[planet-xanax]: https://antibubbles.bandcamp.com/album/planet-xanax-7
+[local-506]: https://local506.com/
+[royal-bangs]: https://en.wikipedia.org/wiki/Royal_Bangs
+[royal-bangs-letterman]: https://www.youtube.com/watch?v=w7a-uHxHPt0
