@@ -112,21 +112,28 @@ David Letterman!
 
 ---
 
-**May 2011:** ...
+> TODO: photo of us playing our set
 
-* may 2011
-  * antibubbles played free comic book day at ultimate comics in chapel hill
-  * we all wore sunglasses, cut-off tees and jorts
-  * i got incredibly sun-burned, but all in all it was a net win
+**May 2011:** Antibubbles were invited to play a set at an outdoor [Free Comic
+Book Day][free-comic-book-day] event at [Ultimate Comics][ultimate-comics] in
+Chapel Hill. It was among the most memorable shows that we ever played. Just for
+fun, we all decided to wear matching outfits with sunglasses, [jorts][jorts] and
+T-shirts cut into tank tops. I got super sun-burned, but all in all it was a lot
+of fun.
 
 ---
 
-**June 2011:** ...
+> TODO: photo of us playing with kittens
 
-* june 2011
-  * antibubbles visited the goathouse refuge and played with a room full of
-    kittens
-  * include a picture
+**June 2011:** Antibubbles visited the [Goathouse Refuge][goathouse-refuge], an
+animal sanctuary dedicated to rescuing and finding adoptive homes for cats. They
+had a _lot_ of cats there. We went there collectively as a band because we had
+this crazy idea to shoot a music video for ["Tonight Tonight
+Tonight"][antibubbles-ttt] there, interspersing footage of us playing with
+kittens, etc. with footage of us playing the song live.
+
+Sadly, we never ended up shooting the video, but it was still fun to visit the
+Goathouse Refuge and hang out in a room full of cuddly kittens for a while.
 
 ---
 
@@ -203,3 +210,8 @@ Reply to [this tweet][tweet] with any comments, questions, etc.!
 [local-506]: https://local506.com/
 [royal-bangs]: https://en.wikipedia.org/wiki/Royal_Bangs
 [royal-bangs-letterman]: https://www.youtube.com/watch?v=w7a-uHxHPt0
+[ultimate-comics]: https://www.ultimatecomics.com/
+[free-comic-book-day]: https://www.freecomicbookday.com/
+[jorts]: https://www.urbandictionary.com/define.php?term=jort
+[goathouse-refuge]: https://www.goathouserefuge.org/
+[antibubbles-ttt]: https://antibubbles.bandcamp.com/track/tonight-tonight-tonight
