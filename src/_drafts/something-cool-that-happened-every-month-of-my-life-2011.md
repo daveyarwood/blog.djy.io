@@ -137,22 +137,47 @@ Goathouse Refuge and hang out in a room full of cuddly kittens for a while.
 
 ---
 
-**July 2011:** ...
+> TODO: picture of the house
 
-* july 2011
-  * i think this is when renay and i closed on our first house in durham. we
-    would live there until 2016, when we moved to hillsborough
+**July 2011:** I think this was the month when Renay and I closed on our first
+house in Durham. It was a nice little 1961 ranch house with more than its fair
+share of things needing to be fixed, as a result of the previous owner's
+questionable DIY decisions... Maintenance headaches aside, I look back fondly on
+living in that house with Renay, our cat, Steve, and our greyhound, Barbara. We
+lived in that house until 2016, when we moved to Hillsborough to be closer to
+where Renay works.
 
 ---
 
-**August 2011:** ...
+<iframe width="100%"
+        height="300"
+        scrolling="no"
+        frameborder="no"
+        allow="autoplay"
+        src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/163417290&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true">
+</iframe>
+<div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;">
+  <a href="https://soundcloud.com/daveyarwood"
+     title="DaveYarwood"
+     target="_blank"
+     style="color: #cccccc; text-decoration: none;">
+    DaveYarwood
+  </a>
+  ·
+  <a href="https://soundcloud.com/daveyarwood/antibubbles-our-capsule-live-at-the-layabout"
+     title="Antibubbles - Our Capsule (Live at the Layabout)"
+     target="_blank"
+     style="color: #cccccc; text-decoration: none;">
+    Antibubbles - Our Capsule (Live at the Layabout)
+  </a>
+</div>
 
-* august 2011
-  * antibubbles house show at the layabout with bridget and the squares, white
-    laces and grandfather
-    * include link to live set, or at least the one track i've already posted to
-      my soundcloud
-  * totaled my car and broke my collarbone, which was NOT cool in the slightest
+**August 2011:** Antibubbles played a really fun house show at a place called
+the Layabout, with the bands [Bridget and the Squares][bridget], [White
+Laces][white-laces], and [Grandfather][grandfather]. We decided to troll our
+keyboard player, Anne, by secretly shoe-horning the riff from "Enter Sandman" by
+Metallica into the break in the middle of our song ["Red Blanket"][red-blanket].
+It was hilarious. (Sorry, Anne!)
 
 ---
 
@@ -215,3 +240,7 @@ Reply to [this tweet][tweet] with any comments, questions, etc.!
 [jorts]: https://www.urbandictionary.com/define.php?term=jort
 [goathouse-refuge]: https://www.goathouserefuge.org/
 [antibubbles-ttt]: https://antibubbles.bandcamp.com/track/tonight-tonight-tonight
+[bridget]: https://bridgetandthesquares.bandcamp.com/
+[white-laces]: https://whitelaces.bandcamp.com/
+[grandfather]: https://grandfathermusic.bandcamp.com/
+[red-blanket]: https://antibubbles.bandcamp.com/track/red-blanket
