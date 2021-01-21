@@ -181,22 +181,31 @@ It was hilarious. (Sorry, Anne!)
 
 ---
 
-**September 2011:** ...
+<center>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/62h7IxzTEcc" frameborder="0" allowfullscreen></iframe>
+</center>
 
-* september 2011
-  * went to hopscotch for free thanks to ryan dean
-  * saw swans, whatever brains, and guided by voices
+**September 2011:** My friend [Ryan Dean][ryan-dean] hooked me up with a free
+ticket to one night of [Hopscotch][hopscotch], the huge music festival that's
+been happening in downtown Raleigh since 2010. Being able to walk around Raleigh
+and see a bunch of amazing well known bands for free was a rare treat! I
+remember seeing [Swans][swans], [Whatever Brains][whatever-brains] and [Guided
+by Voices][guided-by-voices].
 
 ---
 
-**October 2011:** ...
+<center>
+<img src="{{ site.url }}/assets/2021-01-20-nosferatu.jpeg"
+     title="A still from Nosferatu (1922)"
+     width="75%">
+</center>
 
-* october 2011
-  * renay and i had a lovely date night close to halloween
-  * i met renay at the remedy diner in downtown raleigh (at their old location)
-    and had a high life and shared vegan nachos with her
-  * then we saw a screening of the silent horror film Nosferatu with live
-    musical accompaniment arranged by someone in the music department at NCSU
+**October 2011:** Renay and I had a lovely date night close to Halloween. I met
+her after work at the Remedy Diner in Raleigh (their old location, on Morgan
+St), which was our go-to vegetarian/vegan-oriented restaurant at the time. After
+drinking a High Life and sharing vegan nachos with Renay, we attended a
+screening of the classic 1922 silent horror film [Nosferatu][nosferatu] with
+live musical accompaniment arranged by someone in the music department at NCSU.
 
 ---
 
@@ -244,3 +253,9 @@ Reply to [this tweet][tweet] with any comments, questions, etc.!
 [white-laces]: https://whitelaces.bandcamp.com/
 [grandfather]: https://grandfathermusic.bandcamp.com/
 [red-blanket]: https://antibubbles.bandcamp.com/track/red-blanket
+[ryan-dean]: https://www.holybouquet.net/
+[hopscotch]: https://hopscotchmusicfest.com/
+[swans]: https://en.wikipedia.org/wiki/Swans_(band)
+[whatever-brains]: https://whateverbrains.bandcamp.com/
+[guided-by-voices]: https://en.wikipedia.org/wiki/Guided_by_Voices
+[nosferatu]: https://en.wikipedia.org/wiki/Nosferatu
