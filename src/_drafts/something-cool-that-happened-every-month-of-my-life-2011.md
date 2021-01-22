@@ -209,21 +209,41 @@ live musical accompaniment arranged by someone in the music department at NCSU.
 
 ---
 
-**November 2011:** ...
+<center>
+  <p>
+    <figure>
+      <figcaption>
+      "Castaway Theme 2" from <em>A Doll's House</em> (rehearsal recording)
+      </figcaption>
+      <audio controls src="{{ site.url }}/assets/2021-01-21-castaway-theme-2.mp3"></audio>
+    </figure>
+  </p>
+</center>
 
-* november 2011
-  * played theremin in archipelago theatre production of a doll's house
-    * maybe include a rehearsal recording of the pit musicians?
-    * if nothing else, can link to the indy week article about me playing the
-      theremin (even though that was for a different theremin-related occasion)
+**November 2011:** I played the theremin in the pit orchestra for a production
+of [_A Doll's House_][a-dolls-house], an 1879 work by the Norwegian playwright
+Henrik Ibsen. The score was written for theremin, piano,
+saxophone/clarinet/flute, and upright bass by the award-winning composer
+[Allison Leyton-Brown][alb], who was actually there with us in the rehearsals,
+which was great. I think it's the first and only time that I've been able to
+work with a composer as a thereminist performing their score. Playing the
+theremin in a small ensemble like that was really fun, and I just loved the
+eerie atmosphere that the theremin brought to the nervous and wistful musical
+backdrop that Leyton-Brown composed to accompany this controversial late 19th
+century play about a married woman who leaves her family.
 
 ---
 
-**December 2011:** ...
-
-* december 2011
-  * for christmas, i got the game rocksmith, which became my obsession over the
-    coming months
+**December 2011:** For Christmas, I got the game Rocksmith, which would become
+my new obsession over the coming months. If you haven't heard of Rocksmith, it's
+a rhythm game similar to Guitar Hero or Rock Band, except instead of playing a
+pretend plastic guitar, you plug in your actual guitar and the game shows you
+how to play the actual notes and chords in the songs. If you're new to guitar,
+it will teach you how to play the guitar. But if you're not new to playing the
+guitar (like me; I've been playing since I was 12) it's even more fun! It's a
+lot like learning songs by reading guitar tabs, except that it's interactive and
+you get a nice dopamine rush when the game praises you for playing the right
+notes.
 
 # Comments?
 
@@ -259,3 +279,5 @@ Reply to [this tweet][tweet] with any comments, questions, etc.!
 [whatever-brains]: https://whateverbrains.bandcamp.com/
 [guided-by-voices]: https://en.wikipedia.org/wiki/Guided_by_Voices
 [nosferatu]: https://en.wikipedia.org/wiki/Nosferatu
+[a-dolls-house]: https://en.wikipedia.org/wiki/A_Doll%27s_House
+[alb]: https://www.allisonleytonbrown.com/biography/
