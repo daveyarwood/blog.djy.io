@@ -63,7 +63,11 @@ live setting to accompany her dance.
 
 ---
 
-> TODO: image of me crowd surfing in the plush palace
+<center>
+<img src="{{ site.url }}/assets/2021-01-22-crowdsurfing-at-plush-palace.jpeg"
+     title="Me crowd-surfing at the Plush Palace"
+     width="75%">
+</center>
 
 **March 2011:** On the weekend of my 25th birthday, [Devour][devour] played some
 shows out of town in Charlotte, Atlanta and Athens. The Athens show, in
@@ -76,7 +80,7 @@ I also remember crowd surfing (above) in this tiny living room while the
 [Bukkake Boys][bukkake-boys] played their set. The whole thing was delightfully
 chaotic.
 
-I an impressive display of bad luck, I somehow ended up accidentally leaving my
+In an impressive display of bad luck, I somehow ended up accidentally leaving my
 bass behind in the basement of that house in Athens, and then there was a big
 rain storm and the basement was flooded! I did eventually manage to get my bass
 back to Raleigh through a network of friends-of-friends, and despite having
@@ -112,18 +116,25 @@ David Letterman!
 
 ---
 
-> TODO: photo of us playing our set
+<center>
+<img src="{{ site.url }}/assets/2021-01-22-antibubbles-comic-book-day.jpeg"
+     title="Antibubbles playing outside at Ultimate Comics, May 2011"
+     width="75%">
+</center>
 
 **May 2011:** Antibubbles were invited to play a set at an outdoor [Free Comic
 Book Day][free-comic-book-day] event at [Ultimate Comics][ultimate-comics] in
 Chapel Hill. It was among the most memorable shows that we ever played. Just for
-fun, we all decided to wear matching outfits with sunglasses, [jorts][jorts] and
-T-shirts cut into tank tops. I got super sun-burned, but all in all it was a lot
-of fun.
+fun, we all decided to wear sunglasses and [jorts][jorts].  I got super
+sun-burned, but all in all it was a lot of fun.
 
 ---
 
-> TODO: photo of us playing with kittens
+<center>
+<img src="{{ site.url }}/assets/2021-01-22-goathouse-refuge.jpeg"
+     title="Lots of kittens in a room"
+     width="75%">
+</center>
 
 **June 2011:** Antibubbles visited the [Goathouse Refuge][goathouse-refuge], an
 animal sanctuary dedicated to rescuing and finding adoptive homes for cats. They
@@ -137,7 +148,11 @@ Goathouse Refuge and hang out in a room full of cuddly kittens for a while.
 
 ---
 
-> TODO: picture of the house
+<center>
+<img src="{{ site.url }}/assets/2021-01-22-steve-at-milford-ln.jpeg"
+     title="Our old cat, Steve, at our old house in Durham"
+     width="75%">
+</center>
 
 **July 2011:** I think this was the month when Renay and I closed on our first
 house in Durham. It was a nice little 1961 ranch house with more than its fair
