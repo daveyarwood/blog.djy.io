@@ -7,6 +7,7 @@ tags:
   - devour
   - anamanaguchi
   - punk
+  - theremin
 published: true
 ---
 
@@ -33,7 +34,7 @@ some memories from 2011. I hope you enjoy them!
 on [the Pinhook][the-pinhook]'s website that Anamanaguchi were scheduled to play
 there, and there was no opening act listed, so I took a chance and sent the
 venue an email, asking if perhaps my band could be added to the bill as an
-opener. I was pleasantly surprised when it worked out!
+opener. I was pleasantly surprised when they said yes!
 
 The night was magical. The Pinhook was packed from wall to wall with people who
 were there to see Anamanaguchi (and they ended up being an enthusiastic audience
@@ -45,6 +46,12 @@ drummer even bought an Antibubbles LP!
 
 ---
 
+<center>
+<img src="{{ site.url }}/assets/2021-01-24-chocolate-covered-strawberries.webp"
+     title="Chocolate covered strawberries (source: https://downshiftology.com/recipes/chocolate-covered-strawberries/)"
+     width="75%">
+</center>
+
 **February 2011:** [Renay][rad] and I collaborated on a modern dance piece that
 we performed at [Motorco][motorco] in Durham. Being held close to Valentine's
 Day, the show was a collection of performances by various artists (dancers,
@@ -52,14 +59,14 @@ spoken word performers, martial artists, etc.) centered around the theme of
 love.
 
 Our piece was called _Fragaria_, named after the scientific name for the
-[strawberry plant][fragaria-plant]. We distributed home-made chocolate-covered
-strawberries to the audience, and Renay and I performed a live collaboration
-where she improvised modern dance movements and I improvised a looped soundscape
-by playing an electric bass through effect pedals.
+[strawberry plant][fragaria-plant]. We made chocolate-covered strawberries and
+distributed them to the audience, and we performed a live collaboration where
+Renay improvised modern dance movements and I improvised a looped soundscape by
+playing my electric bass through effect pedals.
 
 I still look back fondly on that performance. It's one of only a couple of
 collaborations that Renay and I have done where I've performed the music in a
-live setting to accompany her dance.
+live setting to accompany her dance, and it was a lot of fun.
 
 ---
 
@@ -156,8 +163,8 @@ Goathouse Refuge and hang out in a room full of cuddly kittens for a while.
 
 **July 2011:** I think this was the month when Renay and I closed on our first
 house in Durham. It was a nice little 1961 ranch house with more than its fair
-share of things needing to be fixed, as a result of the previous owner's
-questionable DIY decisions... Maintenance headaches aside, I look back fondly on
+share of things that needed to be fixed, as a result of the previous owner's
+questionable DIY decisions. Maintenance headaches aside, I look back fondly on
 living in that house with Renay, our cat, Steve, and our greyhound, Barbara. We
 lived in that house until 2016, when we moved to Hillsborough to be closer to
 where Renay works.
@@ -239,15 +246,21 @@ live musical accompaniment arranged by someone in the music department at NCSU.
 of [_A Doll's House_][a-dolls-house], an 1879 work by the Norwegian playwright
 Henrik Ibsen. The score was written for theremin, piano,
 saxophone/clarinet/flute, and upright bass by the award-winning composer
-[Allison Leyton-Brown][alb], who was actually there with us in the rehearsals,
-which was great. I think it's the first and only time that I've been able to
-work with a composer as a thereminist performing their score. Playing the
-theremin in a small ensemble like that was really fun, and I just loved the
-eerie atmosphere that the theremin brought to the nervous and wistful musical
-backdrop that Leyton-Brown composed to accompany this controversial late 19th
-century play about a married woman who leaves her family.
+[Allison Leyton-Brown][alb], who was actually there with us in person in the
+rehearsals. I think it's the first and only time that I've been able to work
+with a composer as a thereminist performing their score. Playing the theremin in
+a small ensemble like that was really fun, and I just loved the eerie atmosphere
+that the theremin brought to the nervous and wistful musical backdrop that
+Leyton-Brown composed to accompany this controversial late 19th century play
+about a married woman who leaves her family.
 
 ---
+
+<center>
+<img src="{{ site.url }}/assets/2021-01-24-rocksmith-gameplay.webp"
+     title="Rocksmith gameplay (source: https://blog.playstation.com/2014/11/04/rocksmith-2014-launches-on-ps4-today/)"
+     width="75%">
+</center>
 
 **December 2011:** For Christmas, I got the game Rocksmith, which would become
 my new obsession over the coming months. If you haven't heard of Rocksmith, it's
