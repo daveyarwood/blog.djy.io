@@ -277,7 +277,7 @@ notes.
 
 Reply to [this tweet][tweet] with any comments, questions, etc.!
 
-[tweet]: https://twitter.com/dave_yarwood/status/FIXME
+[tweet]: https://twitter.com/dave_yarwood/status/1353688175017922562
 
 [something-cool-2010]: {% post_url 2015-10-12-something-cool-that-happened-every-month-of-my-life-2010 %}
 [antibubbles]: https://antibubbles.bandcamp.com/
