@@ -15,8 +15,8 @@ published: true
 {% include JB/setup %}
 
 Just for fun, here is a quick run-down of how I deploy my personal projects. If
-you're reading this and you have some personal projects of your own that you
-might like to deploy, then hopefully some part of this will be helpful to you.
+you're reading this and you have projects of your own that you might like to
+deploy, then hopefully some part of this will be helpful to you.
 
 # Domains and DNS
 
@@ -28,7 +28,8 @@ registering and managing domains.
 Namecheap [gives you a few options][namecheap-nameserver] about what DNS
 nameserver to use. Depending on the project, I use either their free, default
 DNS service, or I choose the "Custom DNS" option and use DigitalOcean's
-nameservers if the project is hosted there.
+nameservers if the project is hosted there. (I'll say more about DigitalOcean
+below.)
 
 Namecheap also makes it straightforward to define [all kinds of host
 records][namecheap-host-records]. I'm pretty far from understanding what all of
@@ -66,17 +67,29 @@ Maybe if I were to start over, I would explore other options that are available
 now, like [Hugo][hugo] or something. But for now, Jekyll is working out just
 fine.
 
-> TODO: talk about Netlify.
-> * more control over jekyll version, etc.
-> * zero effort SSL via LetsEncrypt
-> * can still deploy effortlessly by pushing to master
+I mentioned just now that at one point, I migrated this site away from GitHub
+Pages. That was because I found [Netlify][netlify]. Netlify does a lot of
+things, but the big thing they do is that they make it easy to automate
+deploying your static sites for free. It's trivial to take a site that you're
+deploying to GitHub Pages and convert it to use Netlify instead. Why would you
+want to do that? Because Netlify gives you a lot more control over the way your
+site is deployed. The reason I switched is that I ended up wanting to use some
+Jekyll feature that will only work on newer versions of Jekyll, and I found that
+with GitHub Pages, I couldn't control the version of Jekyll that was used to
+build the site. With Netlify, I can control pretty much everything about the
+build, including any dependencies I want to bring in and what command to run.
+Another awesome thing about Netlify is that they make it super easy to set up
+your site to serve on a custom domain, and they'll even generate an SSL
+certificate for you automatically. Once you're set up, you can deploy your site
+effortlessly simply by pushing commits to the default branch of your repo.
 
+# My VPS
 
-# Notes
-
-* VPS
-  * DigitalOcean
-  * nginx
+> TODO: To discuss:
+> * My single, $5/mo Droplet and what I use it for
+> * nginx / wildcard DNS record
+> * recently started using DigitalOcean App Platform to build an API for Alda
+>   releases, from version 2 onward
 
 # Comments?
 
@@ -91,3 +104,4 @@ Reply to [this tweet][tweet] with any comments, questions, etc.!
 [jekyll]: https://jekyllrb.com/
 [github-pages]: https://pages.github.com/
 [hugo]: https://gohugo.io/
+[netlify]: https://www.netlify.com/
