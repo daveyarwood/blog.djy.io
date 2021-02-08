@@ -39,18 +39,18 @@ need to do when you're building small websites and web applications.
 
 # Static websites
 
-When I was a kid, I learned how to write HTML and CSS, built a lot of
-stupid-looking websites, and put them up on the Internet for the world (well,
-mostly just my friends) to see. This was the late 90's and early 00's, and as
-far I could tell at the time, the only way you could do this was to keep a copy
-of your website on your computer and copy the files over to your web space any
-time you make changes, using an [FTP][ftp] client. Git didn't exist yet, let
-alone GitHub Pages, and I couldn't have told you what source control was if
-you'd asked me. This felt alright to me at the time, but in retrospect, it's
-funny how painfully manual it was to deploy my websites back then.
+Just as an aside: When I was a kid, I learned how to write HTML and CSS, built a
+lot of stupid-looking websites, and put them up on the Internet for the world
+(well, mostly just my friends) to see. This was the late 90's and early 00's,
+and as far as I could tell at the time, the only way you could do this was to
+keep a copy of your website on your computer and copy the files over to your web
+space any time you make changes, using an [FTP][ftp] client. Git didn't exist
+yet, let alone GitHub Pages, and I couldn't have told you what source control
+was if you'd asked me. This felt alright to me at the time, but in retrospect,
+it's funny how painfully manual it was to deploy my websites back then.
 
 Thankfully, it's a lot easier these days to whip up a simple, nice-looking
-website and make it pubicly available on the Internet, even on a custom domain
+website and make it publicly available on the Internet, even on a custom domain
 with an SSL certificate.
 
 When I first created this blog in 2014, I built it using [Jekyll][jekyll] and
@@ -77,17 +77,42 @@ site is deployed. The reason I switched is that I ended up wanting to use some
 Jekyll feature that will only work on newer versions of Jekyll, and I found that
 with GitHub Pages, I couldn't control the version of Jekyll that was used to
 build the site. With Netlify, I can control pretty much everything about the
-build, including any dependencies I want to bring in and what command to run.
-Another awesome thing about Netlify is that they make it super easy to set up
-your site to serve on a custom domain, and they'll even generate an SSL
-certificate for you automatically. Once you're set up, you can deploy your site
-effortlessly simply by pushing commits to the default branch of your repo.
+build, including which dependencies to bring in and what command to run to build
+the site. Another awesome thing about Netlify is that they make it super easy to
+set up your site to serve on a custom domain, and they'll even generate an SSL
+certificate for you automatically. After a quick and painless setup, you can
+deploy your site by simply pushing commits to the default branch of your repo.
 
-# My VPS
+# DigitalOcean
+
+I first started using [DigitalOcean][digitalocean] as a way to explore having my
+own [VPS][vps] that I could use to deploy arbitrary static sites and web
+applications. I ended up only using my VPS to host static sites, which I now
+realize was kind of pointless, because I could have just used Netlify to host
+all of them, and it would have been a lot easier and more convenient. But it
+really wasn't pointless, because learning how to set up and maintain a VPS was a
+valuable exercise in itself.
+
+If you're curious about setting up a VPS, I will say that it's easy and fun to
+do it with DigitalOcean. I paid $5 per month for a Droplet (i.e. server) that
+ran 24/7 and could do anything I wanted. There are all kinds of useful things
+that you can do with a VPS, but I ended up only using mine to host web pages and
+other files. The setup for that was kind of interesting. I set up a wildcard
+CNAME (`*.djy.io`) to direct to the IP address of my Droplet. Then, I followed
+one of DigitalOcean's guides to set up [nginx][nginx] to serve the content from
+various folders in `/var/www` (sites that I had written and uploaded to the
+VPS). With this setup in place, I was able to create a new site whenever I
+wanted by syncing the HTML and assets into a folder in `/var/www` and using a
+simple nginx config file to specify which sites were to serve on which
+subdomains (e.g. `something.djy.io`).
+
+I got rid of the $5/month VPS once I figured out that I wasn't using it for
+anything that Netlify couldn't handle for me in a much better way, and for free.
+
+Lately, though, I have been using DigitalOcean again, to host an actual web
+application.
 
 > TODO: To discuss:
-> * My single, $5/mo Droplet and what I use it for
-> * nginx / wildcard DNS record
 > * recently started using DigitalOcean App Platform to build an API for Alda
 >   releases, from version 2 onward
 
@@ -105,3 +130,6 @@ Reply to [this tweet][tweet] with any comments, questions, etc.!
 [github-pages]: https://pages.github.com/
 [hugo]: https://gohugo.io/
 [netlify]: https://www.netlify.com/
+[digitalocean]: https://digitalocean.com
+[vps]: https://en.wikipedia.org/wiki/Virtual_private_server
+[nginx]: https://www.nginx.com/resources/wiki/
