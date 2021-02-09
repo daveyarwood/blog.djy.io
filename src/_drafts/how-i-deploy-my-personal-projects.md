@@ -5,6 +5,7 @@ tags:
   - deployment
   - namecheap
   - digitalocean
+  - circleci
   - jekyll
   - netlify
   - nginx
@@ -20,7 +21,7 @@ deploy, then hopefully some part of this will be helpful to you.
 
 # Domains and DNS
 
-Whenever I've bought a domain, I've used [Namecheap][namecheap], not necessarily
+Whenever I register a domain, I use [Namecheap][namecheap], not necessarily
 because it's the best option, but just because I've always found Namecheap to be
 easy and intuitive, and it does everything that I need when it comes to
 registering and managing domains.
@@ -90,8 +91,8 @@ own [VPS][vps] that I could use to deploy arbitrary static sites and web
 applications. I ended up only using my VPS to host static sites, which I now
 realize was kind of pointless, because I could have just used Netlify to host
 all of them, and it would have been a lot easier and more convenient. But it
-really wasn't pointless, because learning how to set up and maintain a VPS was a
-valuable exercise in itself.
+really wasn't pointless, because learning how to set up a VPS was a valuable
+exercise in itself.
 
 If you're curious about setting up a VPS, I will say that it's easy and fun to
 do it with DigitalOcean. I paid $5 per month for a Droplet (i.e. server) that
@@ -110,11 +111,35 @@ I got rid of the $5/month VPS once I figured out that I wasn't using it for
 anything that Netlify couldn't handle for me in a much better way, and for free.
 
 Lately, though, I have been using DigitalOcean again, to host an actual web
-application.
+application. I built an API to provide information about new [Alda][alda]
+releases, as part of the ground-up rewrite (Alda v2) that I've been working on
+over the last couple of years.
 
-> TODO: To discuss:
-> * recently started using DigitalOcean App Platform to build an API for Alda
->   releases, from version 2 onward
+There are two components to the Alda Releases API: the API server and the asset
+storage. For the asset storage, I found DigitalOcean's [Spaces][do-spaces] to do
+the job nicely. Spaces is an Amazon S3-compatible file storage service that is
+affordable and has some nice features like a built-in CDN. I've set up a
+[CircleCI][circleci] automated build pipeline that uploads the executables to a
+DigitalOcean Space whenever I push a release tag up to the GitHub remote. The
+API server has a background thread that regularly checks for updates to the
+executables in the Space so that it can provide up-to-date information about
+Alda releases.
+
+I deploy the Alda API using the DigitalOcean [App Platform][do-app-platform], a
+platform-as-a-service (PaaS) offering that automates building and deploying the
+app every time I push a commit to my repo's default branch. App Platform is very
+new (it was only released to the general public four months ago, in October
+2020), and accordingly has some rough edges, but overall, using it to deploy the
+Alda API has been a nice experience. There is the usual trade-off with using any
+PaaS product, which is that you don't have to worry about infrastructure,
+however, when something goes wrong, it can be difficult to see what's going on
+under the hood. For a simple, low-maintenance (and low-cost) application like
+this one, I think the trade-off makes sense, but it's not the kind of thing I
+would do in my day job.
+
+# That's it!
+
+I hope you found this at least somewhat interesting!
 
 # Comments?
 
@@ -133,3 +158,7 @@ Reply to [this tweet][tweet] with any comments, questions, etc.!
 [digitalocean]: https://digitalocean.com
 [vps]: https://en.wikipedia.org/wiki/Virtual_private_server
 [nginx]: https://www.nginx.com/resources/wiki/
+[alda]: https://alda.io
+[do-spaces]: https://www.digitalocean.com/products/spaces/
+[circleci]: https://circleci.com/
+[do-app-platform]: https://www.digitalocean.com/products/app-platform/
