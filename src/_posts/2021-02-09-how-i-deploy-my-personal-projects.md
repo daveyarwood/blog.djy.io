@@ -145,7 +145,7 @@ I hope you found this at least somewhat interesting!
 
 Reply to [this tweet][tweet] with any comments, questions, etc.!
 
-[tweet]: https://twitter.com/dave_yarwood/status/FIXME
+[tweet]: https://twitter.com/dave_yarwood/status/1359130014105632769
 
 [namecheap]: https://www.namecheap.com/
 [namecheap-nameserver]: https://www.namecheap.com/support/knowledgebase/article.aspx/9434/10/using-default-nameservers-vs-hosting-nameservers/
