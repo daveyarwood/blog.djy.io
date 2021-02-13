@@ -96,7 +96,12 @@ When you notate music using a GUI application, you have menus upon menus in fron
        height="350"/>
 </center>
 
-* **It's limiting.** I think for a composer to have an ideal environment in which to compose, he needs to get back to the basics. He needs a blank canvas and a way to notate music. And because this is the 21st century, his scores need a way to be interpreted by a computer and turned into audio. It would also be nice if his scores could be easily converted to and from the standard notation format that human musicians are trained to read.
+* **It's limiting.** I think for a composer to have an ideal environment to
+  compose in, they need to get back to the basics. They need a blank canvas and
+  a way to notate music. And because this is the 21st century, their scores need
+  a way to be interpreted by a computer and turned into audio. It would also be
+  nice if their scores could be easily converted to and from the standard
+  notation format that human musicians are trained to read.
 
     The GUI programs available today do an excellent job of handling these 21st century requirements, but they do so by taking a shortcut -- they skip the "blank canvas" part. Of course, when you create a new score in Sibelius (for example), you do have what looks like some empty lines of staff paper, but in fact, this blank staff paper carries a very different connotation than does a physical page of manuscript paper. You can't just grab a pencil and start writing whatever your heart desires. There are a number of hidden restraints that the GUI application forces upon you.
 
