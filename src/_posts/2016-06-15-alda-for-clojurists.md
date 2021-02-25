@@ -159,7 +159,13 @@ The key thing about representing this calculation as `(reduce + 5 (range 10))` i
 
 # A formula for calculating a musical score
 
-To reiterate the problem we were having with Alda: we were storing all of our "working state" in top-level variables like `*events*` and `*current-instruments*`, and those variables could be modified by any process that was trying to create a score. The scores were *not* anonymous and self-contained, so if you had two or more processes that were both trying to create or modify a score using the same Alda server, then they could potentially conflict with each other and cause conflicts.
+To reiterate the problem we were having with Alda: we were storing all of our
+"working state" in top-level variables like `*events*` and
+`*current-instruments*`, and those variables could be modified by any process
+that was trying to create a score. The scores were *not* anonymous and
+self-contained, so if you had two or more processes that were both trying to
+create or modify a score using the same Alda server, then they could potentially
+conflict with one another.
 
 The solution I came up with was to make creating or updating a score a **reducing operation**. The reducing function was basically this:
 
