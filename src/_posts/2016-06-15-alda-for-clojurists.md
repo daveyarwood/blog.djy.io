@@ -179,7 +179,9 @@ function updateScore(score, event) {
 
 An "event" could be any number of things: a note, a rest, a chord, a change in the value of an instrument's "attributes" like octave or volume, etc. I implemented `update-score` as a Clojure [multimethod](http://clojure.org/reference/multimethods), a special kind of function that has different behavior depending on arbitrary properties of its arguments. The `update-score` multimethod examines the type of event and updates the score accordingly. For example, when it encounters a "new part" event, it finds or creates the appropriate instrument and stores that context on the anonymous "score" that is being accumulated.
 
-**At no point during this score-updating process does the original score get modified.** Each iteration of the score-updating reducing function is returning a modified copy of the score, rather than modifying the score and returning it. This is an essential thing to understand about functional programming. In our case, it is beneficial because it means we can safely process multiple scores at the same time without having to worry about one score clobbering the state of another.
+**At no point during this score-updating process does the original score get
+modified.** Each iteration of the score-updating reducing function is returning
+a slightly different copy of the score, rather than modifying the score and returning it. This is an essential thing to understand about functional programming. In our case, it is beneficial because it means we can safely process multiple scores at the same time without having to worry about one score clobbering the state of another.
 
 # Using Alda in a Clojure REPL
 
