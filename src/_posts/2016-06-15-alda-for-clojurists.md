@@ -171,8 +171,9 @@ The solution I came up with was to make creating or updating a score a **reducin
 
 {% highlight javascript %}
 // JavaScript pseudocode
-function(score, event) {
-  return updatedScore(score, event);
+function updateScore(score, event) {
+  // return a slightly different version of the score
+  return ...;
 }
 {% endhighlight %}
 
