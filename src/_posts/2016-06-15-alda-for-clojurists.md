@@ -493,5 +493,8 @@ nil
 
 If you're a Clojure programmer, hopefully this gives you enough background on how Alda works as a Clojure library that you can use it as a tool to create music or sound effects in your Clojure programs.
 
-Each time we release a new version of Alda, in addition to releasing the command-line executable on GitHub, [I also upload the package to Clojars](https://clojars.org/alda). So, if any of this stuff interests you, I encourage you to set `alda` as a dependency with your favorite [Clojure
+Each time we release a new version of Alda, in addition to releasing the
+command-line executable on GitHub, [I also upload the package to
+Clojars](https://clojars.org/alda). So, if any of this stuff interests you, I
+encourage you to add `alda` as a dependency with your favorite [Clojure
 build tool](http://boot-clj.com) and play around with it. Have fun!
