@@ -11,6 +11,13 @@ published: true
 
 {% include JB/setup %}
 
+Over the last 2 years or so, I've been working on a ground-up rewrite of
+[Alda][alda], the music composition programming language that has been my
+passion project since 2012. Now that I'm finally almost done(!) with the rewrite
+and just about ready to release Alda v2 to the world, I figured I should explain
+why, exactly, I made the somewhat surprising decision to rewrite it in Go and
+Kotlin, given that Alda v1 is mostly written in Clojure.
+
 # Notes
 
 ## Copied from a Slack conversation
@@ -28,3 +35,5 @@ Because I had to move everything into the client, and startup time and performan
 Reply to [this tweet][tweet] with any comments, questions, etc.!
 
 [tweet]: https://twitter.com/dave_yarwood/status/FIXME
+
+[alda]: https://alda.io
