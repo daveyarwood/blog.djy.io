@@ -18,7 +18,49 @@ and just about ready to release Alda v2 to the world, I figured I should explain
 why, exactly, I made the somewhat surprising decision to rewrite it in Go and
 Kotlin, given that Alda v1 is mostly written in Clojure.
 
+# Alda and Clojure
+
+In all honesty, the main reason that I ended up writing Alda in Clojure to begin
+with is that Clojure is my favorite programming language. At the time in my life
+when I wrote the first working version of Alda, I just felt like I wanted to
+write everything in Clojure. And there is certainly something to be said for
+writing your hobby project in the language that makes you the happiest or the
+language that you're most familiar with.
+
+Clojure proved to be an excellent choice for me to write the first version of
+Alda because:
+
+1. The excellent [Instaparse][instaparse] library made it really easy for me to
+   write a little EBNF grammar and generate a working parser.
+
+2. One of Clojure's superpowers is making it easy to transform deeply nested
+   data structures from one shape to another, which is basically what Alda does
+   with the parser output to turn it into a score data structure ready to be
+   performed.
+
+3. Clojure is a JVM language, and the Java Virtual Machine comes with a built-in
+   MIDI [synthesizer][jvm-synth] and [sequencer][jvm-sequencer] that I was able
+   to use to make sound without requiring end users to install anything extra.
+
+On top of all that, ...
+
+> TODO: talk about how I made an early decision to include Lisp as a subset of
+> the Alda language, and with Clojure itself being a Lisp, I was able to do this
+> trivially by parsing Clojure as a subset of Alda and just eval-ing the Clojure
+> code within the context of the score. Low effort to implement, but unlocked
+> tremendous possibilities for programmatic composition with Alda.
+
 # Notes
+
+* Maybe post a link to my Strange Loop 2019 video at the end.
+  * https://www.youtube.com/watch?v=6hUihVWdgW0
+
+* When I get to the part about talking about reimplementing Alda in Go, I might
+  want to mention how I've preserved a couple of important things from Alda v1:
+  * The ability to compose programmatically in Clojure.
+    * (but now, in other languages too! and with arbitrary dependencies!)
+  * The built-in Lisp. (except now I've implemented it myself in Go, and it's
+    super duper limited, just the essentials)
 
 ## Copied from a Slack conversation
 
@@ -37,3 +79,6 @@ Reply to [this tweet][tweet] with any comments, questions, etc.!
 [tweet]: https://twitter.com/dave_yarwood/status/FIXME
 
 [alda]: https://alda.io
+[instaparse]: https://github.com/Engelberg/instaparse
+[jvm-synth]: https://docs.oracle.com/javase/7/docs/api/javax/sound/midi/Synthesizer.html
+[jvm-sequencer]: https://docs.oracle.com/javase/7/docs/api/javax/sound/midi/Sequencer.html
