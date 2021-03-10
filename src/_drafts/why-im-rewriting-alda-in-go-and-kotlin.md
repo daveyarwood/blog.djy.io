@@ -27,8 +27,8 @@ write everything in Clojure. And there is certainly something to be said for
 writing your hobby project in the language that makes you the happiest or the
 language that you're most familiar with.
 
-Clojure proved to be an excellent choice for me to write the first version of
-Alda because:
+Clojure did prove to be a good choice for me to write the first version of Alda
+because:
 
 1. The excellent [Instaparse][instaparse] library made it really easy for me to
    write a little EBNF grammar and generate a working parser.
@@ -42,13 +42,54 @@ Alda because:
    MIDI [synthesizer][jvm-synth] and [sequencer][jvm-sequencer] that I was able
    to use to make sound without requiring end users to install anything extra.
 
-On top of all that, ...
+But implementing Alda in Clojure also ended up having another interesting
+benefit. I made an early decision to include Lisp as a subset of the Alda
+language. With Clojure itself being a Lisp, I was able to do this trivially by
+parsing Clojure's syntax as a subset of Alda's syntax and then evaluating the
+Clojure code within the context of the score. This didn't take much effort to
+implement, but it unlocked tremendous possibilities for algorithmic music
+composition with Alda.
 
-> TODO: talk about how I made an early decision to include Lisp as a subset of
-> the Alda language, and with Clojure itself being a Lisp, I was able to do this
-> trivially by parsing Clojure as a subset of Alda and just eval-ing the Clojure
-> code within the context of the score. Low effort to implement, but unlocked
-> tremendous possibilities for programmatic composition with Alda.
+To make it more clear what I'm talking about, consider this snippet of Alda
+code where a piano is playing the notes C through G:
+
+{% highlight text %}
+piano:
+  c d e f g
+{% endhighlight %}
+
+In Alda v1, you can also write your scores (either in part or completely) using
+a Clojure DSL:
+
+{% highlight text %}
+piano:
+  (note (pitch :c))
+  (note (pitch :d))
+  (note (pitch :e))
+  (note (pitch :f))
+  (note (pitch :g))
+{% endhighlight %}
+
+Because we're exposing the ability to `eval` arbitrary Clojure code, you can do
+anything available in the Clojure language:
+
+{% highlight text %}
+piano:
+  (for [letter [:c :d :e :f :g]]
+    (note (pitch letter)))
+{% endhighlight %}
+
+And this is a lot of fun, because the Clojure standard library is chock full of
+interesting and useful functions for operating on sequences:
+
+{% highlight text %}
+alto-saxophone:
+  (->> [:c :e :g :a :d :b]
+       shuffle
+       cycle
+       (map #(note (pitch %) (duration (note-length 8))))
+       (take 16))
+{% endhighlight %}
 
 # Notes
 
