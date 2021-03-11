@@ -61,7 +61,7 @@ piano:
 In Alda v1, you can also write your scores (either in part or completely) using
 a Clojure DSL:
 
-{% highlight text %}
+{% highlight clojure %}
 piano:
   (note (pitch :c))
   (note (pitch :d))
@@ -73,7 +73,7 @@ piano:
 Because we're exposing the ability to `eval` arbitrary Clojure code, you can do
 anything available in the Clojure language:
 
-{% highlight text %}
+{% highlight clojure %}
 piano:
   (for [letter [:c :d :e :f :g]]
     (note (pitch letter)))
@@ -82,7 +82,7 @@ piano:
 And this is a lot of fun, because the Clojure standard library is chock full of
 interesting and useful functions for operating on sequences:
 
-{% highlight text %}
+{% highlight clojure %}
 alto-saxophone:
   (->> [:c :e :g :a :d :b]
        shuffle
@@ -90,6 +90,44 @@ alto-saxophone:
        (map #(note (pitch %) (duration (note-length 8))))
        (take 16))
 {% endhighlight %}
+
+Even though it wasn't part of my original plans for the Alda language, this
+feature of Alda became very important to me, as I grew to love writing music
+programmatically by writing Clojure code within an Alda score.
+
+So why, then, did I decide to do a total rewrite of Alda in Go?
+
+# Alda v2
+
+One of the major pain points of Alda v1 is that its architecture is rather
+complex, and the burden of that complexity is pushed onto the user. [I wrote
+about this in detail a few months ago][alda-v1-shortcomings], but the short
+explanation is that Alda v1 does most of its work in background "worker"
+processes, and you can't do anything unless you explicitly start an Alda server
+first. Alda can't even tell you if you have a syntax error unless you first have
+a server running, because even parsing is done in the worker process.
+
+The only reason that I chose to do so much of the work in the worker process
+(and so little in the client) is that [the Clojure runtime is infamously slow to
+start][clojure-slow-start], which makes it unsuitable for writing command line
+applications where fast start-up time is important. I still wanted to keep all
+of the Clojure code that I'd written and continue to develop Alda in Clojure, so
+as a compromise, I moved all of that code into a background process, and wrote a
+lightweight Java client that delegates most of the work to that background
+Clojure process.
+
+TODO: continue explaining why the move to Go
+
+> As an aside: I'm well aware that nowadays, [GraalVM][graalvm] can be used to
+> compile Clojure code into fast, self-contained, native binaries. However, at
+> the time when I was beginning the rewrite of Alda and I was deciding which
+> language/runtime to use GraalVM either didn't exist yet, or it was brand
+> new, so it wasn't really an option.
+>
+> Even now, in 2021, I would argue that GraalVM is probably still not mature
+> enough for me to feel comfortable using it as the backbone of Alda. (Besides,
+> I've just spent two years rewriting Alda in Go. I'm not in any hurry to
+> rewrite it again!)
 
 # Notes
 
@@ -107,7 +145,7 @@ alto-saxophone:
 
 > TODO: convert these into organized blog post material
 
-The move to Go was motivated by a desire to get closer to the metal and get really really fast startup time and performance. GraalVM wasn't really an option at the time that I made that decision, and I would argue is probably still not an option given the relative immaturity of GraalVM. Go is by no means my favorite language, but it proved to be a good pragmatic choice because of the options that I tested (including Go, Rust, and Crystal), I found it to be the easiest way to create 100% static, cross-platform executables with minimal effort.
+The move to Go was motivated by a desire to get closer to the metal and get really really fast startup time and performance. Go is by no means my favorite language, but it proved to be a good pragmatic choice because of the options that I tested (including Go, Rust, and Crystal), I found it to be the easiest way to create 100% static, cross-platform executables with minimal effort.
 Kotlin is used for the "player process," a separate background process that listens for instructions sent by the Go client and plays audio using the JVM's MIDI sequencer and synthesizer. I could have gone with Clojure, but I wanted to get startup time as fast as possible, and Clojure is a non-starter in that area. IMO, Kotlin strikes a perfect balance between developer happiness (FP affordances, terseness, actual lambdas, etc.) and reasonable startup time and performance.
 
 More context behind this decision is that my top goal for Alda v2 was to simplify the architecture, so that almost everything is happening right there in the client. The Alda v1 architecture is complicated and brittle in that you can't do hardly anything without having a server running, the server is a background process that, itself, has its own "worker" background processes, and I've seen end users run into trouble on certain OS's (looking at you, Windows!) where background processes can't start their own background processes, or something like that.
@@ -123,3 +161,6 @@ Reply to [this tweet][tweet] with any comments, questions, etc.!
 [instaparse]: https://github.com/Engelberg/instaparse
 [jvm-synth]: https://docs.oracle.com/javase/7/docs/api/javax/sound/midi/Synthesizer.html
 [jvm-sequencer]: https://docs.oracle.com/javase/7/docs/api/javax/sound/midi/Sequencer.html
+[alda-v1-shortcomings]: {% post_url 2020-12-14-alda-and-the-nrepl-protocol %}#shortcomings-of-alda-v1
+[clojure-slow-start]: http://clojure-goes-fast.com/blog/clojures-slow-start/
+[graalvm]: https://www.graalvm.org/
