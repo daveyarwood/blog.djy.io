@@ -58,8 +58,8 @@ piano:
   c d e f g
 {% endhighlight %}
 
-In Alda v1, you can also write your scores (either in part or completely) using
-a Clojure DSL:
+In Alda v1, you can also write your scores (either partially or completely)
+using a Clojure DSL:
 
 {% highlight clojure %}
 piano:
@@ -116,7 +116,15 @@ as a compromise, I moved all of that code into a background process, and wrote a
 lightweight Java client that delegates most of the work to that background
 Clojure process.
 
-TODO: continue explaining why the move to Go
+In short, I chose to make the architecture more complicated and the user
+experience worse just so that I could continue to develop Alda in Clojure! The
+more time went by, the more dissatisfied I grew with the complex
+client/server/worker architecture and the fact that users need to start a server
+before they can do anything useful with Alda. After mulling it over for a long
+time, I finally decided that it would be worth simplifying the architecture so
+that most of the work is being done in the client and rewriting Alda in a
+language that's "closer to the metal," even if it means that I can't develop
+Alda in Clojure anymore.
 
 > As an aside: I'm well aware that nowadays, [GraalVM][graalvm] can be used to
 > compile Clojure code into fast, self-contained, native binaries. However, at
@@ -124,10 +132,9 @@ TODO: continue explaining why the move to Go
 > language/runtime to use GraalVM either didn't exist yet, or it was brand
 > new, so it wasn't really an option.
 >
-> Even now, in 2021, I would argue that GraalVM is probably still not mature
-> enough for me to feel comfortable using it as the backbone of Alda. (Besides,
-> I've just spent two years rewriting Alda in Go. I'm not in any hurry to
-> rewrite it again!)
+> Even now, in 2021, GraalVM is probably still not mature enough for me to feel
+> comfortable using it as the backbone of Alda. (Besides, I've just spent two
+> years rewriting Alda in Go. I'm not in any hurry to rewrite it again!)
 
 # Notes
 
