@@ -91,7 +91,7 @@ alto-saxophone:
        (take 16))
 {% endhighlight %}
 
-Even though it wasn't part of my original plans for the Alda language, this
+Even though it wasn't part of my original plan for the Alda language, this
 feature of Alda became very important to me, as I grew to love writing music
 programmatically by writing Clojure code within an Alda score.
 
@@ -100,12 +100,12 @@ So why, then, did I decide to do a total rewrite of Alda in Go?
 # Alda v2
 
 One of the major pain points of Alda v1 is that its architecture is rather
-complex, and the burden of that complexity is pushed onto the user. [I wrote
+complex, and the burden of that complexity is foisted onto the user. [I wrote
 about this in detail a few months ago][alda-v1-shortcomings], but the short
-explanation is that Alda v1 does most of its work in background "worker"
-processes, and you can't do anything unless you explicitly start an Alda server
-first. Alda can't even tell you if you have a syntax error unless you first have
-a server running, because even parsing is done in the worker process.
+version is that Alda v1 does most of its work in background "worker" processes,
+and you can't do anything unless you explicitly start an Alda server first. Alda
+can't even tell you if you have a syntax error unless you first have a server
+running, because even parsing is done in the worker process.
 
 The only reason that I chose to do so much of the work in the worker process
 (and so little in the client) is that [the Clojure runtime is infamously slow to
@@ -127,14 +127,38 @@ language that's "closer to the metal," even if it means that I can't develop
 Alda in Clojure anymore.
 
 > As an aside: I'm well aware that nowadays, [GraalVM][graalvm] can be used to
-> compile Clojure code into fast, self-contained, native binaries. However, at
-> the time when I was beginning the rewrite of Alda and I was deciding which
-> language/runtime to use GraalVM either didn't exist yet, or it was brand
+> compile Clojure programs into fast, self-contained, native binaries. However,
+> at the time when I was beginning the rewrite of Alda and I was deciding which
+> language/runtime to use, GraalVM either didn't exist yet, or it was brand
 > new, so it wasn't really an option.
 >
 > Even now, in 2021, GraalVM is probably still not mature enough for me to feel
 > comfortable using it as the backbone of Alda. (Besides, I've just spent two
 > years rewriting Alda in Go. I'm not in any hurry to rewrite it again!)
+
+So, I had made the decision to rewrite Alda with a primary goal of simplifying
+the architecture so that most of the work was happening in the client, and I'd
+decided that I was alright with writing it in a language other than Clojure.
+Because I was moving everything into the client, and startup time and
+performance are both super important, it became imperative that I rewrite the
+client in a low(-ish) level programming language, one that could produce native
+executables on every platform (at least Windows, macOS and Linux) that start up
+instantly and run fast.
+
+Go is by no means my favorite language (that's a topic for another time!), but
+it proved to be a good pragmatic choice because out of the options that I tested
+(which also included Rust and Crystal), I found Go to be the easiest way to
+create 100% static, cross-platform executables with minimal effort.
+
+I also ended up using Kotlin to write the Alda v2 "player" process, a new
+background process that listens for low-level instructions sent by the Go client
+and plays audio using the JVM's MIDI sequencer and synthesizer. I could have
+stuck with Clojure to write this new player process, but I wanted to cut down on
+startup time as much as possible, and Clojure is simply a non-starter in that
+area. When it comes to JVM languages, I'm a big fan of Kotlin, because it does a
+lot in the way of developer happiness (FP affordances, null safety, terseness,
+actual lambdas, etc.), and it has reasonably good startup time to boot, which
+makes it suitable for writing command line applications.
 
 # Notes
 
@@ -147,16 +171,6 @@ Alda in Clojure anymore.
     * (but now, in other languages too! and with arbitrary dependencies!)
   * The built-in Lisp. (except now I've implemented it myself in Go, and it's
     super duper limited, just the essentials)
-
-## Copied from a Slack conversation
-
-> TODO: convert these into organized blog post material
-
-The move to Go was motivated by a desire to get closer to the metal and get really really fast startup time and performance. Go is by no means my favorite language, but it proved to be a good pragmatic choice because of the options that I tested (including Go, Rust, and Crystal), I found it to be the easiest way to create 100% static, cross-platform executables with minimal effort.
-Kotlin is used for the "player process," a separate background process that listens for instructions sent by the Go client and plays audio using the JVM's MIDI sequencer and synthesizer. I could have gone with Clojure, but I wanted to get startup time as fast as possible, and Clojure is a non-starter in that area. IMO, Kotlin strikes a perfect balance between developer happiness (FP affordances, terseness, actual lambdas, etc.) and reasonable startup time and performance.
-
-More context behind this decision is that my top goal for Alda v2 was to simplify the architecture, so that almost everything is happening right there in the client. The Alda v1 architecture is complicated and brittle in that you can't do hardly anything without having a server running, the server is a background process that, itself, has its own "worker" background processes, and I've seen end users run into trouble on certain OS's (looking at you, Windows!) where background processes can't start their own background processes, or something like that.
-Because I had to move everything into the client, and startup time and performance are both super important, it became imperative that I rewrite the client in a systems programming language like Go.
 
 # Comments?
 
