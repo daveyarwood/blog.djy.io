@@ -117,14 +117,13 @@ lightweight Java client that delegates most of the work to that background
 Clojure process.
 
 In short, I chose to make the architecture more complicated and the user
-experience worse just so that I could continue to develop Alda in Clojure! The
-more time went by, the more dissatisfied I grew with the complex
+experience worse just so that I could continue to develop Alda in Clojure! But
+as time went by, I grew increasingly dissatisfied with the complex
 client/server/worker architecture and the fact that users need to start a server
-before they can do anything useful with Alda. After mulling it over for a long
-time, I finally decided that it would be worth simplifying the architecture so
-that most of the work is being done in the client and rewriting Alda in a
-language that's "closer to the metal," even if it means that I can't develop
-Alda in Clojure anymore.
+before they can do anything useful with Alda. After mulling it over for a while,
+I finally decided that it would be worth simplifying the architecture so that
+most of the work is being done in the client, even if that meant that I had to
+rewrite Alda in a different language.
 
 > As an aside: I'm well aware that nowadays, [GraalVM][graalvm] can be used to
 > compile Clojure programs into fast, self-contained, native binaries. However,
@@ -136,19 +135,18 @@ Alda in Clojure anymore.
 > comfortable using it as the backbone of Alda. (Besides, I've just spent two
 > years rewriting Alda in Go. I'm not in any hurry to rewrite it again!)
 
-So, I had made the decision to rewrite Alda with a primary goal of simplifying
-the architecture so that most of the work was happening in the client, and I'd
-decided that I was alright with writing it in a language other than Clojure.
 Because I was moving everything into the client, and startup time and
 performance are both super important, it became imperative that I rewrite the
 client in a low(-ish) level programming language, one that could produce native
 executables on every platform (at least Windows, macOS and Linux) that start up
 instantly and run fast.
 
-Go is by no means my favorite language (that's a topic for another time!), but
-it proved to be a good pragmatic choice because out of the options that I tested
-(which also included Rust and Crystal), I found Go to be the easiest way to
-create 100% static, cross-platform executables with minimal effort.
+Go is by no means my favorite language (I could say more about what I don't like
+about Go, but that's a topic for another time!), but it proved to be a good
+pragmatic choice because out of the options that I tested, which also included
+Rust and Crystal, Go was the only language that allowed me to create 100%
+static, cross-platform executables without having to jump through a bunch of
+hoops.
 
 I also ended up using Kotlin to write the Alda v2 "player" process, a new
 background process that listens for low-level instructions sent by the Go client
@@ -160,10 +158,9 @@ lot in the way of developer happiness (FP affordances, null safety, terseness,
 actual lambdas, etc.), and it has reasonably good startup time to boot, which
 makes it suitable for writing command line applications.
 
-# Notes
+# alda-clj
 
-* Maybe post a link to my Strange Loop 2019 video at the end.
-  * https://www.youtube.com/watch?v=6hUihVWdgW0
+Notes:
 
 * When I get to the part about talking about reimplementing Alda in Go, I might
   want to mention how I've preserved a couple of important things from Alda v1:
@@ -171,6 +168,11 @@ makes it suitable for writing command line applications.
     * (but now, in other languages too! and with arbitrary dependencies!)
   * The built-in Lisp. (except now I've implemented it myself in Go, and it's
     super duper limited, just the essentials)
+
+# Notes
+
+* Maybe post a link to my Strange Loop 2019 video at the end.
+  * https://www.youtube.com/watch?v=6hUihVWdgW0
 
 # Comments?
 
