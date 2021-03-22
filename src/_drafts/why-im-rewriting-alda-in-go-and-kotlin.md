@@ -169,10 +169,11 @@ Notes:
   * The built-in Lisp. (except now I've implemented it myself in Go, and it's
     super duper limited, just the essentials)
 
-# Notes
-
-* Maybe post a link to my Strange Loop 2019 video at the end.
-  * https://www.youtube.com/watch?v=6hUihVWdgW0
+* Maybe include a link to my Strange Loop 2019 video in this section.
+  * https://youtu.be/6hUihVWdgW0?t=1416
+  * This time marking is where I revealed my decision to move from Clojure to
+    Go+Kotlin, discussed why, and demo'd how I'm still able to write
+    programmatic music in Clojure via alda-clj.
 
 # Comments?
 
