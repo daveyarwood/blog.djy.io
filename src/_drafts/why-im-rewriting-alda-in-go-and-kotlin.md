@@ -160,20 +160,64 @@ makes it suitable for writing command line applications.
 
 # alda-clj
 
-Notes:
+When I rewrote Alda in Go, I was careful to preserve the ability to compose
+music programmatically in Clojure. I achieved this by writing a Clojure library
+([alda-clj]) that provides a Clojure DSL on top of the Alda language. What the
+library does under the hood is dirt simple. A Clojure expression like...
 
-* When I get to the part about talking about reimplementing Alda in Go, I might
-  want to mention how I've preserved a couple of important things from Alda v1:
-  * The ability to compose programmatically in Clojure.
-    * (but now, in other languages too! and with arbitrary dependencies!)
-  * The built-in Lisp. (except now I've implemented it myself in Go, and it's
-    super duper limited, just the essentials)
+{% highlight clojure %}
+(note
+  (pitch :c)
+  (note-length 4))
+{% endhighlight %}
 
-* Maybe include a link to my Strange Loop 2019 video in this section.
-  * https://youtu.be/6hUihVWdgW0?t=1416
-  * This time marking is where I revealed my decision to move from Clojure to
-    Go+Kotlin, discussed why, and demo'd how I'm still able to write
-    programmatic music in Clojure via alda-clj.
+...evaluates to a record that implements a `Stringify` protocol. In other words,
+the value of the expression above is a `Note` record that knows how to represent
+itself as a string of Alda code:
+
+{% highlight clojure %}
+(->str
+  (note
+    (pitch :c)
+    (note-length 4)))
+
+;; evaluates to "c4"
+{% endhighlight %}
+
+These "domain objects" (part declarations, notes, chords, etc.) compose together
+easily, allowing Clojure programmers to construct an Alda score in pure Clojure.
+Then, playing the score is simply a matter of wrapping the objects in a call to
+the `play!` function:
+
+{% highlight clojure %}
+
+(play!
+  (part "piano")
+  (note (pitch :c))
+  (note (pitch :d))
+  (note (pitch :e)))
+{% endhighlight %}
+
+Under the hood, all that's doing is stringifying the domain objects into a
+single string of Alda code (e.g. `c d e `) and piping it into the `alda play`
+command to play it, just like any other Alda score.
+
+There are two wonderful things about this.
+
+First, it means that I get to have my cake and eat it too. I can write Alda in
+the language that it needs to be written in for performance reasons, but I can
+still use Alda as a vehicle for programmatic Clojure music, the same way that I
+always have. (Actually, it's even better now!)
+
+The other thing is that the general pattern that I've come up with here can be
+used to create an Alda DSL in basically _any_ programming language.
+Contributors have created Alda libraries in Ruby ([alda-rb]) and Julia
+([Alda.jl][alda-jl]), and I've even written [a guide][alda-library-guide] to
+help programmers roll their own Alda library for their favorite language. I'm
+excited to see what other libraries people will come up with!
+
+> TODO: Write some kind of summary. Maybe talk about the upcoming Alda v2
+> release and what people can expect.
 
 # Comments?
 
@@ -188,3 +232,7 @@ Reply to [this tweet][tweet] with any comments, questions, etc.!
 [alda-v1-shortcomings]: {% post_url 2020-12-14-alda-and-the-nrepl-protocol %}#shortcomings-of-alda-v1
 [clojure-slow-start]: http://clojure-goes-fast.com/blog/clojures-slow-start/
 [graalvm]: https://www.graalvm.org/
+[alda-clj]: https://github.com/daveyarwood/alda-clj
+[alda-rb]: https://github.com/UlyssesZh/alda-rb
+[alda-jl]: https://github.com/SalchiPapa/Alda.jl
+[alda-library-guide]: https://github.com/alda-lang/alda/blob/master/doc/implementing-an-alda-library.md
