@@ -63,7 +63,7 @@ table, th, td {
 main {
   font-family: $retro-fonts;
   font-size: 17px;
-  line-height: 24px;
+  line-height: 28px;
   min-width: 300px;
   width: 75%;
   margin: 0 auto;
@@ -142,7 +142,7 @@ article {
 
 :not(pre) > code {
   background: $light-gray;
-  padding: 4px;
+  padding: 3.5px;
 }
 
 pre {
