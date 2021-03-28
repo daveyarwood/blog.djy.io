@@ -171,9 +171,10 @@ library does under the hood is dirt simple. A Clojure expression like...
   (note-length 4))
 {% endhighlight %}
 
-...evaluates to a record that implements a `Stringify` protocol. In other words,
+...evaluates to a record that implements a `Stringify` protocol. For example,
 the value of the expression above is a `Note` record that knows how to represent
-itself as a string of Alda code:
+itself as a string of Alda code. And alda-clj provides a `->str` function that
+returns the string of Alda code:
 
 {% highlight clojure %}
 (->str
@@ -210,14 +211,18 @@ still use Alda as a vehicle for programmatic Clojure music, the same way that I
 always have. (Actually, it's even better now!)
 
 The other thing is that the general pattern that I've come up with here can be
-used to create an Alda DSL in basically _any_ programming language.
+used to create an Alda DSL in practically _any_ programming language.
 Contributors have created Alda libraries in Ruby ([alda-rb]) and Julia
 ([Alda.jl][alda-jl]), and I've even written [a guide][alda-library-guide] to
-help programmers roll their own Alda library for their favorite language. I'm
-excited to see what other libraries people will come up with!
+help programmers roll their own Alda library for their favorite language. I
+can't wait to see what other libraries people will come up with!
 
-> TODO: Write some kind of summary. Maybe talk about the upcoming Alda v2
-> release and what people can expect.
+# Alda v2: coming soon!
+
+Hopefully I've made it clear enough why I chose to reimplement Alda in Go and
+Kotlin. I also gave you a little taste of what's to come with the next version
+of Alda, which I'm very excited about. I'll be writing more soon about the
+upcoming release of Alda 2.0, so stay tuned!
 
 # Comments?
 
