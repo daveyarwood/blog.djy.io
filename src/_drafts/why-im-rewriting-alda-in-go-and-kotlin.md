@@ -15,8 +15,8 @@ Over the last 2 years or so, I've been working on a ground-up rewrite of
 [Alda][alda], the music composition programming language that has been my
 passion project since 2012. Now that I'm finally almost done(!) with the rewrite
 and just about ready to release Alda v2 to the world, I figured I should explain
-why, exactly, I made the somewhat surprising decision to rewrite it in Go and
-Kotlin, given that Alda v1 is mostly written in Clojure.
+why I made the somewhat surprising decision to rewrite it in Go and Kotlin,
+given that Alda v1 is mostly written in Clojure.
 
 # Alda and Clojure
 
@@ -103,9 +103,9 @@ One of the major pain points of Alda v1 is that its architecture is rather
 complex, and the burden of that complexity is foisted onto the user. [I wrote
 about this in detail a few months ago][alda-v1-shortcomings], but the short
 version is that Alda v1 does most of its work in background "worker" processes,
-and you can't do anything unless you explicitly start an Alda server first. Alda
-can't even tell you if you have a syntax error unless you first have a server
-running, because even parsing is done in the worker process.
+and you can't do anything useful unless you explicitly start an Alda server
+first. Alda can't even tell you if you have a _syntax error_ unless you first
+have a server running, because even parsing is done in the worker process.
 
 The only reason that I chose to do so much of the work in the worker process
 (and so little in the client) is that [the Clojure runtime is infamously slow to
@@ -125,6 +125,8 @@ I finally decided that it would be worth simplifying the architecture so that
 most of the work is being done in the client, even if that meant that I had to
 rewrite Alda in a different language.
 
+## Why Go?
+
 > As an aside: I'm well aware that nowadays, [GraalVM][graalvm] can be used to
 > compile Clojure programs into fast, self-contained, native binaries. However,
 > at the time when I was beginning the rewrite of Alda and I was deciding which
@@ -135,8 +137,8 @@ rewrite Alda in a different language.
 > comfortable using it as the backbone of Alda. (Besides, I've just spent two
 > years rewriting Alda in Go. I'm not in any hurry to rewrite it again!)
 
-Because I was moving everything into the client, and startup time and
-performance are both super important, it became imperative that I rewrite the
+I wanted to move most of the work into the client, and startup time and
+performance were both super important. It became imperative that I rewrite the
 client in a low(-ish) level programming language, one that could produce native
 executables on every platform (at least Windows, macOS and Linux) that start up
 instantly and run fast.
@@ -144,19 +146,21 @@ instantly and run fast.
 Go is by no means my favorite language (I could say more about what I don't like
 about Go, but that's a topic for another time!), but it proved to be a good
 pragmatic choice because out of the options that I tested, which also included
-Rust and Crystal, Go was the only language that allowed me to create 100%
-static, cross-platform executables without having to jump through a bunch of
-hoops.
+Rust and Crystal, Go was the only language that made it easy for me to create
+100% static, cross-platform executables.
+
+## Why Kotlin?
 
 I also ended up using Kotlin to write the Alda v2 "player" process, a new
 background process that listens for low-level instructions sent by the Go client
 and plays audio using the JVM's MIDI sequencer and synthesizer. I could have
 stuck with Clojure to write this new player process, but I wanted to cut down on
-startup time as much as possible, and Clojure is simply a non-starter in that
-area. When it comes to JVM languages, I'm a big fan of Kotlin, because it does a
-lot in the way of developer happiness (FP affordances, null safety, terseness,
-actual lambdas, etc.), and it has reasonably good startup time to boot, which
-makes it suitable for writing command line applications.
+startup time as much as possible, and Clojure is simply a non-starter (no pun
+intended!) in that area. When it comes to JVM languages, I'm a big fan of
+Kotlin, because it does a lot in the way of developer happiness (FP affordances,
+null safety, terseness, actual lambdas, etc.), and it has reasonably good
+startup time to boot, which makes it well suited for writing command line
+applications.
 
 # alda-clj
 
