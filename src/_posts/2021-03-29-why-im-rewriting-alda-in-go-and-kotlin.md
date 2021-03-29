@@ -232,7 +232,7 @@ upcoming release of Alda 2.0, so stay tuned!
 
 Reply to [this tweet][tweet] with any comments, questions, etc.!
 
-[tweet]: https://twitter.com/dave_yarwood/status/FIXME
+[tweet]: https://twitter.com/dave_yarwood/status/1376511357261086721
 
 [alda]: https://alda.io
 [instaparse]: https://github.com/Engelberg/instaparse
