@@ -162,6 +162,73 @@ null safety, terseness, actual lambdas, etc.), and it has reasonably good
 startup time to boot, which makes it well suited for writing command line
 applications.
 
+## Trade-offs
+
+Switching from Clojure to Go and Kotlin did have some downsides:
+
+* **It took me a long time** (over 2 years, working off and on in my free time
+  outside of work and family responsibilities) to write a complete port of Alda
+  in a new language.
+
+  I could have spent that time implementing one of many feature ideas that I've
+  been wanting to add to Alda for ages, but I felt that it was more important to
+  improve the foundation of the Alda platform before I added even more code that
+  I would eventually need to port.
+
+* **I work comparatively slower in Go and Kotlin than I do in Clojure,** which
+  made the process take even longer. This was largely due to not having as much
+  experience with those languages, compared to Clojure, a language that I've
+  been in love with since 2012, and that I've been using at work since 2014.
+
+  On the other hand, I think pushing myself to write a lot of code in Go and
+  Kotlin has made me a more well-rounded programmer. I can truly say now that I
+  have some real world Go and Kotlin experience, which could very well be useful
+  for me someday when working on other projects.
+
+* **Go makes it hard for me to program the way that I want to.** I think it's
+  fair to say that learning Clojure has warped my brain. Whenever I have to
+  write code in another language, I'm tempted to try to write it in a functional
+  and data-oriented style, or at least as close to that as the language will
+  allow me to get. I've had a pleasant experience with Kotlin in that regard.
+  Thanks to its immutable data structures and other FP goodies available out of
+  the box in the standard library, I didn't need to adjust my thought patterns
+  too much as I was writing the audio engine portion of Alda v2 in Kotlin.
+
+  Go was another beast entirely. The language does have a pretty good story for
+  programming with functions as values and writing code that's oriented around
+  "verbs" (first class functions that compose together) instead of "nouns" (the
+  proliferation of unnecessary classes and objects that you typically see in
+  more OOP-heavy languages like Java). But Go is also an unapologetically
+  imperative language. It's statically typed, but it lacks generics, which can
+  make it difficult sometimes to implement the abstraction that you have in
+  mind.
+
+  At first, I tried to do the sorts of FP things that I do all the time in
+  Clojure-land, like `map` a function over a list, or `filter` a list based on a
+  predicate. But thanks to Go's lack of generics, the closest you can get is to
+  write a function with a very specific type like `MapIntToInt` or
+  `FilterString`. It would be silly to have to implement such a function again
+  and again, every time I needed to do it with a different combination of types.
+  So, I gave up and embraced the Go Way instead, which is to just to use `for`
+  loops and do things imperatively.
+
+  Another thing about Go that I find cumbersome is that there is more ceremony
+  involved in passing data around. In Clojure, the hash map is practically the
+  only data structure you ever need. It's idiomatic (even encouraged!) to add
+  arbitrary data to a map on a whim as the map gets passed around from function
+  to function. In Go, on the other hand, there are maps, but they are homogenous
+  (e.g. the entries in a `map[string]int` must all have string keys and integer
+  values) and if you need to collect together various values of different types,
+  you can define a `struct` that contains the values you need, but you can't add
+  an arbitrary field to an existing struct in the same way that you can use
+  `assoc` in Clojure to add any key-value pair you want into a map.
+
+  At the end of the day, I have found Go to be quite comfortable, and it
+  provides me with a lot of value as a pragmatic choice for writing native,
+  cross-platform CLI applications with minimal toil. I think it's well worth the
+  mental adjustments that I have to make to try and think like a Go programmer
+  instead of a Clojure programmer.
+
 # alda-clj
 
 When I rewrote Alda in Go, I was careful to preserve the ability to compose
