@@ -209,7 +209,7 @@ Switching from Clojure to Go and Kotlin did have some downsides:
   write a function with a very specific type like `MapIntToInt` or
   `FilterString`. It would be silly to have to implement such a function again
   and again, every time I needed to do it with a different combination of types.
-  So, I gave up and embraced the Go Way instead, which is to just to use `for`
+  So, I gave up and embraced the Go Way instead, which is to just use `for`
   loops and do things imperatively.
 
   Another thing about Go that I find cumbersome is that there is more ceremony
