@@ -15,11 +15,11 @@ redirect_from: '/alda/2015/09/05/alda-a-manifesto-and-gentle-introduction/'
 
 # What is Alda?
 
-<img src="{{site.url}}/assets/2015-08-18-alda.png"
-     alt="alda"
-     title="alda"
-     width="600"
-     height="300" />
+<center>
+<img src="{{ site.url }}/assets/2021-04-11-alda-repl-screenshot.png"
+     title="Alda REPL screenshot"
+     width="50%">
+</center>
 
 Alda's ambition is to be a powerful and flexible music programming language that can be used to create music in a variety of genres by typing some code into a text editor and running a program that compiles the code and turns it into sound. I've put a lot of thought into making the syntax as intuitive and beginner-friendly as possible. In fact, one of the goals of Alda is to be simple for someone with little-to-no programming experience to pick up and start using. Alda's tagline, *a music programming language for musicians*, conveys its goal of being useful to non-programmers.
 
