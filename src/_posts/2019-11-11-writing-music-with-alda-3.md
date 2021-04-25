@@ -64,7 +64,7 @@ between C and D is labeled C# (C-sharp) and Db (D-flat).
 So, C# is one semitone higher than C. And Db is one semitone lower than D. They
 sound exactly the same:
 
-{% highlight text %}
+{% highlight alda %}
 piano: c+ d-
 {% endhighlight %}
 
@@ -84,7 +84,7 @@ of flats, and when you're moving downward, you spell the notes using flats.
 
 To illustrate this, here is a chromatic scale going up and then down:
 
-{% highlight text %}
+{% highlight alda %}
 piano:
   o4
   c8 c+ d d+ e f f+ g g+ a a+ b >
@@ -104,7 +104,7 @@ You might now be tempted to think that "there is no such thing as B#, E#, Cb or
 Fb." We rarely see these notes, but they do, in fact, exist! They are just
 different enharmonic spellings of C, F, B, and E, respectively.
 
-{% highlight text %}
+{% highlight alda %}
 piano:
   o4
   b+ c
@@ -127,7 +127,7 @@ can write music in different keys other than C major / A minor.
 In [Writing music with Alda #1][wmwa1], I alluded to the fact that the C major
 and A minor scales are played by only using the white key notes:
 
-{% highlight text %}
+{% highlight alda %}
 piano:
   # C major
   o4 c8 d e f g a b > c2
@@ -151,7 +151,7 @@ probably know exactly which two notes should have a sharp: F and C.
 
 Here is a D major scale. Note that instead of F and C, we have F# and C#:
 
-{% highlight text %}
+{% highlight alda %}
 piano:
   o4 d8 e f+ g a b > c+ d2
 {% endhighlight %}
@@ -159,10 +159,51 @@ piano:
 As another example, here is an F major scale. The key signature for F major has
 **1 flat**, so every B becomes Bb:
 
-{% highlight text %}
+{% highlight alda %}
 piano:
   o3 f8 g a b- > c d e f2
 {% endhighlight %}
+
+## `key-signature`
+
+But let's say that you're _not_ a classically trained musician. How are you
+supposed to know which notes are flat and sharp in order for the music that
+you're writing to be in a particular key?
+
+Alda has you covered.
+
+There is a `key-signature` (or `key-sig`, for short) attribute that you can use
+that will automatically make all of the right notes flat or sharp for you.
+
+> Any attribute in Alda can be made "global" (i.e. affecting _all_ instruments,
+> not just the current one) by adding a `!` onto the end. This is an especially
+> good thing to do for attributes like `tempo` and `key-sig` that are usually
+> shared between all of the instruments in the score. If a piece of music is in
+> Db major, then you'll probably want all of the instruments to adopt that key
+> signature.
+>
+> This is why, in the example below, we are using `key-sig!` instead of
+> `key-sig`.
+
+Notice how these two examples sound different:
+
+{% highlight alda %}
+piano:
+  (key-sig! '(c major))
+  o4 e8 f g a b > c d e
+{% endhighlight %}
+
+And:
+
+{% highlight alda %}
+piano:
+  (key-sig! '(e flat major))
+  o4 e8 f g a b > c d e
+{% endhighlight %}
+
+In both examples, we've written the notes out the same way, but in the second
+example, we've set the key signature to Eb major, which automatically turns all
+of the B's, E's, and A's into Bb's, Eb's, and Ab's.
 
 # Exercises
 
@@ -174,7 +215,10 @@ piano:
    up to the F in the next octave up, then coming back down to F.
 
 4. Play an E major scale. The key signature of E major has 4 sharps: F, C, G,
-   and D.
+   and D. Do _not_ use the `key-signature` attribute.
+
+5. Play an E major scale again, but this time, don't write any of the sharps by
+   hand. Use `key-signature` to set the key signature to E major.
 
 # Comments?
 

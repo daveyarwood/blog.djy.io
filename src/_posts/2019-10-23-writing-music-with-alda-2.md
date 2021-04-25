@@ -24,7 +24,7 @@ making the notes longer or shorter.
 Listen to this example, where we're playing the note C a bunch of times, with
 descending note lengths tacked on after each `c`:
 
-{% highlight text %}
+{% highlight alda %}
 piano: c10 c9 c8 c7 c6 c5 c4 c3 c2 c1
 {% endhighlight %}
 
@@ -63,7 +63,7 @@ would also last the same amount of time, so we know how long a "fifth note"
 should be. It's a little faster than a quarter note, fast enough so that if you
 play five of them back to back, it lasts as long as a whole note.
 
-{% highlight text %}
+{% highlight alda %}
 piano:
   # 4 quarter notes = 1 whole note
   c4 c c c c1
@@ -98,7 +98,7 @@ To make this a little more concrete, let's talk about rock drums for a bit.
 
 Here is a minimal drum pattern:
 
-{% highlight text %}
+{% highlight alda %}
 percussion:
   o2 c4 d c d
 {% endhighlight %}
@@ -124,7 +124,7 @@ Now, let's take the example above and repeat it several times. **In 4/4, each
 group of four beats is one measure**, so we'll put each measure on a separate
 line so that we can easily see where the measures are:
 
-{% highlight text %}
+{% highlight alda %}
 percussion:
   o2
   c4 d c d
@@ -145,7 +145,7 @@ So, the drum pattern is:
 
 Here's a slightly more complex example:
 
-{% highlight text %}
+{% highlight alda %}
 percussion:
   o2
   c4 d c8 c d4

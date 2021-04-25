@@ -11,6 +11,14 @@ published: true
 
 {% include JB/setup %}
 
+> NOTE: Alda 2.0.0 was released in Spring 2021. It was a [total rewrite from the
+> ground up in Go and Kotlin][why-rewrite]. As a consequence, a lot of the
+> information below about the Clojure internals of Alda (v1) is no longer
+> relevant!
+>
+> In 2018, Dave released the [alda-clj] library, which is the new recommended
+> way to write/generate Alda scores in Clojure.
+
 # A more FP-friendly Alda
 
 Just recently, I rewrote a big chunk of the [Alda](https://github.com/alda-lang/alda) codebase; the result is something I'm a lot happier with, as a [Clojure](http://clojure.org) programmer. Clojure is a language that encourages programming in a [functional](https://en.wikipedia.org/wiki/Functional_programming) style, minimizing the need to keep track of the state of variables and reliance upon unpredictable side effects.
@@ -498,3 +506,6 @@ command-line executable on GitHub, [I also upload the package to
 Clojars](https://clojars.org/alda). So, if any of this stuff interests you, I
 encourage you to add `alda` as a dependency with your favorite [Clojure
 build tool](http://boot-clj.com) and play around with it. Have fun!
+
+[why-rewrite]: {% post_url 2021-03-29-why-im-rewriting-alda-in-go-and-kotlin %}
+[alda-clj]: https://github.com/daveyarwood/alda-clj

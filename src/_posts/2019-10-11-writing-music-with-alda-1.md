@@ -33,31 +33,42 @@ installed, make sure you're using the latest version by running `alda update`.
 If you've done this properly, you should be able to run `alda version` in your
 terminal and see output like the following:
 
-{% highlight shell %}
+{% highlight text %}
 $ alda version
-Client version: 1.3.3
-Server version: [27713] 1.3.3
-
-# If you see an error message about the server being down...
-$ alda version
-Client version: 1.3.3
-Server version: [27713] ERROR Alda server is down. To start the server, run `alda up`.
-
-# ...start the server by running `alda up`, and you'll be good to go.
-$ alda up
-[27713] Starting Alda server...
-[27713] Server up ✓
-[27713] Starting worker processes...
-[27713] Ready ✓
-
-$ alda version
-Client version: 1.3.3
-Server version: [27713] 1.3.3
+alda 2.0.0
 {% endhighlight %}
 
-I recommend installing a good, free MIDI soundfont, [as described here in the
-Alda README][midi-soundfont]. The sound quality will be noticeably better, and
-so will the music that you write!
+You can also run `alda doctor`, which will perform some health checks and verify
+that Alda is able to work properly on your system:
+
+{% highlight text %}
+$ alda doctor
+OK  Parse source code
+OK  Generate score model
+OK  Find an open port
+OK  Send and receive OSC messages
+OK  Locate alda-player executable on PATH
+OK  Check alda-player version
+OK  Spawn a player process
+OK  Ping player process
+OK  Play score
+OK  Export score as MIDI
+OK  Locate player logs
+OK  Player logs show the ping was received
+OK  Shut down player process
+OK  Spawn a player on an unknown port
+OK  Discover the player
+OK  Ping the player
+OK  Shut the player down
+OK  Start a REPL server
+nREPL server started on port 39237 on host localhost - nrepl://localhost:39237
+OK  Interact with the REPL server
+{% endhighlight %}
+
+I also recommend installing a good, free MIDI soundfont, [as described
+here][midi-soundfont]. The sound quality will be noticeably better, and so will
+the music that you write!
+
 
 # Following along
 
@@ -75,6 +86,7 @@ start a REPL session, run `alda repl`:
 
 {% highlight text %}
 $ alda repl
+nREPL server started on port 35053 on host localhost - nrepl://localhost:35053
  █████╗ ██╗     ██████╗  █████╗
 ██╔══██╗██║     ██╔══██╗██╔══██╗
 ███████║██║     ██║  ██║███████║
@@ -82,19 +94,20 @@ $ alda repl
 ██║  ██║███████╗██████╔╝██║  ██║
 ╚═╝  ╚═╝╚══════╝╚═════╝ ╚═╝  ╚═╝
 
-             1.3.3
-         repl session
+    Client version: 2.0.0
+    Server version: 2.0.0
 
 Type :help for a list of available commands.
 
->
+Starting player processes...
+alda>
 {% endhighlight %}
 
 You can now enter Alda code, line by line, and each time you press Enter, the
 line of code that you entered is played back.
 
 {% highlight text %}
-> piano: c
+alda> piano: c
 {% endhighlight %}
 
 ## Text editor + terminal
@@ -114,8 +127,8 @@ $ alda play -f ~/test.alda
 
 ## Text editor plugin
 
-There are [Alda plugins available for a handful of text editors][alda-plugins].
-The Vim and Emacs plugins, in particular, give you the ability to play back the
+There are [Alda plugins available for various text editors][alda-plugins].  The
+Vim and Emacs plugins, in particular, give you the ability to play back the
 contents of your file (or just parts of it, e.g. what you have currently
 selected) just by pressing a couple of keys.
 
@@ -138,7 +151,7 @@ where to find "middle C" on the keyboard.
 
 To play middle C in Alda, switch to the fourth octave (`o4`) and play `c`:
 
-{% highlight text %}
+{% highlight alda %}
 # Middle C
 piano: o4 c
 {% endhighlight %}
@@ -148,7 +161,7 @@ piano: o4 c
 This is only one instance of the note "C." There are other C's on the piano;
 they sound just like middle C, but they are in a lower or higher octave.
 
-{% highlight text %}
+{% highlight alda %}
 # C3 (one octave below middle C)
 piano: o3 c
 
@@ -169,7 +182,7 @@ this and you know, please enlighten me!)
 If you start at C and make your way up the keyboard (C, D, E, F...), you're
 playing a **C major scale**.
 
-{% highlight text %}
+{% highlight alda %}
 piano: c d e f g a b
 {% endhighlight %}
 
@@ -179,14 +192,14 @@ comes A; A is _higher_ than G.
 At this point, we've just played a B, and the next note up is a C. So, if we
 started in octave 4, then this next C is the start of octave 5.
 
-{% highlight text %}
+{% highlight alda %}
 piano: o4 c d e f g a b o5 c
 {% endhighlight %}
 
 Alda has a "next octave up" operator (`>`) that lets you say the same thing in a
 different way:
 
-{% highlight text %}
+{% highlight alda %}
 # start in octave 4 (o4), switch to octave 5 (o5)
 piano: o4 c d e f g a b o5 c
 
@@ -221,6 +234,6 @@ Reply to [this tweet][tweet] with any comments, questions, etc.!
 [tweet]: https://twitter.com/dave_yarwood/status/1182625166414798848
 
 [alda]: https://alda.io
-[install-alda]: https://github.com/alda-lang/alda#installation
-[midi-soundfont]: https://github.com/alda-lang/alda#midi-soundfonts
-[alda-plugins]: https://github.com/alda-lang/alda#editor-plugins
+[install-alda]: https://alda.io/install
+[midi-soundfont]: https://github.com/alda-lang/alda/blob/master/doc/installing-a-good-soundfont.md
+[alda-plugins]: https://github.com/alda-lang/alda/blob/master/doc/editor-plugins.md

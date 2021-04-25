@@ -54,7 +54,7 @@ piano:
   e400ms
 {% endhighlight %}
 
-## CRAM
+## "Cramming" notes
 
 Notes can also be "crammed" evenly into exact note lengths.
 
@@ -70,7 +70,7 @@ You can also include note-lengths on the notes *inside* of a cram, which will ha
 {c d e}2 {c2 d4 e} {c1 d4 e}
 {% endhighlight %}
 
-See the Alda docs for [more information about CRAM][cram].
+See the Alda docs for [more information about cram expressions][cram].
 
 # Repeats
 
@@ -89,6 +89,11 @@ Events can also be grouped together inside of square brackets and repeated:
 {% endhighlight %}
 
 # Inline Clojure Code
+
+> NOTE: This feature was removed in Alda v2.
+>
+> There is now a [separate library][alda-clj] for algorithmic composition and
+> live coding Alda scores in Clojure.
 
 Alda now supports writing [Clojure][clojure] code alongside Alda code in a score. Any code placed between parentheses in an Alda score is read and evaluated as a Clojure S-expression. Here's a simple example:
 
@@ -174,8 +179,9 @@ The most exciting features are [yet to come][todo] -- stay tuned for more update
 [og-blog-post]: {% post_url 2015-09-05-alda-a-manifesto-and-gentle-introduction %}
 [alda]: https://github.com/alda-lang/alda
 [contributors]: https://github.com/alda-lang/alda/graphs/contributors
-[cram]: https://github.com/alda-lang/alda/blob/master/doc/cram.md
+[cram]: https://github.com/alda-lang/alda/blob/master/doc/cram-expressions.md
 [clojure]: http://clojure.org
 [robust-repl]: https://github.com/alda-lang/alda/issues/54
 [todo]: https://github.com/alda-lang/alda#todo
 [contributing]: https://github.com/alda-lang/alda/blob/master/CONTRIBUTING.md
+[alda-clj]: https://github.com/daveyarwood/alda-clj
