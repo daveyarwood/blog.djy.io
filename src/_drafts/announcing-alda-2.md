@@ -33,7 +33,7 @@ I couldn't be happier to finally share it with everyone!
 
 I hope you enjoy this next generation of Alda, and that you're as excited about
 the future of Alda as I am. If you'd like, you can join our [Slack
-group][alda-slack] and let us know what you think of Alda v2. I'd love to hear
+group][alda-slack] and let us know what you think of Alda 2. I'd love to hear
 your thoughts!
 
 Finally, I should mention that if you enjoy my work on Alda, you can choose to
