@@ -112,7 +112,7 @@ anything that Netlify couldn't handle for me in a much better way, and for free.
 
 Lately, though, I have been using DigitalOcean again, to host an actual web
 application. I built an API to provide information about new [Alda][alda]
-releases, as part of the ground-up rewrite (Alda v2) that I've been working on
+releases, as part of the ground-up rewrite (Alda 2) that I've been working on
 over the last couple of years.
 
 There are two components to the Alda Releases API: the API server and the asset

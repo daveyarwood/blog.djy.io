@@ -90,7 +90,7 @@ Events can also be grouped together inside of square brackets and repeated:
 
 # Inline Clojure Code
 
-> NOTE: This feature was removed in Alda v2.
+> NOTE: This feature was removed in Alda 2.
 >
 > There is now a [separate library][alda-clj] for algorithmic composition and
 > live coding Alda scores in Clojure.

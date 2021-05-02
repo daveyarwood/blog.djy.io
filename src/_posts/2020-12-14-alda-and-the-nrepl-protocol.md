@@ -12,7 +12,7 @@ published: true
 
 {% include JB/setup %}
 
-As you may have heard, I have been busy, working on Alda v2, a ground-up rewrite
+As you may have heard, I have been busy, working on Alda 2, a ground-up rewrite
 of [Alda][alda-website] using Go and Kotlin. As part of this project, I have
 re-thought the Alda REPL experience to make it closer in spirit to the
 [nREPL][nrepl] experience that I've been enjoying as a Clojure programmer.
@@ -33,15 +33,15 @@ clients and REPL servers. I had read that nREPL is a language-agnostic protocol
 (i.e. not specific to Clojure) and that it has been used to successfully
 implement [nREPL servers for other languages][nrepl-beyond-clojure]. So, I
 decided to try my hand at using the nREPL protocol as the basis for a new,
-improved Alda v2 REPL experience.
+improved Alda 2 REPL experience.
 
-# Shortcomings of Alda v1
+# Shortcomings of Alda 1
 
-The current version of Alda (v1) actually has a client/server architecture
+The current version of Alda (Alda 1) actually has a client/server architecture
 already. To start the server, you run `alda up`, and to start a REPL client
 session, you run `alda repl`.
 
-I realized, however, that the Alda v1 client/server idea extends a little too
+I realized, however, that the client/server idea in Alda 1 extends a little too
 far into user-land. The end user is forced to worry about whether or not a
 server is running, even outside of the context of a REPL session when they just
 want to perform basic evaluations at the command line.
@@ -64,21 +64,21 @@ work that it does without needing to talk to a server at all. For example, the
 `alda` CLI should be able to tell me if my score has a syntax error without
 needing to talk to a background process.
 
-So, I've implemented it that way for Alda v2, and now I feel like the basic,
+So, I've implemented it that way for Alda 2, and now I feel like the basic,
 everyday usage of the Alda CLI is much more comfortable and satisfying! When
-Alda v2 is released, users will no longer need to know about Alda's background
+Alda 2 is released, users will no longer need to know about Alda's background
 processes at all. After downloading and installing Alda, users can run `alda
 play -c 'some code'` or `alda play -f some-file.alda` whenever the inspiration
 strikes them and Alda will play their score, even though they never ran `alda
-up` (a command that no longer exists in Alda v2). There are still background
+up` (a command that no longer exists in Alda 2). There are still background
 processes out of necessity (an important goal of Alda is that playback is
 asynchronous), but now, the processes are entirely managed "behind the scenes"
 by Alda.
 
-# The Alda v2 REPL
+# The Alda 2 REPL
 
-Whereas the Alda v1 REPL requires you to start an Alda server first (`alda up`),
-the Alda v2 REPL automatically starts a REPL server for you when you run `alda
+Whereas the Alda 1 REPL requires you to start an Alda server first (`alda up`),
+the Alda 2 REPL automatically starts a REPL server for you when you run `alda
 repl`. The interactive REPL session feels a lot like the command line `alda play
 -c '...'` experience, except that the REPL remembers the context of your
 previous evaluations. For example, if you evaluate the following line of code:
@@ -96,7 +96,7 @@ g
 
 You will hear the note G, still on an accordion, still in the fifth octave.
 
-The Alda v2 REPL loads instantaneously, and you can immediately start entering
+The Alda 2 REPL loads instantaneously, and you can immediately start entering
 lines of input into your REPL session after you run `alda repl`. It doesn't
 _feel_ like a client/server setup, but under the hood, it is.
 
@@ -118,7 +118,7 @@ contributions and hearing them played together.
 Just talking about this is giving me goosebumps! I hope that someday, I can make
 this dream of live, collaborative Alda programming a reality. But for now, I'd
 like to talk a little more about the nREPL protocol and the fun that I had
-implementing it for Alda v2.
+implementing it for Alda 2.
 
 # The nREPL protocol
 

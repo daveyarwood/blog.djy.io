@@ -14,9 +14,9 @@ published: true
 Over the last 2 years or so, I've been working on a ground-up rewrite of
 [Alda][alda], the music composition programming language that has been my
 passion project since 2012. Now that I'm finally almost done(!) with the rewrite
-and just about ready to release Alda v2 to the world, I figured I should explain
+and just about ready to release Alda 2 to the world, I figured I should explain
 why I made the somewhat surprising decision to rewrite it in Go and Kotlin,
-given that Alda v1 is mostly written in Clojure.
+given that Alda 1 is mostly written in Clojure.
 
 # Alda and Clojure
 
@@ -58,8 +58,8 @@ piano:
   c d e f g
 {% endhighlight %}
 
-In Alda v1, you can also write your scores (either partially or completely)
-using a Clojure DSL:
+In Alda 1, you can also write your scores (either partially or completely) using
+a Clojure DSL:
 
 {% highlight clojure %}
 piano:
@@ -97,12 +97,12 @@ programmatically by writing Clojure code within an Alda score.
 
 So why, then, did I decide to do a total rewrite of Alda in Go?
 
-# Alda v2
+# Alda 2
 
-One of the major pain points of Alda v1 is that its architecture is rather
+One of the major pain points of Alda 1 is that its architecture is rather
 complex, and the burden of that complexity is foisted onto the user. [I wrote
-about this in detail a few months ago][alda-v1-shortcomings], but the short
-version is that Alda v1 does most of its work in background "worker" processes,
+about this in detail a few months ago][alda-1-shortcomings], but the short
+version is that Alda 1 does most of its work in background "worker" processes,
 and you can't do anything useful unless you explicitly start an Alda server
 first. Alda can't even tell you if you have a _syntax error_ unless you first
 have a server running, because even parsing is done in the worker process.
@@ -151,7 +151,7 @@ Rust and Crystal, Go was the only language that made it easy for me to create
 
 ## Why Kotlin?
 
-I also ended up using Kotlin to write the Alda v2 "player" process, a new
+I also ended up using Kotlin to write the Alda 2 "player" process, a new
 background process that listens for low-level instructions sent by the Go client
 and plays audio using the JVM's MIDI sequencer and synthesizer. I could have
 stuck with Clojure to write this new player process, but I wanted to cut down on
@@ -192,7 +192,7 @@ Switching from Clojure to Go and Kotlin did have some downsides:
   allow me to get. I've had a pleasant experience with Kotlin in that regard.
   Thanks to its immutable data structures and other FP goodies available out of
   the box in the standard library, I didn't need to adjust my thought patterns
-  too much as I was writing the audio engine portion of Alda v2 in Kotlin.
+  too much as I was writing the audio engine portion of Alda 2 in Kotlin.
 
   Go was another beast entirely. The language does have a pretty good story for
   programming with functions as values and writing code that's oriented around
@@ -288,7 +288,7 @@ Contributors have created Alda libraries in Ruby ([alda-rb]) and Julia
 help programmers roll their own Alda library for their favorite language. I
 can't wait to see what other libraries people will come up with!
 
-# Alda v2: coming soon!
+# Alda 2: coming soon!
 
 Hopefully I've made it clear enough why I chose to reimplement Alda in Go and
 Kotlin. I also gave you a little taste of what's to come with the next version
@@ -305,7 +305,7 @@ Reply to [this tweet][tweet] with any comments, questions, etc.!
 [instaparse]: https://github.com/Engelberg/instaparse
 [jvm-synth]: https://docs.oracle.com/javase/7/docs/api/javax/sound/midi/Synthesizer.html
 [jvm-sequencer]: https://docs.oracle.com/javase/7/docs/api/javax/sound/midi/Sequencer.html
-[alda-v1-shortcomings]: {% post_url 2020-12-14-alda-and-the-nrepl-protocol %}#shortcomings-of-alda-v1
+[alda-1-shortcomings]: {% post_url 2020-12-14-alda-and-the-nrepl-protocol %}#shortcomings-of-alda-1
 [clojure-slow-start]: http://clojure-goes-fast.com/blog/clojures-slow-start/
 [graalvm]: https://www.graalvm.org/
 [alda-clj]: https://github.com/daveyarwood/alda-clj
