@@ -12,8 +12,8 @@ published: true
 I have a love/hate relationship with Bash.
 
 It's a quirky little language with many subtleties that make it easy to make
-mistakes. Programmers who write Bash scripts are constantly discovering bugs in
-their scripts related to getting some obscure syntax wrong, using quotes
+mistakes. It's not uncommon for programmers writing Bash scripts to discover
+bugs in their scripts related to getting some obscure syntax wrong, using quotes
 incorrectly, platform or shell compatibility issues, mishandling errors, etc.
 
 On the other hand, Bash is ubiquitous, and it's a great "glue language" for
@@ -24,10 +24,9 @@ idea; you can use a single `|` character to pass the output of one command into
 the next command as input, and loads of CLI utilities are written with the goal
 of being a useful participant in these pipelines.
 
-> ... but the quirks are unfortunate and significant, so my goal with this blog
-> post is to help you avoid the quirks, etc.
->
-> reword the above, it's just off the top of my head at the moment
+As great as these strengths of Bash are, the aforementioned quirks are
+unfortunate and significant. My goal with this blog post is to get you better
+acquainted with these quirks and show you how to avoid them.
 
 # Comments?
 
