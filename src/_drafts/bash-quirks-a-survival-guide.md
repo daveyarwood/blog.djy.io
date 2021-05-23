@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Bash survival guide"
+title: "Bash quirks: a survival guide"
 tags:
   - bash
   - unix
@@ -26,7 +26,8 @@ of being a useful participant in these pipelines.
 
 As great as these strengths of Bash are, the aforementioned quirks are
 unfortunate and significant. My goal with this blog post is to get you better
-acquainted with these quirks and show you how to avoid them.
+acquainted with the weirdisms of Bash and show you how to either work with or
+avoid them.
 
 # Comments?
 
