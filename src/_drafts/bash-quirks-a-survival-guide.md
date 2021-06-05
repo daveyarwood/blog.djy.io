@@ -46,7 +46,7 @@ This works, but only if you happen to have Bash installed at `/bin/bash`.
 Depending on the operating system and distribution of the person running your
 script, that might not necessarily be true!
 
-The better thing to do is to use `env`, a little program that finds an
+The better thing to do is to use `env`, a program that finds an
 executable on the user's `PATH` (wherever that may be) and runs it. `env` is
 basically _always_ reliably located in the `/usr/bin` folder, so we can assume
 that `/usr/bin/env` is there for us to use.
@@ -85,6 +85,57 @@ Hello world!
 $ ./my-script.sh
 Hello world!
 {% endhighlight %}
+
+## Quirk 2: variable definition syntax
+
+Unlike in most other programming languages, when you define a variable in Bash,
+you _must not_ include spaces around the variable name.
+
+{% highlight bash %}
+# Error: "vegetable: command not found"
+vegetable = 'broccoli'
+
+# OK
+vegetable='broccoli'
+{% endhighlight %}
+
+## Quirk 3: quoting
+
+I would guess that the majority of bugs in Bash scripts are related in some way
+to quoting.
+
+Inside of _double quotes_, the dollar sign (`$`) can be used to insert variable
+values into the string:
+
+{% highlight bash %}
+vegetable='broccoli'
+
+# Prints: My favorite vegetable is broccoli
+echo "My favorite vegetable is $vegetable"
+{% endhighlight %}
+
+If your intention is to use a literal dollar sign, you must remember to escape
+it with a backslash:
+
+{% highlight bash %}
+# Prints: This broccoli costs .99
+# (Whoops, Bash interpreted $1 as a variable!)
+echo "This broccoli costs $1.99"
+
+# Prints: This broccoli costs $1.99
+echo "This broccoli costs \$1.99"
+{% endhighlight %}
+
+Or you can use _single quotes_, which don't expand variables:
+
+{% highlight bash %}
+# Prints: This broccoli costs $1.99
+echo 'This broccoli costs $1.99'
+{% endhighlight %}
+
+## Quirk 4: unbound variables
+
+$todo
 
 # Comments?
 
