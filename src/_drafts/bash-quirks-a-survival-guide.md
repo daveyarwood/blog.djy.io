@@ -93,10 +93,10 @@ you _must not_ include spaces around the variable name.
 
 {% highlight bash %}
 # Error: "vegetable: command not found"
-vegetable = 'broccoli'
+vegetable = "broccoli"
 
 # OK
-vegetable='broccoli'
+vegetable="broccoli"
 {% endhighlight %}
 
 ## Quirk 3: quoting
@@ -104,11 +104,11 @@ vegetable='broccoli'
 I would guess that the majority of bugs in Bash scripts are related in some way
 to quoting.
 
-Inside of _double quotes_, the dollar sign (`$`) can be used to insert variable
-values into the string:
+Inside of _double quotes_, a dollar sign (`$`) can be used to insert a variable
+value into a string:
 
 {% highlight bash %}
-vegetable='broccoli'
+vegetable="broccoli"
 
 # Prints: My favorite vegetable is broccoli
 echo "My favorite vegetable is $vegetable"
@@ -135,7 +135,65 @@ echo 'This broccoli costs $1.99'
 
 ## Quirk 4: unbound variables
 
-$todo
+You can trust most language runtimes to explode if you mistype the name of a
+variable. For example, if you attempt to run this Ruby program:
+
+{% highlight ruby %}
+food = "broccoli"
+
+puts "My favorite food is #{fodo}"
+{% endhighlight %}
+
+The Ruby interpreter helpfully returns a non-zero exit code to indicate failure,
+and it is clear from the output what you did wrong:
+
+{% highlight text %}
+Traceback (most recent call last):
+/tmp/food.rb:3:in `<main>': undefined local variable or method `fodo' for main:Object (NameError)
+Did you mean?  food
+{% endhighlight %}
+
+However, in Bash, the default behavior is to treat every undefined variable as
+if its value is an empty string. So if you run this Bash program:
+
+{% highlight bash %}
+food="broccoli"
+
+echo "My favorite food is $fodo"
+{% endhighlight %}
+
+The Bash interpreter returns the exit code 0 (indicating success) and prints the
+following:
+
+{% highlight text %}
+My favorite food is
+{% endhighlight %}
+
+This behavior is sort of annoying, because it makes it way too easy to write
+Bash scripts that have subtle bugs where a variable that you thought had a value
+turns out to be an empty string because you mistyped the variable name.
+
+> On the other hand, there are actually occasions when it is _useful_ for Bash
+> to treat undefined variables as empty strings, but I won't get into that here.
+
+The good news is that there is an option (`set -u`) that you can enable to make
+Bash behave more like other programming languages and throw an error if you
+attempt to use a variable that hasn't been defined:
+
+{% highlight bash %}
+set -u
+
+food="broccoli"
+
+echo "My favorite food is $fodo"
+{% endhighlight %}
+
+Running the above Bash program results in an exit code of 1 (indicating failure)
+and prints the following:
+
+{% highlight text %}
+/tmp/food.sh: line 5: fodo: unbound variable
+{% endhighlight %}
 
 # Comments?
 
