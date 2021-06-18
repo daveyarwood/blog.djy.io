@@ -99,7 +99,7 @@ vegetable = "broccoli"
 vegetable="broccoli"
 {% endhighlight %}
 
-## Quirk 3: quoting
+## Quirk 3: single vs. double quotes
 
 I would guess that the majority of bugs in Bash scripts are related in some way
 to quoting.
@@ -169,9 +169,9 @@ following:
 My favorite food is
 {% endhighlight %}
 
-This behavior is sort of annoying, because it makes it way too easy to write
-Bash scripts that have subtle bugs where a variable that you thought had a value
-turns out to be an empty string because you mistyped the variable name.
+This behavior is sort of annoying, because it makes it way too easy for you to
+write Bash scripts that have subtle bugs where a variable that you thought had a
+value turns out to be an empty string because you mistyped the variable name.
 
 > On the other hand, there are actually occasions when it is _useful_ for Bash
 > to treat undefined variables as empty strings, but I won't get into that here.
@@ -194,6 +194,57 @@ and prints the following:
 {% highlight text %}
 /tmp/food.sh: line 5: fodo: unbound variable
 {% endhighlight %}
+
+## Quirk 5: stdout and stderr
+
+Up until now, I've been saying "quirk" like it's a bad thing. But some of Bash's
+quirks are actually awesome because they allow you to do things easily that are
+more cumbersome to do in other languages.
+
+Unlike functions in other languages, Bash functions don't really have concrete
+return values. Instead, Bash implements an idea from the Unix philosophy that
+the output of any program can be the input of another. The standard I/O is a
+_data stream_, which, for practical purposes, we can think of as lines of text.
+
+So, in Bash, a function, command or process does not really return a value; it
+_prints something to standard out (stdout)_. Other functions or commands can
+read that output and do other things with it, like print it out, capture it in a
+file or variable, pipe it into some other process, etc.
+
+For example, the `ls` command lists the names of files in a particular
+directory. It prints each file name to stdout:
+
+{% highlight text %}
+$ ls ~/recipes
+beef-and-broccoli.txt
+broccoli-cheese-casserole.txt
+eggplant-parmesan.txt
+garlic-parmesan-roasted-broccoli.txt
+taco-salad.txt
+{% endhighlight %}
+
+You can use `|` to pipe stdout into another process or command. The `grep`
+command can be used to filter out any lines of text that don't contain a
+particular string. So, you could find only recipes with "broccoli" in the file
+name by piping the stdout of the `ls` command above into `grep`:
+
+{% highlight text %}
+$ ls ~/recipes | grep broccoli
+beef-and-broccoli.txt
+broccoli-cheese-casserole.txt
+garlic-parmesan-roasted-broccoli.txt
+{% endhighlight %}
+
+There is another standard data stream called _stderr_ that, despite the name, is
+not necessarily just for error messages, although that is one way to use it.
+stderr is a stream where you can print user-facing messages without them
+accidentally being interpreted as _output data_ to be read by the next process
+in the pipeline.
+
+{% highlight bash %}
+todo: example
+{% endhighlight %}
+
 
 # Comments?
 
