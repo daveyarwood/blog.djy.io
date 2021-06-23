@@ -136,7 +136,8 @@ echo 'This broccoli costs $1.99'
 ## Quirk 4: unbound variables
 
 You can trust most language runtimes to explode if you mistype the name of a
-variable. For example, if you attempt to run this Ruby program:
+variable. That's what you _want_ to happen. For example, if you attempt to run
+this Ruby program:
 
 {% highlight ruby %}
 food = "broccoli"
@@ -197,10 +198,6 @@ and prints the following:
 
 ## Quirk 5: stdout and stderr
 
-Up until now, I've been saying "quirk" like it's a bad thing. But some of Bash's
-quirks are actually awesome because they allow you to do things easily that are
-more cumbersome to do in other languages.
-
 Unlike functions in other languages, Bash functions don't really have concrete
 return values. Instead, Bash implements an idea from the Unix philosophy that
 the output of any program can be the input of another. The standard I/O is a
@@ -236,15 +233,56 @@ garlic-parmesan-roasted-broccoli.txt
 {% endhighlight %}
 
 There is another standard data stream called _stderr_ that, despite the name, is
-not necessarily just for error messages, although that is one way to use it.
-stderr is a stream where you can print user-facing messages without them
+not necessarily just for error messages, although that is a common way to use
+it.  stderr is a stream where you can print user-facing messages without them
 accidentally being interpreted as _output data_ to be read by the next process
 in the pipeline.
 
+The syntax for "redirecting" some output to stderr is `>&2`. `>` means "pipe
+stdout into" whatever is on the right, which could be a file, etc., and `&2` is
+a reference to "file descriptor #2" which is stderr.
+
+To better illustrate the difference between stdout and stderr, here is a code
+example with a function that prints a message to stderr for informational
+purposes (to tell the user that some work is happening), and then, after the
+work is done (simulated by a 2 second pause), the output data is printed to
+stdout.
+
+Then, we call our function and capture its output into a variable. When we print
+the variable's value at the end, we can see that the value is only the stdout
+from the function, and not the stderr (which was only printed for informational
+purposes).
+
 {% highlight bash %}
-todo: example
+the_best_dinosaur() {
+  echo "Thinking..." >&2
+  sleep 2
+  echo "stegosaurus"
+}
+
+# Runs `the_best_dinosaur` function, storing its output in the variable `dino`.
+dino="$(the_best_dinosaur)"
+
+echo "The best dinosaur is $dino."
 {% endhighlight %}
 
+When you run this program, it prints:
+
+{% highlight text %}
+Thinking...
+The best dinosaur is stegosaurus.
+{% endhighlight %}
+
+If we had printed _everything_ to stdout, including the "Thinking..." message,
+the output would have looked like this, which isn't quite what we want:
+
+{% highlight text %}
+The best dinosaur is Thinking...
+stegosaurus.
+{% endhighlight %}
+
+The same idea applies to working at the command line. Imagine if the function
+above ... TODO: finish this thought / example
 
 # Comments?
 
