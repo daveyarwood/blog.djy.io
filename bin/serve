@@ -9,7 +9,7 @@
 # and not the second.
 #
 # Blowing away _site fixes it. So we'll just always do that.
-rm -rf "$(dirname $0)/../_site/"
+rm -rf "$(dirname "$0")/../_site/"
 
 # This initial build without --incremental seems to be necessary in order to
 # pick up on new files added since the last time you ran `serve --incremental`.
