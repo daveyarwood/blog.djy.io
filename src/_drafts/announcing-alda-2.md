@@ -11,7 +11,7 @@ published: true
 
 I'm excited to announce the release of Alda 2.0.0! This new version of
 [Alda][alda] is a from-the-ground-up rewrite that I've been working on since
-late 2018, and I couldn't be happier to finally share it with the world!
+late 2018, and I couldn't be happier to finally share it with the world.
 
 Despite the shiny new version number, at a language level, Alda 2 is almost
 exactly the same as the Alda that you're used to. I have sampled scores from the
@@ -39,23 +39,33 @@ Here's a quick summary:
 
 * Because of the move to native and most of the work now being done in the
   `alda` client process (instead of in a worker process), Alda 2 is noticeably
-  faster than Alda 1. Scores are now parsed and evaluated in **microseconds**!
+  faster than Alda 1 when it comes to parsing and evaluating scores.
 
-* You no longer have to start a server in order to use Alda. No more running
-  `alda up`! After installing Alda 2, you're just an `alda play` command away
-  from hearing your text-based musical creations.
+* You no longer have to start a server in order to use Alda. (No more running
+  `alda up`!) After installing Alda 2, you can use the `alda play` command right
+  away and hear your text-based musical creations.
 
 * The new `alda doctor` command runs some basic health checks and looks for
   signs that your system might not be set up for Alda to work properly. If you
   run into any unexpected problems, `alda doctor` can help you troubleshoot.
 
 * The Alda REPL (**R**ead-**E**val-**P**lay **L**oop) has been upgraded to work
-  across a network connection. You can run `alda repl` in either `--client` or
+  over a network connection. You can run `alda repl` in either `--client` or
   `--server` mode, or run `alda repl` with no flags for the experience that
   you're used to from Alda 1.
 
   This new, network-enabled REPL has promising potential as a foundation for
   tooling and a platform for collaborative score-writing in the future!
+
+* You can now specify volume in terms of dynamic markings, which you may be
+  familiar with from sheet music notation. For example, you can use the `(mp)`
+  attribute for a quiet-ish _mezzo piano_, or the `(ffffff)` attribute for the
+  loudest possible dynamic, _fortississississimo_! Under the hood, these
+  dynamic attributes are equivalent to volume attributes like `(vol 46)` and
+  `(vol 100)`.
+
+  For more information about the new dynamic attributes, see [the
+  docs][dynamics-docs].
 
 # What's changed?
 
@@ -78,6 +88,24 @@ Here's a quick summary:
 
     (Although you'd usually just write `>` and `<`, and those still work the
     same way.)
+
+* When we implemented the new dynamic attributes, we realized that the default
+  volume level that we've been using all this time was a poor choice. The
+  default volume in Alda 1 is `(vol 100)`, which is 100% volume, or
+  _fortississississimo_. That's too loud!
+
+  If you ask most classical musicians what a good "default" volume is, they'll
+  probably tell you that it's _mezzo forte_, which is a "middle of the road"
+  volume: neither quiet nor loud. So, in Alda 2, the default volume is `(mf)`,
+  which is equivalent to `(vol 54)`.
+
+  If you have existing scores that assume the starting volume is `(vol 100)`,
+  you may notice that they are quieter than you remember. If you run into this,
+  an easy fix is to simply add a global `(vol! 100)` at the beginning of the
+  score, preserving the Alda 1 behavior. Or, you can go through the volume
+  attribute changes in your score and adjust them to be relative to the new
+  starting volume, which is `(mf)` or `(vol 54)`. (It would be a good excuse to
+  try the new dynamic attributes!)
 
 * The `alda parse` output in Alda 2 is different from that of Alda 1 in a number
   of ways. If you happen to have built any tooling or workflows that rely on the
@@ -103,10 +131,9 @@ alda play -c "piano: c8 d e f | d+2/f+/b32 > c+16. < b8 a+ g+ | c+2/e+/f+"
 {% endhighlight %}
 
 
-I hope you enjoy the next generation of Alda, and that you're as excited about
-the future of Alda as I am! If you'd like, you can join our [Slack
-group][alda-slack] and let us know what you think of Alda 2. I'd love to hear
-your thoughts.
+I hope you enjoy the next generation of Alda, and that you're as excited as I am
+about the future. Please join our [Slack group][alda-slack] and let us know what
+you think of Alda 2. I'd love to hear your thoughts!
 
 Finally, I should mention that if you enjoy my work on Alda, you can support me
 and sustain the ongoing development of Alda by [becoming a sponsor][gh-sponsor].
@@ -122,6 +149,7 @@ Reply to [this tweet][tweet] with any comments, questions, etc.!
 [alda]: https://alda.io
 [comparer]: https://github.com/daveyarwood/alda-v1-v2-comparer
 [migration-guide]: https://github.com/alda-lang/alda/blob/master/doc/alda-2-migration-guide.md
+[dynamics-docs]: https://github.com/alda-lang/alda/blob/master/doc/attributes.md#dynamic-markings
 [alda-clj]: https://github.com/daveyarwood/alda-clj
 [alda-install]: https://alda.io/install
 [alda-slack]: https://slack.alda.io
