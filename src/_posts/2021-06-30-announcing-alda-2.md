@@ -144,7 +144,7 @@ Have fun!
 
 Reply to [this tweet][tweet] with any comments, questions, etc.!
 
-[tweet]: https://twitter.com/dave_yarwood/status/FIXME
+[tweet]: https://twitter.com/dave_yarwood/status/1410224101843668993
 
 [alda]: https://alda.io
 [comparer]: https://github.com/daveyarwood/alda-v1-v2-comparer
