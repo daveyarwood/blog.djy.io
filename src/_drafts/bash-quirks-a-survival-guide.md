@@ -24,10 +24,10 @@ idea; you can use a single `|` character to pass the output of one command into
 the next command as input, and loads of CLI utilities are written with the goal
 of being a useful participant in these pipelines.
 
-As great as these strengths of Bash are, the aforementioned quirks are
-unfortunate and significant. My goal with this blog post is to get you better
-acquainted with the weirdisms of Bash and show you how to either work with or
-avoid them.
+As great as these strengths of Bash are, the aforementioned quirks can be an
+obstacle, standing between you and a working script. This blog post is a deep
+dive into the weirdisms of Bash, and how you can either work with them or avoid
+them.
 
 ## Quirk 1: shebang lines
 
@@ -232,11 +232,11 @@ broccoli-cheese-casserole.txt
 garlic-parmesan-roasted-broccoli.txt
 {% endhighlight %}
 
-There is another standard data stream called _stderr_ that, despite the name, is
-not necessarily just for error messages, although that is a common way to use
-it.  stderr is a stream where you can print user-facing messages without them
-accidentally being interpreted as _output data_ to be read by the next process
-in the pipeline.
+There is another standard data stream called _standard error (stderr)_ that,
+despite the name, is not necessarily just for error messages (although that is
+one way you can use it). stderr is a stream where you can print user-facing
+messages without them accidentally being interpreted as _output data_ that gets
+read by the next process in the pipeline.
 
 The syntax for "redirecting" some output to stderr is `>&2`. `>` means "pipe
 stdout into" whatever is on the right, which could be a file, etc., and `&2` is
@@ -282,7 +282,83 @@ stegosaurus.
 {% endhighlight %}
 
 The same idea applies to working at the command line. Imagine if the function
-above ... TODO: finish this thought / example
+above were a standalone script:
+
+{% highlight text %}
+$ ./the_best_dinosaur.sh
+Thinking...
+stegosaurus
+{% endhighlight %}
+
+We've kept the same implementation, so the `Thinking...` message is printed to
+`stderr` and the output `stegosaurus` is printed to stdout.
+
+Because our script does a good job of separating output from "human-oriented"
+messages, we can capture the output in a variable without getting the messages
+all mixed up in the output:
+
+{% highlight text %}
+$ dino="$(./the_best_dinosaur.sh)"
+Thinking...
+$ echo "The best dinosaur is $dino."
+The best dinosaur is stegosaurus.
+{% endhighlight %}
+
+Notice how, when we ran `dino="$(./the_best_dinosaur.sh)"` to capture the
+script's output in the variable `dino`, the stdout (`stegosaurus`) was hidden
+from us because it was redirected into the variable. However, we still saw the
+message on stderr (`Thinking...`) in the terminal, because that part _wasn't_
+redirected. That's good! We want that output in the terminal, because the whole
+point of stderr is to print messages to the terminal, where the person running
+the script can see them. Meanwhile, the stdout can be redirected into important
+places like variables, pipelines and other processes.
+
+## Quirk 6: `>` vs. `>>`
+
+Bash makes it unprecedentedly easy to write to files. Any time something is
+being printed to stdout, you can just slap a `>` on the end with a file name to
+the right of it, and the output data is written into the file.
+
+{% highlight text %}
+$ date
+Thu 01 Jul 2021 10:27:14 AM EDT
+$ date > /tmp/current-date-and-time.txt
+{% endhighlight %}
+
+When we use `cat` to print the contents of the file, we can see that the output
+of the `date` command was written to the file:
+
+{% highlight text %}
+$ cat /tmp/current-date-and-time.txt
+Thu 01 Jul 2021 10:27:24 AM EDT
+{% endhighlight %}
+
+Let's say that we wanted to write several entries into the same file. Can we use
+`>` for that? Let's see:
+
+{% highlight text %}
+$ date > /tmp/current-date-and-time.txt
+$ date > /tmp/current-date-and-time.txt
+$ date > /tmp/current-date-and-time.txt
+$ cat /tmp/current-date-and-time.txt
+Thu 01 Jul 2021 10:30:57 AM EDT
+{% endhighlight %}
+
+Nope! The thing is, `>` will _overwrite_ the current contents of the file, if
+the file already exists.
+
+If you want to _append_ lines instead, use `>>`:
+
+{% highlight text %}
+$ date >> /tmp/current-date-and-time.txt
+$ date >> /tmp/current-date-and-time.txt
+$ date >> /tmp/current-date-and-time.txt
+$ cat /tmp/current-date-and-time.txt
+Thu 01 Jul 2021 10:30:57 AM EDT
+Thu 01 Jul 2021 10:32:43 AM EDT
+Thu 01 Jul 2021 10:32:46 AM EDT
+Thu 01 Jul 2021 10:32:48 AM EDT
+{% endhighlight %}
 
 # Comments?
 
