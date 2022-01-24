@@ -26,11 +26,26 @@ command as input to the next, and loads of CLI utilities are designed to
 participate in these pipelines.
 
 As great as these strengths of Bash are, the aforementioned quirks can be an
-obstacle, standing between you and a safe, working script. This blog post is a
-deep dive into the weirdisms of Bash, and how you can either work with them or
-avoid them.
+obstacle, standing between you and a safe, working script. So, let's talk about
+10 things that are quirky about Bash and what we can do about it.
 
-## Quirk 1: shebang lines
+## The quirks
+
+* [Quirk 1: Shebang lines](#quirk-1-shebang-lines)
+* [Quirk 2: Variable definition syntax](#quirk-2-variable-definition-syntax)
+* [Quirk 3: Single vs. double quotes](#quirk-3-single-vs-double-quotes)
+* [Quirk 4: Unbound variables](#quirk-4-unbound-variables)
+* [Quirk 5: stdout and stderr](#quirk-5-stdout-and-stderr)
+* [Quirk 6: `>` vs. `>>`](#quirk-6--vs-)
+* [Quirk 7: Comparing strings and
+  numbers](#quirk-7-comparing-strings-and-numbers)
+* [Quirk 8: Passing arguments through](#quirk-8-passing-arguments-through)
+* [Quirk 9: Bailing out if there is an
+  error](#quirk-9-bailing-out-if-there-is-an-error)
+* [Quirk 10: Handling errors in a
+  pipeline](#quirk-10-handling-errors-in-a-pipeline)
+
+## Quirk 1: Shebang lines
 
 When you look at most shell scripts, you'll see a special line at the top that
 tells your shell which program to use to run the script.
@@ -86,7 +101,7 @@ $ ./my-script.sh
 Hello world!
 {% endhighlight %}
 
-## Quirk 2: variable definition syntax
+## Quirk 2: Variable definition syntax
 
 Unlike in most other programming languages, when you define a variable in Bash,
 you _must not_ include spaces around the variable name.
@@ -99,7 +114,7 @@ vegetable = "broccoli"
 vegetable="broccoli"
 {% endhighlight %}
 
-## Quirk 3: single vs. double quotes
+## Quirk 3: Single vs. double quotes
 
 A lot of bugs in Bash scripts are related to quoting, so it's valuable to
 understand how quoting works in Bash.
@@ -133,7 +148,7 @@ Or you can use _single quotes_, which don't expand variables:
 echo 'This broccoli costs $1.99'
 {% endhighlight %}
 
-## Quirk 4: unbound variables
+## Quirk 4: Unbound variables
 
 You can trust most language runtimes to explode if you mistype the name of a
 variable. That's what you _want_ to happen. For example, if you attempt to run
@@ -196,7 +211,7 @@ and prints the following:
 /tmp/food.sh: line 5: fodo: unbound variable
 {% endhighlight %}
 
-## Quirk 5: stdout and stderr
+## Quirk 5: Stdout and stderr
 
 Unlike functions in other languages, Bash functions don't really have concrete
 return values. Instead, Bash implements an idea from the Unix philosophy that
@@ -361,6 +376,172 @@ Thu 01 Jul 2021 10:32:46 AM EDT
 Thu 01 Jul 2021 10:32:48 AM EDT
 {% endhighlight %}
 
+## Quirk 7: Comparing strings and numbers
+
+In many programming languages, you can check to see if two "things" are equal by
+using `==` (equals) and `!=` (not-equals) operators, and this works regardless
+of the types of the things you are comparing. Here is Ruby, for example:
+
+{% highlight text %}
+irb(main):001:0> 1 == 1
+=> true
+irb(main):004:0> 1 != 5
+=> true
+irb(main):005:0> "apple" == "apple"
+=> true
+irb(main):006:0> "apple" != "orange"
+=> true
+{% endhighlight %}
+
+And there are also additional operators like `>`, `>=`, `<` and `<=` for
+comparing whether numbers are greater than or less than each other. Here's Ruby
+again:
+
+{% highlight text %}
+irb(main):009:0> 1 < 2
+=> true
+irb(main):010:0> 2 >= 1
+=> true
+{% endhighlight %}
+
+Bash is different in a couple of ways:
+
+1. You have to use the `[[` program to do these sorts of checks. _(Did you know
+   that `[[` is actually a program and not just special syntax? It's true!)_
+
+2. There are two sets of comparison operators:
+  * `==` and `!=` for string comparison
+  * `-eq`, `-ne`, `-gt`, `-lt`, `-le` `-ge` for numerical comparison
+
+To check whether two strings are equal or not equal:
+
+{% highlight bash %}
+# Prints "Equal"
+if [[ "foo" == "foo" ]]; then
+  echo "Equal"
+else
+  echo "Not equal"
+fi
+
+# Prints "Not equal"
+if [[ "foo" != "bar" ]]; then
+  echo "Not equal"
+else
+  echo "Equal"
+fi
+{% endhighlight %}
+
+To compare numbers:
+
+{% highlight bash %}
+# Prints "Equal"
+if [[ 1 -eq 1 ]]; then
+  echo "Equal"
+else
+  echo "Not equal"
+fi
+
+# Prints "Equal"
+if [[ 1 -ne 2 ]]; then
+  echo "Not equal"
+else
+  echo "Equal"
+fi
+
+# Prints "5 is greater"
+if [[ 5 -gt 4 ]]; then
+  echo "5 is greater"
+else
+  echo "5 is not greater"
+fi
+{% endhighlight %}
+
+**Be careful not to mix up `==`/`!=` and `-eq`/`-ne`!** You could run into
+unexpected behavior if you compare strings using the numerical operators:
+
+{% highlight bash %}
+# BAD: numerical comparison
+# Prints "Apples and oranges are the same!?"
+if [[ "apple" -eq "orange" ]]; then
+  echo "Apples and oranges are the same!?"
+else
+  echo "Apples and oranges are clearly different"
+fi
+
+# GOOD: string comparison
+# Prints "Apples and oranges are clearly different"
+if [[ "apple" == "orange" ]]; then
+  echo "Apples and oranges are the same!?"
+else
+  echo "Apples and oranges are clearly different"
+fi
+{% endhighlight %}
+
+## Quirk 8: Passing arguments through
+
+A common task, when you're writing Bash scripts, is to pass the arguments of a
+script through to another script. Just as a silly example, let's say that we
+wanted to write a little "wrapper script" for the `ls` command:
+
+{% highlight bash %}
+#!/usr/bin/env bash
+
+echo "Welcome to ls-wrapper!" >&2
+
+ls
+{% endhighlight %}
+
+This works well enough in that it calls `ls` without arguments:
+
+{% highlight text %}
+$ chmod +x ls-wrapper.sh
+$ ./ls-wrapper.sh
+Welcome to ls-wrapper!
+<list of files in current directory>
+{% endhighlight %}
+
+But it doesn't work if I try to use `ls-wrapper.sh` the same way I might use
+`ls`. For example, I can't ask it to list the files in a different directory:
+
+{% highlight text %}
+$ ./ls-wrapper.sh /tmp/some-other-dir
+Welcome to ls-wrapper!
+<still a list of files in the current directory>
+{% endhighlight %}
+
+We can make `ls-wrapper.sh` work just like `ls` by passing the arguments of
+`ls-wrapper.sh` through to `ls`. So how do we do that? Well, if you google this
+question, you're going to find [a lot of complicated
+answers][so-arg-passthrough], but the answer is more or less straightforward:
+just use `"$@"`:
+
+> You will sometimes see people use `$*`. Don't do that! You should almost
+> always use `"$@"`.
+
+{% highlight bash %}
+#!/usr/bin/env bash
+
+echo "Welcome to ls-wrapper!" >&2
+
+ls "$@"
+{% endhighlight %}
+
+Now, here is our `ls` wrapper script in action:
+
+{% highlight text %}
+$ ./ls-wrapper.sh /tmp/some-other-dir
+Welcome to ls-wrapper!
+<list of files in /tmp/some-other-dir>
+{% endhighlight %}
+
+## Quirk 9: Bailing out if there is an error
+
+Something something `set -e`
+
+## Quirk 10: Handling errors in a pipeline
+
+Something something `set -eo pipefail`
+
 # Comments?
 
 Reply to [this tweet][tweet] with any comments, questions, etc.!
@@ -368,3 +549,4 @@ Reply to [this tweet][tweet] with any comments, questions, etc.!
 [tweet]: https://twitter.com/dave_yarwood/status/FIXME
 
 [unix-philosophy]: https://en.wikipedia.org/wiki/Unix_philosophy
+[so-arg-passthrough]: https://stackoverflow.com/q/4824590/2338327
