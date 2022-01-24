@@ -13,28 +13,29 @@ I have a love/hate relationship with Bash.
 
 It's a quirky little language with many subtleties that make it easy to make
 mistakes. It's not uncommon for programmers writing Bash scripts to discover
-bugs in their scripts related to getting some obscure syntax wrong, using quotes
-incorrectly, platform or shell compatibility issues, mishandling errors, etc.
+bugs in their scripts related to a variety of things, including getting some
+obscure syntax wrong, using quotes incorrectly, platform or shell compatibility
+issues, and mishandling errors.
 
 On the other hand, Bash is ubiquitous, and it's a great "glue language" for
 composing CLI commands together. The [Unix philosophy][unix-philosophy] is chock
 full of good ideas that keep Bash scripts simple, easy to understand, and easy
-to write (once you know your way around the quirks). Pipes are a brilliant
-idea; you can use a single `|` character to pass the output of one command into
-the next command as input, and loads of CLI utilities are written with the goal
-of being a useful participant in these pipelines.
+to write (once you know your way around the quirks). Pipes are a simple, but
+brilliant idea; you can use a single `|` character to pass in the output of one
+command as input to the next, and loads of CLI utilities are designed to
+participate in these pipelines.
 
 As great as these strengths of Bash are, the aforementioned quirks can be an
-obstacle, standing between you and a working script. This blog post is a deep
-dive into the weirdisms of Bash, and how you can either work with them or avoid
-them.
+obstacle, standing between you and a safe, working script. This blog post is a
+deep dive into the weirdisms of Bash, and how you can either work with them or
+avoid them.
 
 ## Quirk 1: shebang lines
 
 When you look at most shell scripts, you'll see a special line at the top that
 tells your shell which program to use to run the script.
 
-You'll sometimes see the shebang line point to `/bin/bash` (don't do this!):
+You'll sometimes see the shebang line point to `/bin/bash` (**don't do this!**):
 
 {% highlight bash %}
 #!/bin/bash
@@ -42,14 +43,13 @@ You'll sometimes see the shebang line point to `/bin/bash` (don't do this!):
 echo "Hello world!"
 {% endhighlight %}
 
-This works, but only if you happen to have Bash installed at `/bin/bash`.
-Depending on the operating system and distribution of the person running your
-script, that might not necessarily be true!
+This only works if you happen to have Bash installed at `/bin/bash`. Depending
+on the operating system and distribution of the person running your script, that
+might not necessarily be true!
 
-The better thing to do is to use `env`, a program that finds an
-executable on the user's `PATH` (wherever that may be) and runs it. `env` is
-basically _always_ reliably located in the `/usr/bin` folder, so we can assume
-that `/usr/bin/env` is there for us to use.
+It's better to use `env`, a program that finds an executable on the user's
+`PATH` and runs it. `env` is basically _always_ reliably located in the
+`/usr/bin` folder, so we can assume that `/usr/bin/env` is there for us to use.
 
 {% highlight bash %}
 #!/usr/bin/env bash
@@ -101,8 +101,8 @@ vegetable="broccoli"
 
 ## Quirk 3: single vs. double quotes
 
-I would guess that the majority of bugs in Bash scripts are related in some way
-to quoting.
+A lot of bugs in Bash scripts are related to quoting, so it's valuable to
+understand how quoting works in Bash.
 
 Inside of _double quotes_, a dollar sign (`$`) can be used to insert a variable
 value into a string:
@@ -146,7 +146,7 @@ puts "My favorite food is #{fodo}"
 {% endhighlight %}
 
 The Ruby interpreter helpfully returns a non-zero exit code to indicate failure,
-and it is clear from the output what you did wrong:
+and the error message makes it clear what you did wrong:
 
 {% highlight text %}
 Traceback (most recent call last):
@@ -170,16 +170,16 @@ following:
 My favorite food is
 {% endhighlight %}
 
-This behavior is sort of annoying, because it makes it way too easy for you to
-write Bash scripts that have subtle bugs where a variable that you thought had a
-value turns out to be an empty string because you mistyped the variable name.
+This behavior makes it way too easy for your Bash scripts to have subtle bugs
+where a variable that you _thought_ had a value turns out to be an empty string,
+all because you mistyped the variable name.
 
-> On the other hand, there are actually occasions when it is _useful_ for Bash
-> to treat undefined variables as empty strings, but I won't get into that here.
+> On rare occasions, it is actually _useful_ for Bash to treat undefined
+> variables as empty strings, but I won't get into that here.
 
 The good news is that there is an option (`set -u`) that you can enable to make
-Bash behave more like other programming languages and throw an error if you
-attempt to use a variable that hasn't been defined:
+Bash behave more like other programming languages and throw an error in this
+kind of situation:
 
 {% highlight bash %}
 set -u
@@ -233,10 +233,10 @@ garlic-parmesan-roasted-broccoli.txt
 {% endhighlight %}
 
 There is another standard data stream called _standard error (stderr)_ that,
-despite the name, is not necessarily just for error messages (although that is
-one way you can use it). stderr is a stream where you can print user-facing
-messages without them accidentally being interpreted as _output data_ that gets
-read by the next process in the pipeline.
+despite the name, is not only for error messages (although that is one common
+use). stderr is a stream where you can print user-facing messages without them
+accidentally being interpreted as _output data_ that the next process in the
+pipeline will read.
 
 The syntax for "redirecting" some output to stderr is `>&2`. `>` means "pipe
 stdout into" whatever is on the right, which could be a file, etc., and `&2` is
@@ -273,8 +273,9 @@ Thinking...
 The best dinosaur is stegosaurus.
 {% endhighlight %}
 
-If we had printed _everything_ to stdout, including the "Thinking..." message,
-the output would have looked like this, which isn't quite what we want:
+In contrast, if we had printed _everything_ to stdout, including the
+"Thinking..." message, the output would have looked like this, which isn't quite
+what we want:
 
 {% highlight text %}
 The best dinosaur is Thinking...
@@ -309,15 +310,15 @@ script's output in the variable `dino`, the stdout (`stegosaurus`) was hidden
 from us because it was redirected into the variable. However, we still saw the
 message on stderr (`Thinking...`) in the terminal, because that part _wasn't_
 redirected. That's good! We want that output in the terminal, because the whole
-point of stderr is to print messages to the terminal, where the person running
-the script can see them. Meanwhile, the stdout can be redirected into important
-places like variables, pipelines and other processes.
+point of stderr is to print messages where the person running the script can see
+them. Meanwhile, the stdout can be redirected into important places like
+variables, pipelines and other processes.
 
 ## Quirk 6: `>` vs. `>>`
 
-Bash makes it unprecedentedly easy to write to files. Any time something is
-being printed to stdout, you can just slap a `>` on the end with a file name to
-the right of it, and the output data is written into the file.
+It's very easy to write to files in Bash. Any time something is being printed to
+stdout, you can just slap a `>` on the end, followed by a file name, and the
+output data will be written to the file.
 
 {% highlight text %}
 $ date
