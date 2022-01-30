@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Bash quirks: a survival guide"
+title: "10 Bash quirks and how to live with them"
 tags:
   - bash
   - unix
