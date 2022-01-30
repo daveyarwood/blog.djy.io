@@ -11,11 +11,11 @@ published: true
 
 I have a love/hate relationship with Bash.
 
-It's a quirky little language with many subtleties that make it easy to make
-mistakes. It's not uncommon for programmers writing Bash scripts to discover
-bugs in their scripts related to a variety of things, including getting some
-obscure syntax wrong, using quotes incorrectly, platform or shell compatibility
-issues, and mishandling errors.
+It's a quirky little language with many subtleties that make it all too easy to
+make mistakes. It's not uncommon for programmers writing Bash scripts to
+discover bugs in their scripts related to a variety of things, including getting
+some obscure syntax wrong, using quotes incorrectly, platform or shell
+compatibility issues, and mishandling errors.
 
 On the other hand, Bash is ubiquitous, and it's a great "glue language" for
 composing CLI commands together. The [Unix philosophy][unix-philosophy] is chock
@@ -47,8 +47,8 @@ obstacle, standing between you and a safe, working script. So, let's talk about
 
 ## Quirk 1: Shebang lines
 
-When you look at most shell scripts, you'll see a special line at the top that
-tells your shell which program to use to run the script.
+At the top of most shell scripts is a special line  that tells your shell which
+program to use to run the script.
 
 You'll sometimes see the shebang line point to `/bin/bash` (**don't do this!**):
 
@@ -101,6 +101,10 @@ $ ./my-script.sh
 Hello world!
 {% endhighlight %}
 
+> In the examples below, I will leave off the `#!/usr/bin/env bash` line for the
+> sake of brevity, but you should always make this the very first line of every
+> Bash script you write!
+
 ## Quirk 2: Variable definition syntax
 
 Unlike in most other programming languages, when you define a variable in Bash,
@@ -151,7 +155,7 @@ echo 'This broccoli costs $1.99'
 ## Quirk 4: Unbound variables
 
 You can trust most language runtimes to explode if you mistype the name of a
-variable. That's what you _want_ to happen. For example, if you attempt to run
+variable. That's what you _want_ to happen! For example, if you attempt to run
 this Ruby program:
 
 {% highlight ruby %}
@@ -211,7 +215,7 @@ and prints the following:
 /tmp/food.sh: line 5: fodo: unbound variable
 {% endhighlight %}
 
-## Quirk 5: Stdout and stderr
+## Quirk 5: stdout and stderr
 
 Unlike functions in other languages, Bash functions don't really have concrete
 return values. Instead, Bash implements an idea from the Unix philosophy that
@@ -309,9 +313,9 @@ stegosaurus
 We've kept the same implementation, so the `Thinking...` message is printed to
 `stderr` and the output `stegosaurus` is printed to stdout.
 
-Because our script does a good job of separating output from "human-oriented"
-messages, we can capture the output in a variable without getting the messages
-all mixed up in the output:
+Because our script does a good job of separating standard output from
+"human-oriented" messages, we can capture the output in a variable without
+getting the messages all mixed up in the output:
 
 {% highlight text %}
 $ dino="$(./the_best_dinosaur.sh)"
@@ -327,7 +331,7 @@ message on stderr (`Thinking...`) in the terminal, because that part _wasn't_
 redirected. That's good! We want that output in the terminal, because the whole
 point of stderr is to print messages where the person running the script can see
 them. Meanwhile, the stdout can be redirected into important places like
-variables, pipelines and other processes.
+variables, files, and other processes.
 
 ## Quirk 6: `>` vs. `>>`
 
@@ -456,7 +460,7 @@ else
 fi
 {% endhighlight %}
 
-**Be careful not to mix up `==`/`!=` and `-eq`/`-ne`!** You could run into
+**Be careful not to mix up `==`/`!=` and `-eq`/`-ne`!** You will run into
 unexpected behavior if you compare strings using the numerical operators:
 
 {% highlight bash %}
@@ -479,9 +483,9 @@ fi
 
 ## Quirk 8: Passing arguments through
 
-A common task, when you're writing Bash scripts, is to pass the arguments of a
-script through to another script. Just as a silly example, let's say that we
-wanted to write a little "wrapper script" for the `ls` command:
+A common task, when you're writing Bash scripts, is to pass the arguments of one
+script through to another. Just as a silly example, let's write a little
+"wrapper script" for the `ls` command:
 
 {% highlight bash %}
 #!/usr/bin/env bash
@@ -494,29 +498,31 @@ ls
 This works well enough in that it calls `ls` without arguments:
 
 {% highlight text %}
-$ chmod +x ls-wrapper.sh
-$ ./ls-wrapper.sh
+$ chmod +x ls-wrapper
+$ ./ls-wrapper
 Welcome to ls-wrapper!
 <list of files in current directory>
 {% endhighlight %}
 
-But it doesn't work if I try to use `ls-wrapper.sh` the same way I might use
-`ls`. For example, I can't ask it to list the files in a different directory:
+But it doesn't work if I try to use `ls-wrapper` the same way that I might use
+`ls`. For example, I can't ask it to list the files in a different directory
+than the one I'm in:
 
 {% highlight text %}
-$ ./ls-wrapper.sh /tmp/some-other-dir
+$ ./ls-wrapper /tmp/some-other-dir
 Welcome to ls-wrapper!
 <still a list of files in the current directory>
 {% endhighlight %}
 
-We can make `ls-wrapper.sh` work just like `ls` by passing the arguments of
-`ls-wrapper.sh` through to `ls`. So how do we do that? Well, if you google this
+We can make `ls-wrapper` work just like `ls` by passing the arguments of
+`ls-wrapper` through to `ls`. So how do we do that? Well, if you google this
 question, you're going to find [a lot of complicated
 answers][so-arg-passthrough], but the answer is more or less straightforward:
 just use `"$@"`:
 
 > You will sometimes see people use `$*`. Don't do that! You should almost
-> always use `"$@"`.
+> always use `"$@"`, unless you really know what you're doing and you have a
+> specific reason not to.
 
 {% highlight bash %}
 #!/usr/bin/env bash
@@ -529,18 +535,193 @@ ls "$@"
 Now, here is our `ls` wrapper script in action:
 
 {% highlight text %}
-$ ./ls-wrapper.sh /tmp/some-other-dir
+$ ./ls-wrapper /tmp/some-other-dir
 Welcome to ls-wrapper!
 <list of files in /tmp/some-other-dir>
 {% endhighlight %}
 
 ## Quirk 9: Bailing out if there is an error
 
-Something something `set -e`
+In most programming languages, we expect a program to stop what it's doing
+immediately if there is an error. Not in Bash!
+
+Take this program, for example:
+
+{% highlight bash %}
+echo "Hello!"
+
+# This will fail because the directory doesn't exist.
+ls /ontehn/oeoanthesnu/aotehntaosethuanoteh
+
+echo "We'll never get this far."
+{% endhighlight %}
+
+Here's the output when you run this script:
+
+{% highlight text %}
+Hello!
+ls: cannot access '/ontehn/oeoanthesnu/aotehntaosethuanoteh': No such file or directory
+We'll never get this far.
+{% endhighlight %}
+
+Oops! We _did_ get that far. But in most cases, if you're running a script that
+you wrote, and there is an error halfway through, you don't want it to just keep
+going, right? Each line of your script could be depending on the success of the
+lines before it.
+
+To make Bash behave more intuitively, we can use the `set -e` option:
+
+{% highlight bash %}
+set -e
+
+echo "Hello!"
+
+# This will fail because the directory doesn't exist.
+ls /ontehn/oeoanthesnu/aotehntaosethuanoteh
+
+echo "We'll never get this far."
+{% endhighlight %}
+
+This makes the Bash interpreter exit immediately as soon as one of the commands
+(`ls`, in this case) returns a non-zero exit code to indicate failure:
+
+{% highlight text %}
+Hello!
+ls: cannot access '/ontehn/oeoanthesnu/aotehntaosethuanoteh': No such file or directory
+{% endhighlight %}
+
+This is a much better behavior 99% of the time, in my opinion.
+
+Of course, a lot of the time, you _expect_ certain commands to fail, and you
+want your script to proceed in a certain way. A common example is checking for
+the existence of a string in a file using `grep`:
+
+{% highlight text %}
+$ grep localhost /etc/hosts
+127.0.0.1       localhost
+::1     ip6-localhost ip6-loopback
+
+# Zero exit code indicates success (string found)
+$ echo $?
+0
+
+$ grep "something else" /etc/hosts
+
+# Non-zero exit code indicates failure (string not found)
+$ echo $?
+1
+{% endhighlight %}
+
+So you might be worried that `set -e` doesn't account for situations like these,
+where you might want to explicitly handle errors yourself:
+
+{% highlight bash %}
+set -e
+
+if grep "onions" /etc/hosts; then
+  echo "found onions"
+fi
+
+grep "onions" /etc/hosts && echo "found onions"
+
+grep "onions" /etc/hosts || echo "no onions found"
+
+echo "proceed to do other work"
+{% endhighlight %}
+
+Don't worry! `set -e` takes constructs like `if`, `while`, `&&` and `||` into
+account, so your script will Just Work™ the way that you would expect, without
+exiting prematurely:
+
+{% highlight text %}
+no onions found
+proceed to do other work
+{% endhighlight %}
+
+> As an aside: It turns out that [using `set -e` is
+> controversial][set-e-controversy] because there are various edge cases where
+> it behaves unexpectedly. My take is that if you use `set -e` at the top of all
+> of your scripts by default (especially if you also use `-o pipefail`, which
+> I'll talk about next), even though it may not be _perfect_ and there are
+> certain edge cases that you might run into from time to time, it's still well
+> worth it because it will help you avoid subtle bugs where some part of your
+> script doesn't work, but the script proceeds to run past that point anyway.
+>
+> The decision about whether or not to use `set -e` and `set -o pipefail` is one
+> about trade-offs, and in my opinion, the benefits of `set -e` outweigh the
+> costs. If you're new to writing Bash scripts, I recommend that you put
+> `set -eo pipefail` at the top of all of your scripts as a general rule, and
+> see how you like it in the long run. As you gain more experience with Bash and
+> learn more about how `set -eo pipefail` works in practice, you can decide for
+> yourself whether or not you prefer to use it. My prediction is that you'll
+> prefer to use these safeguards and deal with any edge cases that come up,
+> instead of not using them and having to handle every single possible error
+> yourself!
 
 ## Quirk 10: Handling errors in a pipeline
 
-Something something `set -eo pipefail`
+One weakness of `set -e` is that it doesn't account for the errors that can
+happen in the middle of a pipeline.
+
+In the case of the `ls /some/nonexistent/directory` example above, the script
+exited immediately because the `ls` command in the middle of the script returned
+a non-zero exit code to indicate failure.
+
+But what if we piped that `ls` command into another command? As a simple
+example, let's pipe the `ls` command into `cat -`, which just passes through its
+input as output:
+
+{% highlight bash %}
+set -e
+
+echo "Hello!"
+
+ls /some/nonexistent/directory | cat -
+
+echo "We'll never get this far."
+{% endhighlight %}
+
+Even with `set -e`, when the `ls` command fails, the `cat` command still gets
+executed. But it's even worse than that. Because the `cat` command executes
+successfully, the script doesn't bail out like we want it to. If it weren't for
+the error message that `ls` prints on stderr, we would have no idea that the
+`ls` command failed, and the script proceeds to execute to the end as if nothing
+went wrong!
+
+{% highlight text %}
+Hello!
+ls: cannot access '/some/nonexistent/directory': No such file or directory
+We'll never get this far.
+{% endhighlight %}
+
+The remedy for this is the `-o pipefail` option. You can use it on its own with
+`set -o pipefail`, but you'll usually see it used in conjunction with `set -e`,
+as `set -eo pipefail`:
+
+{% highlight bash %}
+set -eo pipefail
+
+echo "Hello!"
+
+ls /some/nonexistent/directory | cat -
+
+echo "We'll never get this far."
+{% endhighlight %}
+
+Now, our script is smart enough to recognize that the `ls` command in the
+pipeline failed, and so should the script as a whole at that point:
+
+{% highlight text %}
+Hello!
+ls: cannot access '/some/nonexistent/directory': No such file or directory
+{% endhighlight %}
+
+# That's it!
+
+I hope you found this helpful! Despite its quirks, Bash is an indispensable tool
+for the modern software developer. Once you know how to navigate the weird
+parts, you can reap the benefits of having this wonderful, bizarre language in
+your repertoire.
 
 # Comments?
 
@@ -550,3 +731,4 @@ Reply to [this tweet][tweet] with any comments, questions, etc.!
 
 [unix-philosophy]: https://en.wikipedia.org/wiki/Unix_philosophy
 [so-arg-passthrough]: https://stackoverflow.com/q/4824590/2338327
+[set-e-controversy]: http://mywiki.wooledge.org/BashFAQ/105
