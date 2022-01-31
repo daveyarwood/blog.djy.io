@@ -27,7 +27,7 @@ participate in these pipelines.
 
 As great as these strengths of Bash are, the aforementioned quirks can be an
 obstacle, standing between you and a safe, working script. So, let's talk about
-10 things that are quirky about Bash and what we can do about it.
+10 things that are quirky about Bash and how to live with them.
 
 ## The quirks
 
