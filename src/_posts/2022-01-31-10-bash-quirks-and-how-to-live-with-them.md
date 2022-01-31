@@ -727,7 +727,7 @@ your repertoire.
 
 Reply to [this tweet][tweet] with any comments, questions, etc.!
 
-[tweet]: https://twitter.com/dave_yarwood/status/FIXME
+[tweet]: https://twitter.com/dave_yarwood/status/1488142434454417409
 
 [unix-philosophy]: https://en.wikipedia.org/wiki/Unix_philosophy
 [so-arg-passthrough]: https://stackoverflow.com/q/4824590/2338327
