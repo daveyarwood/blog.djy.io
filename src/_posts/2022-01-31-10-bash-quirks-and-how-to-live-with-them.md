@@ -47,8 +47,8 @@ obstacle, standing between you and a safe, working script. So, let's talk about
 
 ## Quirk 1: Shebang lines
 
-At the top of most shell scripts is a special line  that tells your shell which
-program to use to run the script.
+At the top of most shell scripts is a special line that tells your computer
+which program to use to run the script.
 
 You'll sometimes see the shebang line point to `/bin/bash` (**don't do this!**):
 
