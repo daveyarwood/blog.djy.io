@@ -410,8 +410,7 @@ irb(main):010:0> 2 >= 1
 
 Bash is different in a couple of ways:
 
-1. You have to use the `[[` program to do these sorts of checks. _(Did you know
-   that `[[` is actually a program and not just special syntax? It's true!)_
+1. You have to use `[[` to do these sorts of checks.
 
 2. There are two sets of comparison operators:
   * `==` and `!=` for string comparison
