@@ -31,7 +31,7 @@ functions in the Clojure standard library by "visualizing" them with music
 
 Reply to [this tweet][tweet] with any comments, questions, etc.!
 
-[tweet]: https://twitter.com/dave_yarwood/status/FIXME
+[tweet]: https://twitter.com/dave_yarwood/status/1509146057623711749
 
 [fn-conf]: https://www.functionalconf.com/
 [alda]: https://alda.io
