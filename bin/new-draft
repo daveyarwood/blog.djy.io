@@ -12,15 +12,14 @@ fi
 
 draft_title="$1"
 
-scriptdir=$(dirname $0)
-drafts_dir="$(dirname $0)/../src/_drafts"
+drafts_dir="$(dirname "$0")/../src/_drafts"
 
 mkdir -p "$drafts_dir"
 
-draft_template=$(cat <<-EOF
+draft_content=$(cat <<-EOF
 ---
 layout: post
-title: "DRAFT_TITLE"
+title: "$draft_title"
 category: something
 tags:
   - foo
@@ -41,13 +40,9 @@ Reply to [this tweet][tweet] with any comments, questions, etc.!
 EOF
 )
 
-draft_content=$(sed \
-                 "s/DRAFT_TITLE/$draft_title/g" \
-                 <(echo -e "$draft_template"))
-
 draft_filename="$(echo "$draft_title" \
                     | tr ' ' '-' \
-                    | tr [:upper:] [:lower:] \
+                    | tr "[:upper:]" "[:lower:]" \
                     | tr -dc '[:alnum:]-').md"
 
 echo -e "$draft_content" > "$drafts_dir/$draft_filename"
