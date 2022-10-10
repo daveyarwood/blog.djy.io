@@ -67,7 +67,7 @@ the most.
 
 Reply to [this tweet][tweet] with any comments, questions, etc.!
 
-[tweet]: https://twitter.com/dave_yarwood/status/FIXME
+[tweet]: https://twitter.com/dave_yarwood/status/1579454787468550144
 
 [alda]: https://alda.io
 [alda-slack]: https://slack.alda.io
