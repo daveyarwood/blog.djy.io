@@ -41,7 +41,7 @@ For more updates on Trash Signal, follow us on [Twitter][trash-signal-twitter],
 
 Reply to [this tweet][tweet] with any comments, questions, etc.!
 
-[tweet]: https://twitter.com/dave_yarwood/status/FIXME
+[tweet]: https://twitter.com/dave_yarwood/status/1592877134749765635
 
 [trash-signal-bandcamp]: https://trashsignal.bandcamp.com
 [lost-sounds]: https://www.youtube.com/watch?v=75risEZc7JQ
