@@ -29,7 +29,7 @@ over [_Giant Steps_][giant-steps]? Listen to the interview for the answer! :)
 
 Reply to [this tweet][tweet] with any comments, questions, etc.!
 
-[tweet]: https://twitter.com/dave_yarwood/status/FIXME
+[tweet]: https://twitter.com/juxtpro/status/1591060349343920129
 
 [strange-loop]: https://thestrangeloop.com
 [lostinlambduhhs]: https://podcasts.apple.com/us/podcast/lost-in-lambduhhs/id1566620738
