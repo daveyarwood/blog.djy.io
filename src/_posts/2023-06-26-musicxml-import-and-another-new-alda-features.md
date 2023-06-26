@@ -183,7 +183,7 @@ to make this intriguing idea a reality.
 
 Reply to [this tweet][tweet] with any comments, questions, etc.!
 
-[tweet]: https://twitter.com/dave_yarwood/status/FIXME
+[tweet]: https://twitter.com/dave_yarwood/status/1673317704856420353
 
 [alda-website]: https://alda.io
 [alda-2-announcement]: {% post_url 2021-06-30-announcing-alda-2 %}
