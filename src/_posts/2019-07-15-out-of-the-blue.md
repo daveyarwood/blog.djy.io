@@ -11,11 +11,12 @@ tags:
 
 {% include JB/setup %}
 
-In January 2019, I collaborated with my wife, choreographer [Renay
-Aumiller](https://www.radances.com), to create a modern dance piece called _Out
-of the Blue_. I wrote a program that prompted the audience to contribute a list
-of body parts and dance qualities, and then fed that creative input into an
-algorithm to randomly generate a series of short dance vignettes.
+In January 2019, I collaborated with the choreographer [Renay
+Aumiller](https://www.instagram.com/renay.aumiller.dances) to create a modern
+dance piece called _Out of the Blue_. I wrote a program that prompted the
+audience to contribute a list of body parts and dance qualities, and then fed
+that creative input into an algorithm to randomly generate a series of short
+dance vignettes.
 
 Each vignette featured a body part and a movement idea contributed by the
 audience, as well as a short piece of music to accompany the music.  Renay
