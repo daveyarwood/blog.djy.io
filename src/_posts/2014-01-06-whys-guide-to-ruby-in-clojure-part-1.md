@@ -20,7 +20,7 @@ There are only a handful of other languages that have entertaining/fun introduct
 
 \*By the way, I noticed that [Raynes][raynes] had the idea to create [a fun guide to Clojure][raynes-book] like this, and apparently even got a book deal for it, but sadly the book has yet to come to fruition. Fingers crossed that one day Clojure will have a (poignant) guide of its own!
 
-[wpgtr]: http://mislav.uniqpath.com/poignant-guide/book
+[wpgtr]: https://poignant.guide
 [lyah]: http://learnyouahaskell.com
 [raynes]: http://blog.raynes.me
 [raynes-book]: http://meetclj.raynes.me

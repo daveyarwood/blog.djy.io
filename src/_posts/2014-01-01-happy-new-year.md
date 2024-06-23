@@ -25,7 +25,7 @@ As of this post, I have a great deal of syntax invented, and I'm working on the 
 Things might keep progressing slowly, but hopefully 2014 will be the year that sees an alpha release of Yggdrasil!
 
 [lpthw]: http://learnpythonthehardway.org
-[wpgtr]: http://mislav.uniqpath.com/poignant-guide
+[wpgtr]: https://poignant.guide
 [euler]: http://www.projecteuler.net
 [lyah]: http://learnyouahaskell.com
 [7li7w]: http://pragprog.com/book/btlang/seven-languages-in-seven-weeks
