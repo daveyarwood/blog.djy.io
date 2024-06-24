@@ -101,4 +101,4 @@ Reply to [this tweet][tweet] with any comments, questions, etc.!
 [install-alda]: https://alda.io/install
 [sponsor-me]: https://github.com/sponsors/daveyarwood
 
-[tweet]: https://twitter.com/dave_yarwood/status/FIXME
+[tweet]: https://x.com/dave_yarwood/status/1805241666858520992
