@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -eo pipefail
+
 if [[ $# -ne 1 ]]; then
   echo "Usage: $0 DRAFT_FILE"
   exit 1
@@ -7,39 +9,35 @@ fi
 
 draft_file="$1"
 
-srcdir="$(dirname $0)/../src"
+srcdir="$(dirname "$0")/../src"
 
 post_file="$srcdir/_posts/$(date '+%Y-%m-%d')-$(basename "$draft_file")"
 
 function announce() {
-  echo -e "\n●" $*
+  echo -e "\n●" "$@"
 }
 
 announce "Moving $draft_file => $post_file"
 mv "$draft_file" "$post_file"
-if [[ $? -ne 0 ]]; then exit 1; fi
 
 announce "Staging..."
 git add "$srcdir"
-if [[ $? -ne 0 ]]; then exit 1; fi
 
 git status
 echo
-read -p "Proceed? [yN] "
+read -r -p "Proceed? [yN] "
 if [[ "$REPLY" != "y" ]]; then
   echo "Aborting."
   exit 1
 fi
 
-post_slug="$(basename ${draft_file%.*})"
+post_slug="$(basename "${draft_file%.*}")"
 
 announce "Committing..."
 git commit -m "Publish $post_slug"
-if [[ $? -ne 0 ]]; then exit 1; fi
 
 announce "Pushing..."
 git push
-if [[ $? -ne 0 ]]; then exit 1; fi
 
 post_url="https://blog.djy.io/$post_slug"
 
@@ -54,7 +52,7 @@ done
 announce "Waiting for a tweet..."
 xdg-open "https://twitter.com/compose/tweet?text=%0A%0A$post_url" >/dev/null &
 
-read -p "Paste tweet URL here: " tweet_url
+read -r -p "Paste tweet URL here: " tweet_url
 
 announce "Inserting tweet URL into blog post..."
 # Using `#` as a delimiter here because the URL contains slashes.
@@ -62,7 +60,7 @@ sed -i "s#^\(\[tweet\]:\) .*#\\1 $tweet_url#" "$post_file"
 
 git --no-pager diff
 echo
-read -p "Proceed? [yN] "
+read -r -p "Proceed? [yN] "
 if [[ "$REPLY" != "y" ]]; then
   echo "Aborting."
   exit 1
@@ -70,16 +68,13 @@ fi
 
 announce "Staging..."
 git add "$srcdir"
-if [[ $? -ne 0 ]]; then exit 1; fi
 git status
 
 announce "Committing..."
 git commit -m "Add tweet URL to $post_slug"
-if [[ $? -ne 0 ]]; then exit 1; fi
 
 announce "Pushing..."
 git push
-if [[ $? -ne 0 ]]; then exit 1; fi
 
 announce "Waiting for tweet URL update to go live at $post_url..."
 while true; do
