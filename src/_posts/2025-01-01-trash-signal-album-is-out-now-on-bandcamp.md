@@ -33,7 +33,7 @@ Hope your 2025 is going great so far!
 
 Reply to [this tweet][tweet] with any comments, questions, etc.!
 
-[tweet]: https://twitter.com/dave_yarwood/status/FIXME
+[tweet]: https://x.com/dave_yarwood/status/1874557374549409936
 
 [trash-signal-album-bandcamp]: https://trashsignal.bandcamp.com/album/trash-signal
 [trash-signal-instagram]: https://www.instagram.com/trashsignal/
